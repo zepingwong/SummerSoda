@@ -36,61 +36,74 @@ export default defineComponent({
   components: { NavLink, DropdownLink, RecoIcon },
   setup () {
     const instance = useInstance()
-    const userNav = ref([])
-    const navObject = computed(() => {
-      return instance.$themeLocaleConfig.navConfig || instance.$themeConfig.navConfig || {}
+    const baseUrl = computed(() => {
+      let tmp = ''
+      const locales = instance.$site.locales || {}
+      Object.keys(locales).map((key) => {
+        if (locales[key].lang === instance.$lang) tmp = locales[key].path
+      })
+      return tmp
     })
-
-    const available = ['home', 'docs', 'category', 'tag', 'timeline']
-    const nav = computed(() => {
-      Object.keys(navObject.value).map((key) => {
-        let index = available.indexOf(key)
-        const isHave = userNav.value.some(item => {
-          if (navObject.value[key]) {
-            return item.text === (navObject.value[key].text || instance.$recoLocales[key])
-          } else {
-            return true
-          }
+    const nav= computed(() =>{
+      const _nav= instance.$themeLocaleConfig?.navConfig || instance.$themeConfig?.navConfig || {}
+      let navList = []
+      Object.keys(_nav).map((key) => {
+        navList.push({
+          key: key,
+          ..._nav[key]
         })
-        if (index !== -1) {
-          if (!isHave && Object.hasOwnProperty.call(navObject.value, key)) {
-            let item = navObject.value[key]
-            if (key === 'category') {
-              const $categories = instance.$categories
-              userNav.value.splice(parseInt(item.location || index + 1) - 1, 0, {
-                items: $categories.list.map(i => {
-                  i.link = i.path
-                  i.text = i.name
-                  return i
-                }),
-                text: item.text || instance.$recoLocales.category,
-                type: 'links',
-                icon: item.icon || 'icon-' + key
-              })
+      })
+      const locales = instance.$site.locales || {}
+      if (baseUrl.value !== '/') {
+        navList = navList.filter((item) => {
+          return item.key === 'home' || item.key === 'timeLine'
+        })
+      }
+      navList.map((item) => {
+        item['link'] = item.key === 'home' ? baseUrl.value :
+          item.key === 'docs' ? baseUrl.value + 'docslist/' :
+            item.key === 'timeLine' ? baseUrl.value + 'timeline/' :
+              item.key === ('tag' || 'category') ? baseUrl.value + item.key + '/' :
+                item?.link ?  item?.link : ''
+
+        item['text'] = item.text || instance.$customLocales[item.key]
+        item['icon'] = item.icon || 'icon-' + item.key
+        item['items'] = item.key === 'category' ? instance.$categories.list.map(i => {
+          i.link = i.path
+          i.text = i.name
+          return i
+        }) : item?.items
+        return item
+      })
+
+
+      if (locales && Object.keys(locales).length > 1) {
+        const currentLink = instance.$page.path
+        const routes = instance.$router.options.routes
+        const themeLocales = instance.$themeConfig.locales || {}
+        const languageDropdown = {
+          text: instance.$customLocales.selectText,
+          items: Object.keys(locales).map(path => {
+            const locale = locales[path]
+            const text = themeLocales[path] && themeLocales[path].label || locale.lang
+            let link = ''
+            // Stay on the current page
+            if (locale.lang === instance.$lang) {
+              link = currentLink
             } else {
-              userNav.value.splice(parseInt(item.location || index + 1) - 1, 0, {
-                link: key === 'home' ? '/' : key === 'docs' ? '/docslist/' : '/' + key + '/',
-                text: item.text || instance.$recoLocales[key],
-                type: 'links',
-                icon: item.icon || 'icon-' + key
-              })
+              // Try to stay on the same page
+              link = currentLink.replace(instance.$localeConfig.path, path)
+              // fallback to homepage
+              if (!routes.some(route => route.path === link)) {
+                link = path
+              }
             }
-          }
-        } else if (!isHave) {
-          index = index === -1 ? userNav.value.length : index
-          const item = navObject.value[key]
-          userNav.value.splice(parseInt(item.location || index+1) - 1, 0, {
-            link: Object.hasOwnProperty.call(item, 'link') ? item.link : '',
-            text: item.text,
-            items: Object.hasOwnProperty.call(item, 'items') ? item.items.filter(i => {
-              return i?.text && i?.link
-            }): [],
-            type: 'links',
-            icon: item.icon || 'icon-category'
+            return {text, link}
           })
         }
-      })
-      return userNav.value
+        return [...navList, languageDropdown]
+      }
+      return navList
     })
     const userLinks = computed(() => {
       return (nav.value || []).map(link => {
@@ -123,11 +136,10 @@ export default defineComponent({
       }
       return 'Source'
     })
-    return { userNav, nav, userLinks, repoLink, repoLabel }
+    return { nav, userLinks, repoLink, repoLabel }
   }
 })
 </script>
-
 <style lang="stylus">
 .nav-links
   display inline-block
@@ -147,12 +159,10 @@ export default defineComponent({
       margin-left 0
   .repo-link
     margin-left 1.5rem
-
 @media (max-width: $MQMobile)
   .nav-links
     .nav-item, .repo-link
       margin-left 0
-
 @media (min-width: $MQMobile)
   .nav-item > a:not(.external)
     &:hover, &.router-link-active

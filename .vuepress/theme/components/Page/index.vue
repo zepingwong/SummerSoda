@@ -100,9 +100,7 @@ export default defineComponent({
 
     const lastUpdated = computed(() => {
       const { lastUpdated: { isShow } } = instance.$themeConfig.pageConfig
-      console.log(instance.$page.lastUpdated)
-      if (isShow === false) return instance.$page.lastUpdated
-      return instance.$page.lastUpdated
+      return isShow === false ? false : instance.$page.lastUpdated
     })
 
     const lastUpdatedText = computed(() => {

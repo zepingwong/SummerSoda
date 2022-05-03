@@ -1,7 +1,7 @@
 <template>
   <div class="friend-link-wrapper">
     <hr>
-    <h4 v-if="$themeConfig.authorConfig.friendLink && $themeConfig.authorConfig.friendLink.length !== 0"><reco-icon icon="icon-friend" /> {{$recoLocales.friendLink}}</h4>
+    <h4 v-if="$themeConfig.authorConfig.friendLink && $themeConfig.authorConfig.friendLink.length !== 0"><reco-icon icon="icon-friend" /> {{$customLocales.friendLink}}</h4>
     <div
       class="friend-link-item"
       v-for="(item, index) in dataAddColor"

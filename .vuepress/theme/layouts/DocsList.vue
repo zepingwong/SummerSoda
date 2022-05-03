@@ -3,7 +3,7 @@
     <ModuleTransition>
       <section v-show="recoShowModule">
         <div class="page-title">
-          <h1 class="title">文档列表</h1>
+          <h1 class="title">{{$customLocales.docsList}}</h1>
         </div>
       </section>
     </ModuleTransition>

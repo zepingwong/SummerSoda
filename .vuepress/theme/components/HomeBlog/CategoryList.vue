@@ -1,7 +1,7 @@
 <template>
   <div>
     <hr>
-    <h4><reco-icon icon="icon-category" /> {{$recoLocales.category}}</h4>
+    <h4><reco-icon icon="icon-category" /> {{$customLocales.category}}</h4>
     <ul class="category-wrapper">
       <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
         <router-link :to="item.path">

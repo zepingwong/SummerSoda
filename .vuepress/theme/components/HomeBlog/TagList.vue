@@ -1,7 +1,7 @@
 <template>
   <div class="tags">
     <hr>
-    <h4 v-if="$tags.list.length !== 0"><reco-icon icon="icon-tag" /> {{$recoLocales.tag}}</h4>
+    <h4 v-if="$tags.list.length !== 0"><reco-icon icon="icon-tag" /> {{$customLocales.tag}}</h4>
     <span
       v-for="(item, index) in tags"
       v-show="!item.pages || (item.pages && item.pages.length > 0)"
@@ -29,7 +29,7 @@ export default defineComponent({
   setup (props, ctx) {
     const instance = useInstance()
     const tags = computed(() => {
-      return [{ name: instance.$recoLocales.all, path: '/tag/' }, ...instance.$tagesList]
+      return [{ name: instance.$customLocales.all, path: '/tag/' }, ...instance.$tagesList]
     })
 
     const tagClick = tag => {

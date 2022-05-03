@@ -2,7 +2,7 @@
   <Common class="timeline-wrapper" :sidebar="false">
     <ul class="timeline-content">
       <ModuleTransition >
-        <li v-show="recoShowModule" class="desc">{{$recoLocales.timeLineMsg}}</li>
+        <li v-show="recoShowModule" class="desc">{{$customLocales.timeLineMsg}}</li>
       </ModuleTransition>
       <ModuleTransition
         :delay="String(0.08 * (index + 1))"

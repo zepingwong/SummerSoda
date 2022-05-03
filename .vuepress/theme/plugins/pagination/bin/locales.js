@@ -50,5 +50,5 @@ export default function paginationLocales (ctx) {
   if (/^ko-KR$/.test($lang)) {
     return ko
   }
-  return zhHans
+  return en
 }

@@ -43,7 +43,7 @@ export default defineComponent({
   setup (props, ctx) {
     const instance = useInstance()
     const tags = computed(() => {
-      return [{ name: instance.$recoLocales.all, path: '/tag/' }, ...instance.$tagesList]
+      return [{ name: instance.$customLocales.all, path: '/tag/' }, ...instance.$tagesList]
     })
     // 时间降序后的博客列表
     const posts = computed(() => {

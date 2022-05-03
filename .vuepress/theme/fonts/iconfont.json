@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "29437578",
+      "name": "timeLine",
+      "font_class": "timeLine",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
       "icon_id": "29432490",
       "name": "eye",
       "font_class": "eye1",
@@ -32,13 +39,6 @@
       "font_class": "home",
       "unicode": "e621",
       "unicode_decimal": 58913
-    },
-    {
-      "icon_id": "29432473",
-      "name": "timeline",
-      "font_class": "timeline",
-      "unicode": "e620",
-      "unicode_decimal": 58912
     },
     {
       "icon_id": "29432471",

@@ -43,6 +43,7 @@ module.exports = {
         'Theme',
         'HomeBlog',
         'HomeDocs',
+        'Locales',
       ]
     }, {
       title: '插件',

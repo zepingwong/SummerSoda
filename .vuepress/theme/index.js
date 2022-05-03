@@ -7,8 +7,14 @@ module.exports = () => ({
     require('./plugins/comments'),
     '@vuepress/active-header-links',
     [
-      '@vuepress/last-updated'
-    ]
+      '@vuepress/last-updated', {
+      transformer: (timestamp, lang) => {
+        // 不要忘了安装 moment
+        const moment = require('moment')
+        moment.locale(lang)
+        return moment(timestamp).fromNow()
+      }
+    }],
     ['@vuepress/medium-zoom', {
       selector: '.theme-reco-content :not(a) > img'
     }],
@@ -23,7 +29,7 @@ module.exports = () => ({
         scopeLayout: 'DocsList'
       }, {
         id: 'tags',
-        keys: ['tags'],
+        keys: ['tags', 'tag'],
         path: '/tag/',
         layout: 'Tags',
         scopeLayout: 'Tag'

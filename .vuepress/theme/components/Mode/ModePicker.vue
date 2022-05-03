@@ -1,84 +1,81 @@
 <template>
   <div class="mode-options">
-    <h4 class="title">Choose mode</h4>
+    <h4 class="title">{{$customLocales.chooseMode}}</h4>
     <ul class="color-mode-options">
       <li
         v-for="(mode, index) in modeOptions"
         :key="index"
-        :class="getClass(mode.mode)"
-        @click="selectMode(mode.mode)"
-      >{{ mode.title }}</li>
+        :class="getClass(mode)"
+        @click="selectMode(mode)"
+      >{{ $customLocales[mode] }}</li>
     </ul>
   </div>
 </template>
 
 <script>
 import applyMode from './applyMode'
-export default {
+import { useInstance } from '../../helpers/composable'
+import { defineComponent, onMounted, ref } from "vue-demi";
+export default defineComponent({
   name: 'ModeOptions',
+  setup() {
+    const instance = useInstance()
+    const currentMode = ref('auto')
+    const modeOptions = ['dark', 'auto', 'light']
+    onMounted(() => {
+      // modePicker 开启时默认使用用户主动设置的模式
+      currentMode.value = localStorage.getItem('mode') || instance.$themeConfig.mode || 'auto'
+      // Dark and Light auto switches
+      // 为了避免在 server-side 被执行，故在 Vue 组件中设置监听器
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
+        currentMode.value === 'auto' && applyMode(currentMode.value)
+      })
+      window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
+        currentMode.value === 'auto' && applyMode(currentMode.value)
+      })
 
-  data () {
-    return {
-      modeOptions: [
-        { mode: 'dark', title: 'dark' },
-        { mode: 'auto', title: 'auto' },
-        { mode: 'light', title: 'light' }
-      ],
-      currentMode: 'auto'
-    }
-  },
-
-  mounted () {
-    // modePicker 开启时默认使用用户主动设置的模式
-    this.currentMode = localStorage.getItem('mode') || this.$themeConfig.mode || 'auto'
-
-    // Dark and Light autoswitches
-    // 为了避免在 server-side 被执行，故在 Vue 组件中设置监听器
-    var that = this
-    window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
-      that.$data.currentMode === 'auto' && applyMode(that.$data.currentMode)
+      applyMode(currentMode.value)
     })
-    window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
-      that.$data.currentMode === 'auto' && applyMode(that.$data.currentMode)
-    })
-
-    applyMode(this.currentMode)
-  },
-
-  methods: {
-    selectMode (mode) {
-      if (mode !== this.currentMode) {
-        this.currentMode = mode
+    const selectMode = (mode) => {
+      if (mode !== currentMode.value) {
+        currentMode.value = mode
         applyMode(mode)
         localStorage.setItem('mode', mode)
       }
-    },
-    getClass (mode) {
-      return mode !== this.currentMode ? mode : `${mode} active`
+    }
+    const getClass = (mode) => {
+      return mode !== currentMode.value ? mode : `${mode} active`
+    }
+    return {
+      getClass,
+      selectMode,
+      modeOptions,
+      currentMode
     }
   }
-}
+})
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
 .mode-options
   background-color var(--background-color)
-  min-width: 125px;
-  margin: 0;
-  padding: 1em;
-  box-shadow var(--box-shadow);
-  border-radius: $borderRadius;
+  min-width 125px
+  margin 0
+  padding 1em
+  box-shadow var(--box-shadow)
+  border-radius $borderRadius
   .title
+    text-align center
     margin-top 0
     margin-bottom .6rem
     font-weight bold
     color var(--text-color)
   .color-mode-options
-    display: flex;
+    display flex
     flex-wrap wrap
     li
-      flex: 1;
-      text-align: center;
+      flex 1
+      text-align center
       font-size 12px
       color var(--text-color)
       line-height 18px
@@ -88,13 +85,13 @@ export default {
       background-color var(--background-color)
       cursor pointer
       &.dark
-        border-radius: $borderRadius 0 0 $borderRadius
+        border-radius $borderRadius 0 0 $borderRadius
         border-left 1px solid #666
       &.light
-        border-radius: 0 $borderRadius $borderRadius 0
+        border-radius 0 $borderRadius $borderRadius 0
         border-right 1px solid #666
       &.active
-        background-color: $accentColor;
+        background-color $accentColor
         color #fff
       &:not(.active)
         border-right 1px solid #666

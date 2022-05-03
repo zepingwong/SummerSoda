@@ -7,7 +7,7 @@
           v-for="(item, index) in tags"
           v-show="!item.pages || (item.pages && item.pages.length > 0)"
           :key="index"
-          :class="{'active': item.name === $recoLocales.all}"
+          :class="{'active': item.name === $customLocales.all}"
           :style="{ 'backgroundColor': getOneColor() }"
           @click="tagClick(item)">{{item.name}}
         </span>
@@ -40,7 +40,7 @@ export default defineComponent({
   setup () {
     const instance = useInstance()
     const tags = computed(() => {
-      return [{ name: instance.$recoLocales.all, path: '/tag/' }, ...instance.$tagesList]
+      return [{ name: instance.$customLocales.all, path: '/tag/' }, ...instance.$tagesList]
     })
     const tagClick = (tagInfo) => {
       if (instance.$route.path !== tagInfo.path) {
