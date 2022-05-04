@@ -1,6 +1,6 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+    <SidebarButton :show="showToggleButton" @toggle-sidebar="$emit('toggle-sidebar')"/>
 
     <router-link
       :to="$localePath"
@@ -42,9 +42,14 @@ import Mode from '../Mode'
 import { useInstance } from '../../helpers/composable'
 
 export default defineComponent({
+  props: {
+    showToggleButton: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, Mode },
-
-  setup (props, ctx) {
+  setup () {
     const instance = useInstance()
     const linksWrapMaxWidth = ref(null)
 

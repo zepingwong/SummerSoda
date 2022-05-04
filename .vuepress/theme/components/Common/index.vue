@@ -6,7 +6,7 @@
       </transition>
 
       <div :class="{ 'hide': firstLoad || !isHasKey }">
-        <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
+        <Navbar v-if="shouldShowNavbar" :show-toggle-button="isSidebarOpen" @toggle-sidebar="toggleSidebar" />
         <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
         <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
           <PersonalInfo slot="top" />
@@ -22,7 +22,7 @@
       <transition name="fade">
         <Password v-if="!isHasKey" />
         <div v-else>
-          <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
+          <Navbar v-if="shouldShowNavbar" :show-toggle-button="isSidebarOpen" @toggle-sidebar="toggleSidebar"/>
           <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
           <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
             <PersonalInfo slot="top" />

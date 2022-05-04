@@ -8,16 +8,25 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref } from 'vue-demi'
+import { defineComponent, ref, watch } from 'vue-demi'
 
 export default defineComponent({
   name: 'SidebarButton',
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    }
+  },
   setup(props, ctx) {
     const open = ref(false)
     const toggleSidebar = () =>{
       open.value = !open.value
       ctx.emit('toggle-sidebar')
     }
+    watch(() => props.show,(val) => {
+      open.value = val
+    })
     return {
       open,
       toggleSidebar
