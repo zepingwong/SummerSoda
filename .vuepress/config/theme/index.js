@@ -9,24 +9,16 @@ module.exports = {
   logo: "/logo.svg",
   locales: {
     '/': {
+      customLocales: {
+        homeBlog: {}
+      },
       navConfig: navConfig,
-    }
-  },
-  localeConfig: {
-    'zh-CN': {
-      homeBlog: {
-        article: '美文',      // 默认 文章
-        tag: '标识',          // 默认 标签
-        category: '类别',     // 默认 分类
-        friendLink: '友链'    // 默认 友情链接
-      }
     },
-    'en-US': {
-      homeBlog: {
-        article: 'Articles',    // 默认 Articles
-        tag: 'Tags',            // 默认 Tags
-        friendLink: 'Friends'   // 默认 Friend Links
-      }
+    '/en/': {
+      customLocales: {
+        homeBlog: {}
+      },
+      navConfig: navConfig,
     }
   },
   search: true,

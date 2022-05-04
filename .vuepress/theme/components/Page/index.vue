@@ -1,6 +1,6 @@
 <template>
   <main class="page" :style="pageStyle">
-    <ModuleTransition delay="0.08">
+    <ModuleTransition>
       <section v-show="recoShowModule">
         <div class="page-title">
           <h1 class="title">{{$page.title}}</h1>
@@ -11,7 +11,7 @@
       </section>
     </ModuleTransition>
 
-    <ModuleTransition delay="0.16">
+    <ModuleTransition delay="0.08">
       <footer v-if="recoShowModule" class="page-edit">
         <div class="edit-link" v-if="editLink">
           <a
@@ -32,7 +32,7 @@
       </footer>
     </ModuleTransition>
 
-    <ModuleTransition delay="0.24">
+    <ModuleTransition delay="0.16">
       <div class="page-nav" v-if="recoShowModule && (prev || next)">
         <p class="inner">
           <span v-if="prev" class="prev">
@@ -49,7 +49,7 @@
       </div>
     </ModuleTransition>
 
-    <ModuleTransition delay="0.32">
+    <ModuleTransition delay="0.24">
       <Comments v-if="recoShowModule" :isShowComments="shouldShowComments"/>
     </ModuleTransition>
 

@@ -3,10 +3,10 @@ import { zhHans, zhHant, en, ja, ko, es } from '../locales/index'
 export default {
   computed: {
     $customLocales () {
-      const customLocalesConfig = this.$themeConfig?.localeConfig || {}
+      const customLocalesConfig = this.$themeConfig?.locales || {}
       let customLocales = {}
-      if (customLocalesConfig.hasOwnProperty(this.$lang)) {
-        Object.assign(customLocales, ...Object.values(customLocalesConfig[this.$lang]))
+      if (customLocalesConfig.hasOwnProperty(this.$localePath)) {
+        Object.assign(customLocales, ...Object.values(customLocalesConfig[this.$localePath]?.customLocales))
       }
       if (/^zh-(CN|SG)$/.test(this.$lang)) {
         return { ...zhHans, ...customLocales }

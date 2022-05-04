@@ -34,20 +34,23 @@ module.exports = {
 如果您觉得主题内置的默认术语不符合您的喜好，您还可以这样修改：
 ```javascript
 // .vuepress/config.js
+
 module.exports = {
-  localeConfig: {
-    'zh-CN': {
-      homeBlog: {
-        article: '美文',      // 默认 文章
-        tag: '标识',          // 默认 标签
-        category: '类别',     // 默认 分类
-        friendLink: '友链'    // 默认 友情链接
-      },
-      pagation: {
-        prev: '上一页',
-        next: '下一页',
-        go: '前往',
-        jump: '跳转至'
+  locales: {
+    '/': {
+      customLocales: {
+        homeBlog: {
+          article: '美文',      // 默认 文章
+          tag: '标识',          // 默认 标签
+          category: '类别',     // 默认 分类
+          friendLink: '友链'    // 默认 友情链接
+        },
+        pagation: {
+          prev: '上一页',
+          next: '下一页',
+          go: '前往',
+          jump: '跳转至'
+        }
       }
     }
   }
@@ -75,20 +78,24 @@ module.exports = {
 ```javascript
 // .vuepress/config.js
 module.exports = {
-  localeConfig: {
-    'zh-CN': {
-      homeBlog: {
-        article: '美文',      // 默认 文章
-        tag: '标识',          // 默认 标签
-        category: '类别',     // 默认 分类
-        friendLink: '友链'    // 默认 友情链接
+  locales: {
+    '/': {
+      customLocales: {
+        homeBlog: {
+          article: '美文',      // 默认 文章
+          tag: '标识',          // 默认 标签
+          category: '类别',     // 默认 分类
+          friendLink: '友链'    // 默认 友情链接
+        }
       }
     },
-    'en-US': {
-      homeBlog: {
-        article: 'Articles',    // 默认 Articles
-        tag: 'Tags',            // 默认 Tags
-        friendLink: 'Friends'   // 默认 Friend Links
+    '/en/': {
+      customLocales: {
+        homeBlog: {
+          article: 'Articles',    // 默认 Articles
+          tag: 'Tags',            // 默认 Tags
+          friendLink: 'Friends'   // 默认 Friend Links
+        }
       }
     }
   }
