@@ -14,6 +14,9 @@ module.exports = {
         'Navbar',
         'Sidebar',
         'Layouts',
+        'Password',
+        'Mode',
+        'Abstract',
         'Icon',
         'FrontMatter',
         'Markdown'

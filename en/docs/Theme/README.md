@@ -1,21 +1,8 @@
 ---
 home: true
 type: HomeDocs
-heroText: 主题开发笔记
-tagline: 一个好看的笔记博客主题
-# heroImage: /hero.png
-# heroImageStyle: {
-#   maxWidth: '600px',
-#   width: '100%',
-#   display: block,
-#   margin: '9rem auto 2rem',
-#   background: '#fff',
-#   borderRadius: '1rem'
-# }
-bgImageStyle: {
-  height: '450px'
-}
-isShowTitleInHome: false
+heroText: Theme Development Notes
+tagline: A Good looking Note-Taking Blog Theme
 actionText: 开始
 actionLink: /en/docs/Theme/
 features:
