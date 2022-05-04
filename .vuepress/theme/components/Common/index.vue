@@ -7,14 +7,11 @@
 
       <div :class="{ 'hide': firstLoad || !isHasKey }">
         <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
-
         <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-
         <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
           <PersonalInfo slot="top" />
           <slot name="sidebar-bottom" slot="bottom"/>
         </Sidebar>
-
         <Password v-show="!isHasPageKey" :isPage="true" class="password-wrapper-in" key="in"></Password>
         <div :class="{ 'hide': !isHasPageKey }">
           <slot></slot>
@@ -26,14 +23,11 @@
         <Password v-if="!isHasKey" />
         <div v-else>
           <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
-
           <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-
           <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
             <PersonalInfo slot="top" />
             <slot name="sidebar-bottom" slot="bottom"/>
           </Sidebar>
-
           <Password v-if="!isHasPageKey" :isPage="true"></Password>
           <slot v-else></slot>
         </div>
@@ -71,12 +65,10 @@ export default defineComponent({
 
   setup (props) {
     const instance = useInstance()
-
     const isSidebarOpen = ref(false)
     const isHasKey = ref(true)
     const isHasPageKey = ref(true)
     const firstLoad = ref(true)
-
     const shouldShowSidebar = computed(() => props.sidebarItems.length > 0)
     const absoluteEncryption = computed(() => {
       return instance.$themeConfig.keyPage && instance.$themeConfig.keyPage.absoluteEncryption === true
@@ -84,18 +76,17 @@ export default defineComponent({
     const shouldShowNavbar = computed(() => {
       const { themeConfig } = instance.$site
       const { frontmatter } = instance.$page
-
       if (
-        frontmatter.navbar === false ||
-        themeConfig.navbar === false
+        frontmatter?.navbar === false ||
+        themeConfig?.navConfig?.isShow === false ||
+        themeConfig?.locales?.navConfig?.isShow === false
       ) return false
-
       return (
         instance.$title ||
-        themeConfig.logo ||
-        themeConfig.repo ||
-        themeConfig.nav ||
-        instance.$themeLocaleConfig.nav
+        themeConfig?.logo ||
+        themeConfig?.repo ||
+        themeConfig?.navConfig ||
+        instance.$themeLocaleConfig?.navConfig
       )
     })
 
@@ -105,10 +96,8 @@ export default defineComponent({
         'sidebar-open': isSidebarOpen.value,
         'no-sidebar': !shouldShowSidebar.value
       }
-
       const { pageClass: userPageClass } = instance.$frontmatter || {}
       if (userPageClass) classValue[userPageClass] = true
-
       return classValue
     })
 
@@ -118,7 +107,6 @@ export default defineComponent({
         isHasKey.value = true
         return
       }
-
       let { keys } = keyPage
       keys = keys.map(item => item.toLowerCase())
       isHasKey.value = keys && keys.indexOf(sessionStorage.getItem('key')) > -1

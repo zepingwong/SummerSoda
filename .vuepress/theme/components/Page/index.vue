@@ -60,11 +60,11 @@
 </template>
 
 <script>
-import { defineComponent, computed, toRefs, ref } from 'vue-demi'
+import SubSidebar from './SubSidebar'
 import PageInfo from './PageInfo'
+import { defineComponent, computed, toRefs, ref } from 'vue-demi'
 import { resolvePage, outboundRE, endingSlashRE } from '../../helpers/utils'
 import { ModuleTransition } from '../../core/lib/components'
-import SubSidebar from './SubSidebar'
 import { useInstance } from '../../helpers/composable'
 
 export default defineComponent({

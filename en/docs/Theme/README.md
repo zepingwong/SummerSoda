@@ -17,7 +17,7 @@ bgImageStyle: {
 }
 isShowTitleInHome: false
 actionText: 开始
-actionLink: /docs/Theme/base/
+actionLink: /en/docs/Theme/
 features:
 - title: Yesterday
   details: 开发一款看着开心、写着顺手的 vuepress 博客主题

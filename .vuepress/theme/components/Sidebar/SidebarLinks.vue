@@ -30,22 +30,16 @@ import { useInstance } from '../../helpers/composable'
 
 export default defineComponent({
   name: 'SidebarLinks',
-
   components: { SidebarGroup, SidebarLink },
-
   props: [
     'items',
     'depth', // depth of current sidebar links
     'sidebarDepth' // depth of headers to be extracted
   ],
-
   setup (props) {
     const instance = useInstance()
-
     const { items } = toRefs(props)
-
     const openGroupIndex = ref(0)
-
     const refreshIndex = () => {
       const index = resolveOpenGroupIndex(
         instance.$route,
@@ -83,10 +77,10 @@ export default defineComponent({
     const isInViewPortOfOne = () => {
       const sidebarScroll = document.getElementsByClassName('sidebar')[0]
       let el = document.getElementsByClassName('active sidebar-link')[1]
-      if (el == null || el == undefined || el.offsetTop === undefined) {
+      if (el == null || el.offsetTop === undefined) {
         el = document.getElementsByClassName('active sidebar-link')[0]
       }
-      if (el == null || el === undefined || el.offsetTop === undefined) return
+      if (el == null || el.offsetTop === undefined) return
 
       const viewPortHeight = sidebarScroll.clientHeight || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
       const offsetTop = el.offsetTop

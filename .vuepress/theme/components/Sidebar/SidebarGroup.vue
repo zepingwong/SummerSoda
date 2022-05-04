@@ -57,18 +57,16 @@
 import { defineComponent } from 'vue-demi'
 import { isActive } from '../../helpers/utils'
 import DropdownTransition from '../DropdownTransition'
+import SidebarLinks from './SidebarLinks'
 import { useInstance } from '../../helpers/composable'
 
 export default defineComponent({
   name: 'SidebarGroup',
   props: ['item', 'open', 'collapsable', 'depth'],
-  components: { DropdownTransition },
+  components: { DropdownTransition, SidebarLinks },
 
-  setup (props, ctx) {
-    const instance = useInstance()
-
-    instance.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
-
+  setup () {
+    useInstance().$options.components.SidebarLinks = require('./SidebarLinks.vue').default
     return { isActive }
   }
 })

@@ -33,7 +33,21 @@ module.exports = {
 
 ## ***导航栏配置：navConfig***
 博客导航栏（Navbar）按钮配置，包括主题内置菜单按钮和自定义菜单按钮。
-### ***内置菜单按钮***
+### ***显示配置***
+`$themeConfig.navConfig`中添加`isShow`，可以控制全局是否显示导航栏。
+```javascript
+// .vuepress/config.js
+
+module.exports = {
+  themeConfig: {
+    navConfig: {
+        isShow: false           // 默认为 true
+    }
+  }
+}
+```
+
+### ***内置菜单***
 `home`、`docs`、`category`、`tag`、`timeline`为五个内置配置项，如果不设置这些菜单，默认导航栏将不显示这些内容。内置菜单配置项如下：
 ```javascript
 // .vuepress/config.js
@@ -74,7 +88,7 @@ module.exports = {
 - location 该菜单在导航栏中所占的位置，主题默认菜单顺序为`home`、`docs`、`category`、`tag`、`timeline`
 - text 该菜单在导航栏中显示的名称
 - icon 该菜单在导航栏中显示的图标
-### ***自定义菜单按钮***
+### ***自定义菜单***
 导航栏自定义菜单按钮一般配置内容如下：
 ```javascript
 // .vuepress/config.js
@@ -168,7 +182,7 @@ module.exports = {
   themeConfig: {
     recordConfig: {
       // 备案信息
-      record: '冀ICP备2021028532号',
+      record: 'ICP 备案文案',
       recordLink: 'ICP 备案指向链接',
       cyberSecurityRecord: '公安部备案文案',
       cyberSecurityLink: '公安部备案指向链接',

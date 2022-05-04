@@ -26,12 +26,13 @@
 </template>
 
 <script>
-import { defineComponent, computed, ref } from 'vue-demi'
+import { defineComponent, computed } from 'vue-demi'
 import { RecoIcon } from '../../core/lib/components'
 import DropdownLink from '../DropdownLink'
 import { resolveNavLinkItem } from '../../helpers/utils'
 import NavLink from './NavLink'
 import { useInstance } from '../../helpers/composable'
+
 export default defineComponent({
   components: { NavLink, DropdownLink, RecoIcon },
   setup () {
