@@ -35,12 +35,10 @@ export default defineComponent({
         return []
       }
     })
-
     const homeCom = computed(() => {
-      const { type } = instance.$frontmatter || {}
-      return type || 'HomeDocs'
+      const type = instance.$frontmatter?.type || instance.$themeConfig?.type || 'docs'
+      return type === 'blog' ? 'HomeBlog' : type === 'HomeBlog' ? 'HomeBlog' :  'HomeDocs'
     })
-
     return { sidebarItems, homeCom }
   }
 })

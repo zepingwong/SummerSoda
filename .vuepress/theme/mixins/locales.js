@@ -3,12 +3,11 @@ import { zhHans, zhHant, en, ja, ko, es } from '../locales/index'
 export default {
   computed: {
     $customLocales () {
-      const customLocalesConfig = this.$themeLocaleConfig.customLocales || {}
-      // if (customLocalesConfig) console.log(customLocalesConfig)
+      const customLocalesConfig = this.$themeConfig?.localeConfig || {}
       let customLocales = {}
-      Object.keys(customLocalesConfig).map((key) => {
-        Object.assign(customLocales, customLocalesConfig[key])
-      })
+      if (customLocalesConfig.hasOwnProperty(this.$lang)) {
+        Object.assign(customLocales, ...Object.values(customLocalesConfig[this.$lang]))
+      }
       if (/^zh-(CN|SG)$/.test(this.$lang)) {
         return { ...zhHans, ...customLocales }
       }

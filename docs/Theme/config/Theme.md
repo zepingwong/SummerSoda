@@ -3,7 +3,18 @@ title: 主题配置
 date: 2020-05-29
 sidebar: 'auto'
 ---
-## ***logo***
+## ***主题类型：type***
+配置主题的类型，可以为`bolg`（博客）或`docs`（文档），默认配置为`docs`。
+```javascript
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    type: 'blog'
+  }
+}
+```
+
+## ***网站logo：logo***
 导航栏左侧可以显示网站logo, 需要以下配置。
 ```javascript
 // .vuepress/config.js
@@ -14,13 +25,13 @@ module.exports = {
 }
 ```
 > `themeConfig.logo`可以为本地图片，也可以为网络图片。
-## ***searchConfig***
 
-## ***docs***
+
+## ***searchConfig***
 
 ## ***sidebar***
 
-## ***navConfig***
+## ***导航栏配置：navConfig***
 博客导航栏（Navbar）按钮配置，包括主题内置菜单按钮和自定义菜单按钮。
 ### ***内置菜单按钮***
 `home`、`docs`、`category`、`tag`、`timeline`为五个内置配置项，如果不设置这些菜单，默认导航栏将不显示这些内容。内置菜单配置项如下：
@@ -111,7 +122,7 @@ module.exports = {
 - location 默认自定义菜单位置在主题内置菜单之后，可以通过`location`修改该菜单在导航栏中的位置
 - link 菜单按钮跳转路径
 - items 带有下拉菜单的导航按钮的子菜单，每个`item`都要包括`text`和`link`两个参数
-## ***authorConfig***
+## ***作者信息：authorConfig***
 ```javascript
 // .vuepress/config.js
 
@@ -150,7 +161,7 @@ module.exports = {
 - email 如果没有设置 logo，将通过 Email获取到的 Gravatar 头像来设置 LOGO
 - link 友链地址
 
-## ***recordConfig***
+## ***备案信息：recordConfig***
 
 ```yaml
 module.exports = {

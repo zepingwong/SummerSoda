@@ -99,12 +99,12 @@ export default defineComponent({
     })
 
     const lastUpdated = computed(() => {
-      const { lastUpdated: { isShow } } = instance.$themeConfig.pageConfig
-      return isShow === false ? false : instance.$page.lastUpdated
+      const { lastUpdated } = instance.$themeConfig.pageConfig
+      return lastUpdated === false ? false : instance.$page.lastUpdated
     })
 
     const lastUpdatedText = computed(() => {
-      return instance.$themeLocaleConfig.lastUpdatedText || instance.$themeConfig.lastUpdatedText || instance.$recoLocales.lastUpdatedText
+      return instance.$themeLocaleConfig.lastUpdatedText || instance.$themeConfig.lastUpdatedText || instance.$customLocales.lastUpdatedText
     })
 
     const prev = computed(() => {
@@ -149,7 +149,7 @@ export default defineComponent({
 
     const editLinkText = computed(() => {
       return (
-        instance.$themeLocaleConfig.editLinkText || instance.$themeConfig.editLinkText || instance.$recoLocales.editLinkText
+        instance.$themeLocaleConfig.editLinkText || instance.$themeConfig.editLinkText || instance.$customLocales.editLinkText
       )
     })
 
@@ -259,6 +259,9 @@ function flatten (items, res) {
     margin 0 auto
     padding 1rem 2.5rem
     color var(--text-color)
+    .title
+      font-weight bold
+      font-family "Microsoft YaHei UI"
   .theme-reco-content h2
     position relative
     padding-left 0.8rem

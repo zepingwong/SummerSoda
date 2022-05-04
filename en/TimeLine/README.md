@@ -1,3 +1,4 @@
 ---
-layout: TimeLines
+home: true
+type: TimeLine
 ---

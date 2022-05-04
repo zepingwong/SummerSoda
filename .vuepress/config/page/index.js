@@ -1,5 +1,3 @@
 module.exports = {
-  lastUpdated: {
-    isShow: false,
-  }
+  lastUpdated: true
 }

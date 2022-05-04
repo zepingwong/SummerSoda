@@ -84,7 +84,7 @@ export default defineComponent({
     display block
 
 .sub-sidebar-wrapper
-  width 10rem
+  width 11rem
   padding-left 0
   list-style none
   font-size 12px

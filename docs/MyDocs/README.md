@@ -1,19 +1,23 @@
 ---
 home: true
-heroText: null
-tagline: null
-heroImage: /hero.svg
-heroImageStyle: {
-  display: block,
-  margin: '4rem auto 2rem',
-  background: 'transparent'
-}
+type: HomeDocs
+heroText: heroText
+tagline: tagline
+# heroImage: /hero.png
+# heroImageStyle: {
+#   maxWidth: '600px',
+#   width: '100%',
+#   display: block,
+#   margin: '9rem auto 2rem',
+#   background: '#fff',
+#   borderRadius: '1rem'
+# }
 bgImageStyle: {
   height: '450px'
 }
 isShowTitleInHome: false
-actionText: Guide
-actionLink: /views/other/guide
+actionText: 开始
+actionLink: /docs/Theme/base/
 features:
 - title: Yesterday
   details: 开发一款看着开心、写着顺手的 vuepress 博客主题

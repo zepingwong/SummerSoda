@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "29440082",
+      "name": "language",
+      "font_class": "language",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
       "icon_id": "29437578",
       "name": "timeLine",
       "font_class": "timeLine",

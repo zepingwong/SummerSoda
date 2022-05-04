@@ -36,14 +36,6 @@ export default defineComponent({
   components: { NavLink, DropdownLink, RecoIcon },
   setup () {
     const instance = useInstance()
-    const baseUrl = computed(() => {
-      let tmp = ''
-      const locales = instance.$site.locales || {}
-      Object.keys(locales).map((key) => {
-        if (locales[key].lang === instance.$lang) tmp = locales[key].path
-      })
-      return tmp
-    })
     const nav= computed(() =>{
       const _nav= instance.$themeLocaleConfig?.navConfig || instance.$themeConfig?.navConfig || {}
       let navList = []
@@ -54,16 +46,14 @@ export default defineComponent({
         })
       })
       const locales = instance.$site.locales || {}
-      if (baseUrl.value !== '/') {
-        navList = navList.filter((item) => {
-          return item.key === 'home' || item.key === 'timeLine'
-        })
-      }
+      navList = navList.filter((item) => {
+          return instance.$localePath === '/' ? true : item.key !== 'category' && item.key !== 'timeLine' && item.key !==  'tag' && item.key !==  'docs'
+      })
       navList.map((item) => {
-        item['link'] = item.key === 'home' ? baseUrl.value :
-          item.key === 'docs' ? baseUrl.value + 'docslist/' :
-            item.key === 'timeLine' ? baseUrl.value + 'timeline/' :
-              item.key === ('tag' || 'category') ? baseUrl.value + item.key + '/' :
+        item['link'] = item.key === 'home' ? instance.$localePath :
+          item.key === 'docs' ? instance.$localePath + 'docslist/' :
+            item.key === 'timeLine' ? instance.$localePath + 'timeline/' :
+              item.key === ('tag' || 'category') ? instance.$localePath + item.key + '/' :
                 item?.link ?  item?.link : ''
 
         item['text'] = item.text || instance.$customLocales[item.key]
@@ -80,9 +70,10 @@ export default defineComponent({
       if (locales && Object.keys(locales).length > 1) {
         const currentLink = instance.$page.path
         const routes = instance.$router.options.routes
-        const themeLocales = instance.$themeConfig.locales || {}
+        const themeLocales = instance.$themeConfig?.locales || {}
         const languageDropdown = {
           text: instance.$customLocales.selectText,
+          icon: 'icon-language',
           items: Object.keys(locales).map(path => {
             const locale = locales[path]
             const text = themeLocales[path] && themeLocales[path].label || locale.lang
@@ -92,7 +83,7 @@ export default defineComponent({
               link = currentLink
             } else {
               // Try to stay on the same page
-              link = currentLink.replace(instance.$localeConfig.path, path)
+              link = currentLink.replace(instance.$localePath, path)
               // fallback to homepage
               if (!routes.some(route => route.path === link)) {
                 link = path

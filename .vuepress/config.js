@@ -3,14 +3,13 @@ const head = require('./config/head')
 const plugins = require('./config/plugins')
 module.exports = {
   head: head,
+  title: '汽水味的夏天',
   locales: {
     '/': {
-      lang: 'zh-CN',
-      title: '汽水味的夏天'
+      lang: 'zh-CN'
     },
     '/en/': {
-      lang: 'en-US',
-      title: 'Summer Soda'
+      lang: 'en-US'
     }
   },
   themeConfig: themeConfig,
