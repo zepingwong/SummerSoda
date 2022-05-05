@@ -235,7 +235,8 @@ function flatten (items, res) {
 
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
+// 这里不要加scope
 @require '../../styles/wrapper.styl'
 
 .page

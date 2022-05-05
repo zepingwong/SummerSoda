@@ -68,12 +68,12 @@ export default defineComponent({
 })
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
 .home {
   padding: $navbarHeight 2rem 0;
   max-width: 960px;
   margin: 0 auto;
-
+  min-height auto
   .hero {
     text-align: center;
     h1 {
@@ -141,6 +141,7 @@ export default defineComponent({
 
 @media (max-width: $MQMobile) {
   .home {
+    height auto
     .features {
       flex-direction: column;
     }
@@ -156,7 +157,7 @@ export default defineComponent({
   .home {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-
+    height auto
     .hero {
       img {
         max-height: 210px;
