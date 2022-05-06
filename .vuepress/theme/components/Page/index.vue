@@ -54,7 +54,13 @@
     </ModuleTransition>
 
     <ModuleTransition>
-      <SubSidebar v-if="recoShowModule" class="side-bar" @foldSubSidebar='foldSubSidebar'/>
+      <SubSidebar
+        v-if="recoShowModule"
+        :style="{
+          bottom: $themeConfig.KanBanNiang.isShow === true ? '11rem' : 0
+        }"
+        @foldSubSidebar='foldSubSidebar'
+      />
     </ModuleTransition>
   </main>
 </template>
@@ -233,16 +239,6 @@ function flatten (items, res) {
   padding-bottom 2rem
   padding-right 12rem
   display block
-  // 右侧sub-side-bar
-  .side-bar
-    position fixed
-    top 3.6rem
-    bottom 0
-    right 0.5rem
-    overflow-y scroll
-    &::-webkit-scrollbar
-      width 0
-      height 0
   .page-title
     max-width $contentWidth
     margin 0 auto
@@ -299,8 +295,6 @@ function flatten (items, res) {
 @media (max-width: $MQMobile)
   .page
     padding-right 0
-    .side-bar
-      display none
     .page-title
       padding 0 1rem
     .page-edit

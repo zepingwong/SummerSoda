@@ -5,23 +5,12 @@ const valineConfig = require('../valine')
 const authorConfig = require('../author')
 const pageConfig = require('../page')
 const modeConfig = require('../mode')
+const locales = require('../locales')
+const KanBanNiang = require('../KanBanNiang')
 module.exports = {
   type: 'blog',
   logo: "/logo.svg",
-  locales: {
-    '/': {
-      customLocales: {
-        homeBlog: {}
-      },
-      navConfig: navConfig,
-    },
-    '/en/': {
-      customLocales: {
-        homeBlog: {}
-      },
-      navConfig: navConfig,
-    }
-  },
+  locales: locales,
   search: true,
   // 自动形成侧边导航
   subSidebar: 'auto',
@@ -36,5 +25,7 @@ module.exports = {
   // recordConfig：备案信息配置
   recordConfig: recordConfig,
   // valine
-  valineConfig: valineConfig
+  valineConfig: valineConfig,
+  // KanBanNiang
+  KanBanNiang: KanBanNiang
 }

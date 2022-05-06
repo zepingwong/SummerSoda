@@ -1,5 +1,6 @@
 <template>
-  <div v-show='headers.length > 0'>
+  <div class="sub-side-bar" v-show='headers.length > 0'>
+
     <div
       class='sub-sidebar-content'
       :style="{height: isShow ? '' : '100%'}"
@@ -67,6 +68,18 @@ export default defineComponent({
 </script>
 
 <style lang="stylus" scoped>
+// 右侧sub-side-bar
+.sub-side-bar
+  position fixed
+  top 3.6rem
+  bottom 0
+  right 0.5rem
+  overflow-y scroll
+  &::-webkit-scrollbar
+    width 0
+    height 0
+
+
 .sub-sidebar-content
   display flex
   align-items center
