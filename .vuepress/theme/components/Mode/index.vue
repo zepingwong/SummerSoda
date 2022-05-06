@@ -1,66 +1,75 @@
 <template>
-	<div v-click-outside="hideMenu" class="color-picker" v-if="$themeConfig.modePicker !== false" >
-		<a class="color-button" @click.prevent="showMenu = !showMenu">
-      <reco-icon icon="icon-theme" />
+	<div class="color-picker" v-if="modePicker !== false" >
+		<a class="color-button" @click.prevent="selectMode">
+      <reco-icon :icon="'icon-'+currentMode" />
 		</a>
-		<ModuleTransition :transform=" ['translate(-50%, 0)', 'translate(-50%, -10px)']">
-			<div v-show="showMenu" class="color-picker-menu">
-				<ModePicker />
-			</div>
-		</ModuleTransition>
 	</div>
 </template>
 
 <script>
-import { RecoIcon, ModuleTransition } from '../../core/lib/components'
-import ClickOutside from 'vue-click-outside'
-import ModePicker from './ModePicker'
+import {computed, defineComponent, onMounted, ref} from "vue-demi"
+import { RecoIcon } from '../../core/lib/components'
 import applyMode from './applyMode'
+import {useInstance} from "../../helpers/composable"
 
-export default {
-  name: 'UserSettings',
-
-  directives: {
-    'click-outside': ClickOutside
-  },
-
+export default defineComponent({
+  name: 'ModeSettings',
   components: {
-    ModePicker,
-    RecoIcon,
-    ModuleTransition
+    RecoIcon
   },
-
-  data () {
-    return {
-      showMenu: false
-    }
-  },
-
-  // 为了在保证 modePicker 在 SSR 中正确开关，并实现管理，Mode 组件将负责 modePicker 关闭的情况
-  mounted () {
-    // modePicker 关闭时默认使用主题设置的模式
-    const themeMode = this.$themeConfig.mode || 'auto'
-    const { modePicker } = this.$themeConfig
-    if (modePicker === false) {
-      // 为 'auto' 模式设置监听器
-      if (themeMode === 'auto') {
-        window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
-          applyMode(themeMode)
-        })
-        window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
-          applyMode(themeMode)
-        })
+  setup() {
+    const instance = useInstance()
+    const currentMode = ref('auto')
+    const modeOptions = ['dark', 'auto', 'light']
+    const modePicker = computed(() => {
+      return instance.$themeConfig?.$modeConfig?.modePicker || true
+    })
+    const selectMode = () => {
+      let index = modeOptions.indexOf(currentMode.value)
+      if (index === modeOptions.length-1) {
+        index = 0
+      } else {
+        index++
       }
-      applyMode(themeMode)
+      currentMode.value = modeOptions[index]
+      applyMode(currentMode.value)
+      localStorage.setItem('mode', currentMode.value)
     }
-  },
-
-  methods: {
-    hideMenu () {
-      this.showMenu = false
+    onMounted(() => {
+      let themeMode = instance.$themeConfig?.$modeConfig?.mode || 'auto'
+      themeMode = modeOptions.indexOf(themeMode) !== -1 ? themeMode : 'auto'
+      if (modePicker.value === false) {
+        // 为 'auto' 模式设置监听器
+        if (themeMode.value === 'auto') {
+          window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
+            applyMode(themeMode.value)
+          })
+          window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
+            applyMode(themeMode.value)
+          })
+        }
+        applyMode(themeMode.value)
+      }
+      // modePicker 开启时默认使用用户主动设置的模式
+      currentMode.value = localStorage.getItem('mode') || instance.$themeConfig?.$modeConfig?.mode || 'auto'
+      // Dark and Light auto switches
+      // 为了避免在 server-side 被执行，故在 Vue 组件中设置监听器
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
+        currentMode.value === 'auto' && applyMode(currentMode.value)
+      })
+      window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
+        currentMode.value === 'auto' && applyMode(currentMode.value)
+      })
+      applyMode(currentMode.value)
+    })
+    return {
+      currentMode,
+      modeOptions,
+      modePicker,
+      selectMode
     }
   }
-}
+})
 </script>
 
 <style lang="stylus">
