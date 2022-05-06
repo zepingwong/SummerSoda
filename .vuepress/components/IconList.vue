@@ -383,7 +383,6 @@
   li
     width 100px
     margin-bottom 10px
-    margin-right 20px
     text-align center
     list-style none !important
     cursor default
@@ -408,7 +407,7 @@
     -moz-transition: font-size 0.25s linear, width 0.25s linear
     transition: font-size 0.25s linear, width 0.25s linear
     &:hover
-      font-size 100px
+      font-size 80px
 
 
 </style>

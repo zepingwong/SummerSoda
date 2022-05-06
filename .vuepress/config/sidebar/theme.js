@@ -31,6 +31,9 @@ module.exports = {
       title: '开发',
       path: '/docs/Theme/development/'
     }, {
+      title: '部署',
+      path: '/docs/Theme/deployment/'
+    }, {
       title: '日志',
       path: '/docs/Theme/log/'
     }],
@@ -134,7 +137,11 @@ module.exports = {
       path: '/docs/Theme/development/'
     }, {
       title: '部署',
-      path: '/docs/Theme/deployment/'
+      collapsable: false,
+      children: [
+        'Pages',
+        'GitHubActions'
+      ]
     }, {
       title: '日志',
       path: '/docs/Theme/log/'
