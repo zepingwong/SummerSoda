@@ -5,6 +5,12 @@ module.exports = () => ({
     require('./plugins/loading-page'),
     require('./plugins/pagination'),
     require('./plugins/comments'),
+    [require('./plugins/one-click-copy') , {
+      copyText: "复制代码",
+      tip: {
+        content: "复制成功!"
+      }
+    }],
     '@vuepress/active-header-links',
     [
       '@vuepress/last-updated', {

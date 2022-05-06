@@ -81,12 +81,13 @@ module.exports = {
       // path: '/docs/Theme/plugins/',
       collapsable: false,
       children: [
-        'back-to-top',
-        'pagination',
-        'loading-page',
+        'BackToTop',
+        'Pagination',
+        'OneClickCopy',
+        'LoadingPage',
         'code',
         'extract-code',
-        'comments'
+        'Comments'
       ]
     }, {
       title: '开发',

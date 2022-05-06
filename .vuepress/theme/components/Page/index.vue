@@ -18,7 +18,7 @@
             :href="editLink"
             target="_blank"
             rel="noopener noreferrer"
-          >{{ editLinkText }}</a>
+          >{{ $customLocales.editLinkText }}</a>
           <OutboundLink/>
         </div>
 
@@ -26,7 +26,7 @@
           class="last-updated"
           v-if="lastUpdated"
         >
-          <span class="prefix">{{ lastUpdatedText }}: </span>
+          <span class="prefix">{{ $customLocales.lastUpdatedText }}: </span>
           <span class="time">{{ lastUpdated }}</span>
         </div>
       </footer>
@@ -99,12 +99,8 @@ export default defineComponent({
     })
 
     const lastUpdated = computed(() => {
-      const { lastUpdated } = instance.$themeConfig.pageConfig
-      return lastUpdated === false ? false : instance.$page.lastUpdated
-    })
-
-    const lastUpdatedText = computed(() => {
-      return instance.$themeLocaleConfig.lastUpdatedText || instance.$themeConfig.lastUpdatedText || instance.$customLocales.lastUpdatedText
+      const { lastUpdated } = instance.$themeConfig?.pageConfig || { pageConfig : false}
+      return lastUpdated === true ? instance.$page.lastUpdated : false
     })
 
     const prev = computed(() => {
@@ -147,12 +143,6 @@ export default defineComponent({
       return ''
     })
 
-    const editLinkText = computed(() => {
-      return (
-        instance.$themeLocaleConfig.editLinkText || instance.$themeConfig.editLinkText || instance.$customLocales.editLinkText
-      )
-    })
-
     const pageStyle = computed(() => {
       return instance.$showSubSideBar && isShowSubSidebar.value ? {} : { paddingRight: '0' }
     })
@@ -164,11 +154,9 @@ export default defineComponent({
       shouldShowComments,
       showAccessNumber,
       lastUpdated,
-      lastUpdatedText,
       prev,
       next,
       editLink,
-      editLinkText,
       pageStyle,
       foldSubSidebar
     }

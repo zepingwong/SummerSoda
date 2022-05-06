@@ -1,11 +1,12 @@
 {
   "name": "summersoda",
   "version": "1.0.0",
+  "description": "A beautiful blog theme",
   "author": "reco_luan",
   "scripts": {
-    "dev": "vuepress dev . --open --host \"localhost\"",
     "build": "vuepress build .",
     "commit": "git add . && git-cz",
+    "dev": "vuepress dev . --open --host \"localhost\"",
     "push": "npm run commit && git push origin"
   },
   "husky": {
@@ -28,6 +29,11 @@
     "commitizen": {
       "path": "node_modules/cz-customizable"
     }
+  },
+  "dependencies": {
+    "@vuepress/plugin-last-updated": "^1.9.7",
+    "clipboard": "^2.0.4",
+    "moment": "^2.29.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -74,12 +80,7 @@
     "vuepress-plugin-container": "^2.1.5",
     "vuepress-plugin-smooth-scroll": "^0.0.9"
   },
-  "description": "A beautiful blog theme",
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@vuepress/plugin-last-updated": "^1.9.7",
-    "moment": "^2.29.3"
   }
 }

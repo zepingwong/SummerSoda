@@ -4,6 +4,7 @@ const recordConfig = require('../record')
 const valineConfig = require('../valine')
 const authorConfig = require('../author')
 const pageConfig = require('../page')
+const modeConfig = require('../mode')
 module.exports = {
   type: 'blog',
   logo: "/logo.svg",
@@ -26,6 +27,8 @@ module.exports = {
   subSidebar: 'auto',
   searchMaxSuggestions: 10,
   sidebar: sidebar,
+  // modeConfig
+  modeConfig: modeConfig,
   // pageConfig
   pageConfig: pageConfig,
   // authorConfig

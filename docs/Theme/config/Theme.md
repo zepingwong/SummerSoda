@@ -4,7 +4,7 @@ date: 2020-05-29
 sidebar: 'auto'
 ---
 ## ***主题类型：type***
-配置主题的类型，可以为`bolg`（博客）或`docs`（文档），默认配置为`docs`。
+主题的类型可以为博客（ `bolg` ）或文档（ `docs` ），默认配置为 `docs` 。
 ```javascript
 // .vuepress/config.js
 module.exports = {
@@ -26,7 +26,41 @@ module.exports = {
 ```
 > `themeConfig.logo`可以为本地图片，也可以为网络图片。
 
+## ***风格配置：modeConfig***
+主题提供了两种风格，暗黑风格（ `dark` ）和明亮风格（ `light` ），模式配置方式如下：
+```javascript
+// .vuepress/config.js
 
+module.exports = {
+  themeConfig: {
+    modeConfig: {
+      mode: 'auto',         // 默认为 auto
+      modeSwitch: true      // 默认为 true
+    }
+  }
+}
+```
+### ***mode***
+`$themeConfig.modeConfig.mode` 可配置的有效值有 `auto` 、`dark` 、`light` 三个，如果设置了其他值会修正为默认值为 `auto`。
+### ***modeSwitch***
+`$themeConfig.modeConfig.modeSwitch` 设置为 `false` 时，导航栏不显示主题切换开关，默认此值为 `true`。
+
+## ***页面配置：pageConfig***
+
+### ***lastUpdated***
+```javascript
+// .vuepress/config.js
+
+module.exports = {
+  themeConfig: {
+    pageConfig: {
+      lastUpdated: true         // 默认为 false
+    }
+  }
+}
+```
+VuePress 自带显示最后更新时间的插件 `@vuepress/plugin-last-updated` ，在页面配置中配置 `lastUpdated` 为 `true` 即可。
+> 由于 `@vuepress/plugin-last-updated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。此外，由于使用的时间戳来自 `git commit`，因此它将仅在给定页的第一次提交之后显示，并且仅在该页面后续提交更改时更新。
 ## ***searchConfig***
 
 ## ***sidebar***
