@@ -2,7 +2,7 @@
 const path = require('path');
 
 module.exports = (options = {}) => ({
-  name: 'juejin-copy',
+  name: 'plugin-one-click-copy',
   define() {
     const {
       selector = 'div[class*="language-"] pre',

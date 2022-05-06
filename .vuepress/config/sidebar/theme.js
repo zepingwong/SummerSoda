@@ -85,6 +85,7 @@ module.exports = {
         'Pagination',
         'OneClickCopy',
         'LoadingPage',
+        'KanBanNiang',
         'code',
         'extract-code',
         'Comments'
