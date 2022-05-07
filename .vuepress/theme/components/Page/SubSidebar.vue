@@ -21,7 +21,7 @@
           <router-link
             :class= "{ 'sidebar-link': true, [`reco-side-${header.slug}`]: true }"
             :to= "$page.path + '#' + header.slug"
-          >{{header.title}}</router-link>
+          ><p>{{header.title}}</p></router-link>
         </li>
       </ul>
     </div>
@@ -109,6 +109,11 @@ export default defineComponent({
     a
       padding 0.35rem 1rem 0.35rem 0
       color var(--text-color)
+      p
+        overflow-x hidden
+        white-space nowrap
+        text-overflow ellipsis
+        margin 0
     &:hover
       a
         color $accentColor
@@ -126,5 +131,9 @@ export default defineComponent({
       padding-left 1.5rem
       a
         padding 0
+
+@media (max-width: $MQMobile)
+  .sub-side-bar
+    display none
 </style>
 

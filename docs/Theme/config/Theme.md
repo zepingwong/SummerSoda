@@ -141,7 +141,7 @@ module.exports = {
   }
 }
 ```
-还有一种带有下拉框的导航菜单，配置方法如下：
+另一种带有下拉框的导航菜单，配置方法如下：
 ```javascript
 // .vuepress/config.js
 
