@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>2.flask 入门基础 | 汽水味的夏天</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.40812e68.css" as="style"><link rel="preload" href="/assets/js/app.de40608c.js" as="script"><link rel="preload" href="/assets/js/4.69b8bb8a.js" as="script"><link rel="preload" href="/assets/js/1.323bc97a.js" as="script"><link rel="preload" href="/assets/js/45.9ced75af.js" as="script"><link rel="prefetch" href="/assets/js/10.a13f1121.js"><link rel="prefetch" href="/assets/js/11.9af9bdd6.js"><link rel="prefetch" href="/assets/js/12.adf5f93f.js"><link rel="prefetch" href="/assets/js/13.0aa4ba58.js"><link rel="prefetch" href="/assets/js/14.3cb83bbc.js"><link rel="prefetch" href="/assets/js/15.7c257ecf.js"><link rel="prefetch" href="/assets/js/16.37f243c0.js"><link rel="prefetch" href="/assets/js/17.56e18055.js"><link rel="prefetch" href="/assets/js/18.5ada7f70.js"><link rel="prefetch" href="/assets/js/19.374c3457.js"><link rel="prefetch" href="/assets/js/20.b5288f53.js"><link rel="prefetch" href="/assets/js/21.6fd562d2.js"><link rel="prefetch" href="/assets/js/22.47c97012.js"><link rel="prefetch" href="/assets/js/23.8ea1f314.js"><link rel="prefetch" href="/assets/js/24.32e77fb7.js"><link rel="prefetch" href="/assets/js/25.a825603d.js"><link rel="prefetch" href="/assets/js/26.a6283238.js"><link rel="prefetch" href="/assets/js/27.dec7bb52.js"><link rel="prefetch" href="/assets/js/28.42fd7dc8.js"><link rel="prefetch" href="/assets/js/29.7222fa1c.js"><link rel="prefetch" href="/assets/js/30.36a9302b.js"><link rel="prefetch" href="/assets/js/31.3c49a257.js"><link rel="prefetch" href="/assets/js/32.c44fbd48.js"><link rel="prefetch" href="/assets/js/33.5a8fa13b.js"><link rel="prefetch" href="/assets/js/34.cb6b6f80.js"><link rel="prefetch" href="/assets/js/35.53173eee.js"><link rel="prefetch" href="/assets/js/36.ce8d602f.js"><link rel="prefetch" href="/assets/js/37.9ece1050.js"><link rel="prefetch" href="/assets/js/38.02789e94.js"><link rel="prefetch" href="/assets/js/39.aae1a4b1.js"><link rel="prefetch" href="/assets/js/40.61a6876c.js"><link rel="prefetch" href="/assets/js/41.3b9256af.js"><link rel="prefetch" href="/assets/js/42.6e874c61.js"><link rel="prefetch" href="/assets/js/43.4c06edf6.js"><link rel="prefetch" href="/assets/js/44.75c8467e.js"><link rel="prefetch" href="/assets/js/46.c1de81f1.js"><link rel="prefetch" href="/assets/js/47.b647ac85.js"><link rel="prefetch" href="/assets/js/48.9b736ba5.js"><link rel="prefetch" href="/assets/js/49.907ec62a.js"><link rel="prefetch" href="/assets/js/5.9c51db63.js"><link rel="prefetch" href="/assets/js/50.0d45737d.js"><link rel="prefetch" href="/assets/js/51.ca02eccb.js"><link rel="prefetch" href="/assets/js/52.a026e9b6.js"><link rel="prefetch" href="/assets/js/53.bb038edb.js"><link rel="prefetch" href="/assets/js/54.ee53a772.js"><link rel="prefetch" href="/assets/js/55.d57f70ee.js"><link rel="prefetch" href="/assets/js/56.4df0c682.js"><link rel="prefetch" href="/assets/js/57.e684dd43.js"><link rel="prefetch" href="/assets/js/58.d9e3ee77.js"><link rel="prefetch" href="/assets/js/59.72d84c80.js"><link rel="prefetch" href="/assets/js/6.688e5d7b.js"><link rel="prefetch" href="/assets/js/60.165de40d.js"><link rel="prefetch" href="/assets/js/61.4eb87080.js"><link rel="prefetch" href="/assets/js/62.368eea8c.js"><link rel="prefetch" href="/assets/js/63.d78e3778.js"><link rel="prefetch" href="/assets/js/64.2995c020.js"><link rel="prefetch" href="/assets/js/65.05ae71cd.js"><link rel="prefetch" href="/assets/js/66.bbb34868.js"><link rel="prefetch" href="/assets/js/67.cba30af2.js"><link rel="prefetch" href="/assets/js/68.1090d66a.js"><link rel="prefetch" href="/assets/js/69.ef82511a.js"><link rel="prefetch" href="/assets/js/7.f84b603f.js"><link rel="prefetch" href="/assets/js/70.1778fcb3.js"><link rel="prefetch" href="/assets/js/71.ae1a27da.js"><link rel="prefetch" href="/assets/js/72.1b82d117.js"><link rel="prefetch" href="/assets/js/73.919a23fa.js"><link rel="prefetch" href="/assets/js/74.07b1ac48.js"><link rel="prefetch" href="/assets/js/75.85673d7f.js"><link rel="prefetch" href="/assets/js/76.8b0aae29.js"><link rel="prefetch" href="/assets/js/77.3b6d454c.js"><link rel="prefetch" href="/assets/js/78.5d6e2d17.js"><link rel="prefetch" href="/assets/js/79.ecc55c52.js"><link rel="prefetch" href="/assets/js/8.e9585eae.js"><link rel="prefetch" href="/assets/js/80.2698424e.js"><link rel="prefetch" href="/assets/js/81.bfc99179.js"><link rel="prefetch" href="/assets/js/82.e50d1daf.js"><link rel="prefetch" href="/assets/js/83.6a419437.js"><link rel="prefetch" href="/assets/js/84.0fa36606.js"><link rel="prefetch" href="/assets/js/85.1015146c.js"><link rel="prefetch" href="/assets/js/86.00684449.js"><link rel="prefetch" href="/assets/js/87.e0859a02.js"><link rel="prefetch" href="/assets/js/9.a02166f3.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.2ea33769.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.40812e68.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-55b011ba><div data-v-55b011ba><div class="password-shadow password-wrapper-out" style="display:none;" data-v-07e8926c data-v-55b011ba data-v-55b011ba><h3 class="title" data-v-07e8926c data-v-07e8926c>汽水味的夏天</h3> <p class="description" data-v-07e8926c data-v-07e8926c></p> <label id="box" class="inputBox" data-v-07e8926c data-v-07e8926c><input type="password" value="" data-v-07e8926c> <span data-v-07e8926c>Konck! Knock!</span> <button data-v-07e8926c>OK</button></label> <div class="footer" data-v-07e8926c data-v-07e8926c><span data-v-07e8926c><i class="reco reco-theme" data-v-07e8926c></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-07e8926c>vuePress-theme-reco</a></span> <span data-v-07e8926c><i class="reco reco-copyright" data-v-07e8926c></i> <a data-v-07e8926c><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-55b011ba><header class="navbar" data-v-55b011ba><div class="sidebar-button" data-v-0c9ef608><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon" style="transform:;" data-v-0c9ef608><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" data-v-0c9ef608></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.svg" alt="汽水味的夏天" class="logo"> <span class="site-name">汽水味的夏天</span></a> <div class="links"><div class="color-switch"><a class="color-button"><i class="iconfont icon-auto"></i></a></div> <div class="search-box"><i class="iconfont icon-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont icon-home"></i>
+  主页
+</a></div><div class="nav-item"><a href="/docslist/" class="nav-link"><i class="iconfont icon-docs"></i>
+  文档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Anaconda/" class="nav-link"><i class="undefined"></i>
+  Anaconda
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/HUAWEI/" class="nav-link"><i class="undefined"></i>
+  HUAWEI
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jupyter/" class="nav-link"><i class="undefined"></i>
+  Jupyter
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Software/" class="nav-link"><i class="undefined"></i>
+  Software
+</a></li><li class="dropdown-item"><!----> <a href="/categories/NodeJS/" class="nav-link"><i class="undefined"></i>
+  NodeJS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue3/" class="nav-link"><i class="undefined"></i>
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Ubuntu/" class="nav-link"><i class="undefined"></i>
+  Ubuntu
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont icon-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont icon-timeLine"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/blogs/other/tools.html" class="nav-link"><i class="iconfont icon-tools"></i>
+  工具集
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-language"></i>
+      选择语言
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/Flask/base/flask.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  zh-CN
+</a></li><li class="dropdown-item"><!----> <a href="/en/" class="nav-link"><i class="undefined"></i>
+  en-US
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-55b011ba></div> <aside class="sidebar" data-v-55b011ba><div class="personal-info-wrapper" data-v-f47b2002 data-v-55b011ba><img src="https://img-blog.csdnimg.cn/5cd7f49aab644567a19a7d9336786b82.png#pic_center" alt="author-avatar" class="personal-img" data-v-f47b2002> <h3 class="name" data-v-f47b2002>
+    WANG Zeping
+  </h3> <div class="num" data-v-f47b2002><div data-v-f47b2002><h3 data-v-f47b2002>65</h3> <h6 data-v-f47b2002>文章</h6></div> <div data-v-f47b2002><h3 data-v-f47b2002>16</h3> <h6 data-v-f47b2002>标签</h6></div></div> <ul class="social-links" data-v-f47b2002><li class="social-item" data-v-f47b2002><i class="iconfont icon-github" style="color:#f47e60;" data-v-f47b2002></i></li><li class="social-item" data-v-f47b2002><i class="iconfont icon-csdn" style="color:#e15b64;" data-v-f47b2002></i></li></ul></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont icon-home"></i>
+  主页
+</a></div><div class="nav-item"><a href="/docslist/" class="nav-link"><i class="iconfont icon-docs"></i>
+  文档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Anaconda/" class="nav-link"><i class="undefined"></i>
+  Anaconda
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/HUAWEI/" class="nav-link"><i class="undefined"></i>
+  HUAWEI
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jupyter/" class="nav-link"><i class="undefined"></i>
+  Jupyter
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Software/" class="nav-link"><i class="undefined"></i>
+  Software
+</a></li><li class="dropdown-item"><!----> <a href="/categories/NodeJS/" class="nav-link"><i class="undefined"></i>
+  NodeJS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue3/" class="nav-link"><i class="undefined"></i>
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Ubuntu/" class="nav-link"><i class="undefined"></i>
+  Ubuntu
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont icon-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont icon-timeLine"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/blogs/other/tools.html" class="nav-link"><i class="iconfont icon-tools"></i>
+  工具集
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-language"></i>
+      选择语言
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/Flask/base/flask.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  zh-CN
+</a></li><li class="dropdown-item"><!----> <a href="/en/" class="nav-link"><i class="undefined"></i>
+  en-US
+</a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-07e8926c data-v-55b011ba><h3 class="title" data-v-07e8926c data-v-07e8926c>2.flask 入门基础</h3> <!----> <label id="box" class="inputBox" data-v-07e8926c data-v-07e8926c><input type="password" value="" data-v-07e8926c> <span data-v-07e8926c>Konck! Knock!</span> <button data-v-07e8926c>OK</button></label> <div class="footer" data-v-07e8926c data-v-07e8926c><span data-v-07e8926c><i class="reco reco-theme" data-v-07e8926c></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-07e8926c>vuePress-theme-reco</a></span> <span data-v-07e8926c><i class="reco reco-copyright" data-v-07e8926c></i> <a data-v-07e8926c><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-55b011ba><main class="page"><section><div class="page-title"><h1 class="title">2.flask 入门基础</h1> <div data-v-fe92337a><i class="iconfont icon-account" data-v-fe92337a><span data-v-fe92337a>WANG Zeping</span></i> <i class="iconfont icon-date" data-v-fe92337a><span data-v-fe92337a>2019/5/29</span></i> <i class="iconfont icon-eye" data-v-fe92337a><span id="/docs/Flask/base/flask.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-fe92337a><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <!----></div></div> <div class="theme-reco-content content__default"><div class="language- line-numbers-mode"><pre class="language-text"><code># 实例化，构造函数的参数会作为Flask app核心对象的标识
+app = Flask(__name__)
+# 启动web app
+# debug=True开启调试模式 1.修改文件后不用每次都重启服务器 2.可以在网页中显示异常
+# host可以指定可以访问本网站的ip地址
+# port启动端口
+app.run(host=&quot;0.0.0.0&quot;, port=81, debug=True)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="_3-注册路由-法1"><a href="#_3-注册路由-法1" class="header-anchor">#</a> 3.注册路由-法1</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code># 通过@app.route装饰器来注册路由，其中的参数为url路径。对应会调用hello()函数
+@app.route(&quot;/hello&quot;)
+def hello():
+    &quot;&quot;&quot;定义视图函数-mvc 中的controller&quot;&quot;&quot;
+    return &quot;我就不说hello world&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>如果直接使用/hello 那么不能兼容浏览器不能访问/hello/和/hello，解决办法，路径定义改成/hello/</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@app.route(&quot;/hello/&quot;)
+def hello():
+    return &quot;我就不说hello world&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="在路径xxx后添加斜杠-后就可以访问xxx-和-xxx的原理"><a href="#在路径xxx后添加斜杠-后就可以访问xxx-和-xxx的原理" class="header-anchor">#</a> 在路径xxx后添加斜杠/后就可以访问xxx/ 和 xxx的原理</h3> <p>重定向：当你访问url1的时候，服务器返回状态码302让用户访问url2
+<img src="https://upload-images.jianshu.io/upload_images/7220971-4f5d1fe45268a7f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="重定向"></p> <p>访问http://localhost:5000/hello,观察浏览器网络请求情况，可以看到发生了重定向，重定向到了hello/
+<img src="https://upload-images.jianshu.io/upload_images/7220971-be441a733b86ae58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p> <h4 id="为什么这么做呢"><a href="#为什么这么做呢" class="header-anchor">#</a> 为什么这么做呢？</h4> <p>这是因为，如果不做重定向不带/ 的（hello）和带/的（hello/）都可以访问到视图函数，那么就是说同一个视图函数对应着两个不同的路由，没有保证唯一url的原则</p> <h4 id="唯一url的好处"><a href="#唯一url的好处" class="header-anchor">#</a> 唯一url的好处</h4> <p>如果有两个url，那么在搜索引擎中会被索引两次，这样会浪费性能，影响搜索引擎的优化，没有这个必要。</p> <h2 id="_4-注册路由-法2"><a href="#_4-注册路由-法2" class="header-anchor">#</a> 4.注册路由-法2</h2> <p>另一种注册路由的函数，通过调用app的add_url_rule函数</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>app.add_url_rule(&quot;/hello&quot;,view_func=hello)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>实际上方法1装饰器的模式，内部就是调用了add_url_rule函数。下面来看一下源码</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    def route(self, rule, **options):
+        &quot;&quot;&quot;A decorator that is used to register a view function for a
+        given URL rule.  This does the same thing as :meth:`add_url_rule`
+        but is intended for decorator usage::
+
+            @app.route('/')
+            def index():
+                return 'Hello World'
+
+        For more information refer to :ref:`url-route-registrations`.
+
+        :param rule: the URL rule as string
+        :param endpoint: the endpoint for the registered URL rule.  Flask
+                         itself assumes the name of the view function as
+                         endpoint
+        :param options: the options to be forwarded to the underlying
+                        :class:`~werkzeug.routing.Rule` object.  A change
+                        to Werkzeug is handling of method options.  methods
+                        is a list of methods this rule should be limited
+                        to (``GET``, ``POST`` etc.).  By default a rule
+                        just listens for ``GET`` (and implicitly ``HEAD``).
+                        Starting with Flask 0.6, ``OPTIONS`` is implicitly
+                        added and handled by the standard request handling.
+        &quot;&quot;&quot;
+        def decorator(f):
+            endpoint = options.pop('endpoint', None)
+            # 可以看到这里就是调用了add_url_rule，self就是我们实例化的app对象
+            self.add_url_rule(rule, endpoint, f, **options)
+            return f
+        return decorator
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><h2 id="_5-falsk配置文件"><a href="#_5-falsk配置文件" class="header-anchor">#</a> 5.falsk配置文件</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code># 载入配置文件
+app.config.from_object(&quot;config&quot;)
+# 读取配置文件
+print(app.config[&quot;DEBUG&quot;])
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>陷阱1：配置文件中的key必须是全大写
+陷阱2：DEBUG是flask里的一个默认变量，如果想要覆盖，必须名字一模一样</p> <h2 id="_5-if-name-main"><a href="#_5-if-name-main" class="header-anchor">#</a> 5.if <strong>name</strong> = &quot;<strong>main</strong>&quot;</h2> <p>简单理解：加入这个判断以后，只有在启动入口文件以后，才会执行。而在被其他模块导入的时候不会执行</p> <p>深入理解其原因是：在生产环境中，我们是使用nginx+uwsgi来部署python项目，其中uwsgi用来启动flask服务，这个时候，根本fisher.py只是作为一个模块被调用，这时加上入口判断，在生产环境中就只不会执行<code>app.run</code>方法。否则的话就会启动两个flask服务。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>if __name__ == &quot;__name__&quot;:
+    app.run(host=app.config[&quot;HOST&quot;], debug=app.config[&quot;DEBUG&quot;], port=app.config[&quot;PORT&quot;])
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最近更新: </span> <span class="time">2 分钟前</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <div class="sub-side-bar" style="bottom:11rem;" data-v-c149a8d0><div class="sub-sidebar-content" style="height:;" data-v-c149a8d0><span style="display:;" data-v-c149a8d0>隐藏
+    </span> <ul class="sub-sidebar-wrapper" style="display:;" data-v-c149a8d0><li class="level-2" data-v-c149a8d0><a href="/docs/Flask/base/flask.html#_3-注册路由-法1" class="sidebar-link reco-side-_3-注册路由-法1" data-v-c149a8d0><p data-v-c149a8d0>3.注册路由-法1</p></a></li><li class="level-3" data-v-c149a8d0><a href="/docs/Flask/base/flask.html#在路径xxx后添加斜杠-后就可以访问xxx-和-xxx的原理" class="sidebar-link reco-side-在路径xxx后添加斜杠-后就可以访问xxx-和-xxx的原理" data-v-c149a8d0><p data-v-c149a8d0>在路径xxx后添加斜杠/后就可以访问xxx/ 和 xxx的原理</p></a></li><li class="level-2" data-v-c149a8d0><a href="/docs/Flask/base/flask.html#_4-注册路由-法2" class="sidebar-link reco-side-_4-注册路由-法2" data-v-c149a8d0><p data-v-c149a8d0>4.注册路由-法2</p></a></li><li class="level-2" data-v-c149a8d0><a href="/docs/Flask/base/flask.html#_5-falsk配置文件" class="sidebar-link reco-side-_5-falsk配置文件" data-v-c149a8d0><p data-v-c149a8d0>5.falsk配置文件</p></a></li><li class="level-2" data-v-c149a8d0><a href="/docs/Flask/base/flask.html#_5-if-name-main" class="sidebar-link reco-side-_5-if-name-main" data-v-c149a8d0><p data-v-c149a8d0>5.if _name = &quot;main_&quot;</p></a></li></ul></div></div></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-db4c5dd0 data-v-db4c5dd0><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-db4c5dd0><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-db4c5dd0></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-db4c5dd0></path></svg></div><div class="kanbanniang" data-v-900a93dc><div class="banniang-container" style="display:;" data-v-900a93dc><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-900a93dc>
+        欢迎来到 汽水味的夏天
+      </div> <div class="operation" style="right:90px;bottom:40px;display:;" data-v-900a93dc><i class="kbnfont kbn-ban-home ban-home" data-v-900a93dc></i> <i class="kbnfont kbn-ban-message message" data-v-900a93dc></i> <i class="kbnfont kbn-ban-close close" data-v-900a93dc></i> <i class="kbnfont kbn-ban-theme skin" style="display:;" data-v-900a93dc></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="right:90px;bottom:-20px;opacity:0.9;" data-v-900a93dc></canvas></div> <div class="showBanNiang" style="display:none;" data-v-900a93dc>
+      看板娘
+    </div></div></div></div>
+    <script src="/assets/js/app.de40608c.js" defer></script><script src="/assets/js/4.69b8bb8a.js" defer></script><script src="/assets/js/1.323bc97a.js" defer></script><script src="/assets/js/45.9ced75af.js" defer></script>
+  </body>
+</html>
