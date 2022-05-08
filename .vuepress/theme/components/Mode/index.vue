@@ -8,7 +8,7 @@
 
 <script>
 import { defineComponent, onMounted, ref } from "vue-demi"
-import { RecoIcon } from '../../core/lib/components'
+import { RecoIcon } from '../../core/components'
 import applyMode from './applyMode'
 import { useInstance } from "../../helpers/composable"
 

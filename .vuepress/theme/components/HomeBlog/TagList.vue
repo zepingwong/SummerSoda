@@ -17,7 +17,7 @@
 import { defineComponent, computed } from 'vue-demi'
 import { getOneColor } from '../../helpers/other'
 import { useInstance } from '../../helpers/composable'
-import { RecoIcon } from '../../core/lib/components'
+import { RecoIcon } from '../../core/components'
 export default defineComponent({
   components: { RecoIcon },
   props: {

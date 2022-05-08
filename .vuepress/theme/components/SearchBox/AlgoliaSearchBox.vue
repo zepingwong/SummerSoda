@@ -15,7 +15,7 @@
 
 <script>
 import { defineComponent, ref, onMounted } from 'vue-demi'
-import { RecoIcon } from '../../core/lib/components'
+import { RecoIcon } from '../../core/components'
 import { useInstance } from '../../helpers/composable'
 
 export default defineComponent({

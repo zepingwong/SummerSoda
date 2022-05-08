@@ -25,7 +25,7 @@
 <script>
 import { defineComponent } from 'vue-demi'
 import Common from '../components/Common'
-import { ModuleTransition } from '../core/lib/components'
+import { ModuleTransition } from '../core/components'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 import { useInstance } from '../helpers/composable'
 

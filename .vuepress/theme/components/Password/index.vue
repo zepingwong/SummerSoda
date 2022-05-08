@@ -44,7 +44,7 @@
 <script>
 import { defineComponent, ref, toRefs, computed } from 'vue-demi'
 import md5 from 'md5'
-import { ModuleTransition, RecoIcon } from '../../core/lib/components'
+import { ModuleTransition, RecoIcon } from '../../core/components'
 import { useInstance } from '../../helpers/composable'
 
 export default defineComponent({

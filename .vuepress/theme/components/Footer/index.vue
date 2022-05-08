@@ -30,7 +30,7 @@
 
 <script>
 import { defineComponent, computed } from 'vue-demi'
-import { RecoIcon } from '../../core/lib/components'
+import { RecoIcon } from '../../core/components'
 import { version } from '../../../../package.json'
 import { useInstance } from '../../helpers/composable'
 

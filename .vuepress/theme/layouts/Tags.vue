@@ -29,7 +29,7 @@
 import { computed, defineComponent } from 'vue-demi'
 import Common from '../components/Common'
 import NoteAbstract from '../components/NoteAbstract'
-import { ModuleTransition, RecoIcon } from '../core/lib/components'
+import { ModuleTransition, RecoIcon } from '../core/components'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 import { useInstance } from '../helpers/composable'
 import { getOneColor } from '../helpers/other'

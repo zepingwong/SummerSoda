@@ -17,7 +17,7 @@
 
 <script>
 import { defineComponent } from 'vue-demi'
-import { RecoIcon } from '../../core/lib/components'
+import { RecoIcon } from '../../core/components'
 import PageInfo from '../Page/PageInfo'
 export default defineComponent({
   components: { PageInfo, RecoIcon },

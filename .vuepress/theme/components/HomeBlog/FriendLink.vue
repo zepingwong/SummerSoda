@@ -46,7 +46,7 @@ import { defineComponent, reactive, computed, ref, onMounted } from 'vue-demi'
 import md5 from 'md5'
 import { getOneColor } from '../../helpers/other'
 import { useInstance } from '../../helpers/composable'
-import { RecoIcon } from '../../core/lib/components'
+import { RecoIcon } from '../../core/components'
 const useDetail = () => {
   const instance = useInstance()
   const isPC = ref(true)

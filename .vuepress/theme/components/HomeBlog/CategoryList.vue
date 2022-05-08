@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { RecoIcon } from '../../core/lib/components'
+import { RecoIcon } from '../../core/components'
 import { defineComponent } from 'vue-demi'
 import { getOneColor } from '../../helpers/other'
 export default defineComponent({

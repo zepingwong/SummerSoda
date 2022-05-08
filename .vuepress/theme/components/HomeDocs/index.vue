@@ -45,7 +45,7 @@
 <script>
 import { defineComponent, computed } from 'vue-demi'
 import NavLink from '../Navbar/NavLink'
-import { ModuleTransition } from '../../core/lib/components'
+import { ModuleTransition } from '../../core/components'
 import { useInstance } from '../../helpers/composable'
 
 export default defineComponent({

@@ -36,7 +36,7 @@
 
 <script>
 import { defineComponent, computed } from 'vue-demi'
-import { RecoIcon } from '../../core/lib/components'
+import { RecoIcon } from '../../core/components'
 import { getOneColor } from '../../helpers/other'
 import { useInstance } from '../../helpers/composable'
 

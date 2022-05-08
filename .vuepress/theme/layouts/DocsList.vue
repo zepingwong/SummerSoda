@@ -39,10 +39,10 @@
 import { defineComponent, computed, ref } from 'vue-demi'
 import Common from '../components/Common'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
-import { ModuleTransition } from '../core/lib/components'
+import { ModuleTransition } from '../core/components'
 import PageInfo from '../components/Page/PageInfo'
 import { useInstance } from '../helpers/composable'
-import { RecoIcon } from '../core/lib/components'
+import { RecoIcon } from '../core/components'
 export default defineComponent({
   name: 'DocsList',
   mixins: [moduleTransitonMixin],

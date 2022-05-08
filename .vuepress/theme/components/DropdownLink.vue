@@ -37,7 +37,7 @@
 
 <script>
 import { defineComponent, ref } from 'vue-demi'
-import { RecoIcon } from '../core/lib/components'
+import { RecoIcon } from '../core/components'
 import NavLink from './Navbar/NavLink'
 import DropdownTransition from './DropdownTransition'
 

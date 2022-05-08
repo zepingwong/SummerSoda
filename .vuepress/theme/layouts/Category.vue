@@ -33,7 +33,7 @@
 import { defineComponent, computed } from 'vue-demi'
 import Common from '../components/Common'
 import NoteAbstract from '../components/NoteAbstract'
-import { ModuleTransition } from '../core/lib/components'
+import { ModuleTransition } from '../core/components'
 import { sortPostsByStickyAndDate, filterPosts } from '../helpers/postData'
 import { getOneColor } from '../helpers/other'
 import moduleTransitonMixin from '../mixins/moduleTransiton'

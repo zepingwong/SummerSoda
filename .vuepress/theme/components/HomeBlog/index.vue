@@ -63,7 +63,7 @@ import { defineComponent, toRefs, reactive, computed, onMounted } from 'vue-demi
 import TagList from './TagList'
 import FriendLink from './FriendLink'
 import NoteAbstract from '../NoteAbstract'
-import { ModuleTransition } from '../../core/lib/components'
+import { ModuleTransition } from '../../core/components'
 import PersonalInfo from './PersonalInfo'
 import CategoryList from './CategoryList'
 import { useInstance } from '../../helpers/composable'
