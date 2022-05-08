@@ -3,7 +3,7 @@ module.exports = [
     "link",
     {
       "rel": "icon",
-      "href": "/favicon.ico"
+      "href": "/SummerSoda/favicon.ico"
     }
   ],
   [
