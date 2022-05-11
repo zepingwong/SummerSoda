@@ -5,7 +5,6 @@ module.exports = {
       path: '/docs/Theme/'
     }, {
       title: '基础',
-      // path: '/docs/Theme/base/',
       collapsable: false,
       children: [
         'About',
