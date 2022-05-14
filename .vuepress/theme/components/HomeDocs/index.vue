@@ -69,124 +69,93 @@ export default defineComponent({
 </script>
 
 <style scoped lang="stylus">
-.home {
-  padding: $navbarHeight 2rem 0;
-  max-width: 960px;
-  margin: 0 auto;
+.home
+  padding $navbarHeight 2rem 0
+  max-width 960px
+  margin 0 auto
   min-height auto
-  .hero {
-    text-align: center;
-    h1 {
-      display: block;
-      font-size: 2.5rem;
-      color: var(--text-color);
-    }
+  .hero
+    text-align center
+    h1
+      display block
+      font-size 2.5rem
+      color var(--text-color)
 
-    h1, .description, .action {
-      margin: 1.8rem auto;
-    }
+    h1, .description, .action
+      margin 1.8rem auto
 
-    .description {
-      font-size: 1.6rem;
-      line-height: 1.3;
-      color: var(--text-color);
-    }
+    .description
+      font-size 1.6rem
+      line-height 1.3
+      color var(--text-color)
 
-    .action-button {
-      display: inline-block;
-      font-size: 1.2rem;
-      color: #fff;
-      background-color: $accentColor;
-      padding: 0.2rem 1.2rem;
-      border-radius: $borderRadius
-      transition: background-color 0.1s ease;
-      box-sizing: border-box;
+    .action-button
+      display inline-block
+      font-size 1.2rem
+      color #fff
+      background-color $accentColor
+      padding 0.2rem 1.2rem
+      border-radius $borderRadius
+      transition background-color 0.1s ease
+      box-sizing border-box
       load-start()
+      &:hover
+        background-color lighten($accentColor, 10%)
 
-      &:hover {
-        background-color: lighten($accentColor, 10%);
-      }
-    }
-  }
+  .features
+    border-top 1px solid var(--border-color)
+    padding 1.2rem 0
+    margin-top 2.5rem
+    display flex
+    flex-wrap wrap
+    align-items flex-start
+    align-content stretch
+    justify-content space-between
 
-  .features {
-    border-top: 1px solid var(--border-color);
-    padding: 1.2rem 0;
-    margin-top: 2.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: stretch;
-    justify-content: space-between;
-  }
+  .feature
+    flex-grow 1
+    flex-basis 30%
+    max-width 30%
+    transition all .5s
+    color var(--text-color)
+    h2
+      font-size 1.6rem
+      font-weight 500
+      border-bottom none
+      padding-bottom 0
 
-  .feature {
-    flex-grow: 1;
-    flex-basis: 30%;
-    max-width: 30%;
-    transition: all .5s
-    color: var(--text-color);
-    h2 {
-      font-size: 1.6rem;
-      font-weight: 500;
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    &:hover {
+    &:hover
       transform scale(1.05)
-    }
-  }
-}
 
-@media (max-width: $MQMobile) {
-  .home {
+@media (max-width $MQMobile)
+  .home
     height auto
-    .features {
-      flex-direction: column;
-    }
+    .features
+      flex-direction column
 
-    .feature {
-      max-width: 100%;
-      padding: 0 2.5rem;
-    }
-  }
-}
+    .feature
+      max-width 100%
+      padding 0 2.5rem
 
-@media (max-width: $MQMobileNarrow) {
-  .home {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+@media (max-width $MQMobileNarrow)
+  .home
+    padding-left 1.5rem
+    padding-right 1.5rem
     height auto
-    .hero {
-      img {
-        max-height: 210px;
-        margin: 2rem auto 1.2rem;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      h1, .description, .action {
-        margin: 1.2rem auto;
-      }
-
-      .description {
-        font-size: 1.2rem;
-      }
-
-      .action-button {
-        font-size: 1rem;
-        padding: 0.6rem 1.2rem;
-      }
-    }
-
-    .feature {
-      h2 {
-        font-size: 1.25rem;
-      }
-    }
-  }
-}
+    .hero
+      img
+        max-height 210px
+        margin 2rem auto 1.2rem
+      h1
+        font-size 2rem
+      h1, .description, .action
+        margin 1.2rem auto
+      .description
+        font-size 1.2rem
+      .action-button
+        font-size 1rem
+        padding 0.6rem 1.2rem
+    .feature
+      h2
+        font-size 1.25rem
 </style>

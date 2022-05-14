@@ -18,7 +18,8 @@ module.exports = {
         'Abstract',
         'Icon',
         'FrontMatter',
-        'Markdown'
+        'Markdown',
+        'Static'
       ]
     }, {
       title: '配置',
@@ -87,6 +88,7 @@ module.exports = {
         'KanBanNiang',
         'code',
         'extract-code',
+        'MessageBox',
         'Comments'
       ]
     }, {

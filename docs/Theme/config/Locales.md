@@ -1,5 +1,5 @@
 ---
-title: 多语言配置
+title: 语言配置
 date: 2020-05-29
 sidebar: 'auto'
 ---

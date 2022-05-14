@@ -1,5 +1,4 @@
-// const { path } = require("@vuepress/shared-utils");
-const path = require('path');
+const { path } = require("@vuepress/shared-utils")
 
 module.exports = (options = {}) => ({
   name: 'plugin-one-click-copy',
@@ -10,7 +9,7 @@ module.exports = (options = {}) => ({
       tip: { time = 3000, content = 'copy success', title = 'Tips' } = {},
       change,
       visibleTip = true,
-    } = options;
+    } = options
     return {
       selector,
       copyText,
@@ -19,9 +18,7 @@ module.exports = (options = {}) => ({
       title,
       change,
       visibleTip,
-    };
+    }
   },
-
-  clientRootMixin: path.resolve(__dirname, 'clientRootMixin.js'),
-  enhanceAppFiles: [path.resolve(__dirname, 'appFile.js')],
-});
+  clientRootMixin: path.resolve(__dirname, 'clientRootMixin.js')
+})

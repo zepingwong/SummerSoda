@@ -5,6 +5,7 @@ module.exports = () => ({
     require('./plugins/loading-page'),
     require('./plugins/pagination'),
     require('./plugins/comments'),
+    require('./plugins/message'),
     require('./plugins/kan-ban-niang'),
     [require('./plugins/one-click-copy') , {
       copyText: "复制代码",

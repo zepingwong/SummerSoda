@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import clipboard from "./clipboard"
+import clipboard from '../../helpers/clipboard'
 export default {
   props: {
     copyText: String,
