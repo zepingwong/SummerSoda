@@ -1,5 +1,3 @@
-const sidebar = require('../sidebar/')
-const navConfig = require('../nav')
 const recordConfig = require('../record')
 const valineConfig = require('../valine')
 const authorConfig = require('../author')
@@ -7,15 +5,13 @@ const pageConfig = require('../page')
 const modeConfig = require('../mode')
 const locales = require('../locales')
 const KanBanNiang = require('../KanBanNiang')
+const searchConfig = require('../search')
 module.exports = {
   type: 'blog',
   logo: "/logo.svg",
   locales: locales,
-  search: true,
-  // 自动形成侧边导航
-  subSidebar: 'auto',
-  searchMaxSuggestions: 10,
-  sidebar: sidebar,
+  // searchConfig
+  searchConfig: searchConfig,
   // modeConfig
   modeConfig: modeConfig,
   // pageConfig

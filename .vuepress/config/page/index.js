@@ -1,3 +1,5 @@
 module.exports = {
-  lastUpdated: true
+  lastUpdated: true,
+  // 自动形成侧边导航
+  subSidebar: 'auto',
 }

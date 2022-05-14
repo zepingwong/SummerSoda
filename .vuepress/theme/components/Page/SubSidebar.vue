@@ -1,9 +1,8 @@
 <template>
   <div class="sub-side-bar" v-show='headers.length > 0'>
-
     <div
       class='sub-sidebar-content'
-      :style="{height: isShow ? '' : '100%'}"
+      :style="{ height: isShow ? '' : '100%'}"
     >
       <span
         :style="{display: isShow ? '' : 'flex'}"
@@ -15,7 +14,7 @@
       >
         <li
           v-for="(header) in headers"
-          :class="{active: isLinkActive(header),[`level-${header.level}`]: true}"
+          :class="{ active: isLinkActive(header),[`level-${header.level}`]: true }"
           :key= "header.title"
         >
           <router-link

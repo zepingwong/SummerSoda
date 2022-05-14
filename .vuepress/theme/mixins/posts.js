@@ -66,9 +66,12 @@ export default {
     },
     $showSubSideBar () {
       const {
-        $themeConfig: { subSidebar: themeSubSidebar, sidebar: themeSidebar },
         $frontmatter: { subSidebar: pageSubSidebar, sidebar: pageSidebar }
       } = this
+
+      const {
+        pageConfig: { subSidebar: themeSubSidebar, sidebar: themeSidebar }
+      } = this.$themeConfig
 
       const headers = this.$page.headers || []
 
@@ -76,7 +79,7 @@ export default {
         return false
       } else if ([pageSubSidebar, pageSidebar].indexOf('auto') > -1 && headers.length > 0) {
         return true
-      } else return [themeSubSidebar, themeSidebar].indexOf('auto') > -1 && headers.length > 0;
+      } else return [themeSubSidebar, themeSidebar].indexOf('auto') > -1 && headers.length > 0
     }
   }
 }

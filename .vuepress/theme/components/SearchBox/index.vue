@@ -77,7 +77,7 @@ export default defineComponent({
         return
       }
       const { pages } = instance.$site
-      const max = instance.$site.themeConfig.searchMaxSuggestions
+      const max = instance.$site.themeConfig.searchConfig.searchMaxSuggestions || 10
       const localePath = instance.$localePath
       const matches = item => (
         item && item.title && item.title.toLowerCase().indexOf(query) > -1
@@ -109,7 +109,7 @@ export default defineComponent({
     })
 
     const alignRight = computed(() => {
-      const navCount = (instance.$site.themeConfig.nav || []).length
+      const navCount = (instance.$site.themeConfig.navConfig || {}).length - 1
       const repo = instance.$site.repo ? 1 : 0
       return navCount + repo <= 2
     })
@@ -154,7 +154,7 @@ export default defineComponent({
     return { showSuggestions, suggestions, alignRight, onUp, onDown, focus, unfocus, go, ...toRefs(state) }
   },
   mounted () {
-    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
+    this.placeholder = this.$site.themeConfig.searchConfig.searchPlaceholder || ''
   }
 })
 </script>

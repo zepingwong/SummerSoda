@@ -122,7 +122,7 @@ export function resolveSidebarItems (page, regularPath, site, localePath) {
     ? themeConfig.locales[localePath] || themeConfig
     : themeConfig
 
-  const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
+  const sidebarConfig = localeConfig.sidebarConfig || themeConfig.sidebarConfig
 
   const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
   return config
