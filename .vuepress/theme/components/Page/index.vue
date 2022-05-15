@@ -68,71 +68,57 @@
 <script>
 import SubSidebar from './SubSidebar'
 import PageInfo from './PageInfo'
-import { defineComponent, computed, toRefs, ref } from 'vue-demi'
 import { resolvePage, outboundRE, endingSlashRE } from '../../helpers/utils'
 import { ModuleTransition } from '../../core/components'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   components: { PageInfo, ModuleTransition, SubSidebar },
-
   props: ['sidebarItems'],
-
-  setup (props) {
-    const isShowSubSidebar = ref(true)
-    const instance = useInstance()
-
-    const { sidebarItems } = toRefs(props)
-
-    const recoShowModule = computed(() => instance.$parent.recoShowModule)
-
+  data() {
+    return {
+      isShowSubSidebar: true
+    }
+  },
+  computed: {
+    recoShowModule() {
+      return this.$parent.recoShowModule
+    },
     // 是否显示评论
-    const shouldShowComments = computed(() => {
-      const { isShowComments } = instance.$frontmatter
-      const { showComment } = instance.$themeConfig.valineConfig || { showComment: true }
+    shouldShowComments() {
+      const { isShowComments } = this.$frontmatter
+      const { showComment } = this.$themeConfig.valineConfig || { showComment: true }
       return (showComment !== false && isShowComments !== false) || (showComment === false && isShowComments === true)
-    })
-
-    const showAccessNumber = computed(() => {
+    },
+    showAccessNumber() {
       const {
         $themeConfig: { valineConfig },
         $themeLocaleConfig: { valineConfig: valineLocalConfig }
-      } = instance || {}
-
+      } = this || {}
       const vc = valineLocalConfig || valineConfig
-
       return vc && vc.visitor !== false
-    })
-
-    const lastUpdated = computed(() => {
-      const { lastUpdated } = instance.$themeConfig?.pageConfig || { pageConfig : false}
-      return lastUpdated === true ? instance.$page.lastUpdated : false
-    })
-
-    const prev = computed(() => {
-      const frontmatterPrev = instance.$frontmatter.prev
-      if (frontmatterPrev === false) {
-
-      } else if (frontmatterPrev) {
-        return resolvePage(instance.$site.pages, frontmatterPrev, instance.$route.path)
+    },
+    lastUpdated() {
+      const { lastUpdated } = this.$themeConfig?.pageConfig || { pageConfig : false}
+      return lastUpdated === true ? this.$page.lastUpdated : false
+    },
+    prev() {
+      const frontmatterPrev = this.$frontmatter.prev
+      if (frontmatterPrev === false) {} else if (frontmatterPrev) {
+        return resolvePage(this.$site.pages, frontmatterPrev, this.$route.path)
       } else {
-        return resolvePrev(instance.$page, sidebarItems.value)
+        return resolvePrev(this.$page, this.sidebarItems)
       }
-    })
-
-    const next = computed(() => {
-      const frontmatterNext = instance.$frontmatter.next
-      if (next === false) {
-
-      } else if (frontmatterNext) {
-        return resolvePage(instance.$site.pages, frontmatterNext, instance.$route.path)
+    },
+    next() {
+      const frontmatterNext = this.$frontmatter.next
+      if (frontmatterNext === false) {} else if (frontmatterNext) {
+        return resolvePage(this.$site.pages, frontmatterNext, this.$route.path)
       } else {
-        return resolveNext(instance.$page, sidebarItems.value)
+        return resolveNext(this.$page, this.sidebarItems)
       }
-    })
-
-    const editLink = computed(() => {
-      if (instance.$frontmatter.editLink === false) {
+    },
+    editLink() {
+      if (this.$frontmatter.editLink === false) {
         return false
       }
       const {
@@ -141,33 +127,23 @@ export default defineComponent({
         docsDir = '',
         docsBranch = 'master',
         docsRepo = repo
-      } = instance.$themeConfig
+      } = this.$themeConfig
 
-      if (docsRepo && editLinks && instance.$page.relativePath) {
-        return createEditLink(repo, docsRepo, docsDir, docsBranch, instance.$page.relativePath)
+      if (docsRepo && editLinks && this.$page.relativePath) {
+        return createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
       }
       return ''
-    })
-
-    const pageStyle = computed(() => {
-      return instance.$showSubSideBar && isShowSubSidebar.value ? {} : { paddingRight: '0' }
-    })
-    const foldSubSidebar = (val) => {
-      isShowSubSidebar.value = val
+    },
+    pageStyle() {
+      return this.$showSubSideBar && this.isShowSubSidebar ? {} : { paddingRight: '0' }
     }
-    return {
-      recoShowModule,
-      shouldShowComments,
-      showAccessNumber,
-      lastUpdated,
-      prev,
-      next,
-      editLink,
-      pageStyle,
-      foldSubSidebar
+  },
+  methods: {
+    foldSubSidebar(val) {
+      this.isShowSubSidebar = val
     }
   }
-})
+}
 
 function createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
   const bitbucket = /bitbucket.org/

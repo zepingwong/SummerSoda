@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue-demi'
 import { RecoIcon } from '../../core/components'
 import PageInfo from '../Page/PageInfo'
-export default defineComponent({
+
+export default {
   components: { PageInfo, RecoIcon },
   props: ['item', 'currentPage', 'currentTag']
-})
+}
 </script>
 
 <style lang="stylus" scoped>

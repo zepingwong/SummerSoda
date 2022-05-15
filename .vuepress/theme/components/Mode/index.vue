@@ -7,59 +7,56 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref } from "vue-demi"
 import { RecoIcon } from '../../core/components'
 import applyMode from './applyMode'
-import { useInstance } from "../../helpers/composable"
 
-export default defineComponent({
+export default {
   name: 'ModeSettings',
   components: {
     RecoIcon
   },
-  setup() {
-    const instance = useInstance()
-    const currentMode = ref('auto')
-    const modeOptions = ['dark', 'auto', 'light']
-    const selectMode = () => {
-      let index = modeOptions.indexOf(currentMode.value)
-      index = index === modeOptions.length-1 ? 0 : index+1
-      currentMode.value = modeOptions[index]
-      applyMode(currentMode.value)
-      localStorage.setItem('mode', currentMode.value)
+  data() {
+    return {
+      modeOptions: ['dark', 'auto', 'light'],
+      currentMode: 'auto'
     }
-    onMounted(() => {
-      if (instance.$modeSwitch === false) {
-        // 为 'auto' 模式设置监听器
-        if (instance.$mode === 'auto') {
-          window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
-            applyMode(instance.$mode)
-          })
-          window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
-            applyMode(instance.$mode)
-          })
-        }
-        applyMode(instance.$mode)
-      } else {
-        // modeSwitch 开启时默认使用用户主动设置的模式
-        currentMode.value = localStorage.getItem('mode') || instance.$mode
-        // Dark and Light auto switches
-        // 为了避免在 server-side 被执行，故在 Vue 组件中设置监听器
+  },
+  methods: {
+    selectMode() {
+      let index = this.modeOptions.indexOf(this.currentMode)
+      index = index === this.modeOptions.length-1 ? 0 : index+1
+      this.currentMode = this.modeOptions[index]
+      applyMode(this.currentMode)
+      localStorage.setItem('mode', this.currentMode)
+    }
+  },
+  mounted() {
+    if (this.$modeSwitch === false) {
+      // 为 'auto' 模式设置监听器
+      if (this.$mode === 'auto') {
         window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
-          currentMode.value === 'auto' && applyMode(currentMode.value)
+          applyMode(this.$mode)
         })
         window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
-          currentMode.value === 'auto' && applyMode(currentMode.value)
+          applyMode(this.$mode)
         })
-        applyMode(currentMode.value)
       }
-    })
-    return {
-      currentMode,
-      selectMode
+      applyMode(this.$mode)
+    } else {
+      // modeSwitch 开启时默认使用用户主动设置的模式
+      this.currentMode = localStorage.getItem('mode') || this.$mode
+      // Dark and Light auto switches
+      // 为了避免在 server-side 被执行，故在 Vue 组件中设置监听器
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(() => {
+        this.currentMode === 'auto' && applyMode(this.currentMode)
+      })
+      window.matchMedia('(prefers-color-scheme: light)').addListener(() => {
+        this.currentMode === 'auto' && applyMode(this.currentMode)
+      })
+      applyMode(this.currentMode)
     }
   }
-})
+}
 </script>
 
 <style lang="stylus">

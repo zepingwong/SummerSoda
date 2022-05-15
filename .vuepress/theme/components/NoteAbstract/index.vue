@@ -1,5 +1,5 @@
 <template>
-  <div className="abstract-wrapper">
+  <div class="abstract-wrapper">
     <NoteAbstractItem
       v-for="(item) in currentPageData"
       :key="item.path"
@@ -17,49 +17,42 @@
 </template>
 
 <script>
-import {defineComponent, ref, toRefs, computed, onMounted} from 'vue-demi'
 import pagination from '../../mixins/pagination'
 import NoteAbstractItem from './NoteAbstractItem'
-import {useInstance} from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   name: 'NoteAbstract',
   mixins: [pagination],
   components: {NoteAbstractItem},
   props: ['data', 'currentTag'],
-
-  setup(props, ctx) {
-    const instance = useInstance()
-
-    const {data} = toRefs(props)
-
-    const currentPage = ref(1)
-
-    const currentPageData = computed(() => {
-      const start = (currentPage.value - 1) * instance.$perPage
-      const end = currentPage.value * instance.$perPage
-
-      return data.value.slice(start, end)
-    })
-
-    const getCurrentPage = (page) => {
-      currentPage.value = page
-      instance._setStoragePage(page)
-      ctx.emit('paginationChange', page)
+  data() {
+    return {
+      currentPage: 1
     }
-
-    onMounted(() => {
-      currentPage.value = instance._getStoragePage() || 1
-    })
-
-    return {currentPage, currentPageData, getCurrentPage}
+  },
+  computed: {
+    currentPageData() {
+      const start = (this.currentPage - 1) * this.$perPage
+      const end = this.currentPage * this.$perPage
+      return this.data.slice(start, end)
+    }
+  },
+  methods: {
+    getCurrentPage(page) {
+      this.currentPage = page
+      this._setStoragePage(page)
+      this.$emit('paginationChange', page)
+    }
+  },
+  mounted() {
+    this.currentPage = this._getStoragePage() || 1
   },
   watch: {
     $route() {
       this.currentPage = this._getStoragePage() || 1
     }
   }
-})
+}
 </script>
 
 <style lang="stylus" scoped>

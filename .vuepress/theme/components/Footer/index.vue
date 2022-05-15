@@ -1,9 +1,5 @@
 <template>
   <div class="footer-wrapper">
-    <!--    <span>-->
-    <!--      <reco-icon icon="reco-theme" />-->
-    <!--      <a target="blank" href="https://vuepress-theme-reco.recoluan.com">{{`vuepress@${version}`}}</a>-->
-    <!--    </span>-->
     <span v-if="$themeConfig.recordConfig.record">
       <reco-icon icon="icon-beian" />
       <a :href="$themeConfig.recordLink || '#'">{{ $themeConfig.recordConfig.record }}</a>
@@ -29,28 +25,22 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue-demi'
 import { RecoIcon } from '../../core/components'
-import { version } from '../../../../package.json'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
+  name: 'Footer',
   components: { RecoIcon },
-  setup () {
-    const instance = useInstance()
-    const showAccessNumber = computed(() => {
+  computed: {
+    showAccessNumber() {
       const {
         $themeConfig: { valineConfig },
         $themeLocaleConfig: { valineConfig: valineLocalConfig }
-      } = instance
-
+      } = this
       const vc = valineLocalConfig || valineConfig
-
       return vc && vc.visitor !== false
-    })
-    return { version, showAccessNumber }
+    }
   }
-})
+}
 </script>
 
 <style lang="stylus" scoped>

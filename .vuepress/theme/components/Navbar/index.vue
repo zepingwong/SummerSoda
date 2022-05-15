@@ -33,15 +33,13 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, computed } from 'vue-demi'
 import AlgoliaSearchBox from '../SearchBox/AlgoliaSearchBox'
 import SearchBox from '../SearchBox'
 import SidebarButton from '../Sidebar/SidebarButton'
 import NavLinks from '../Navbar/NavLinks'
 import Mode from '../Mode'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   props: {
     showToggleButton: {
       type: Boolean,
@@ -49,49 +47,43 @@ export default defineComponent({
     }
   },
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, Mode },
-  setup () {
-    const instance = useInstance()
-    const linksWrapMaxWidth = ref(null)
-
-    const algolia = computed(() => {
-      return instance.$themeLocaleConfig.algolia || instance.$themeConfig.algolia || {}
-    })
-
-    const isAlgoliaSearch = computed(() => {
-      algolia.value && algolia.value.apiKey && algolia.value.indexName
-    })
-
-    function css (el, property) {
+  data() {
+    return {
+      linksWrapMaxWidth: null
+    }
+  },
+  computed: {
+    algolia() {
+      return this.$themeLocaleConfig.algolia || this.$themeConfig.algolia || {}
+    },
+    isAlgoliaSearch() {
+      return this.algolia.value && this.algolia.value.apiKey && this.algolia.value.indexName
+    }
+  },
+  methods: {
+    css (el, property) {
       // NOTE: Known bug, will return 'auto' if style value is 'auto'
       const win = el.ownerDocument.defaultView
       // null means not to return pseudo styles
       return win.getComputedStyle(el, null)[property]
     }
+  },
+  mounted() {
+    const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
+    const NAVBAR_VERTICAL_PADDING = parseInt(this.css(this.$el, 'paddingLeft')) + parseInt(this.css(this.$el, 'paddingRight'))
 
-    onMounted(() => {
-      const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
-      const NAVBAR_VERTICAL_PADDING =
-        parseInt(css(instance.$el, 'paddingLeft')) +
-        parseInt(css(instance.$el, 'paddingRight'))
-
-      const handleLinksWrapWidth = () => {
-        if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
-          linksWrapMaxWidth.value = null
-        } else {
-          linksWrapMaxWidth.value =
-            instance.$el.offsetWidth -
-            NAVBAR_VERTICAL_PADDING -
-            (instance.$refs.siteName && instance.$refs.siteName.offsetWidth || 0)
-        }
+    const handleLinksWrapWidth = () => {
+      if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
+        this.linksWrapMaxWidth = null
+      } else {
+        this.linksWrapMaxWidth =
+          this.$el.offsetWidth - NAVBAR_VERTICAL_PADDING - (this.$refs.siteName && this.$refs.siteName.offsetWidth || 0)
       }
-
-      handleLinksWrapWidth()
-      window.addEventListener('resize', handleLinksWrapWidth, false)
-    })
-
-    return { linksWrapMaxWidth, algolia, isAlgoliaSearch, css }
+    }
+    handleLinksWrapWidth()
+    window.addEventListener('resize', handleLinksWrapWidth, false)
   }
-})
+}
 </script>
 
 <style lang="stylus">

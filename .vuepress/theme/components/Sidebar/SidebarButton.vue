@@ -8,9 +8,7 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref, watch } from 'vue-demi'
-
-export default defineComponent({
+export default {
   name: 'SidebarButton',
   props: {
     show: {
@@ -18,21 +16,23 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props, ctx) {
-    const open = ref(false)
-    const toggleSidebar = () =>{
-      open.value = !open.value
-      ctx.emit('toggle-sidebar')
-    }
-    watch(() => props.show,(val) => {
-      open.value = val
-    })
+  data() {
     return {
-      open,
-      toggleSidebar
+      open: false
+    }
+  },
+  methods: {
+    toggleSidebar() {
+      this.open = !this.open
+      this.$emit('toggle-sidebar')
+    }
+  },
+  watch: {
+    show(val) {
+      this.open = val
     }
   }
-})
+}
 </script>
 <style scoped lang="stylus">
 .sidebar-button

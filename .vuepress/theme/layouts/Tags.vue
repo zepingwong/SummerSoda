@@ -8,7 +8,7 @@
           v-show="!item.pages || (item.pages && item.pages.length > 0)"
           :key="index"
           :class="{'active': item.name === $customLocales.all}"
-          :style="{ 'backgroundColor': getOneColor() }"
+          :style="{ 'backgroundColor': getColor() }"
           @click="tagClick(item)">{{item.name}}
         </span>
       </div>
@@ -26,37 +26,36 @@
 </template>
 
 <script>
-import { computed, defineComponent } from 'vue-demi'
 import Common from '../components/Common'
 import NoteAbstract from '../components/NoteAbstract'
 import { ModuleTransition, RecoIcon } from '../core/components'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
-import { useInstance } from '../helpers/composable'
 import { getOneColor } from '../helpers/other'
-export default defineComponent({
+
+export default {
   mixins: [moduleTransitonMixin],
   components: { Common, NoteAbstract, ModuleTransition, RecoIcon },
-
-  setup () {
-    const instance = useInstance()
-    const tags = computed(() => {
-      return [{ name: instance.$customLocales.all, path: '/tag/' }, ...instance.$tagesList]
-    })
-    const tagClick = (tagInfo) => {
-      if (instance.$route.path !== tagInfo.path) {
-        instance.$router.push({ path: tagInfo.path })
-      }
+  computed: {
+    tags() {
+      return [{ name: this.$customLocales.all, path: '/tag/' }, ...this.$tagesList]
     }
-
-    const paginationChange = (page) => {
+  },
+  methods: {
+    getColor() {
+      return getOneColor()
+    },
+    tagClick(tagInfo) {
+      if (this.$route.path !== tagInfo.path) {
+        this.$router.push({ path: tagInfo.path })
+      }
+    },
+    paginationChange() {
       setTimeout(() => {
         window.scrollTo(0, 0)
       }, 100)
     }
-
-    return { tagClick, paginationChange, getOneColor, tags }
   }
-})
+}
 </script>
 
 <style src='../styles/theme.styl' lang="stylus"></style>

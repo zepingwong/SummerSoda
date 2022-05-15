@@ -23,27 +23,22 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue-demi'
 import Common from '../components/Common'
 import { ModuleTransition } from '../core/components'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
-import { useInstance } from '../helpers/composable'
 
-export default defineComponent({
+export default {
   name: 'TimeLine',
   mixins: [moduleTransitonMixin],
   components: { Common, ModuleTransition },
-  setup (props, ctx) {
-    const instance = useInstance()
-
-    const go = (url) => {
-      instance.$router.push({ path: url })
-    }
-
-    const dateFormat = (date, type) => {
+  methods: {
+    go(url) {
+      this.$router.push({ path: url })
+    },
+    dateFormat(date, type) {
       function renderTime (date) {
         const dateee = new Date(date).toJSON()
-        return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '').replace(/-/g, '/')
+        return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.\d{3}Z/, '').replace(/-/g, '/')
       }
       date = renderTime(date)
       const dateObj = new Date(date)
@@ -51,10 +46,8 @@ export default defineComponent({
       const day = dateObj.getDate()
       return `${mon}-${day}`
     }
-
-    return { go, dateFormat }
   }
-})
+}
 </script>
 
 <style src="../styles/theme.styl" lang="stylus"></style>
@@ -101,7 +94,7 @@ export default defineComponent({
       }
     }
     .year {
-      margin: 80px 0 0px;
+      margin: 80px 0 0;
       color var(--text-color);
       font-weight: 700;
       font-size 26px

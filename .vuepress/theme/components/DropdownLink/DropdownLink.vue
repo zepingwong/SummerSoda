@@ -36,30 +36,28 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue-demi'
-import { RecoIcon } from '../core/components'
-import NavLink from './Navbar/NavLink'
+import { RecoIcon } from '../../core/components'
+import NavLink from '../Navbar/NavLink'
 import DropdownTransition from './DropdownTransition'
 
-export default defineComponent({
+export default {
   components: { NavLink, DropdownTransition, RecoIcon },
-
   props: {
     item: {
       required: true
     }
   },
-
-  setup (props, ctx) {
-    const open = ref(false)
-
-    const toggle = () => {
-      open.value = !open.value
+  data() {
+    return {
+      open: false
     }
-
-    return { open, toggle }
+  },
+  methods: {
+    toggle() {
+      this.open = !this.open
+    }
   }
-})
+}
 </script>
 
 <style lang="stylus">

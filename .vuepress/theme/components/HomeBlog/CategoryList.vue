@@ -6,7 +6,7 @@
       <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
         <router-link :to="item.path">
           <span class="category-name">{{ item.name }}</span>
-          <span class="post-num" :style="{ 'backgroundColor': getOneColor() }">{{ item.pages.length }}</span>
+          <span class="post-num" :style="{ 'backgroundColor': getColor() }">{{ item.pages.length }}</span>
         </router-link>
       </li>
     </ul>
@@ -15,15 +15,16 @@
 
 <script>
 import { RecoIcon } from '../../core/components'
-import { defineComponent } from 'vue-demi'
 import { getOneColor } from '../../helpers/other'
-export default defineComponent({
-  name: "CategoryList",
+export default {
+  name: 'CategoryList',
   components: { RecoIcon },
-  setup (props, ctx) {
-    return { getOneColor }
+  methods: {
+    getColor() {
+      return getOneColor()
+    }
   }
-})
+}
 </script>
 
 <style scoped lang="stylus">

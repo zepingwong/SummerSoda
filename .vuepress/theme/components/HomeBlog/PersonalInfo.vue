@@ -35,80 +35,67 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue-demi'
 import { RecoIcon } from '../../core/components'
 import { getOneColor } from '../../helpers/other'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default{
   components: { RecoIcon },
-  setup () {
-    const instance = useInstance()
-    const socialLinks = computed(() => (instance.$themeConfig.authorConfig && instance.$themeConfig.authorConfig.socialLinks || []).map(item => {
-      if (!item.color) item.color = getOneColor()
-      return item
-    }))
-    return { socialLinks }
+  computed: {
+    socialLinks() {
+      return (this.$themeConfig.authorConfig && this.$themeConfig.authorConfig.socialLinks || []).map(item => {
+        if (!item.color) item.color = getOneColor()
+        return item
+      })
+    }
   }
-})
+}
 </script>
 
 <style lang="stylus" scoped>
-.personal-info-wrapper {
-  .personal-img {
+.personal-info-wrapper
+  .personal-img
     display block
     margin 2rem auto 1rem
     width 6rem
     height 6rem
     border-radius 50%
-  }
-  .name {
+  .name
     font-size 1rem
     text-align center
     color var(--text-color)
-  }
-  .num {
+  .num
     display flex
     margin 0 auto 1rem
     width 80%
-    > div {
+    > div
       text-align center
       flex 0 0 50%
-      &:first-child {
+      &:first-child
         border-right 1px solid #333
-      }
-      h3 {
+      h3
         line-height auto
         margin 0 0 .6rem
         color var(--text-color)
-      }
-      h6 {
+      h6
         line-height auto
         color var(--text-color)
         margin 0
-      }
-    }
-  }
-  .social-links {
+
+  .social-links
     box-sizing border-box
     display flex
     flex-wrap wrap
     padding 10px
-    .social-item {
+    .social-item
       width 39px
       height 36px
       line-height 36px
       text-align center
       list-style none
       transition transform .3s
-      &:hover {
+      &:hover
         transform scale(1.08)
-      }
-      i {
+      i
         cursor pointer
         font-size 22px
-      }
-    }
-  }
-}
 </style>

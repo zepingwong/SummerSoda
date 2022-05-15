@@ -27,24 +27,27 @@
   </div>
 </template>
 <script>
-import { defineComponent, computed, ref, onBeforeMount } from 'vue-demi'
 import { isActive } from '../../helpers/utils'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
-  setup (props, ctx) {
-    const isShow = ref(true)
-    const instance = useInstance()
-    const headers = computed(() => {
-      return instance.$showSubSideBar ? instance.$page.headers : []
-    })
-    const fold = () => {
-      isShow.value = !isShow.value
-      ctx.emit('foldSubSidebar', isShow.value)
-      localStorage.setItem('showSubSidebar', isShow.value.toString())
+export default {
+  data() {
+    return {
+      isShow: true
     }
-    const isLinkActive = (header) => {
-      const active = isActive(instance.$route, instance.$page.path + '#' + header.slug)
+  },
+  computed: {
+    headers() {
+      return this.$showSubSideBar ? this.$page.headers : []
+    }
+  },
+  methods: {
+    fold() {
+      this.isShow = !this.isShow
+      this.$emit('foldSubSidebar', this.isShow)
+      localStorage.setItem('showSubSidebar', this.isShow.toString())
+    },
+    isLinkActive(header) {
+      const active = isActive(this.$route, this.$page.path + '#' + header.slug)
       if (active) {
         setTimeout(() => {
           document.querySelector(`.reco-side-${header.slug}`).scrollIntoView()
@@ -52,18 +55,17 @@ export default defineComponent({
       }
       return active
     }
-    onBeforeMount(() => {
-      const show = localStorage.getItem("showSubSidebar")
-      if (show === 'false') {
-        isShow.value = false
-      } else if (show === 'true') {
-        isShow.value = true
-      }
-      ctx.emit('foldSubSidebar', isShow.value)
-    })
-    return { headers, isLinkActive, isShow, fold }
+  },
+  beforeMount() {
+    const show = localStorage.getItem("showSubSidebar")
+    if (show === 'false') {
+      this.isShow = false
+    } else if (show === 'true') {
+      this.isShow = true
+    }
+    this.$emit('foldSubSidebar', this.isShow)
   }
-})
+}
 </script>
 
 <style lang="stylus" scoped>

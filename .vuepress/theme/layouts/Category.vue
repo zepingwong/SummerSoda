@@ -11,7 +11,7 @@
           :key="index">
           <router-link :to="item.path">
             <span class="category-name">{{ item.name }}</span>
-            <span class="post-num" :style="{ 'backgroundColor': getOneColor() }">{{ item.pages.length }}</span>
+            <span class="post-num" :style="{ 'backgroundColor': getColor() }">{{ item.pages.length }}</span>
           </router-link>
         </li>
       </ul>
@@ -30,46 +30,41 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue-demi'
 import Common from '../components/Common'
 import NoteAbstract from '../components/NoteAbstract'
 import { ModuleTransition } from '../core/components'
 import { sortPostsByStickyAndDate, filterPosts } from '../helpers/postData'
 import { getOneColor } from '../helpers/other'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
-import { useInstance } from '../helpers/composable'
 
-export default defineComponent({
+export default {
   mixins: [moduleTransitonMixin],
   components: { Common, NoteAbstract, ModuleTransition },
-
-  setup (props, ctx) {
-    const instance = useInstance()
-
-    const posts = computed(() => {
-      let posts = instance.$currentCategories.pages
+  computed: {
+    posts() {
+      let posts = this.$currentCategories.pages
       posts = filterPosts(posts)
       sortPostsByStickyAndDate(posts)
       return posts
-    })
-
-    const title = computed(() => {
-      return instance.$currentCategories.key
-    })
-
-    const getCurrentTag = (tag) => {
-      ctx.emit('currentTag', tag)
+    },
+    title() {
+      return this.$currentCategories.key
     }
-
-    const paginationChange = () => {
+  },
+  methods: {
+    getColor() {
+      return getOneColor()
+    },
+    getCurrentTag(tag) {
+      this.$emit('currentTag', tag)
+    },
+    paginationChange() {
       setTimeout(() => {
         window.scrollTo(0, 0)
       }, 100)
     }
-
-    return { posts, title, getCurrentTag, paginationChange, getOneColor }
   }
-})
+}
 </script>
 
 <style src='../styles/theme.styl' lang="stylus"></style>

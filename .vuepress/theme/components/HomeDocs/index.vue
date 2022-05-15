@@ -43,29 +43,29 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue-demi'
 import NavLink from '../Navbar/NavLink'
 import { ModuleTransition } from '../../core/components'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   components: { NavLink, ModuleTransition },
-
-  setup () {
-    const instance = useInstance()
-    const recoShowModule = computed(() => instance && instance.$parent.recoShowModule)
-    const actionLink = computed(() => instance && {
-      link: instance.$frontmatter.actionLink,
-      text: instance.$frontmatter.actionText
-    })
-    const heroImageStyle = computed(() => instance.$frontmatter.heroImageStyle || {
-      maxHeight: '200px',
-      margin: '6rem auto 1.5rem'
-    })
-
-    return { recoShowModule, actionLink, heroImageStyle}
+  computed: {
+    recoShowModule() {
+      return this && this.$parent.recoShowModule
+    },
+    actionLink() {
+      return this && {
+        link: this.$frontmatter.actionLink,
+        text: this.$frontmatter.actionText
+      }
+    },
+    heroImageStyle() {
+      return this.$frontmatter.heroImageStyle || {
+        maxHeight: '200px',
+        margin: '6rem auto 1.5rem'
+      }
+    }
   }
-})
+}
 </script>
 
 <style scoped lang="stylus">

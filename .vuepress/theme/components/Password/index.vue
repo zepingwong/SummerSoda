@@ -9,16 +9,19 @@
     </ModuleTransition>
 
     <ModuleTransition delay="0.16">
-      <label v-show="recoShowModule" class="inputBox" id="box">
-        <input
-          v-model="key"
-          type="password"
-          @keyup.enter="inter"
-          @focus="inputFocus"
-          @blur="inputBlur">
-        <span>{{warningText}}</span>
-        <button ref="passwordBtn" @click="inter">OK</button>
-      </label>
+      <form>
+        <label v-show="recoShowModule" class="inputBox" id="box">
+          <input
+            autocomplete=""
+            v-model="key"
+            type="password"
+            @keyup.enter="inter"
+            @focus="inputFocus"
+            @blur="inputBlur">
+          <span>{{warningText}}</span>
+          <button ref="passwordBtn" @click="inter">OK</button>
+        </label>
+      </form>
     </ModuleTransition>
 
     <ModuleTransition delay="0.24">
@@ -42,12 +45,10 @@
 </template>
 
 <script>
-import { defineComponent, ref, toRefs, computed } from 'vue-demi'
 import md5 from 'md5'
 import { ModuleTransition, RecoIcon } from '../../core/components'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   name: 'Password',
   components: { ModuleTransition, RecoIcon },
   props: {
@@ -56,62 +57,56 @@ export default defineComponent({
       default: false
     }
   },
-  setup (props) {
-    const instance = useInstance()
-
-    const year = new Date().getFullYear()
-
-    const key = ref('')
-    const warningText = ref('Konck! Knock!')
-    const recoShowModule = computed(() => instance?.$parent?.recoShowModule)
-    const { isPage } = toRefs(props)
-
-    const isHasKey = () => {
-      let { keys } = instance.$themeConfig.keyPage
+  data() {
+    return {
+      year: new Date().getFullYear(),
+      key: '',
+      warningText: 'Konck! Knock!'
+    }
+  },
+  computed: {
+    recoShowModule() {
+      return this.$parent.recoShowModule
+    }
+  },
+  methods: {
+    isHasKey() {
+      let { keys } = this.$themeConfig.keyPage
       keys = keys.map(item => item.toLowerCase())
       return keys.indexOf(sessionStorage.getItem('key')) > -1
-    }
-    const isHasPageKey = () => {
-      const pageKeys = instance.$frontmatter.keys.map(item => item.toLowerCase())
+    },
+    isHasPageKey() {
+      const pageKeys = this.$frontmatter.keys.map(item => item.toLowerCase())
       const pageKey = `pageKey${window.location.pathname}`
-
       return pageKeys && pageKeys.indexOf(sessionStorage.getItem(pageKey)) > -1
-    }
-
-    const inter = () => {
+    },
+    inter() {
       const keyVal = md5(key.value.trim())
       const pageKey = `pageKey${window.location.pathname}`
-      const keyName = isPage.value ? pageKey : 'key'
+      const keyName = this.isPage ? pageKey : 'key'
       sessionStorage.setItem(keyName, keyVal)
-      const isKeyTrue = isPage.value ? isHasPageKey() : isHasKey()
+      const isKeyTrue = this.isPage ? this.isHasPageKey() : this.isHasKey()
       if (!isKeyTrue) {
-        warningText.value = 'Key Error'
+        this.warningText = 'Key Error'
         return
       }
-
-      warningText.value = 'Key Success'
-
+      this.warningText = 'Key Success'
       const width = document.getElementById('box').style.width
-
-      instance.$refs.passwordBtn.style.width = `${width - 2}px`
-      instance.$refs.passwordBtn.style.opacity = 1
+      this.$refs.passwordBtn.style.width = `${width - 2}px`
+      this.$refs.passwordBtn.style.opacity = 1
 
       setTimeout(() => {
         window.location.reload()
       }, 800)
+    },
+    inputFocus() {
+      this.warningText = 'Input Your Key'
+    },
+    inputBlur() {
+      this.warningText = 'Konck! Knock!'
     }
-
-    const inputFocus = () => {
-      warningText.value = 'Input Your Key'
-    }
-
-    const inputBlur = () => {
-      warningText.value = 'Konck! Knock!'
-    }
-
-    return { warningText, year, key, recoShowModule, inter, inputFocus, inputBlur }
   }
-})
+}
 </script>
 
 <style lang="stylus" scoped>

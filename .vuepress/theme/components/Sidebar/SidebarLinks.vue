@@ -22,13 +22,11 @@
 </template>
 
 <script>
-import { defineComponent, ref, toRefs, onUpdated, onMounted } from 'vue-demi'
 import SidebarGroup from './SidebarGroup'
 import SidebarLink from './SidebarLink'
 import { isActive } from '../../helpers/utils'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   name: 'SidebarLinks',
   components: { SidebarGroup, SidebarLink },
   props: [
@@ -36,45 +34,44 @@ export default defineComponent({
     'depth', // depth of current sidebar links
     'sidebarDepth' // depth of headers to be extracted
   ],
-  setup (props) {
-    const instance = useInstance()
-    const { items } = toRefs(props)
-    const openGroupIndex = ref(0)
-    const refreshIndex = () => {
+  data() {
+    return {
+      openGroupIndex: 0
+    }
+  },
+  methods: {
+    refreshIndex() {
       const index = resolveOpenGroupIndex(
-        instance.$route,
-        items.value
+        this.$route,
+        this.items
       )
       if (index > -1) {
-        openGroupIndex.value = index
+        this.openGroupIndex = index
       }
-    }
-
-    const activationAnchor = () => {
+    },
+    activationAnchor() {
       // eslint-disable-next-line no-undef
       const anchors = [].slice.call(document.querySelectorAll(AHL_HEADER_ANCHOR_SELECTOR))
-        .filter(anchor => decodeURIComponent(instance.$route.fullPath).indexOf(decodeURIComponent(anchor.hash)) !== -1)
+        .filter(anchor => decodeURIComponent(this.$route.fullPath).indexOf(decodeURIComponent(anchor.hash)) !== -1)
       if (anchors == null || anchors.length < 1 || anchors[0].offsetTop === undefined) return
       setTimeout(function () {
         window.scrollTo(0, anchors[0].offsetTop + 160)
       }, 100)
-    }
-
-    const activationLink = () => {
-      const subtitleName = decodeURIComponent(instance.$route.fullPath)
+    },
+    activationLink() {
+      const subtitleName = decodeURIComponent(this.$route.fullPath)
       if (!subtitleName || subtitleName === '') return
       // eslint-disable-next-line no-undef
       const subtitles = [].slice.call(document.querySelectorAll(AHL_SIDEBAR_LINK_SELECTOR))
       for (let i = 0; i < subtitles.length; i++) {
         if (decodeURIComponent(subtitles[i].getAttribute('href')).indexOf(subtitleName) !== -1) {
           subtitles[i].click()
-          activationAnchor()
+          this.activationAnchor()
           return
         }
       }
-    }
-
-    const isInViewPortOfOne = () => {
+    },
+    isInViewPortOfOne() {
       const sidebarScroll = document.getElementsByClassName('sidebar')[0]
       let el = document.getElementsByClassName('active sidebar-link')[1]
       if (el == null || el.offsetTop === undefined) {
@@ -94,34 +91,28 @@ export default defineComponent({
       if (!topVisible) {
         sidebarScroll.scrollTop = (offsetTop - 5)
       }
+    },
+    isActive(page) {
+      return isActive(this.$route, page.regularPath)
+    },
+    toggleGroup(index) {
+      this.openGroupIndex = index === this.openGroupIndex ? -1 : index
     }
-
-    const toggleGroup = (index) => {
-      instance.openGroupIndex = index === instance.openGroupIndex ? -1 : index
-    }
-
-    const isActive = (page) => {
-      return isActive(instance.$route, page.regularPath)
-    }
-
-    refreshIndex()
-
-    onMounted(() => {
-      activationLink()
-      isInViewPortOfOne()
-    })
-
-    onUpdated(() => isInViewPortOfOne())
-
-    return { openGroupIndex, refreshIndex, toggleGroup, isActive }
   },
-
+  mounted() {
+    this.refreshIndex()
+    this.activationLink()
+    this.isInViewPortOfOne()
+  },
+  updated() {
+    this.isInViewPortOfOne()
+  },
   watch: {
-    '$route' () {
+    $route () {
       this.refreshIndex()
     }
   }
-})
+}
 
 function resolveOpenGroupIndex (route, items) {
   for (let i = 0; i < items.length; i++) {

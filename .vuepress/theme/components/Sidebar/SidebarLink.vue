@@ -1,12 +1,9 @@
 <script>
-import { defineComponent } from 'vue-demi'
 import { isActive } from '../../helpers/utils'
 
-export default defineComponent({
+export default {
   functional: true,
-
   props: ['item', 'sidebarDepth'],
-
   render (h,
     {
       parent: {
@@ -29,10 +26,9 @@ export default defineComponent({
     const active = item.type === 'auto'
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
-    const link = renderLink(h, item.path, item.title || item.path, active)
-    return link
+    return renderLink(h, item.path, item.title || item.path, active)
   }
-})
+}
 
 function renderLink (h, to, text, active) {
   return h('router-link', {

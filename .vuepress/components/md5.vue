@@ -10,18 +10,20 @@
 <script>
 import clipboard from '../theme/helpers/clipboard'
 import md5 from 'md5'
-import { ref, getCurrentInstance } from 'vue-demi'
 
 export default {
-  setup() {
-    const instance = getCurrentInstance()
-    const password = ref('')
-    const md5Str = ref('')
-    const generate = () => {
-      md5Str.value = md5(password.value)
+  data() {
+    return {
+      password: '',
+      md5Str: ''
     }
-    const copyClick = () => {
-      clipboard(md5Str.value)
+  },
+  methods: {
+    generate() {
+      this.md5Str = md5(this.password)
+    },
+    copyClick() {
+      clipboard(this.md5Str)
         .then(() => {})
         .catch(() => {})
 
@@ -30,13 +32,6 @@ export default {
         content: '复制成功！',
         title
       })
-    }
-
-    return {
-      md5Str,
-      password,
-      generate,
-      copyClick
     }
   }
 }

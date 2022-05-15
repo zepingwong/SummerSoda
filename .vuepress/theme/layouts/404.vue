@@ -9,42 +9,37 @@
 </template>
 
 <script>
-import { defineComponent, computed, onMounted } from 'vue-demi'
-import { useInstance } from '../helpers/composable'
-
-const msgs = [
-  `There's nothing here.`,
-  `How did we get here?`,
-  `That's a Four-Oh-Four.`,
-  `Looks like we've got some broken links.`
-]
-
-export default defineComponent({
-  setup (props, ctx) {
-    const instance = useInstance()
-
-    const noFoundPageByTencent = computed(() => {
-      return instance.$themeConfig.noFoundPageByTencent !== false
-    })
-
-    const getMsg = () => {
-      return msgs[Math.floor(Math.random() * msgs.length)]
+export default {
+  data() {
+    return {
+      msgs: [
+        `There's nothing here.`,
+        `How did we get here?`,
+        `That's a Four-Oh-Four.`,
+        `Looks like we've got some broken links.`
+      ]
     }
-
-    onMounted(() => {
-      if (noFoundPageByTencent.value) {
-        const dom = document.createElement('script')
-        dom.setAttribute('homePageName', '回到首页')
-        dom.setAttribute('homePageUrl', instance.$site.base)
-        dom.setAttribute('src', '//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js')
-
-        document.body.append(dom)
-      }
-    })
-
-    return { noFoundPageByTencent, getMsg }
+  },
+  computed: {
+    noFoundPageByTencent() {
+      return this.$themeConfig.noFoundPageByTencent !== false
+    }
+  },
+  methods: {
+    getMsg() {
+      return this.msgs[Math.floor(Math.random() * msgs.length)]
+    }
+  },
+  mounted() {
+    if (this.noFoundPageByTencent) {
+      const dom = document.createElement('script')
+      dom.setAttribute('homePageName', '回到首页')
+      dom.setAttribute('homePageUrl', this.$site.base)
+      dom.setAttribute('src', '//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js')
+      document.body.append(dom)
+    }
   }
-})
+}
 </script>
 
 <style src="../styles/theme.styl" lang="stylus"></style>

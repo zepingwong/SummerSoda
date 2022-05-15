@@ -59,57 +59,48 @@
 </template>
 
 <script>
-import { defineComponent, toRefs, reactive, computed, onMounted } from 'vue-demi'
 import TagList from './TagList'
 import FriendLink from './FriendLink'
 import NoteAbstract from '../NoteAbstract'
 import { ModuleTransition } from '../../core/components'
 import PersonalInfo from './PersonalInfo'
 import CategoryList from './CategoryList'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
+  name: 'HomeBlog',
   components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo, CategoryList },
-  setup () {
-    const instance = useInstance()
-
-    const state = reactive({
-      recoShow: false,
-      heroHeight: 0
-    })
-
-    const recoShowModule = computed(() => instance && instance.$parent.recoShowModule)
-
-    const heroImageStyle = computed(() => instance.$frontmatter.heroImageStyle || {})
-
-    const bgImageStyle = computed(() => {
-      const url = instance.$frontmatter.bgImage
-          ? instance.$withBase(instance.$frontmatter.bgImage)
-          : require('../../images/bg.svg')
+  data() {
+    return {
+      state: {
+        recoShow: false,
+        heroHeight: 0
+      }
+    }
+  },
+  computed: {
+    recoShowModule() {
+      return this && this.$parent.recoShowModule
+    },
+    heroImageStyle() {
+      return this.$frontmatter.heroImageStyle || {}
+    },
+    bgImageStyle() {
+      const url = this.$frontmatter.bgImage
+        ? this.$withBase(this.$frontmatter.bgImage)
+        : require('../../images/bg.svg')
 
       const initBgImageStyle = {
         textAlign: 'center',
         overflow: 'hidden',
         background: `url(${url}) center/cover no-repeat`
       }
-
-      const { bgImageStyle } = instance.$frontmatter
-
+      const { bgImageStyle } = this.$frontmatter
       return bgImageStyle ? { ...initBgImageStyle, ...bgImageStyle } : initBgImageStyle
-    })
-
-    onMounted(() => {
-      state.heroHeight = document.querySelector('.hero').clientHeight
-      state.recoShow = true
-    })
-
-    return {
-
-      recoShowModule,
-      heroImageStyle,
-      bgImageStyle,
-      ...toRefs(state)
     }
+  },
+  mounted() {
+    this.state.heroHeight = document.querySelector('.hero').clientHeight
+    this.state.recoShow = true
   },
   methods: {
     paginationChange (page) {
@@ -121,7 +112,7 @@ export default defineComponent({
       this.$router.push({ path: tagInfo.path })
     }
   }
-})
+}
 </script>
 
 <style scoped lang="stylus">

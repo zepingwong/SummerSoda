@@ -14,21 +14,19 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue-demi'
 import { RecoIcon } from '../../core/components'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
+  name: 'AlgoliaSearchBox',
   components: { RecoIcon },
-
   props: ['options'],
-
-  setup (props, ctx) {
-    const instance = useInstance()
-
-    const placeholder = ref(undefined)
-
-    const initialize = (userOptions, lang) => {
+  data() {
+    return {
+      placeholder: undefined
+    }
+  },
+  methods: {
+    initialize(userOptions, lang) {
       Promise.all([
         import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.js'),
         import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
@@ -51,21 +49,16 @@ export default defineComponent({
           }
         ))
       })
+    },
+    update(options, lang) {
+      this.$el.innerHTML = '<input id="algolia-search-input" class="search-query">'
+      this.initialize(options, lang)
     }
-
-    const update = (options, lang) => {
-      instance.$el.innerHTML = '<input id="algolia-search-input" class="search-query">'
-      instance.initialize(options, lang)
-    }
-
-    onMounted(() => {
-      initialize(props.options, instance.$lang)
-      placeholder.value = instance.$site.themeConfig.searchPlaceholder || ''
-    })
-
-    return { placeholder, initialize, update }
   },
-
+  mounted() {
+    this.initialize(this.options, this.$lang)
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
+  },
   watch: {
     $lang (newValue) {
       this.update(this.options, newValue)
@@ -75,7 +68,7 @@ export default defineComponent({
       this.update(newValue, this.$lang)
     }
   }
-})
+}
 </script>
 
 <style lang="stylus">

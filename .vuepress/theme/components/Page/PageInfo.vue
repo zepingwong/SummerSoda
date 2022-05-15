@@ -35,11 +35,9 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue-demi'
 import { RecoIcon } from '../../core/components'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   components: { RecoIcon },
   props: {
     pageInfo: {
@@ -57,29 +55,26 @@ export default defineComponent({
       default: false
     }
   },
-
-  setup () {
-    const instance = useInstance()
-
-    const numStyle = {
-      fontSize: '.9rem',
-      fontWeight: 'normal',
-      color: '#999'
-    }
-
-    const goTags = (tag) => {
-      if (instance.$route.path !== `/tag/${tag}/`) {
-        instance.$router.push({ path: `/tag/${tag}/` })
+  data() {
+    return {
+      numStyle: {
+        fontSize: '.9rem',
+        fontWeight: 'normal',
+        color: '#999'
       }
     }
-
-    const formatDateValue = (value) => {
-      return new Intl.DateTimeFormat(instance.$lang).format(new Date(value))
+  },
+  methods: {
+    goTags(tag) {
+      if (this.$route.path !== `/tag/${tag}/`) {
+        this.$router.push({ path: `/tag/${tag}/` })
+      }
+    },
+    formatDateValue(value) {
+      return new Intl.DateTimeFormat(this.$lang).format(new Date(value))
     }
-
-    return { numStyle, goTags, formatDateValue }
   }
-})
+}
 </script>
 
 <style lang="stylus" scoped>

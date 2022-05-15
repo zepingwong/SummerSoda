@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue-demi'
 import HomeBlog from '../components/HomeBlog'
 import HomeDocs from '../components/HomeDocs'
 import Page from '../components/Page'
@@ -15,15 +14,13 @@ import Footer from '../components/Footer'
 import Common from '../components/Common'
 import { resolveSidebarItems } from '../helpers/utils'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
-import { useInstance } from '../helpers/composable'
 
-export default defineComponent({
+export default {
   mixins: [moduleTransitonMixin],
   components: { HomeBlog, HomeDocs, Page, Common, Footer },
-  setup () {
-    const instance = useInstance()
-    const sidebarItems = computed(() => {
-      const { $page, $site, $localePath } = instance
+  computed: {
+    sidebarItems() {
+      const { $page, $site, $localePath } = this
       if ($page) {
         return resolveSidebarItems(
           $page,
@@ -34,14 +31,13 @@ export default defineComponent({
       } else {
         return []
       }
-    })
-    const homeCom = computed(() => {
-      const type = instance.$frontmatter?.type || instance.$themeConfig?.type || 'docs'
+    },
+    homeCom() {
+      const type = this.$frontmatter?.type || this.$themeConfig?.type || 'docs'
       return type === 'blog' ? 'HomeBlog' : type === 'HomeBlog' ? 'HomeBlog' :  'HomeDocs'
-    })
-    return { sidebarItems, homeCom }
+    }
   }
-})
+}
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>

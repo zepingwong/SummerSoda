@@ -42,105 +42,92 @@
 </template>
 
 <script>
-import { defineComponent, reactive, computed, ref, onMounted } from 'vue-demi'
 import md5 from 'md5'
 import { getOneColor } from '../../helpers/other'
-import { useInstance } from '../../helpers/composable'
 import { RecoIcon } from '../../core/components'
-const useDetail = () => {
-  const instance = useInstance()
-  const isPC = ref(true)
 
-  const popupWindowStyle = reactive({
-    left: 0,
-    top: 0
-  })
-
-  const adjustPosition = (dom) => {
-    const { offsetWidth } = document.body
-    const { x, width } = dom.getBoundingClientRect()
-    const distanceToRight = offsetWidth - (x + width)
-
-    if (distanceToRight < 0) {
-      const { offsetLeft } = dom
-      popupWindowStyle.left = offsetLeft + distanceToRight + 'px'
-    }
-  }
-
-  const showDetail = (e) => {
-    const currentDom = e.target
-    const popupWindowWrapper = currentDom.querySelector('.popup-window-wrapper')
-    popupWindowWrapper.style.display = 'block'
-    const popupWindow = currentDom.querySelector('.popup-window')
-    const infoWrapper = document.querySelector('.info-wrapper')
-    const { clientWidth } = currentDom
-    const { clientWidth: windowWidth, clientHeight: windowHeight } = popupWindow
-
-    if (isPC) {
-      popupWindowStyle.left = (clientWidth - windowWidth) / 2 + 'px'
-      popupWindowStyle.top = -windowHeight + 'px'
-
-      infoWrapper.style.overflow = 'visible'
-
-      instance.$nextTick(() => {
-        adjustPosition(popupWindow)
-      })
-    } else {
-      const getPosition = function (element) {
-        const dc = document
-        const rec = element.getBoundingClientRect()
-        let _x = rec.left
-        let _y = rec.top
-        _x += dc.documentElement.scrollLeft || dc.body.scrollLeft
-        _y += dc.documentElement.scrollTop || dc.body.scrollTop
-        return { left: _x, top: _y }
-      }
-
-      infoWrapper.style.overflow = 'hidden'
-      const left = getPosition(currentDom).left - getPosition(infoWrapper).left
-
-      popupWindowStyle.left = (-left + (infoWrapper.clientWidth - popupWindow.clientWidth) / 2) + 'px'
-      popupWindowStyle.top = -windowHeight + 'px'
-    }
-  }
-
-  const hideDetail = (e) => {
-    const currentDom = e.target.querySelector('.popup-window-wrapper')
-    currentDom.style.display = 'none'
-  }
-
-  onMounted(() => {
-    isPC.value = !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
-  })
-
-  return { popupWindowStyle, showDetail, hideDetail }
-}
-
-export default defineComponent({
+export default {
+  name: 'FriendLink',
   components: { RecoIcon },
-  setup () {
-    const instance = useInstance()
-
-    const { popupWindowStyle, showDetail, hideDetail } = useDetail()
-
-    const dataAddColor = computed(() => {
-      const { friendLink = [] } = instance && instance.$themeConfig.authorConfig
+  data() {
+    return {
+      isPC: true,
+      popupWindowStyle: {
+        left: 0,
+        top: 0
+      }
+    }
+  },
+  computed: {
+    dataAddColor() {
+      const { friendLink = [] } = this && this.$themeConfig.authorConfig
       return friendLink.map(item => {
         item.color = getOneColor()
         return item
       })
-    })
-
-    const getImgUrl = (info) => {
+    }
+  },
+  methods: {
+    getImgUrl(info) {
       const { logo = '', email = '' } = info
       if (logo && /^http/.test(logo)) return logo
-      if (logo && !/^http/.test(logo)) return instance.$withBase(logo)
+      if (logo && !/^http/.test(logo)) return this.$withBase(logo)
       return `//1.gravatar.com/avatar/${md5(email || '')}?s=50&amp;d=mm&amp;r=x`
-    }
+    },
+    adjustPosition(dom) {
+      const { offsetWidth } = document.body
+      const { x, width } = dom.getBoundingClientRect()
+      const distanceToRight = offsetWidth - (x + width)
+      if (distanceToRight < 0) {
+        const { offsetLeft } = dom
+        this.popupWindowStyle.left = offsetLeft + distanceToRight + 'px'
+      }
+    },
+    hideDetail(e) {
+      const currentDom = e.target.querySelector('.popup-window-wrapper')
+      currentDom.style.display = 'none'
+    },
+    showDetail(e) {
+      const currentDom = e.target
+      const popupWindowWrapper = currentDom.querySelector('.popup-window-wrapper')
+      popupWindowWrapper.style.display = 'block'
+      const popupWindow = currentDom.querySelector('.popup-window')
+      const infoWrapper = document.querySelector('.info-wrapper')
+      const { clientWidth } = currentDom
+      const { clientWidth: windowWidth, clientHeight: windowHeight } = popupWindow
 
-    return { dataAddColor, popupWindowStyle, showDetail, hideDetail, getImgUrl }
+      if (this.isPC) {
+        this.popupWindowStyle.left = (clientWidth - windowWidth) / 2 + 'px'
+        this.popupWindowStyle.top = -windowHeight + 'px'
+
+        infoWrapper.style.overflow = 'visible'
+
+        this.$nextTick(() => {
+          this.adjustPosition(popupWindow)
+        })
+      } else {
+        const getPosition = function (element) {
+          const dc = document
+          const rec = element.getBoundingClientRect()
+          let _x = rec.left
+          let _y = rec.top
+          _x += dc.documentElement.scrollLeft || dc.body.scrollLeft
+          _y += dc.documentElement.scrollTop || dc.body.scrollTop
+          return { left: _x, top: _y }
+        }
+
+        infoWrapper.style.overflow = 'hidden'
+        const left = getPosition(currentDom).left - getPosition(infoWrapper).left
+
+        this.popupWindowStyle.left = (-left + (infoWrapper.clientWidth - popupWindow.clientWidth) / 2) + 'px'
+        this.popupWindowStyle.top = -windowHeight + 'px'
+      }
+    }
+  },
+  mounted() {
+    this.isPC = !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
   }
-})
+}
 </script>
 
 <style lang="stylus" scoped>

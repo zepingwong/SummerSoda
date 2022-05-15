@@ -36,49 +36,44 @@
 </template>
 
 <script>
-import { defineComponent, computed, ref } from 'vue-demi'
 import Common from '../components/Common'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 import { ModuleTransition } from '../core/components'
 import PageInfo from '../components/Page/PageInfo'
-import { useInstance } from '../helpers/composable'
 import { RecoIcon } from '../core/components'
-export default defineComponent({
+export default {
   name: 'DocsList',
   mixins: [moduleTransitonMixin],
   components: { Common, PageInfo, ModuleTransition, RecoIcon },
-  setup () {
-    const instance = useInstance()
-    const currentPage = ref(1)
-    const docsList = computed(() => {
-      return instance.$docsLists
-    })
-
-    const numStyle = {
-      fontSize: '.9rem',
-      fontWeight: 'normal',
-      color: '#999'
+  data() {
+    return {
+      currentPage: 1,
+      numStyle: {
+        fontSize: '.9rem',
+        fontWeight: 'normal',
+        color: '#999'
+      }
     }
-    const currentPageData = computed(() => {
-      const start = (currentPage.value - 1) * 9
-      const end = currentPage.value * 9
-      return docsList.value.slice(start, end)
-    })
-    const getCurrentPage = (current) => {
-      currentPage.value = current
+  },
+  computed: {
+    docsList() {
+      return this.$docsLists
+    },
+    currentPageData() {
+      const start = (this.currentPage - 1) * 9
+      const end = this.currentPage * 9
+      return this.docsList.slice(start, end)
+    }
+  },
+  methods: {
+    getCurrentPage(current) {
+      this.currentPage = current
       setTimeout(() => {
         window.scrollTo(0, 0)
       }, 100)
     }
-    return {
-      docsList,
-      numStyle,
-      currentPage,
-      currentPageData,
-      getCurrentPage
-    }
   }
-})
+}
 </script>
 
 <style src='../styles/theme.styl' lang="stylus"></style>

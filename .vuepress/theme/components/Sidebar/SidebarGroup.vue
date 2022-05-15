@@ -54,22 +54,23 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue-demi'
 import { isActive } from '../../helpers/utils'
-import DropdownTransition from '../DropdownTransition'
+import DropdownTransition from '../DropdownLink/DropdownTransition'
 import SidebarLinks from './SidebarLinks'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   name: 'SidebarGroup',
   props: ['item', 'open', 'collapsable', 'depth'],
   components: { DropdownTransition, SidebarLinks },
-
-  setup () {
-    useInstance().$options.components.SidebarLinks = require('./SidebarLinks.vue').default
-    return { isActive }
+  beforeMount() {
+    this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
+  },
+  methods: {
+    isActive() {
+      return isActive()
+    }
   }
-})
+}
 </script>
 
 <style lang="stylus">

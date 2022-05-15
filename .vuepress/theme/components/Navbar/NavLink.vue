@@ -21,35 +21,37 @@
 </template>
 
 <script>
-import { defineComponent, computed, toRefs } from 'vue-demi'
 import { isExternal, isMailto, isTel, ensureExt } from '../../helpers/utils'
 import { RecoIcon } from '../../core/components'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
   components: { RecoIcon },
-
   props: {
     item: {
       required: true
     }
   },
-
-  setup (props, ctx) {
-    const instance = useInstance()
-
-    const { item } = toRefs(props)
-
-    const link = computed(() => ensureExt(item.value.link))
-
-    const exact = computed(() => {
-      if (instance.$site.locales) {
-        return Object.keys(instance.$site.locales).some(rootLink => rootLink === link.value)
+  computed: {
+    link() {
+      return ensureExt(this.item.link)
+    },
+    exact() {
+      if (this.$site.locales) {
+        return Object.keys(this.$site.locales).some(rootLink => rootLink === this.link)
       }
-      return link.value === '/'
-    })
-
-    return { link, exact, isExternal, isMailto, isTel }
+      return this.link === '/'
+    }
+  },
+  methods: {
+    isExternal() {
+      return isExternal()
+    },
+    isMailto() {
+      return isMailto()
+    },
+    isTel() {
+      return isTel()
+    },
   }
-})
+}
 </script>

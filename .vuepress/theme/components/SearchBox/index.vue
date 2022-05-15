@@ -2,16 +2,16 @@
   <div class="search-box">
     <reco-icon icon="icon-search" />
     <input
-      @input="query = $event.target.value"
+      @input="state.query = $event.target.value"
       aria-label="Search"
-      :value="query"
-      :class="{ 'focused': focused }"
-      :placeholder="placeholder"
+      :value="state.query"
+      :class="{ 'focused': state.focused }"
+      :placeholder="state.placeholder"
       autocomplete="off"
       spellcheck="false"
-      @focus="focused = true"
-      @blur="focused = false"
-      @keyup.enter="go(focusIndex)"
+      @focus="state.focused = true"
+      @blur="state.focused = false"
+      @keyup.enter="go(state.focusIndex)"
       @keyup.up="onUp"
       @keyup.down="onDown"
       ref="input"
@@ -26,7 +26,7 @@
         class="suggestion"
         v-for="(s, i) in suggestions"
         :key="i"
-        :class="{ focused: i === focusIndex }"
+        :class="{ focused: i === state.focusIndex }"
         @mousedown="go(i)"
         @mouseenter="focus(i)"
       >
@@ -40,45 +40,30 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs, computed } from 'vue-demi'
 import { RecoIcon } from '../../core/components'
-import { useInstance } from '../../helpers/composable'
 
-export default defineComponent({
+export default {
+  name: 'SearchBox',
   components: { RecoIcon },
-  setup () {
-    const instance = useInstance()
-
-    const state = reactive({
-      query: '',
-      focused: false,
-      focusIndex: 0,
-      placeholder: undefined
-    })
-
-    const showSuggestions = computed(() => {
-      return (
-        state.focused && suggestions.value && suggestions.value.length
-      )
-    })
-
-    const getPageLocalePath = (page) => {
-      for (const localePath in instance.$site.locales || {}) {
-        if (localePath !== '/' && page.path.indexOf(localePath) === 0) {
-          return localePath
-        }
+  data() {
+    return {
+      state: {
+        query: '',
+        focused: false,
+        focusIndex: 0,
+        placeholder: undefined
       }
-      return '/'
     }
-
-    const suggestions = computed(() => {
-      const query = state.query.trim().toLowerCase()
+  },
+  computed: {
+    suggestions() {
+      const query = this.state.query.trim().toLowerCase()
       if (!query) {
         return
       }
-      const { pages } = instance.$site
-      const max = instance.$site.themeConfig.searchConfig.searchMaxSuggestions || 10
-      const localePath = instance.$localePath
+      const { pages } = this.$site
+      const max = this.$site.themeConfig.searchConfig.searchMaxSuggestions || 10
+      const localePath = this.$localePath
       const matches = item => (
         item && item.title && item.title.toLowerCase().indexOf(query) > -1
       )
@@ -87,7 +72,7 @@ export default defineComponent({
         if (res.length >= max) break
         const p = pages[i]
         // filter out results that do not match current locale
-        if (getPageLocalePath(p) !== localePath) {
+        if (this.getPageLocalePath(p) !== localePath) {
           continue
         }
         if (matches(p)) {
@@ -106,57 +91,62 @@ export default defineComponent({
         }
       }
       return res
-    })
-
-    const alignRight = computed(() => {
-      const navCount = (instance.$site.themeConfig.navConfig || {}).length - 1
-      const repo = instance.$site.repo ? 1 : 0
+    },
+    showSuggestions() {
+      return this.state.focused && this.suggestions && this.suggestions.length
+    },
+    alignRight() {
+      const navCount = (this.$site.themeConfig.navConfig || {}).length - 1
+      const repo = this.$site.repo ? 1 : 0
       return navCount + repo <= 2
-    })
-
-    const onUp = () => {
-      if (showSuggestions.value) {
-        if (state.focusIndex > 0) {
-          state.focusIndex--
-        } else {
-          state.focusIndex = suggestions.value.length - 1
+    }
+  },
+  methods: {
+    getPageLocalePath(page) {
+      for (const localePath in this.$site.locales || {}) {
+        if (localePath !== '/' && page.path.indexOf(localePath) === 0) {
+          return localePath
         }
       }
-    }
-
-    const onDown = () => {
-      if (showSuggestions.value) {
-        if (state.focusIndex < suggestions.value.length - 1) {
-          state.focusIndex++
+      return '/'
+    },
+    onUp() {
+      if (this.showSuggestions) {
+        if (this.state.focusIndex > 0) {
+          this.state.focusIndex--
         } else {
-          state.focusIndex = 0
+          this.state.focusIndex = this.suggestions.length - 1
         }
       }
-    }
-
-    const go = (i) => {
-      if (!showSuggestions.value) {
+    },
+    onDown() {
+      if (this.showSuggestions) {
+        if (this.state.focusIndex < this.suggestions.length - 1) {
+          this.state.focusIndex++
+        } else {
+          this.state.focusIndex = 0
+        }
+      }
+    },
+    go(i) {
+      if (!this.showSuggestions) {
         return
       }
-      instance.$router.push(suggestions.value[i].path)
-      state.query = ''
-      state.focusIndex = 0
+      this.$router.push(this.suggestions[i].path)
+      this.state.query = ''
+      this.state.focusIndex = 0
+    },
+    focus(i) {
+      this.state.focusIndex = i
+    },
+    unfocus() {
+      this.state.focusIndex = -1
     }
-
-    const focus = (i) => {
-      state.focusIndex = i
-    }
-
-    const unfocus = () => {
-      state.focusIndex = -1
-    }
-
-    return { showSuggestions, suggestions, alignRight, onUp, onDown, focus, unfocus, go, ...toRefs(state) }
   },
   mounted () {
     this.placeholder = this.$site.themeConfig.searchConfig.searchPlaceholder || ''
   }
-})
+}
 </script>
 
 <style lang="stylus">

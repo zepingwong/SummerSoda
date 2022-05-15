@@ -7,18 +7,18 @@
       v-show="!item.pages || (item.pages && item.pages.length > 0)"
       :key="index"
       :class="{'active': item.name === currentTag}"
-      :style="{ 'backgroundColor': getOneColor() }"
+      :style="{ 'backgroundColor': getColor() }"
       @click="tagClick(item)">{{item.name}}
     </span>
   </div>
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue-demi'
-import { getOneColor } from '../../helpers/other'
-import { useInstance } from '../../helpers/composable'
 import { RecoIcon } from '../../core/components'
-export default defineComponent({
+import { getOneColor } from '../../helpers/other'
+
+export default {
+  name: 'TagList',
   components: { RecoIcon },
   props: {
     currentTag: {
@@ -26,19 +26,20 @@ export default defineComponent({
       default: ''
     }
   },
-  setup (props, ctx) {
-    const instance = useInstance()
-    const tags = computed(() => {
-      return [{ name: instance.$customLocales.all, path: '/tag/' }, ...instance.$tagesList]
-    })
-
-    const tagClick = tag => {
-      ctx.emit('getCurrentTag', tag)
+  computed: {
+    tags() {
+      return [{ name: this.$customLocales.all, path: '/tag/' }, ...this.$tagesList]
     }
-
-    return { tags, tagClick, getOneColor }
+  },
+  methods: {
+    tagClick(tag) {
+      this.$emit('getCurrentTag', tag)
+    },
+    getColor() {
+      return getOneColor()
+    }
   }
-})
+}
 </script>
 
 <style lang="stylus" scoped>
