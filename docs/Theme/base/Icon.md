@@ -15,6 +15,20 @@ date: 2020-05-29
 
 <IconList></IconList>
 
+### ***本项目图标库***
+
+```stylus
+@font-face {
+  font-family: 'iconfont';  /* project id 3372761 */
+  src: url('');
+  src: url('?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_3372761_ep41nmc9b8a.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_3372761_ep41nmc9b8a.woff') format('woff'),
+  url('//at.alicdn.com/t/font_3372761_ep41nmc9b8a.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_3372761_ep41nmc9b8a.svg#iconfont') format('svg');
+}
+```
+
 ## ***外部图标***
 
 ### ***引入方法***
@@ -23,6 +37,7 @@ date: 2020-05-29
 
 1. 将图标库中的图标下载到本地，并将其中的 `iconfont.css` 、 `iconfont.ttf` 、 `iconfont.woff` 和 `iconfont.woff2` 拷贝到 `.vuepress/public/fonts` 目录下。
 2. `.vuepress` 目录下建立 `enhanceApp.js`， 并在该文件中引入第1步拷贝的 `iconfont.css` 文件。
+
 ```javascript
 // .vuepress\enhanceApp.js
 
@@ -51,3 +66,7 @@ your project directory
 ├─ README.md
 └─ package.json
 ```
+
+### ***注意***
+
+使用 iconfont 图标时，需要注意图标的 `Unicode` 编码，`&#xff00;` 到 `&#xffff;` 已被内置图标占用，引用外置图标时要注意

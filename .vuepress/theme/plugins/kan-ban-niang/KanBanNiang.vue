@@ -5,7 +5,7 @@
         {{ messages.message || '欢迎来到 ' + $site.title }}
       </div>
       <div
-        v-show="!isShowBtns"
+        v-show="isShowBtns"
         :style="btnStyle"
         class="operation"
         @mouseenter="isShowMessageBox = true"
@@ -16,7 +16,7 @@
 <!--        <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html">-->
 <!--          <i class="kbnfont kbn-ban-info info" @mouseenter="hoverMoreInfo" @mouseleave="resetMessage" ></i>-->
 <!--        </a>-->
-        <i v-show="myTheme.length > 1" class="kbnfont kbn-ban-theme skin" @click="changeTheme" @mouseenter="hoverChangeTheme" @mouseleave="resetMessage"></i>
+        <i v-show="themeName.length > 1" class="kbnfont kbn-ban-theme skin" @click="changeTheme" @mouseenter="hoverChangeTheme" @mouseleave="resetMessage"></i>
       </div>
       <canvas
         id="banniang"
@@ -41,18 +41,16 @@ export default {
       isLoaded: true,
       displayBanNiang: false,
       isShowMessageBox: false,
-      isShowBtns: CLEAN,
+      isShowBtns: true,
       messages: {
-        message: MESSAGES.welcome,
-        welcome: MESSAGES.welcome,
-        home: MESSAGES.home,
-        theme: MESSAGES.theme,
-        close: MESSAGES.close,
-        info: MESSAGES.info
+        message: '',
+        welcome: '',
+        home: '心里的花，我想要带你回家。',
+        theme: '好吧，希望你能喜欢我的其他小伙伴。',
+        close: '你知道我喜欢吃什么吗？痴痴地望着你。',
+        info: '想知道关于我的更多信息吗？'
       },
-      currentTheme: THEME[0],
-      myTheme: THEME,
-      themeName: ['blackCat', 'whiteCat', 'haru1', 'haru2', 'haruto', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16'],
+      currentTheme: '',
       // 模型地址
       model: {
         blackCat:
@@ -80,21 +78,51 @@ export default {
       },
       // model的高宽
       style: {
-        width: WIDTH,
-        height: HEIGHT
+        width: 150,
+        height: 220
       },
       // model的样式
       modelStyle: MODEL_STYLE,
-      // messageBox的样式
-      messageStyle: MESSAGE_STYLE,
+      // messageBox 样式
+      messageStyle: {
+        right: '68px',
+        bottom: '190px'
+      },
       // 按钮的样式
-      btnStyle: BTN_STYLE
+      btnStyle: {
+        right: '90px',
+        bottom: '40px'
+      }
     }
+  },
+  computed: {
+    themeName() {
+      const allTheme = ['blackCat', 'whiteCat', 'haru1', 'haru2', 'haruto', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16']
+      const theme = this.$themeConfig?.KanBanNiang?.theme || []
+      return theme.length > 0 ? theme.filter((item) =>{
+        return allTheme.indexOf(item) > 0
+      }) : allTheme
+    }
+  },
+  beforeMount() {
+    this.messages = {
+      ...this.messages,
+      ...this.$themeConfig?.KanBanNiang?.messages
+    }
+    this.messageStyle = {
+      ...this.messageStyle,
+      ...this.$themeConfig?.KanBanNiang?.messageStyle
+    }
+    this.style.width = this.$themeConfig?.KanBanNiang?.width || 150
+    this.style.height = this.$themeConfig?.KanBanNiang?.height || 220
+    this.isShowBtns = this.$themeConfig?.KanBanNiang?.isShowBtns || true
+    this.currentTheme = this.themeName[0]
   },
   mounted () {
     this.btnStyle = {
       ...this.btnStyle,
-      height: this.myTheme.length > 1 ? '120px' : '100px'
+      ...this.$themeConfig?.KanBanNiang?.btnStyle,
+      height: this.themeName.length > 1 ? '120px' : '100px'
     }
     // 初始化live2d模型
     this.initBanNiang()
@@ -121,14 +149,10 @@ export default {
       }
     },
     changeTheme () {
-      const themes = []
-      for (let i = 0; i < this.myTheme.length; i++) {
-        if (this.myTheme[i] !== this.currentTheme) {
-          themes.push(this.myTheme[i])
-        }
-      }
-      const randomNum = Math.floor(Math.random() * (this.myTheme.length - 1))
-      this.currentTheme = themes[randomNum]
+      const themes = this.themeName.filter((item) => {
+        return item !== this.currentTheme
+      })
+      this.currentTheme = themes[Math.floor(Math.random() * (this.themeName.length - 1))]
       this.initBanNiang()
     },
     closeBanNiang () {
@@ -176,7 +200,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@require './assets/iconfont/iconfont.css'
+@require 'assets/iconfont/iconfont.css'
   .showBanNiang
     position fixed
     right 70px
