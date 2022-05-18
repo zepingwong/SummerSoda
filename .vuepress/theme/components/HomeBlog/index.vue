@@ -38,12 +38,12 @@
           <!-- 个人信息 -->
           <personal-info v-if="$frontmatter.PersonalInfo !== false" />
           <!-- 个人信息 -->
-          <!-- 分类列表 -->
-          <category-list v-if="$frontmatter.CategoryList !== false" />
-          <!-- 分类列表 -->
           <!-- 标签列表 -->
           <tag-list v-if="$frontmatter.TagList !== false"  @getCurrentTag="getPagesByTags" />
           <!-- 标签列表 -->
+          <!-- 分类列表 -->
+          <category-list v-if="$frontmatter.CategoryList !== false" />
+          <!-- 分类列表 -->
           <!-- 友情链接 -->
           <friend-link/>
           <!-- 友情链接 -->

@@ -21,6 +21,10 @@
         <h3>{{$tags.list.length}}</h3>
         <h6>{{$customLocales.tag}}</h6>
       </div>
+      <div>
+        <h3>{{$categoriesList.length}}</h3>
+        <h6>{{$customLocales.category}}</h6>
+      </div>
     </div>
     <ul class="social-links">
       <li
@@ -66,11 +70,14 @@ export default{
   .num
     display flex
     margin 0 auto 1rem
-    width 80%
+    width 90%
     > div
       text-align center
-      flex 0 0 50%
+      flex 0 0 33%
+      margin auto
       &:first-child
+        border-right 1px solid #333
+      &:nth-child(2)
         border-right 1px solid #333
       h3
         line-height auto

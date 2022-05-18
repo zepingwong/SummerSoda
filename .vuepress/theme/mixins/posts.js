@@ -53,12 +53,12 @@ export default {
     $docsLists () {
       let list = []
       this.$site.pages.map((item) => {
-        const { frontmatter: { home, type, heroText, tagline, heroImage }, path } = item
+        const { frontmatter: { home, type, heroText, tagline, heroImage, link }, path } = item
         if (home && type === 'HomeDocs') {
           list.push({
             title: heroText,
             description: tagline,
-            link: path,
+            link: link? link : path,
             heroImage: heroImage
           })
         }

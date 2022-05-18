@@ -74,11 +74,13 @@ export default {
   position fixed
   top 3.6rem
   bottom 0
-  right 0.5rem
+  right 0.2rem
   overflow-y scroll
+  scroll-behavior smooth
+  /************** 滚动条 **************/
   &::-webkit-scrollbar
-    width 0
-    height 0
+    width 2px
+    height 5px
 
 
 .sub-sidebar-content
@@ -104,11 +106,11 @@ export default {
   font-size 12px
   float right
   li
-    padding .2rem 0
+    padding .1rem 0
     cursor pointer
     border-left 1px solid var(--border-color)
     a
-      padding 0.35rem 1rem 0.35rem 0
+      padding 0
       color var(--text-color)
       p
         overflow-x hidden

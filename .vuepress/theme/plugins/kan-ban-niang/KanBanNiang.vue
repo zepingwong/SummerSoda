@@ -13,9 +13,9 @@
         <i class="kbnfont kbn-ban-home ban-home" @click="goHome" @mouseenter="hoverGoHome" @mouseleave="resetMessage"></i>
         <i class="kbnfont kbn-ban-message message"></i>
         <i class="kbnfont kbn-ban-close close" @click="closeBanNiang" @mouseenter="hoverCloseBanNiang" @mouseleave="resetMessage"></i>
-<!--        <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html">-->
-<!--          <i class="kbnfont kbn-ban-info info" @mouseenter="hoverMoreInfo" @mouseleave="resetMessage" ></i>-->
-<!--        </a>-->
+        <a target="_blank" :href="$themeConfig.KanBanNiang.targetUrl ? $themeConfig.KanBanNiang.targetUrl :'https://docs.wppdjw.xyz/SummerSoda/docs/Theme/plugins/KanBanNiang.html'">
+          <i class="kbnfont kbn-ban-info info" @mouseenter="hoverMoreInfo" @mouseleave="resetMessage" ></i>
+        </a>
         <i v-show="themeName.length > 1" class="kbnfont kbn-ban-theme skin" @click="changeTheme" @mouseenter="hoverChangeTheme" @mouseleave="resetMessage"></i>
       </div>
       <canvas
