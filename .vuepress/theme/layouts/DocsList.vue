@@ -13,10 +13,12 @@
         <div class="list-wrapper">
           <div class="list-item" v-for="(doc, index) in currentPageData" :key="index" @click="$router.push(doc.link)">
             <div v-if="doc.title" class="card-wrapper">
-              <div class="title">
-                <router-link :to="doc.link">{{doc.title}}</router-link>
+              <div style="width: 100%; position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                <div class="title">
+                  <router-link :to="doc.link">{{doc.title}}</router-link>
+                </div>
+                <div class="desc">{{ doc.description }}</div>
               </div>
-              <div class="desc">{{ doc.description }}</div>
             </div>
             <div v-else class="card-wrapper">
               <img :src="$withBase(doc.heroImage)" alt="封面图片">
@@ -117,8 +119,12 @@ export default {
           box-sizing border-box
           padding 1rem 1rem
           img
-            width 100%
+            width 90%
             height auto
+            position absolute
+            top 50%
+            left 50%
+            transform translate(-50%, -50%)
           .title
             position relative
             font-size 1.28rem

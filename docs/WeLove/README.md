@@ -3,14 +3,9 @@ home: true
 type: HomeDocs
 heroText: null
 tagline: null
-heroImage: /images/WeLove/hero_WeLove.svg
+heroImage: /images/WeLove/hero_WeLove.png
 heroImageStyle: {
-  display: block,
-  margin: '4rem auto 2rem',
   background: 'transparent'
-}
-bgImageStyle: {
-  height: '450px'
 }
 isShowTitleInHome: false
 actionText: 开始

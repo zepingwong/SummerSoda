@@ -13,14 +13,19 @@ type: HomeDocs
 ```
 
 ## ***标题：heroText***
+
 可以通过`heroText`配置当前页页面中间的标题。
+
 >1. 当`heroText`设置为`null`时，`heroText`不显示；
 >2. 当`heroText`设置为空或不设置时，`heroText`显示为[原生配置](/docs/Theme/config/native.md#title)的`title`。
 
 ## ***标语：tagline***
+
 可以通过`tagline`配置当前页页面中间的副标题（页面描述）。
+
 >1. 当`tagline`设置为`null`时，`tagline`不显示；
 >2. 当`tagline`设置为空或不设置时，`tagline`显示为[原生配置](/docs/Theme/config/native.md#description)的`description`。
+
 ```yaml
 ---
 home: true
@@ -31,9 +36,11 @@ tagline: A Beautiful Docs Style
 ```
 
 ## ***横幅：heroImage***
+
 `heroImage`可以为服务器本地图片，也可以为网络图片的url。一般`heroImage`带有鲜明特色，一般为网站logo或网站名称+网站简介。
+
 >如果您的`heroImage`设置的图片具有网站标题，则可以设置 `heroText`为`null`以使标题不再显示；`tagline`设置相同。
->
+
 ```yaml
 ---
 home: true
@@ -47,5 +54,19 @@ heroImageStyle: {
   background: '#fff',
   borderRadius: '1rem'
 }
+---
+```
+
+## ***跳转：link***
+
+如果希望在文档列表页面点击文档项目后跳转到其他页面时，可以通过配置 `frontmatter.link` 配置跳转页面（默认跳转为文档封面页）。
+
+```yaml
+---
+home: true
+type: HomeDocs
+heroText: My Docs
+tagline: A Beautiful Docs Style
+link: /docs/example/base/
 ---
 ```

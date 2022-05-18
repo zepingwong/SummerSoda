@@ -4,6 +4,7 @@
       <ModuleTransition>
         <img
           v-if="recoShowModule && $frontmatter.heroImage"
+          class="hero-img"
           :style="heroImageStyle || {}"
           :src="$withBase($frontmatter.heroImage)"
           alt="hero">
@@ -59,10 +60,7 @@ export default {
       }
     },
     heroImageStyle() {
-      return this.$frontmatter.heroImageStyle || {
-        maxHeight: '200px',
-        margin: '6rem auto 1.5rem'
-      }
+      return this.$frontmatter.heroImageStyle || {}
     }
   }
 }
@@ -76,6 +74,10 @@ export default {
   min-height auto
   .hero
     text-align center
+    .hero-img
+      max-width: 40rem;
+      width: 30rem;
+      margin: 5rem auto 3rem
     h1
       display block
       font-size 2.5rem
@@ -130,6 +132,12 @@ export default {
 @media (max-width $MQMobile)
   .home
     height auto
+    .hero
+      .hero-img {
+        width: 16rem;
+        max-height: 20rem;
+        margin: 2rem auto 2rem;
+      }
     .features
       flex-direction column
 
@@ -143,9 +151,11 @@ export default {
     padding-right 1.5rem
     height auto
     .hero
-      img
-        max-height 210px
-        margin 2rem auto 1.2rem
+      .hero-img {
+        width: 16rem;
+        max-height: 15rem;
+        margin: 2rem auto 2rem;
+      }
       h1
         font-size 2rem
       h1, .description, .action

@@ -17,6 +17,9 @@ module.exports = {
       path: '/docs/CSS/other/'
     }],
     '/docs/CSS/other/': [{
+      title: '参考手册',
+      path: '/docs/CSS/cssref/'
+    }, {
         title: '其他',
         collapsable: false,
         children: [

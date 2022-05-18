@@ -6,13 +6,13 @@
 	.st0{fill:#3EAF7C;}
 	.st1{font-family:'HYChunRanShouShuW';}
 	.st2{font-size:72px;}
-	.st3{letter-spacing:-6.5;}
-	.st4{enable-background:new    ;}
-	.st5{font-size:60px;}
-	.st6{letter-spacing:5.3;}
-	.st7{font-size:180px;}
-	.st8{letter-spacing:17.8;}
+	.st3{letter-spacing:-5.6;}
+	.st4{font-size:60px;}
+	.st5{letter-spacing:4.4;}
+	.st6{font-size:180px;}
+	.st7{letter-spacing:16.9;}
 </style>
-<text transform="matrix(1.0735 0 0 1 117.8462 261.9316)" class="st0 st1 st2 st3">为你开发一个微信小程序</text>
-<text transform="matrix(1.124 0 0 1 -18.1963 150)" class="st4"><tspan x="0" y="0" class="st0 st1 st5 st6"> </tspan><tspan x="38.4" y="0" class="st0 st1 st7 st8">WeLove|纪念日</tspan></text>
+<text transform="matrix(1.0735 0 0 1 238.8462 272.0918)" class="st0 st1 st2 st3">为你开发一个微信小程序</text>
+<text transform="matrix(1.124 0 0 1 -18.1963 150)" class="st0 st1 st4 st5"> </text>
+<text transform="matrix(1.124 0 0 1 24.9653 150)" class="st0 st1 st6 st7">WeLove|纪念日</text>
 </svg>
