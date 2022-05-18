@@ -19,7 +19,7 @@
               <div class="desc">{{ doc.description }}</div>
             </div>
             <div v-else class="card-wrapper">
-              <img :src="doc.heroImage" alt="封面图片">
+              <img :src="$withBase(doc.heroImage)" alt="封面图片">
             </div>
           </div>
         </div>
