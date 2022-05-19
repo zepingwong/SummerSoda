@@ -31,44 +31,50 @@
       </div>
     </div>
     <div class="wish">
-      <div class="yesterday">
-        <div class="wish-inner">
-          <div class="img-wrapper">
-            <img src="./images/yesterday.svg" alt="">
-          </div>
-          <div class="text-wrapper">
-            <h1>{{ frontmatter.features[0].title }}</h1>
-            <p class="description">{{ frontmatter.features[0].details }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="today">
-        <div class="wish-inner">
-          <div class="text-wrapper">
-            <h1>{{ frontmatter.features[1].title }}</h1>
-            <p class="description">{{ frontmatter.features[1].details }}</p>
-          </div>
-          <div class="img-wrapper">
-            <img src="./images/today.svg" alt="">
+      <ModuleTransition delay="0.16">
+        <div class="yesterday">
+          <div class="wish-inner">
+            <div class="img-wrapper">
+              <img src="./images/yesterday.svg" alt="">
+            </div>
+            <div class="text-wrapper">
+              <h1>{{ frontmatter.features[0].title }}</h1>
+              <p class="description">{{ frontmatter.features[0].details }}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="tomorrow">
-        <div class="wish-inner">
-          <div class="img-wrapper">
-            <img src="./images/tomorrow.svg" alt="">
-          </div>
-          <div class="text-wrapper">
-            <h1>{{ frontmatter.features[2].title }}</h1>
-            <p class="description">{{ frontmatter.features[2].details }}</p>
+      </ModuleTransition>
+      <ModuleTransition delay="0.20">
+        <div class="today">
+          <div class="wish-inner">
+            <div class="text-wrapper">
+              <h1>{{ frontmatter.features[1].title }}</h1>
+              <p class="description">{{ frontmatter.features[1].details }}</p>
+            </div>
+            <div class="img-wrapper">
+              <img src="./images/today.svg" alt="">
+            </div>
           </div>
         </div>
-      </div>
+      </ModuleTransition>
+      <ModuleTransition delay="0.24">
+        <div class="tomorrow">
+          <div class="wish-inner">
+            <div class="img-wrapper">
+              <img src="./images/tomorrow.svg" alt="">
+            </div>
+            <div class="text-wrapper">
+              <h1>{{ frontmatter.features[2].title }}</h1>
+              <p class="description">{{ frontmatter.features[2].details }}</p>
+            </div>
+          </div>
+        </div>
+      </ModuleTransition>
     </div>
 
-    <section class="md-content-wrapper">
-      <Content/>
-    </section>
+    <ModuleTransition delay="0.28">
+      <Content class="md-content-wrapper" v-show="recoShowModule" custom/>
+    </ModuleTransition>
   </div>
 </template>
 
@@ -103,38 +109,6 @@ export default {
 <style lang="stylus" scoped>
 .home-page-one-wrapper
   padding $navbarHeight 0 0
-  .hero
-    position relative
-    text-align center
-    height calc(100vh - 3.4rem)
-    > div
-      position absolute
-      width 80%
-      top 50%
-      left 50%
-      transform translate(-50%, -50%)
-      .hero-img
-        max-width 40rem
-        width 30rem
-        margin: 5rem auto 3rem
-      h1
-        font-size 2.5rem
-        margin-bottom 0
-      .description
-        font-size 1.6rem
-        margin-top 0
-      .action-button
-        display inline-block
-        color #fff
-        background-color $accentColor
-        padding 0.2rem 1.2rem
-        border-radius $borderRadius
-        transition background-color 0.1s ease
-        box-sizing border-box
-        load-start()
-        &:hover
-          background-color lighten($accentColor, 10%)
-
   .wish
     overflow hidden
     .yesterday, .tomorrow
@@ -162,13 +136,6 @@ export default {
 
 @media (max-width $MQMobile)
   .home-page-one-wrapper
-    .hero
-      > div
-        width 90%
-        .hero-img
-          width 16rem
-          max-height 20rem
-          margin 2rem auto 2rem
     .wish
       .wish-inner
         display block
@@ -180,21 +147,12 @@ export default {
 
 @media (max-width $MQMobileNarrow)
   .home-page-one-wrapper
-    .hero
-      > div
-        width 90%
-        .hero-img
-          width 16rem
-          max-height 15rem
-          margin 2rem auto 2rem
-
     .wish
       .wish-inner
         display block
         padding 2rem 0
         .img-wrapper
           margin 0 auto
-
     .md-content-wrapper
        padding 0
 </style>

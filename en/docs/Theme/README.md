@@ -3,7 +3,7 @@ home: true
 type: HomeDocs
 heroText: Theme Development Notes
 tagline: A Good looking Note-Taking Blog Theme
-actionText: 开始
+actionText: Start
 actionLink: /en/docs/Theme/
 features:
 - title: Yesterday

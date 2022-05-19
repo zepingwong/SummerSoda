@@ -77,38 +77,6 @@ export default {
 <style scoped lang="stylus">
 .home-docs-wrapper
   padding $navbarHeight 0 0
-  .hero
-    position relative
-    text-align center
-    height calc(100vh - 3.4rem)
-    > div
-      width 80%
-      position absolute
-      top 50%
-      left 50%
-      transform translate(-50%, -50%)
-      .hero-img
-        max-width 40rem
-        width 30rem
-        margin: 5rem auto 3rem
-      h1
-        font-size 2.5rem
-        margin 0
-      .description
-        font-size 1.6rem
-        margin-top 0
-      .action-button
-        display inline-block
-        color #fff
-        background-color $accentColor
-        padding 0.2rem 1.2rem
-        border-radius $borderRadius
-        transition background-color 0.1s ease
-        box-sizing border-box
-        load-start()
-        &:hover
-          background-color lighten($accentColor, 10%)
-
   .features
     margin auto
     max-width 960px
@@ -135,13 +103,6 @@ export default {
 
 @media (max-width $MQMobile)
   .home-docs-wrapper
-    .hero
-      > div
-        width 90%
-        .hero-img
-          width 16rem
-          max-height 20rem
-          margin 2rem auto 2rem
 
     .features
       .feature
@@ -154,13 +115,6 @@ export default {
 
 @media (max-width $MQMobileNarrow)
   .home-docs-wrapper
-    .hero
-      > div
-        width 90%
-        .hero-img
-          width 16rem
-          max-height 20rem
-          margin 2rem auto 2rem
 
     .features
       .feature

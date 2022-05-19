@@ -1,48 +1,49 @@
 <template>
-  <div class="home-blog">
+  <div class="home-blog-wrapper">
     <div class="hero" :style="{ ...$bgImageStyle }">
       <div>
         <ModuleTransition>
           <img
+              v-if="recoShowModule && frontmatter.heroImage"
               class="hero-img"
-              v-if="recoShowModule && $frontmatter.heroImage"
-              :style="heroImageStyle || {}"
-              :src="$withBase($frontmatter.heroImage)"
-              alt="hero"
+              :style="frontmatter.heroImageStyle || {}"
+              :src="$withBase(frontmatter.heroImage)"
+              alt="hero-img"
           />
         </ModuleTransition>
-
         <ModuleTransition delay="0.04">
-          <h1 v-if="recoShowModule && $frontmatter.heroText !== null">
-            {{ $frontmatter.heroText || $title }}
+          <h1 v-if="recoShowModule && frontmatter.heroText !== null && frontmatter.heroText !== false">
+            {{ frontmatter.heroText || $title }}
           </h1>
         </ModuleTransition>
-
         <ModuleTransition delay="0.08">
-          <p v-if="recoShowModule && $frontmatter.tagline !== null" class="description">
-            {{ $frontmatter.tagline || $description }}
+          <p
+            v-if="recoShowModule && frontmatter.tagline !== null && frontmatter.heroText !== false"
+            class="description"
+          >
+            {{ frontmatter.tagline || $description }}
           </p>
         </ModuleTransition>
       </div>
     </div>
 
-    <ModuleTransition delay="0.16">
-      <div v-show="recoShowModule" class="home-blog-wrapper">
-        <!-- 博客列表 -->
-        <div class="blog-list">
+    <ModuleTransition delay="0.12">
+      <div v-show="recoShowModule" class="article">
+        <!-- 文章列表 -->
+        <div class="list">
           <note-abstract :data="$recoPosts" @paginationChange="paginationChange" />
         </div>
-        <!-- 博客列表 -->
+        <!-- 文章列表 -->
         <!-- 信息包装器 -->
         <div class="info-wrapper">
           <!-- 个人信息 -->
-          <personal-info v-if="$frontmatter.PersonalInfo !== false" />
+          <personal-info v-if="frontmatter.PersonalInfo !== false" />
           <!-- 个人信息 -->
           <!-- 标签列表 -->
-          <tag-list v-if="$frontmatter.TagList !== false"  @getCurrentTag="getPagesByTags" />
+          <tag-list v-if="frontmatter.TagList !== false"  @getCurrentTag="getPagesByTags" />
           <!-- 标签列表 -->
           <!-- 分类列表 -->
-          <category-list v-if="$frontmatter.CategoryList !== false" />
+          <category-list v-if="frontmatter.CategoryList !== false" />
           <!-- 分类列表 -->
           <!-- 友情链接 -->
           <friend-link/>
@@ -52,8 +53,8 @@
       </div>
     </ModuleTransition>
 
-    <ModuleTransition delay="0.24">
-      <Content v-show="recoShowModule" class="home-center" custom/>
+    <ModuleTransition delay="0.16">
+      <Content v-show="recoShowModule" class="md-content-wrapper" custom/>
     </ModuleTransition>
   </div>
 </template>
@@ -78,11 +79,11 @@ export default {
     }
   },
   computed: {
+    frontmatter() {
+      return this.$frontmatter
+    },
     recoShowModule() {
       return this && this.$parent.recoShowModule
-    },
-    heroImageStyle() {
-      return this.$frontmatter.heroImageStyle || {}
     },
   },
   mounted() {
@@ -90,7 +91,7 @@ export default {
     this.state.recoShow = true
   },
   methods: {
-    paginationChange (page) {
+    paginationChange () {
       setTimeout(() => {
         window.scrollTo(0, this.heroHeight)
       }, 100)
@@ -103,54 +104,23 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.home-blog {
-  padding: 0;
-  margin: 0 auto;
-  .hero {
-    margin $navbarHeight auto 0
-    position relative
-    box-sizing border-box
-    padding 0 20px
-    height 100vh
+.home-blog-wrapper
+  margin $navbarHeight 0 0
+  .article
     display flex
-    align-items center
-    justify-content center
-    .hero-img {
-      max-width: 40rem;
-      width: 30rem;
-      margin: 0 auto 1.5rem
-    }
-
-    h1 {
-      display: block;
-      margin:0 auto 1.8rem;
-      font-size: 2.5rem;
-    }
-
-    .description {
-      margin: 1.8rem auto;
-      font-size: 1.6rem;
-      line-height: 1.3;
-    }
-  }
-  .home-blog-wrapper {
-    display flex
-    align-items: flex-start;
-    margin 20px auto 0
+    align-items flex-start
+    margin 0 auto
     padding 0 20px
     max-width $homePageWidth
-    .blog-list {
+    .list
       flex auto
       width 0
-      .abstract-wrapper {
-        .abstract-item:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-    .info-wrapper {
-      position -webkit-sticky;
-      position sticky;
+      .abstract-wrapper
+        .abstract-item:last-child
+          margin-bottom: 0
+    .info-wrapper
+      position -webkit-sticky
+      position sticky
       top 70px
       overflow hidden
       transition all .3s
@@ -162,98 +132,36 @@ export default {
       box-sizing border-box
       padding 0 15px
       background var(--background-color)
-      &:hover {
+      &:hover
         box-shadow var(--box-shadow-hover)
-      }
-      h4 {
+      h4
         color var(--text-color)
-      }
-    }
-  }
-}
 
-@media (max-width: $MQMobile) {
-  .home-blog {
-    .hero {
-      height 450px
-      .hero-img {
-        width: 16rem;
-        max-height: 20rem;
-        margin: 2rem auto 1.2rem;
-      }
 
-      h1 {
-        margin: 0 auto 1.8rem ;
-        font-size: 2rem;
-      }
-
-      .description {
-        font-size: 1.2rem;
-      }
-
-      .action-button {
-        font-size: 1rem;
-        padding: 0.6rem 1.2rem;
-      }
-    }
-    .home-blog-wrapper {
+@media (max-width: $MQMobile)
+  .home-blog-wrapper
+    .article
       display block!important
-      .blog-list {
+      .list
         width auto
-      }
-      .info-wrapper {
-        // display none!important
+      .info-wrapper
         margin-left 0
-        .personal-info-wrapper {
+        .personal-info-wrapper
           display none
-        }
-      }
-    }
-  }
-}
 
-@media (max-width: $MQMobileNarrow) {
-  .home-blog {
-    .hero {
-      height 450px
-      .hero-img {
-        width: 16rem;
-        max-height: 15rem;
-        margin: 2rem auto 1.2rem;
-      }
+    .md-content-wrapper
+      padding 0
 
-      h1 {
-        margin: 0 auto 1.8rem ;
-        font-size: 2rem;
-      }
-
-      h1, .description, .action {
-        // margin: 1.2rem auto;
-      }
-
-      .description {
-        font-size: 1.2rem;
-      }
-
-      .action-button {
-        font-size: 1rem;
-        padding: 0.6rem 1.2rem;
-      }
-    }
-
-    .home-blog-wrapper {
+@media (max-width: $MQMobileNarrow)
+  .home-blog-wrapper
+    .article
       display block!important
-      .blog-list {
+      .list
         width auto
-      }
-      .info-wrapper {
-        // display none!important
+      .info-wrapper
         margin-left 0
-        .personal-info-wrapper {
+        .personal-info-wrapper
           display none
-        }
-      }
-    }
-  }
-}
+    .md-content-wrapper
+      padding 0
 </style>
