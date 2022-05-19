@@ -127,7 +127,12 @@ export default {
         this.emit(numId)
         return
       }
-      alert(`请输入大于0，并且小于${this.pages}的页码！`)
+      this.$message({
+        time: 3000,
+        title: '错误',
+        content: `请输入大于0，并且小于${this.pages}的页码！`,
+        type: 'error'
+      })
     },
     emit (id) {
       this.$emit('getCurrentPage', id)
@@ -141,7 +146,6 @@ export default {
 .pagination
   font-weight: 700;
   text-align: center;
-  color: #888;
   color: var(--text-color)
   margin: 20px auto 0;
   background: #f2f2f2;
@@ -160,7 +164,6 @@ export default {
       &.jump, &.jumpinp input
         box-shadow: var(--box-shadow)
         border 1px solid var(--border-color)!important
-        border: 1px solid #ccc;
       &.jump
         padding: 5px 8px;
         -webkit-border-radius: 4px;

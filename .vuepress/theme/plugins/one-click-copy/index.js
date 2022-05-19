@@ -6,16 +6,12 @@ module.exports = (options = {}) => ({
     const {
       selector = 'div[class*="language-"] pre',
       copyText = 'Copy code',
-      tip: { time = 3000, content = 'copy success', title = 'Tips' } = {},
       change,
       visibleTip = true,
     } = options
     return {
       selector,
       copyText,
-      time,
-      content,
-      title,
       change,
       visibleTip,
     }

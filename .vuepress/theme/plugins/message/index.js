@@ -6,12 +6,14 @@ module.exports = (options = {}) => ({
     const {
       time = 3000,
       content = '消息内容',
-      title = 'Tips'
+      title = 'Tips',
+      type = 'normal'
     } = options
     return {
       time,
       content,
-      title
+      title,
+      type
     }
   },
   enhanceAppFiles: [path.resolve(__dirname, 'enhanceAppFile.js')],

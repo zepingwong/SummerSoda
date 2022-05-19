@@ -10,7 +10,7 @@ module.exports = (options) => {
     },
     name: 'plugin-pagination',
     enhanceAppFiles: [
-      path.resolve(__dirname, './bin/enhanceAppFile.js'),
+      path.resolve(__dirname, './enhanceAppFile.js'),
       () => ({
         name: 'dynamic-pagination',
         content: `export default ({ Vue }) => {

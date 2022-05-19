@@ -24,9 +24,10 @@ export default {
       }
       if (visibleTip) {
         this.$message({
-          time,
-          content,
-          title
+          time: '3000',
+          content: 'Copy Successfully',
+          title: 'Tips',
+          type: 'success'
         })
       }
 

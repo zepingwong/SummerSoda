@@ -6,6 +6,7 @@
   >
     <div
       class="v-notification__group"
+      :style="style"
       v-if="show"
     >
       <h2
@@ -28,22 +29,54 @@ export default {
       type: Number,
       default: 3000
     },
+    type: {
+      type: String,
+      default: 'normal'
+    }
   },
   data() {
     return {
       show: true,
     }
   },
+  computed: {
+    style() {
+      switch (this.type) {
+        case 'normal': {
+          return {}
+        }
+        case 'success': {
+          return {
+            'border-left-width': '10px',
+            'border-left-color': '#3eaf7c'
+          }
+        }
+        case 'warning': {
+          return {
+            'border-left-width': '10px',
+            'border-left-color': '#F8B20A'
+          }
+        }
+        case 'error': {
+          return {
+            'border-left-width': '10px',
+            'border-left-color': '#E15B64'
+          }
+        }
+      }
+    }
+  },
   created() {
     // 如果有限的就调用定时器，完成后删除节点
     if (Number.isFinite(this.time)) {
       setTimeout(() => {
-        this.show = false;
-      }, this.time);
+        this.show = false
+      }, this.time)
     }
   }
 }
 </script>
+
 <style scoped lang="stylus">
 .v-notification__group
   width: 330px
