@@ -137,8 +137,7 @@ export default {
       h4
         color var(--text-color)
 
-
-@media (max-width: $MQMobile)
+@media (max-width: $MQNarrow)
   .home-blog-wrapper
     .article
       display block!important
@@ -146,13 +145,10 @@ export default {
         width auto
       .info-wrapper
         margin-left 0
-        .personal-info-wrapper
-          display none
-
     .md-content-wrapper
       padding 0
 
-@media (max-width: $MQMobileNarrow)
+@media (max-width: $MQMobile)
   .home-blog-wrapper
     .article
       display block!important

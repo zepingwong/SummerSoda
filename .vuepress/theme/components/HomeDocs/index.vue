@@ -101,21 +101,20 @@ export default {
       &:hover
         transform scale(1.05)
 
-@media (max-width $MQMobile)
+@media (max-width $MQNarrow)
   .home-docs-wrapper
-
     .features
+      display block
+      padding 0 2.5rem
       .feature
         flex-direction column
         max-width 100%
         padding 0 2.5rem
-
     .md-content-wrapper
       padding 0
 
-@media (max-width $MQMobileNarrow)
+@media (max-width $MQMobile)
   .home-docs-wrapper
-
     .features
       .feature
         flex-direction column

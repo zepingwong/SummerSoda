@@ -62,4 +62,14 @@ export default {
       transform scale(1.04)
     &.active
       transform scale(1.2)
+
+@media (max-width: $MQNarrow)
+  .tags
+    hr
+      display none
+
+@media (max-width: $MQMobile)
+  .tags
+    hr
+      display none
 </style>

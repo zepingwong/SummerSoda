@@ -1,6 +1,5 @@
 .hero
   position relative
-  text-align center
   height calc(100vh - 3.4rem)
   > div
     position absolute
@@ -11,7 +10,7 @@
     .hero-img
       max-width 40rem!important
       width 30rem
-      margin: 0 auto 1.5rem
+      margin: 0
     h1
       font-size 2.5rem
       margin 0
@@ -35,9 +34,9 @@
     > div
       width 90%
       .hero-img
+        max-width 20rem!important
         width 16rem
-        max-height 20rem
-        margin 2rem auto 1.2rem
+        margin: 0
       h1
         font-size 2rem
         margin 0
@@ -45,17 +44,7 @@
         font-size 1.4rem
         margin-top 0
 
-@media (max-width: $MQMobileNarrow)
+@media (max-width: $MQNarrow)
   .hero
     > div
       width 90%
-      .hero-img
-        width 16rem
-        max-height 15rem
-        margin 2rem auto 1.2rem
-      h1
-        font-size 2rem
-        margin 0
-      .description
-        font-size 1.4rem
-        margin-top 0
