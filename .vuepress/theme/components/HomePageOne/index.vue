@@ -1,6 +1,7 @@
 <template>
   <div class="home-page-one-wrapper">
-    <div class="hero" :style="{ ...$bgImageStyle }">
+    <div class="hero" :style="$bgImageStyle">
+      <div>
         <ModuleTransition>
           <img
             v-if="recoShowModule && frontmatter.heroImage && !$parent.firstLoad && $parent.isHasKey"
@@ -13,7 +14,6 @@
         <ModuleTransition delay="0.04">
           <h1
             v-if="recoShowModule && frontmatter.heroText !== null"
-            :style="{ marginTop: frontmatter.heroImage ? '0px' : '140px'}"
           >
             {{ frontmatter.heroText || $title }}
           </h1>
@@ -28,6 +28,7 @@
             <NavLink class="action-button" :item="actionLink"/>
           </p>
         </ModuleTransition>
+      </div>
     </div>
     <div class="wish">
       <div class="yesterday">
@@ -103,29 +104,36 @@ export default {
 .home-page-one-wrapper
   padding $navbarHeight 0 0
   .hero
+    position relative
     text-align center
     height calc(100vh - 3.4rem)
-    .hero-img
-      max-width 40rem
-      width 30rem
-      margin: 5rem auto 3rem
-    h1
-      font-size 2.5rem
-      margin-bottom 0
-    .description
-      font-size 1.6rem
-      margin-top 0
-    .action-button
-      display inline-block
-      color #fff
-      background-color $accentColor
-      padding 0.2rem 1.2rem
-      border-radius $borderRadius
-      transition background-color 0.1s ease
-      box-sizing border-box
-      load-start()
-      &:hover
-        background-color lighten($accentColor, 10%)
+    > div
+      position absolute
+      width 80%
+      top 50%
+      left 50%
+      transform translate(-50%, -50%)
+      .hero-img
+        max-width 40rem
+        width 30rem
+        margin: 5rem auto 3rem
+      h1
+        font-size 2.5rem
+        margin-bottom 0
+      .description
+        font-size 1.6rem
+        margin-top 0
+      .action-button
+        display inline-block
+        color #fff
+        background-color $accentColor
+        padding 0.2rem 1.2rem
+        border-radius $borderRadius
+        transition background-color 0.1s ease
+        box-sizing border-box
+        load-start()
+        &:hover
+          background-color lighten($accentColor, 10%)
 
   .wish
     overflow hidden
@@ -151,32 +159,35 @@ export default {
           box-sizing border-box
           padding 0 2rem
 
+
 @media (max-width $MQMobile)
   .home-page-one-wrapper
     .hero
-      height auto
-      .hero-img
-        width 16rem
-        max-height 20rem
-        margin 2rem auto 2rem
-      .wish
-        .wish-inner
-          display block
-          padding 2rem 0
-          .img-wrapper
-            margin 0 auto
+      > div
+        width 90%
+        .hero-img
+          width 16rem
+          max-height 20rem
+          margin 2rem auto 2rem
+    .wish
+      .wish-inner
+        display block
+        padding 2rem 0
+        .img-wrapper
+          margin 0 auto
     .md-content-wrapper
       padding 0
 
 @media (max-width $MQMobileNarrow)
   .home-page-one-wrapper
     .hero
-      height auto
-      .hero-img {
-        width: 16rem;
-        max-height: 15rem;
-        margin: 2rem auto 2rem;
-      }
+      > div
+        width 90%
+        .hero-img
+          width 16rem
+          max-height 15rem
+          margin 2rem auto 2rem
+
     .wish
       .wish-inner
         display block
