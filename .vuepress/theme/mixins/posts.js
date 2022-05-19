@@ -54,7 +54,7 @@ export default {
       let list = []
       this.$site.pages.map((item) => {
         const { frontmatter: { home, type, heroText, tagline, heroImage, link }, path } = item
-        if (home && type === 'HomeDocs') {
+        if (home && (type === 'HomeDocs' || type === 'HomePageOne')) {
           list.push({
             title: heroText,
             description: tagline,

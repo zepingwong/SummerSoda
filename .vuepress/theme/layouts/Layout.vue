@@ -9,6 +9,7 @@
 <script>
 import HomeBlog from '../components/HomeBlog'
 import HomeDocs from '../components/HomeDocs'
+import HomePageOne from '../components/HomePageOne'
 import Page from '../components/Page'
 import Footer from '../components/Footer'
 import Common from '../components/Common'
@@ -17,7 +18,7 @@ import moduleTransitonMixin from '../mixins/moduleTransiton'
 
 export default {
   mixins: [moduleTransitonMixin],
-  components: { HomeBlog, HomeDocs, Page, Common, Footer },
+  components: { HomeBlog, HomeDocs, Page, Common, Footer, HomePageOne },
   computed: {
     sidebarItems() {
       const { $page, $site, $localePath } = this
@@ -34,7 +35,9 @@ export default {
     },
     homeCom() {
       const type = this.$frontmatter?.type || this.$themeConfig?.type || 'docs'
-      return type === 'blog' ? 'HomeBlog' : type === 'HomeBlog' ? 'HomeBlog' :  'HomeDocs'
+      return type === 'blog' ? 'HomeBlog' :
+        type === 'HomeBlog' ? 'HomeBlog' :
+          type === 'HomePageOne' ? 'HomePageOne' : 'HomeBlog'
     }
   }
 }

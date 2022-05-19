@@ -1,11 +1,8 @@
 ---
 home: true
-type: HomeDocs
+type: HomePageOne
 heroText: CSS 参考手册
 tagline: CSS 参考手册
-bgImageStyle: {
-  height: '450px'
-}
 isShowTitleInHome: false
 actionText: 开始
 actionLink: /docs/CSS/other/

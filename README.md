@@ -8,9 +8,6 @@ heroImageStyle: {
   margin: '4rem auto 2rem',
   background: 'transparent'
 }
-bgImageStyle: {
-  height: '450px'
-}
 isShowTitleInHome: false
 actionText: Guide
 actionLink: /views/other/guide
