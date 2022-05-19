@@ -7,6 +7,19 @@ export default {
     },
     $modeSwitch() {
       return this.$themeConfig?.modeConfig?.modeSwitch !== false
+    },
+    $bgImageStyle() {
+      const url = this.$frontmatter.bgImage
+        ? this.$withBase(this.$frontmatter.bgImage)
+        : require('../images/bg.svg')
+
+      const initBgImageStyle = {
+        textAlign: 'center',
+        overflow: 'hidden',
+        background: `url(${url}) center/cover no-repeat`
+      }
+      const { bgImageStyle } = this.$frontmatter
+      return bgImageStyle ? { ...initBgImageStyle, ...bgImageStyle } : initBgImageStyle
     }
   }
 }

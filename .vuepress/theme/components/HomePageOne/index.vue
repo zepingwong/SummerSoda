@@ -1,80 +1,81 @@
 <template>
-  <article class="home-page-one-wrapper">
-    <section class="main" :style="{ ...bgImageStyle }">
-      <div>
+  <div class="home-page-one-wrapper">
+    <div class="hero" :style="{ ...$bgImageStyle }">
         <ModuleTransition>
           <img
-            v-if="recoShowModule && $frontmatter.heroImage && !$parent.firstLoad && $parent.isHasKey"
-            :style="heroImageStyle || {}"
-            :src="$withBase($frontmatter.heroImage)"
+            v-if="recoShowModule && frontmatter.heroImage && !$parent.firstLoad && $parent.isHasKey"
+            class="hero-img"
+            :style="frontmatter.heroImageStyle || {}"
+            :src="$withBase(frontmatter.heroImage)"
             alt="hero"
           />
         </ModuleTransition>
         <ModuleTransition delay="0.04">
           <h1
-            v-if="recoShowModule && $frontmatter.heroText !== null"
-            :style="{ marginTop: $frontmatter.heroImage ? '0px' : '140px'}"
+            v-if="recoShowModule && frontmatter.heroText !== null"
+            :style="{ marginTop: frontmatter.heroImage ? '0px' : '140px'}"
           >
-            {{ $frontmatter.heroText || $title }}
+            {{ frontmatter.heroText || $title }}
           </h1>
         </ModuleTransition>
         <ModuleTransition delay="0.08">
-          <p v-if="recoShowModule && $frontmatter.tagline !== null" class="description">
-            {{ $frontmatter.tagline || $description }}
+          <p v-if="recoShowModule && frontmatter.tagline !== null" class="description">
+            {{ frontmatter.tagline || $description }}
           </p>
         </ModuleTransition>
         <ModuleTransition delay="0.12">
-          <p v-if="recoShowModule && !$parent.firstLoad && $parent.isHasKey" class="description">{{ $description }}</p>
+          <p class="action" v-if="recoShowModule && frontmatter.actionText && frontmatter.actionLink">
+            <NavLink class="action-button" :item="actionLink"/>
+          </p>
         </ModuleTransition>
-        <ModuleTransition delay="0.16">
-          <router-link v-if="recoShowModule && !$parent.firstLoad && $parent.isHasKey" class="btn-about" :to="$frontmatter.actionLink">{{ $frontmatter.actionText }}</router-link>
-        </ModuleTransition>
-      </div>
-    </section>
-    <section class="wish yesterday">
-      <div class="wish-inner">
-        <div class="img-wrapper">
-          <img src="./images/yesterday.svg" alt="">
-        </div>
-        <div class="text-wrapper">
-          <h1>{{ features[0].title }}</h1>
-          <p class="description">{{ features[0].details }}</p>
+    </div>
+    <div class="wish">
+      <div class="yesterday">
+        <div class="wish-inner">
+          <div class="img-wrapper">
+            <img src="./images/yesterday.svg" alt="">
+          </div>
+          <div class="text-wrapper">
+            <h1>{{ frontmatter.features[0].title }}</h1>
+            <p class="description">{{ frontmatter.features[0].details }}</p>
+          </div>
         </div>
       </div>
-    </section>
-    <section class="wish today">
-      <div class="wish-inner">
-        <div class="text-wrapper">
-          <h1>{{ features[1].title }}</h1>
-          <p class="description">{{ features[1].details }}</p>
-        </div>
-        <div class="img-wrapper">
-          <img src="./images/today.svg" alt="">
-        </div>
-      </div>
-    </section>
-    <section class="wish tomorrow">
-      <div class="wish-inner">
-        <div class="img-wrapper">
-          <img src="./images/tomorrow.svg" alt="">
-        </div>
-        <div class="text-wrapper">
-          <h1>{{ features[2].title }}</h1>
-          <p class="description">{{ features[2].details }}</p>
+      <div class="today">
+        <div class="wish-inner">
+          <div class="text-wrapper">
+            <h1>{{ frontmatter.features[1].title }}</h1>
+            <p class="description">{{ frontmatter.features[1].details }}</p>
+          </div>
+          <div class="img-wrapper">
+            <img src="./images/today.svg" alt="">
+          </div>
         </div>
       </div>
-    </section>
+      <div class="tomorrow">
+        <div class="wish-inner">
+          <div class="img-wrapper">
+            <img src="./images/tomorrow.svg" alt="">
+          </div>
+          <div class="text-wrapper">
+            <h1>{{ frontmatter.features[2].title }}</h1>
+            <p class="description">{{ frontmatter.features[2].details }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <section class="md-content-wrapper">
       <Content/>
     </section>
-  </article>
+  </div>
 </template>
 
 <script>
 import { ModuleTransition } from '../../core/components'
-
+import NavLink from '../Navbar/NavLink'
 export default {
-  components: { ModuleTransition },
+  components: { ModuleTransition, NavLink },
   data () {
     return {
       downloads: 0
@@ -84,116 +85,14 @@ export default {
     recoShowModule() {
       return this && this.$parent.recoShowModule
     },
-    features () {
-      return this.$frontmatter.features
-    },
-    heroImageStyle () {
-      return this.$frontmatter.heroImageStyle || {
-        maxHeight: '200px',
-        margin: '6rem auto 1.5rem'
+    actionLink() {
+      return this && {
+        link: this.$frontmatter.actionLink,
+        text: this.$frontmatter.actionText
       }
     },
-    bgImageStyle() {
-      const url = this.$frontmatter.bgImage
-        ? this.$withBase(this.$frontmatter.bgImage)
-        : require('../../images/bg.svg')
-
-      const initBgImageStyle = {
-        textAlign: 'center',
-        overflow: 'hidden',
-        background: `url(${url}) center/cover no-repeat`
-      }
-      const { bgImageStyle } = this.$frontmatter
-      return bgImageStyle ? { ...initBgImageStyle, ...bgImageStyle } : initBgImageStyle
-    }
-  },
-  created () {
-    // const date = new Date()
-    // const year = date.getFullYear()
-    // const month = date.getMonth() + 1
-    // const day = date.getDate()
-    // this.npmPackageDownloads('vuepress-theme-reco', `2018-09-12:${year}-${month}-${day}`).then(res => {
-    //   this.downloads = this.toThousandslsFilter(res)
-    // })
-  },
-  methods: {
-    toThousandslsFilter (num) {
-      const numStr = String(num)
-      if (numStr === '' || numStr === undefined) {
-        return ''
-      }
-      const IntPart = /\./g.test(numStr) ? numStr.slice(0, numStr.indexOf('.')) : numStr
-      const FloatPart = /\./g.test(numStr) ? numStr.substring(numStr.indexOf('.')) : ''
-      return (+IntPart || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ',')) + FloatPart
-    },
-    npmPackageDownloads (packages, dateRange) {
-      packages = this._handlePackages(packages)
-      dateRange = this._handleDateRange(dateRange)
-      return this._getDownloadsOfDateRange(packages, dateRange)
-    },
-    async _getDownloadsOfDateRange (packages, dateRange) {
-      let downloads = 0
-      if (Array.isArray(dateRange)) {
-        let fetchPromise = []
-        dateRange.map(item => {
-          fetchPromise.push(this._fetch(packages, item))
-        })
-        const result = await Promise.all(fetchPromise)
-        downloads = result.reduce((all, next) => {
-          return all + next.downloads
-        }, 0)
-        return downloads
-      }
-      const result = await this._fetch(packages, dateRange)
-      downloads = result.downloads
-      return downloads
-    },
-    _fetch (packages, dateRange) {
-      const BASE_URI = 'https://api.npmjs.org/downloads/point/'
-      return new Promise ((resolve, reject) => {
-        fetch(`${BASE_URI}${dateRange}/${packages}`).then(this._parseJSON).then(res => {
-          resolve(res)
-        }).catch(err => {
-          reject(err)
-        })
-      })
-    },
-    _parseJSON (response) {
-      return response.json()
-    },
-    _handleDateRange (dateRange) {
-      const index = dateRange.indexOf(':')
-      if (index> -1) {
-        const dr = dateRange.split(':')
-        const newDateRange = dr
-        const YEAR = 365 * 24 * 60 * 60 * 1000
-        const DATE_RANGE = new Date(dr[1]).getTime() - new Date(dr[0]).getTime()
-        const year = parseInt(DATE_RANGE / YEAR)
-        if (year > 0) {
-          for (let i = 0; i < year; i++) {
-            const date = this._getDate(newDateRange[i])
-            newDateRange.splice(i + 1, 0, date)
-          }
-          for (let i = 0, length = newDateRange.length; i < length - 1; i++) {
-            newDateRange[i] = `${newDateRange[i]}:${newDateRange[i + 1]}`
-          }
-          newDateRange.length = year + 1
-          return newDateRange
-        }
-        return dateRange
-      }
-      return dateRange
-    },
-    _getDate (date) {
-      const dateArr = date.split('-')
-      dateArr[0] = Number(dateArr[0]) + 1
-      return dateArr.join('-')
-    },
-    _handlePackages (packages) {
-      if (Array.isArray(packages)) {
-        return `-,${packages.join(',')}`
-      }
-      return packages
+    frontmatter() {
+      return this.$frontmatter
     }
   }
 }
@@ -201,130 +100,90 @@ export default {
 
 
 <style lang="stylus" scoped>
-.home-page-one-wrapper {
+.home-page-one-wrapper
   padding $navbarHeight 0 0
-  section {
-    &.main {
+  .hero
+    text-align center
+    height calc(100vh - 3.4rem)
+    .hero-img
+      max-width 40rem
+      width 30rem
+      margin: 5rem auto 3rem
+    h1
+      font-size 2.5rem
+      margin-bottom 0
+    .description
+      font-size 1.6rem
+      margin-top 0
+    .action-button
+      display inline-block
+      color #fff
+      background-color $accentColor
+      padding 0.2rem 1.2rem
+      border-radius $borderRadius
+      transition background-color 0.1s ease
+      box-sizing border-box
+      load-start()
+      &:hover
+        background-color lighten($accentColor, 10%)
+
+  .wish
+    overflow hidden
+    .yesterday, .tomorrow
+      background var(--code-color)
+    .wish-inner
+      box-sizing border-box
+      margin 0 auto
+      padding 2rem
+      max-width 56rem
+      width 100%
+      min-height 25rem
       display flex
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      margin: 0 auto;
-      width: 100%;
-      height: calc(100vh - 3.4rem);
-      overflow hidden
-      text-align: center;
-      h1 {
-        margin-top: 8rem;
+      align-items center
+      > div
+        flex auto
+        &.img-wrapper
+          max-width 22rem
+          img
+            display block
+            width 100%
+        &.text-wrapper
+          box-sizing border-box
+          padding 0 2rem
+
+@media (max-width $MQMobile)
+  .home-page-one-wrapper
+    .hero
+      height auto
+      .hero-img
+        width 16rem
+        max-height 20rem
+        margin 2rem auto 2rem
+      .wish
+        .wish-inner
+          display block
+          padding 2rem 0
+          .img-wrapper
+            margin 0 auto
+    .md-content-wrapper
+      padding 0
+
+@media (max-width $MQMobileNarrow)
+  .home-page-one-wrapper
+    .hero
+      height auto
+      .hero-img {
+        width: 16rem;
+        max-height: 15rem;
+        margin: 2rem auto 2rem;
       }
-      p {
-        font-size 20px
-        margin-bottom: 2rem;
-      }
-      .btn-about {
-        margin: 2rem 0;
-        display: inline-block;
-        padding: .6rem 1.2rem;
-        border-radius: 0.25rem;
-        background: $accentColor;
-        color: #fff;
-        font-size: 1rem;
-      }
-      .banner {
-        display: block;
-        width: 100%;
-      }
-    }
-    &.wish {
-      overflow: hidden;
-      &.yesterday, &.tomorrow {
-        background: var(--code-color);
-      }
-      .wish-inner {
-        box-sizing: border-box;
-        margin: 0 auto;
-        padding: 2rem;
-        max-width: 56rem;
-        width: 100%;
-        min-height: 25rem;
-        display: flex;
-        align-items: center;
-        > div {
-          flex: auto;
-          &.img-wrapper {
-            max-width: 22rem;
-            img {
-              display: block;
-              width: 100%;
-            }
-          }
-          &.text-wrapper {
-            box-sizing: border-box;
-            padding: 0 2rem;
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: $MQMobile) {
-  .home-page-one-wrapper {
-    section {
-      padding: 0 2rem;
-      &.main {
-        height 580px
-      }
-      &.description {
-        h1 {
-          margin-top: 5rem;
-        }
-        .btn-about {
-          font-size .9rem
-        }
-      }
-      &.md-content-wrapper {
-        padding: 0;
-      }
-      &.wish {
-        .wish-inner {
-          display: block;
-          padding: 2rem 0;
-          .img-wrapper {
-            margin: 0 auto;
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: $MQMobileNarrow) {
-  .home-page-one-wrapper {
-    section {
-      padding: 0 2rem;
-      &.main {
-        height 580px
-      }
-      &.description {
-        h1 {
-          margin-top: 5rem;
-        }
-        .btn-about {
-          font-size .8rem
-        }
-      }
-      &.md-content-wrapper {
-        padding: 0;
-      }
-      &.wish {
-        .wish-inner {
-          display: block;
-          padding: 2rem 0;
-          .img-wrapper {
-            margin: 0 auto;
-          }
-        }
-      }
-    }
-  }
-}
+    .wish
+      .wish-inner
+        display block
+        padding 2rem 0
+        .img-wrapper
+          margin 0 auto
+
+    .md-content-wrapper
+       padding 0
 </style>

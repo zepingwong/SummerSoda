@@ -4,8 +4,6 @@ heroText: null
 tagline: null
 heroImage: /hero.svg
 heroImageStyle: {
-  display: block,
-  margin: '4rem auto 2rem',
   background: 'transparent'
 }
 isShowTitleInHome: false

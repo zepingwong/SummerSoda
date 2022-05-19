@@ -1,6 +1,6 @@
 <template>
   <div class="home-blog">
-    <div class="hero" :style="{ ...bgImageStyle }">
+    <div class="hero" :style="{ ...$bgImageStyle }">
       <div>
         <ModuleTransition>
           <img
@@ -84,19 +84,6 @@ export default {
     heroImageStyle() {
       return this.$frontmatter.heroImageStyle || {}
     },
-    bgImageStyle() {
-      const url = this.$frontmatter.bgImage
-        ? this.$withBase(this.$frontmatter.bgImage)
-        : require('../../images/bg.svg')
-
-      const initBgImageStyle = {
-        textAlign: 'center',
-        overflow: 'hidden',
-        background: `url(${url}) center/cover no-repeat`
-      }
-      const { bgImageStyle } = this.$frontmatter
-      return bgImageStyle ? { ...initBgImageStyle, ...bgImageStyle } : initBgImageStyle
-    }
   },
   mounted() {
     this.state.heroHeight = document.querySelector('.hero').clientHeight

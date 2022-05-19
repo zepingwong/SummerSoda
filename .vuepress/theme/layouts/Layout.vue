@@ -34,10 +34,9 @@ export default {
       }
     },
     homeCom() {
-      const type = this.$frontmatter?.type || this.$themeConfig?.type || 'docs'
-      return type === 'blog' ? 'HomeBlog' :
-        type === 'HomeBlog' ? 'HomeBlog' :
-          type === 'HomePageOne' ? 'HomePageOne' : 'HomeBlog'
+      const { type } = this.$frontmatter || this.$themeConfig || { type: 'docs' }
+      return ['docs', 'blog', 'HomeBlog', 'HomeDocs', 'HomePageOne'].indexOf(type) > 0 ? type === 'blog' ? 'HomeBlog' :
+        type === 'docs' ? 'HomeDocs' : type : 'HomeBlog'
     }
   }
 }

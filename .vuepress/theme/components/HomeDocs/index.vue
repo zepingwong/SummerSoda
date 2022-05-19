@@ -1,44 +1,50 @@
 <template>
-  <div class="home">
-    <div class="hero">
+  <div class="home-docs-wrapper">
+    <div class="hero" :style="{ ...$bgImageStyle }">
       <ModuleTransition>
         <img
-          v-if="recoShowModule && $frontmatter.heroImage"
+          v-if="recoShowModule && frontmatter.heroImage"
           class="hero-img"
-          :style="heroImageStyle || {}"
-          :src="$withBase($frontmatter.heroImage)"
+          :style="frontmatter.heroImageStyle || {}"
+          :src="withBase(frontmatter.heroImage)"
           alt="hero">
       </ModuleTransition>
       <ModuleTransition delay="0.04">
         <h1
-          v-if="recoShowModule && $frontmatter.heroText !== null"
-          :style="{ marginTop: $frontmatter.heroImage ? '0px' : '140px'}"
+          v-if="recoShowModule && frontmatter.heroText !== null"
+          :style="{ marginTop: frontmatter.heroImage ? '0px' : '140px'}"
         >
-          {{ $frontmatter.heroText || $title }}
+          {{ frontmatter.heroText || $title }}
         </h1>
       </ModuleTransition>
       <ModuleTransition delay="0.08">
-        <p v-if="recoShowModule && $frontmatter.tagline !== null" class="description">
-          {{ $frontmatter.tagline || $description }}
+        <p v-if="recoShowModule && frontmatter.tagline !== null" class="description">
+          {{ frontmatter.tagline || $description }}
         </p>
       </ModuleTransition>
-      <ModuleTransition delay="0.16">
-        <p class="action" v-if="recoShowModule && $frontmatter.actionText && $frontmatter.actionLink">
+      <ModuleTransition delay="0.12">
+        <p
+          v-if="recoShowModule && frontmatter.actionText && frontmatter.actionLink"
+          class="action"
+        >
           <NavLink class="action-button" :item="actionLink"/>
         </p>
       </ModuleTransition>
     </div>
 
-    <ModuleTransition delay="0.24">
-      <div class="features" v-if="recoShowModule && $frontmatter.features && $frontmatter.features.length">
-        <div v-for="(feature, index) in $frontmatter.features" :key="index" class="feature">
+    <ModuleTransition delay="0.16">
+      <div
+        v-if="recoShowModule && frontmatter.features && frontmatter.features.length"
+        class="features"
+      >
+        <div v-for="(feature, index) in frontmatter.features" :key="index" class="feature">
           <h2>{{ feature.title }}</h2>
           <p>{{ feature.details }}</p>
         </div>
       </div>
     </ModuleTransition>
-    <ModuleTransition delay="0.32">
-      <Content class="home-center" v-show="recoShowModule" custom/>
+    <ModuleTransition delay="0.20">
+      <Content class="md-content-wrapper" v-show="recoShowModule" custom/>
     </ModuleTransition>
   </div>
 </template>
@@ -48,52 +54,46 @@ import NavLink from '../Navbar/NavLink'
 import { ModuleTransition } from '../../core/components'
 
 export default {
+  name: 'HomeDocs',
   components: { NavLink, ModuleTransition },
   computed: {
     recoShowModule() {
       return this && this.$parent.recoShowModule
+    },
+    frontmatter() {
+      return this.$frontmatter
+    },
+    withBase(val) {
+      return this.$withBase(val)
     },
     actionLink() {
       return this && {
         link: this.$frontmatter.actionLink,
         text: this.$frontmatter.actionText
       }
-    },
-    heroImageStyle() {
-      return this.$frontmatter.heroImageStyle || {}
     }
   }
 }
 </script>
 
 <style scoped lang="stylus">
-.home
-  padding $navbarHeight 2rem 0
-  max-width 960px
-  margin 0 auto
-  min-height auto
+.home-docs-wrapper
+  padding $navbarHeight 0 0
   .hero
     text-align center
+    height calc(100vh - 3.4rem)
     .hero-img
-      max-width: 40rem;
-      width: 30rem;
+      max-width 40rem
+      width 30rem
       margin: 5rem auto 3rem
     h1
-      display block
       font-size 2.5rem
-      color var(--text-color)
-
-    h1, .description, .action
-      margin 1.8rem auto
-
+      margin-bottom 0
     .description
       font-size 1.6rem
-      line-height 1.3
-      color var(--text-color)
-
+      margin-top 0
     .action-button
       display inline-block
-      font-size 1.2rem
       color #fff
       background-color $accentColor
       padding 0.2rem 1.2rem
@@ -105,67 +105,62 @@ export default {
         background-color lighten($accentColor, 10%)
 
   .features
+    margin auto
+    max-width 960px
     border-top 1px solid var(--border-color)
     padding 1.2rem 0
-    margin-top 2.5rem
     display flex
     flex-wrap wrap
     align-items flex-start
     align-content stretch
     justify-content space-between
-
-  .feature
-    flex-grow 1
-    flex-basis 30%
-    max-width 30%
-    transition all .5s
-    color var(--text-color)
-    h2
-      font-size 1.6rem
-      font-weight 500
-      border-bottom none
-      padding-bottom 0
-
-    &:hover
-      transform scale(1.05)
+    .feature
+      flex-grow 1
+      flex-basis 30%
+      max-width 30%
+      transition all .5s
+      color var(--text-color)
+      h2
+        font-size 1.6rem
+        font-weight 500
+        border-bottom none
+        padding-bottom 0
+      &:hover
+        transform scale(1.05)
 
 @media (max-width $MQMobile)
-  .home
-    height auto
+  .home-docs-wrapper
     .hero
-      .hero-img {
-        width: 16rem;
-        max-height: 20rem;
-        margin: 2rem auto 2rem;
-      }
-    .features
-      flex-direction column
+      height auto
+      .hero-img
+        width 16rem
+        max-height 20rem
+        margin 2rem auto 2rem
 
-    .feature
-      max-width 100%
-      padding 0 2.5rem
+    .features
+      .feature
+        flex-direction column
+        max-width 100%
+        padding 0 2.5rem
+
+    .md-content-wrapper
+      padding 0
 
 @media (max-width $MQMobileNarrow)
-  .home
-    padding-left 1.5rem
-    padding-right 1.5rem
-    height auto
+  .home-docs-wrapper
     .hero
-      .hero-img {
+      height auto
+      .hero-img
         width: 16rem;
         max-height: 15rem;
         margin: 2rem auto 2rem;
-      }
-      h1
-        font-size 2rem
-      h1, .description, .action
-        margin 1.2rem auto
-      .description
-        font-size 1.2rem
-      .action-button
-        font-size 1rem
-        padding 0.6rem 1.2rem
-    .feature
-      h2
-        font-size 1.25rem
+
+    .features
+      .feature
+        flex-direction column
+        max-width 100%
+        padding 0 2.5rem
+
+    .md-content-wrapper
+      padding 0
 </style>
