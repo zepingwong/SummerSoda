@@ -5,7 +5,7 @@ heroText: CSS 参考手册
 tagline: CSS 参考手册
 isShowTitleInHome: false
 actionText: 开始
-actionLink: /docs/CSS/other/
+actionLink: /docs/CSS/cssref/
 link: /docs/CSS/cssref/
 features:
 - title: Yesterday
