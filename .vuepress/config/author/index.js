@@ -8,10 +8,10 @@ module.exports = {
   ],
   // 友链
   friendLink: [{
-    "title": "午后南杂",
-    "desc": "Enjoy when you can, and endure when you must.",
-    "email": "1156743527@qq.com",
-    "link": "https://www.recoluan.com"
+    "title": "汽水味的夏天",
+    "desc": "记录，成为更好的自己",
+    "email": "zepingwong@gmail.com",
+    "link": "https://zepingwong.github.io/SummerSoda/"
   }, {
     "title": "江城撅嘴的川羌",
     "desc": "记录，成为更好的自己",

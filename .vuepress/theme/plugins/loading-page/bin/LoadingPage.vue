@@ -1,13 +1,22 @@
 <template>
   <div id="loader-wrapper">
     <div class="loader-main">
-      <div v-for="item in 4" :key="`out${item}`">
-      </div>
+      <div v-for="item in 4" :key="`out${item}`"></div>
     </div>
-    <h3 class="title" v-if="$frontmatter.home">{{$site.title || $localeConfig.title}}</h3>
-    <p class="description" v-if="$frontmatter.home">{{$site.description || $localeConfig.description}}</p>
+    <h3 class="title" v-if="frontmatter.home">{{$site.title || $localeConfig.title}}</h3>
+    <p class="description" v-if="frontmatter.home">{{$site.description || $localeConfig.description}}</p>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    frontmatter() {
+      return this.$frontmatter
+    }
+  }
+}
+</script>
 
 <style lang="stylus" scoped>
 #loader-wrapper

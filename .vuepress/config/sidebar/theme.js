@@ -81,7 +81,6 @@ module.exports = {
       // path: '/docs/Theme/plugins/',
       collapsable: false,
       children: [
-        'BackToTop',
         'Pagination',
         'OneClickCopy',
         'LoadingPage',
