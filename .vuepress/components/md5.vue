@@ -24,14 +24,20 @@ export default {
     },
     copyClick() {
       clipboard(this.md5Str)
-        .then(() => {})
-        .catch(() => {})
-
-      instance.$message({
-        time,
-        content: '复制成功！',
-        title
-      })
+        .then(() => {
+          this.$message({
+            content: '复制成功！',
+            title: 'Tips',
+            type: 'success'
+          })
+        })
+        .catch((e) => {
+          this.$message({
+            content: e,
+            title: 'Tips',
+            type: 'error'
+          })
+        })
     }
   }
 }

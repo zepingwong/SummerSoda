@@ -1,5 +1,5 @@
 const { path } = require('@vuepress/shared-utils')
-const extractCodeFromVueSFC = require('./bin/extractCodeFromVueSFC.js')
+const extractCodeFromVueSFC = require('./extractCodeFromVueSFC.js')
 
 module.exports = (options, context) => ({
   name: 'extract-code',
@@ -8,6 +8,6 @@ module.exports = (options, context) => ({
       .use(extractCodeFromVueSFC)
   },
   enhanceAppFiles: [
-    path.resolve(__dirname, './bin/enhanceAppFile.js')
+    path.resolve(__dirname, './enhanceAppFile.js')
   ]
 })

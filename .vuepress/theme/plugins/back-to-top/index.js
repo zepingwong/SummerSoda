@@ -17,7 +17,7 @@ module.exports = (options, context) => ({
     },
     name: 'plugin-back-to-top',
     enhanceAppFiles: [
-        path.resolve(__dirname, './bin/enhanceAppFile.js')
+        path.resolve(__dirname, './enhanceAppFile.js')
     ],
     globalUIComponents: 'BackToTop'
 })

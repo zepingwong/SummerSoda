@@ -90,8 +90,8 @@ export default {
 
   .page-title
     max-width $contentWidth
-    margin: 0 auto;
-    padding: 1rem 2.5rem;
+    margin: 0 auto
+    padding: 1rem 2.5rem
     color var(--text-color)
   .content
     max-width $contentWidth
