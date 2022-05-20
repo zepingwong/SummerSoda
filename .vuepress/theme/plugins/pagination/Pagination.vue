@@ -7,12 +7,12 @@
         @click="goPrev"
         unselectable="on">{{paginationLocales.prev}}</span>
       <span
-        v-show="efont"
+        v-show="efont&&currentPage>2"
         class="jump"
         @click="jumpPage(1)">1</span>
       <span
         class="ellipsis"
-        v-show="efont">...</span>
+        v-show="efont&&currentPage>3">...</span>
       <span
         class="jump"
         v-for="num in indexs"
@@ -21,9 +21,9 @@
         @click="jumpPage(num)">{{num}}</span>
       <span
         class="ellipsis"
-        v-show="efont&&currentPage<pages-4">...</span>
+        v-show="efont&&currentPage<pages-2">...</span>
       <span
-        v-show="efont&&currentPage<pages-4"
+        v-show="efont&&currentPage<pages-1"
         class="jump"
         @click="jumpPage(pages)">{{pages}}</span>
       <span
@@ -75,25 +75,23 @@ export default {
       return this.pages && this.pages !== 1
     },
     efont: function () {
-      if (this.pages <= 7) return false
-      return this.currentPage > 5
+      return this.pages > 7
     },
     indexs: function () {
-      let left = 1;
-      let right = this.pages;
+      let left = 1
+      let right = this.pages
       let ar = []
-      if (this.pages >= 7) {
-        if (this.currentPage > 5 && this.currentPage < this.pages - 4) {
-          left = Number(this.currentPage) - 3
-          right = Number(this.currentPage) + 3
+      if (this.pages >= 5) {
+        if (this.currentPage > 2 && this.currentPage < this.pages - 1) {
+          left = Number(this.currentPage) - 1
+          right = Number(this.currentPage) + 1
         } else {
-          if (this.currentPage <= 5) {
+          if (this.currentPage <= 3) {
             left = 1
-            right = 7
+            right = 3
           } else {
             right = this.pages
-
-            left = this.pages - 6
+            left = this.pages - 2
           }
         }
       }
@@ -121,8 +119,8 @@ export default {
       }
     },
     jumpPage: function (id) {
+      this.changePage = ''
       const numId = parseInt(id)
-
       if (numId <= this.pages && numId > 0) {
         this.emit(numId)
         return
