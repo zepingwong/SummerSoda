@@ -1,35 +1,6 @@
 <template>
   <div class="home-page-one-wrapper">
-    <div class="hero" :style="$bgImageStyle">
-      <div>
-        <ModuleTransition>
-          <img
-            v-if="recoShowModule && frontmatter.heroImage && !$parent.firstLoad && $parent.isHasKey"
-            class="hero-img"
-            :style="frontmatter.heroImageStyle || {}"
-            :src="$withBase(frontmatter.heroImage)"
-            alt="hero"
-          />
-        </ModuleTransition>
-        <ModuleTransition delay="0.04">
-          <h1
-            v-if="recoShowModule && frontmatter.heroText !== null"
-          >
-            {{ frontmatter.heroText || $title }}
-          </h1>
-        </ModuleTransition>
-        <ModuleTransition delay="0.08">
-          <p v-if="recoShowModule && frontmatter.tagline !== null" class="description">
-            {{ frontmatter.tagline || $description }}
-          </p>
-        </ModuleTransition>
-        <ModuleTransition delay="0.12">
-          <p class="action" v-if="recoShowModule && frontmatter.actionText && frontmatter.actionLink">
-            <NavLink class="action-button" :item="actionLink"/>
-          </p>
-        </ModuleTransition>
-      </div>
-    </div>
+    <hero v-if="recoShowModule"></hero>
     <div class="wish">
       <ModuleTransition delay="0.16">
         <div class="yesterday">
@@ -81,8 +52,10 @@
 <script>
 import { ModuleTransition } from '../../core/components'
 import NavLink from '../Navbar/NavLink'
+import Hero from '../Hero'
+
 export default {
-  components: { ModuleTransition, NavLink },
+  components: { ModuleTransition, NavLink, Hero },
   data () {
     return {
       downloads: 0

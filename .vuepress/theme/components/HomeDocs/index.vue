@@ -1,37 +1,6 @@
 <template>
   <div class="home-docs-wrapper">
-    <div class="hero" :style="{ ...$bgImageStyle }">
-      <div>
-        <ModuleTransition>
-          <img
-            v-if="recoShowModule && frontmatter.heroImage"
-            class="hero-img"
-            :style="frontmatter.heroImageStyle || {}"
-            :src="$withBase(frontmatter.heroImage)"
-            alt="hero">
-        </ModuleTransition>
-        <ModuleTransition delay="0.04">
-          <h1
-            v-if="recoShowModule && frontmatter.heroText !== null"
-          >
-            {{ frontmatter.heroText || $title }}
-          </h1>
-        </ModuleTransition>
-        <ModuleTransition delay="0.08">
-          <p v-if="recoShowModule && frontmatter.tagline !== null" class="description">
-            {{ frontmatter.tagline || $description }}
-          </p>
-        </ModuleTransition>
-        <ModuleTransition delay="0.12">
-          <p
-            v-if="recoShowModule && frontmatter.actionText && frontmatter.actionLink"
-            class="action"
-          >
-            <NavLink class="action-button" :item="actionLink"/>
-          </p>
-        </ModuleTransition>
-      </div>
-    </div>
+    <hero v-if="recoShowModule"></hero>
 
     <ModuleTransition delay="0.16">
       <div
@@ -52,11 +21,12 @@
 
 <script>
 import NavLink from '../Navbar/NavLink'
+import Hero from '../Hero'
 import { ModuleTransition } from '../../core/components'
 
 export default {
   name: 'HomeDocs',
-  components: { NavLink, ModuleTransition },
+  components: { NavLink, Hero, ModuleTransition },
   computed: {
     recoShowModule() {
       return this && this.$parent.recoShowModule

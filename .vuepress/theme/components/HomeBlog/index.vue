@@ -1,31 +1,6 @@
 <template>
   <div class="home-blog-wrapper">
-    <div class="hero" :style="{ ...$bgImageStyle }">
-      <div>
-        <ModuleTransition>
-          <img
-              v-if="recoShowModule && frontmatter.heroImage"
-              class="hero-img"
-              :style="frontmatter.heroImageStyle || {}"
-              :src="$withBase(frontmatter.heroImage)"
-              alt="hero-img"
-          />
-        </ModuleTransition>
-        <ModuleTransition delay="0.04">
-          <h1 v-if="recoShowModule && frontmatter.heroText !== null && frontmatter.heroText !== false">
-            {{ frontmatter.heroText || $title }}
-          </h1>
-        </ModuleTransition>
-        <ModuleTransition delay="0.08">
-          <p
-            v-if="recoShowModule && frontmatter.tagline !== null && frontmatter.heroText !== false"
-            class="description"
-          >
-            {{ frontmatter.tagline || $description }}
-          </p>
-        </ModuleTransition>
-      </div>
-    </div>
+    <hero v-if="recoShowModule" ref="hero"></hero>
 
     <ModuleTransition delay="0.12">
       <div v-show="recoShowModule" class="article">
@@ -66,10 +41,11 @@ import NoteAbstract from '../NoteAbstract'
 import { ModuleTransition } from '../../core/components'
 import PersonalInfo from './PersonalInfo'
 import CategoryList from './CategoryList'
+import Hero from '../Hero'
 
 export default {
   name: 'HomeBlog',
-  components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo, CategoryList },
+  components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo, CategoryList, Hero },
   data() {
     return {
       state: {
@@ -87,13 +63,13 @@ export default {
     },
   },
   mounted() {
-    this.state.heroHeight = document.querySelector('.hero').clientHeight
+    this.state.heroHeight = this.$refs.hero.$el.offsetHeight
     this.state.recoShow = true
   },
   methods: {
     paginationChange () {
       setTimeout(() => {
-        window.scrollTo(0, this.heroHeight)
+        window.scrollTo(0, this.state.heroHeight)
       }, 100)
     },
     getPagesByTags (tagInfo) {

@@ -1,8 +1,12 @@
 ---
 home: true
 type: HomeDocs
-heroText: 主题开发笔记
-tagline: 一个好看的笔记博客主题
+heroText: false
+tagline: false
+heroImage: /images/Theme/hero_SummerSoda.svg
+heroImageStyle: {
+  background: 'transparent'
+}
 isShowTitleInHome: false
 actionText: 开始
 actionLink: /docs/Theme/base/
