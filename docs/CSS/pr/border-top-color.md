@@ -1,0 +1,8 @@
+---
+title: 'border-top-color'
+tags:
+ - CSS
+categories:
+ - CSS
+date: 2019-10-22
+---

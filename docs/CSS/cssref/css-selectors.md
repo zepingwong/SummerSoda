@@ -1,4 +1,8 @@
 ---
-title: CSS 选择器
+title: 'css-selectors'
+tags:
+ - CSS
+categories:
+ - CSS
 date: 2019-10-22
 ---

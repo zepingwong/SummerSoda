@@ -1,4 +1,8 @@
 ---
-title: CSS 合法颜色值
+title: 'css-legal-colors'
+tags:
+ - CSS
+categories:
+ - CSS
 date: 2019-10-22
 ---
