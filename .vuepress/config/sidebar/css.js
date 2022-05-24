@@ -24,6 +24,9 @@ module.exports = {
       title: '属性',
       path: '/docs/CSS/pr/'
     }, {
+      title: 'Live Demo',
+      path: '/docs/CSS/live/'
+    }, {
       title: '其他',
       path: '/docs/CSS/other/'
     }],
@@ -252,6 +255,28 @@ module.exports = {
         'z-index'
       ]
     }, {
+      title: 'Live Demo',
+      path: '/docs/CSS/live/'
+    }, {
+      title: '其他',
+      path: '/docs/CSS/other/'
+    }],
+    '/docs/CSS/live/' : [{
+      title: '首页',
+      path: '/docs/CSS/'
+    }, {
+      title: '参考手册',
+      path: '/docs/CSS/cssref/'
+    }, {
+      title: '属性',
+      path: '/docs/CSS/pr/'
+    }, {
+      title: 'Live Demo',
+      collapsable: false,
+      children: [
+        'grid',
+      ]
+    }, {
       title: '其他',
       path: '/docs/CSS/other/'
     }],
@@ -264,6 +289,9 @@ module.exports = {
     }, {
       title: '属性',
       path: '/docs/CSS/pr/'
+    }, {
+      title: 'Live Demo',
+      path: '/docs/CSS/live/'
     }, {
         title: '其他',
         collapsable: false,
