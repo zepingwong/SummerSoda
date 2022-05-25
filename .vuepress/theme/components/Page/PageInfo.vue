@@ -55,7 +55,7 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       numStyle: {
         fontSize: '.9rem',
@@ -65,12 +65,12 @@ export default {
     }
   },
   methods: {
-    goTags(tag) {
+    goTags (tag) {
       if (this.$route.path !== `/tag/${tag}/`) {
         this.$router.push({ path: `/tag/${tag}/` })
       }
     },
-    formatDateValue(value) {
+    formatDateValue (value) {
       return new Intl.DateTimeFormat(this.$lang).format(new Date(value))
     }
   }

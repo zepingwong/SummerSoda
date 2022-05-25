@@ -27,15 +27,15 @@ export default {
     }
   },
   computed: {
-    tags() {
+    tags () {
       return [{ name: this.$customLocales.all, path: '/tag/' }, ...this.$tagesList]
     }
   },
   methods: {
-    tagClick(tag) {
+    tagClick (tag) {
       this.$emit('getCurrentTag', tag)
     },
-    getColor() {
+    getColor () {
       return getOneColor()
     }
   }

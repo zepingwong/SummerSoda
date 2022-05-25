@@ -5,7 +5,9 @@
   >
     <div
       class="v-notification__group"
-      :style="style"
+      :style="{
+        'border-left-color': style
+      }"
       v-if="show"
     >
       <h2
@@ -33,39 +35,19 @@ export default {
       default: 'normal'
     }
   },
-  data() {
+  data () {
     return {
-      show: true,
+      show: true
     }
   },
   computed: {
-    style() {
-      switch (this.type) {
-        case 'normal': {
-          return {}
-        }
-        case 'success': {
-          return {
-            'border-left-width': '10px',
-            'border-left-color': '#3eaf7c'
-          }
-        }
-        case 'warning': {
-          return {
-            'border-left-width': '10px',
-            'border-left-color': '#F8B20A'
-          }
-        }
-        case 'error': {
-          return {
-            'border-left-width': '10px',
-            'border-left-color': '#E15B64'
-          }
-        }
-      }
+    style () {
+      return this.type === 'normal' ? 'transparent' : this.type === 'success'
+        ? '#3eaf7c' : this.type === 'warning' ? '#F8B20A' : this.type === 'error'
+          ? '#E15B64' : 'transparent'
     }
   },
-  created() {
+  created () {
     // 如果有限的就调用定时器，完成后删除节点
     if (Number.isFinite(this.time)) {
       setTimeout(() => {
@@ -83,10 +65,11 @@ export default {
   border-radius: 8px
   box-sizing: border-box
   border: 1px solid #ebeef5
+  border-left-width 10px
+  border-left-color transparent
   background-color: #fff
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
   margin-bottom: 1rem
-
 
 .v-notification__title
   font-weight: 700
@@ -95,7 +78,6 @@ export default {
   margin: 0
   border: none
 
-
 .v-notification__content
   font-size: 14px
   line-height: 21px
@@ -103,15 +85,12 @@ export default {
   color: #606266
   text-align: justify
 
-
 .v-notification__content p
   margin: 0
-
 
 .slide-fade-enter-active, .slide-fade-leave-active
   transition: opacity 0.3s, transform 0.3s, left 0.3s, right 0.3s, top 0.4s,
     bottom 0.3s
-
 
 .slide-fade-enter
   transform: translateX(calc(100% + 1rem))

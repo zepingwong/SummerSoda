@@ -41,19 +41,20 @@ import NavLink from '../Navbar/NavLink'
 import DropdownTransition from './DropdownTransition'
 
 export default {
+  name: 'DropdownLink',
   components: { NavLink, DropdownTransition, RecoIcon },
   props: {
     item: {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       open: false
     }
   },
   methods: {
-    toggle() {
+    toggle () {
       this.open = !this.open
     }
   }

@@ -38,27 +38,28 @@ import { getOneColor } from '../helpers/other'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 
 export default {
+  name: 'CategoryLayout',
   mixins: [moduleTransitonMixin],
   components: { Common, NoteAbstract, ModuleTransition },
   computed: {
-    posts() {
+    posts () {
       let posts = this.$currentCategories.pages
       posts = filterPosts(posts)
       sortPostsByStickyAndDate(posts)
       return posts
     },
-    title() {
+    title () {
       return this.$currentCategories.key
     }
   },
   methods: {
-    getColor() {
+    getColor () {
       return getOneColor()
     },
-    getCurrentTag(tag) {
+    getCurrentTag (tag) {
       this.$emit('currentTag', tag)
     },
-    paginationChange() {
+    paginationChange () {
       setTimeout(() => {
         window.scrollTo(0, 0)
       }, 100)

@@ -55,6 +55,7 @@ import NavLink from '../Navbar/NavLink'
 import Hero from '../Hero'
 
 export default {
+  name: 'HomePageOne',
   components: { ModuleTransition, NavLink, Hero },
   data () {
     return {
@@ -62,22 +63,21 @@ export default {
     }
   },
   computed: {
-    recoShowModule() {
+    recoShowModule () {
       return this && this.$parent.recoShowModule
     },
-    actionLink() {
+    actionLink () {
       return this && {
         link: this.$frontmatter.actionLink,
         text: this.$frontmatter.actionText
       }
     },
-    frontmatter() {
+    frontmatter () {
       return this.$frontmatter
     }
   }
 }
 </script>
-
 
 <style lang="stylus" scoped>
 .home-page-one-wrapper
@@ -105,7 +105,6 @@ export default {
         &.text-wrapper
           box-sizing border-box
           padding 0 2rem
-
 
 @media (max-width $MQMobile)
   .home-page-one-wrapper

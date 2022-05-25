@@ -2,7 +2,7 @@ import ClipboardJS from 'clipboard'
 
 let btn
 
-function setUpText(text = '') {
+function setUpText (text = '') {
   return new Promise((resolve, reject) => {
     if (!btn) {
       // 封装的剪切板事件
@@ -11,9 +11,9 @@ function setUpText(text = '') {
       document.body.appendChild(btn)
     }
     const cli = new ClipboardJS(btn, {
-      text() {
+      text () {
         return text
-      },
+      }
     })
     // 触发点击事件
     const click = new Event('click')

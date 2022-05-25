@@ -32,10 +32,11 @@ import { resolveNavLinkItem } from '../../helpers/utils'
 import NavLink from './NavLink'
 
 export default {
+  name: 'NavLinks',
   components: { NavLink, DropdownLink, RecoIcon },
   computed: {
-    nav() {
-      const _nav= this.$themeLocaleConfig?.navConfig || this.$themeConfig?.navConfig || {}
+    nav () {
+      const _nav = this.$themeLocaleConfig?.navConfig || this.$themeConfig?.navConfig || {}
       let navList = []
       Object.keys(_nav).map((key) => {
         navList.push({
@@ -45,14 +46,14 @@ export default {
       })
       const locales = this.$site.locales || {}
       navList = navList.filter((item) => {
-        return this.$localePath === '/' ? true : item.key !== 'category' && item.key !== 'timeLine' && item.key !==  'tag' && item.key !==  'docs'
+        return this.$localePath === '/' ? true : item.key !== 'category' && item.key !== 'timeLine' && item.key !== 'tag' && item.key !== 'docs'
       })
       navList.map((item) => {
-        item['link'] = item.key === 'home' ? this.$localePath :
-          item.key === 'docs' ? this.$localePath + 'docslist/' :
-            item.key === 'timeLine' ? this.$localePath + 'timeline/' :
-              item.key === ('tag' || 'category') ? this.$localePath + item.key + '/' :
-                item?.link ?  item?.link : ''
+        item['link'] = item.key === 'home' ? this.$localePath
+          : item.key === 'docs' ? this.$localePath + 'docslist/'
+            : item.key === 'timeLine' ? this.$localePath + 'timeline/'
+              : item.key === ('tag' || 'category') ? this.$localePath + item.key + '/'
+                : item?.link ? item?.link : ''
 
         item['text'] = item.text || this.$customLocales[item.key]
         item['icon'] = item.icon || 'icon-' + item.key
@@ -63,7 +64,6 @@ export default {
         }) : item?.items
         return item
       })
-
 
       if (locales && Object.keys(locales).length > 1) {
         const currentLink = this.$page.path
@@ -87,21 +87,21 @@ export default {
                 link = path
               }
             }
-            return {text, link}
+            return { text, link }
           })
         }
         return [...navList, languageDropdown]
       }
       return navList
     },
-    userLinks() {
+    userLinks () {
       return (this.nav || []).map(link => {
         return Object.assign(resolveNavLinkItem(link), {
           items: (link.items || []).map(resolveNavLinkItem)
         })
       })
     },
-    repoLink() {
+    repoLink () {
       const { repo } = this.$themeConfig
       if (repo) {
         return /^https?:/.test(repo)
@@ -110,7 +110,7 @@ export default {
       }
       return ''
     },
-    repoLabel() {
+    repoLabel () {
       if (!this.repoLink) return ''
       if (this.$themeConfig.repoLabel) {
         return this.$themeConfig.repoLabel

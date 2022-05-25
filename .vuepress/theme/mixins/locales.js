@@ -4,8 +4,8 @@ export default {
   computed: {
     $customLocales () {
       const customLocalesConfig = this.$themeConfig?.locales || {}
-      let customLocales = {}
-      if (customLocalesConfig.hasOwnProperty(this.$localePath)) {
+      const customLocales = {}
+      if (customLocalesConfig.hasOwnProperty.call(this.$localePath)) {
         Object.assign(customLocales, ...Object.values(customLocalesConfig[this.$localePath]?.customLocales))
       }
       if (/^zh-(CN|SG)$/.test(this.$lang)) {

@@ -30,11 +30,13 @@
 <script>
 
 export default {
-  name: "ToolsList",
+  name: 'ToolsList',
   props: {
     toolsList: {
       type: Array,
-      default: []
+      default: () => {
+        return []
+      }
     }
   },
   data () {
@@ -59,7 +61,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="stylus" scoped>
 .content

@@ -2,15 +2,16 @@ import Vue from 'vue'
 import CodeCopy from './copy.vue'
 
 export default {
-  updated() {
+  updated () {
     // 等待dom加载完成之后执行
     setTimeout(() => {
       this.$copyUpdates()
     }, 0)
   },
   methods: {
-    $copyUpdates() {
+    $copyUpdates () {
       // 获取所有的dom，之后在所有的代码块上插入vue的组件
+      // eslint-disable-next-line no-undef
       const dom = Array.from(document.querySelectorAll(selector))
       dom.forEach((e) => {
         const el = e
@@ -22,6 +23,7 @@ export default {
         // 创建copy组件
         const C = Vue.extend(CodeCopy)
         const copy = new C()
+        // eslint-disable-next-line no-undef
         copy.copyText = copyText
         copy.code = el.textContent
         copy.$mount()

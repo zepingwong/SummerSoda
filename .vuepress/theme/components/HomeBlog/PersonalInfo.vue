@@ -42,10 +42,10 @@
 import { RecoIcon } from '../../core/components'
 import { getOneColor } from '../../helpers/other'
 
-export default{
+export default {
   components: { RecoIcon },
   computed: {
-    socialLinks() {
+    socialLinks () {
       return (this.$themeConfig.authorConfig && this.$themeConfig.authorConfig.socialLinks || []).map(item => {
         if (!item.color) item.color = getOneColor()
         return item

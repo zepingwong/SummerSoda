@@ -51,14 +51,14 @@ export default {
       })
     },
     $docsLists () {
-      let list = []
+      const list = []
       this.$site.pages.map((item) => {
         const { frontmatter: { home, type, heroText, tagline, heroImage, link }, path } = item
         if (home && (type === 'HomeDocs' || type === 'HomePageOne')) {
           list.push({
             title: heroText,
             description: tagline,
-            link: link? link : path,
+            link: link || path,
             heroImage: heroImage
           })
         }
@@ -86,7 +86,7 @@ export default {
 }
 
 function renderTime (date) {
-  let dateee = new Date(date).toJSON()
+  const dateee = new Date(date).toJSON()
   return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.\d{3}Z/, '').replace(/-/g, '/')
 }
 function dateFormat (date, type) {

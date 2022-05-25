@@ -1,100 +1,100 @@
 <style lang="stylus">
-.grid-container {
-  .grid-wrapper {
-    border: 1px solid #eee;
-    display: grid;
-    // grid-template-columns: 1fr 1fr 1fr;
-    // grid-template-rows: 1fr 1fr;
-    // grid-column-gap: 4px;
-  }
-  .grid-item{
-    cursor: pointer;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-  }
-  .tip{
-    font-size: 12px;
-    color:#aaa;
-  }
-  .property-value {
-    h4{
-      margin: 10px 0;
+  .grid-container {
+    .grid-wrapper {
+      border: 1px solid #eee;
+      display: grid;
+      // grid-template-columns: 1fr 1fr 1fr;
+      // grid-template-rows: 1fr 1fr;
+      // grid-column-gap: 4px;
     }
-    .value-set {
+    .grid-item{
+      cursor: pointer;
       display: flex;
-      justify-content: flex-start;
+      justify-content:center;
       align-items: center;
-      align-content: flex-start;
-      flex-wrap: wrap;
-      flex-grow: 1;
-      margin-bottom: 15px;
     }
-    .value-item {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin-top: 6px;
-      margin-right: 5px;
-      padding-right: 5px;
-      border-right: 2px solid #eee;
-      &:last-of-type {
-        border-right: none;
+    .tip{
+      font-size: 12px;
+      color:#aaa;
+    }
+    .property-value {
+      h4{
+        margin: 10px 0;
       }
-      .el-input {
-        width: 40px;
+      .value-set {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        margin-bottom: 15px;
       }
-      .el-input__inner {
-        padding: 0 5px;
-        text-align: center;
+      .value-item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 6px;
+        margin-right: 5px;
+        padding-right: 5px;
+        border-right: 2px solid #eee;
+        &:last-of-type {
+          border-right: none;
+        }
+        .el-input {
+          width: 40px;
+        }
+        .el-input__inner {
+          padding: 0 5px;
+          text-align: center;
+        }
+        .el-radio {
+          margin-left: 8px;
+        }
+        .el-radio__label {
+          padding-left: 5px;
+        }
       }
-      .el-radio {
-        margin-left: 8px;
+      .key-value {
+        min-height: 26px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+        margin-bottom:10px;
+        &.w-100{
+          width:100%;
+        }
+        &.w-50 {
+          width: 50%;
+        }
+        .key {
+          text-align: end;
+          margin-top: -4px;
+          line-height: 1;
+        }
+        .need-min-width{
+          min-width:140px;
+        }
+        .unit {
+          margin-left: 6px;
+          margin-top: -4px;
+        }
       }
-      .el-radio__label {
-        padding-left: 5px;
+      .btn {
+        margin-left: 12px;
+      }
+      .add-btn {
+        margin-top: 6px;
       }
     }
-    .key-value {
-      min-height: 26px;
+    .btn-container{
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
-      box-sizing: border-box;
       margin-bottom:10px;
-      &.w-100{
-        width:100%;
-      }
-      &.w-50 {
-        width: 50%;
-      }
-      .key {
-        text-align: end;
-        margin-top: -4px;
-        line-height: 1;
-      }
-      .need-min-width{
-        min-width:140px;
-      }
-      .unit {
-        margin-left: 6px;
-        margin-top: -4px;
-      }
-    }
-    .btn {
-      margin-left: 12px;
-    }
-    .add-btn {
-      margin-top: 6px;
     }
   }
-  .btn-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom:10px;
-  }
-}
 </style>
 <template>
   <div class="grid-container">
@@ -192,172 +192,171 @@
 import Prism from 'prismjs'
 
 export default {
-  name: 'grid1',
-  data() {
+  name: 'GridOne',
+  data () {
     return {
-      colors:['#9fe8fa','#26baee','#73d2f3','#fff4e0','#4a9ff5','#5ff4ee','#c2fcf6'],
+      colors: ['#9fe8fa', '#26baee', '#73d2f3', '#fff4e0', '#4a9ff5', '#5ff4ee', '#c2fcf6'],
       gridTemplateColumns: [
-        { value: "1", unit: "fr" },
-        { value: "1", unit: "fr" },
-        { value: "1", unit: "fr" }
+        { value: '1', unit: 'fr' },
+        { value: '1', unit: 'fr' },
+        { value: '1', unit: 'fr' }
       ],
       gridTemplateRows: [
-        { value: "40", unit: "px" },
-        { value: "40", unit: "px" },
-        { value: "40", unit: "px" }
+        { value: '40', unit: 'px' },
+        { value: '40', unit: 'px' },
+        { value: '40', unit: 'px' }
       ],
       gridcolumnGaps: 1,
       gridrowGaps: 1,
-      justifyItem: "start",
-      alignItems: "start",
-      gridItem:[{
-        index:1,
-        gridColumnStart:1,
-        gridColumnEnd:2,
-        gridRowStart:1,
-        gridRowEnd:2,
-        backgroundColor:'#9fe8fa',
+      justifyItem: 'start',
+      alignItems: 'start',
+      gridItem: [{
+        index: 1,
+        gridColumnStart: 1,
+        gridColumnEnd: 2,
+        gridRowStart: 1,
+        gridRowEnd: 2,
+        backgroundColor: '#9fe8fa'
       }],
-      choosenGridItem:null
-    };
+      choosenGridItem: null
+    }
   },
   computed: {
-    gridTemplateColumnsCss() {
+    gridTemplateColumnsCss () {
       return this.gridTemplateColumns
-        .map(v => (v.value ? `${v.value}${v.unit}` : ""))
-        .join(" ");
+        .map(v => (v.value ? `${v.value}${v.unit}` : ''))
+        .join(' ')
     },
-    gridTemplateRowsCss() {
+    gridTemplateRowsCss () {
       return this.gridTemplateRows
-        .map(v => (v.value ? `${v.value}${v.unit}` : ""))
-        .join(" ");
+        .map(v => (v.value ? `${v.value}${v.unit}` : ''))
+        .join(' ')
     },
-    gridGapCss() {
+    gridGapCss () {
       return this.gridcolumnGaps === this.gridrowGaps
         ? `${this.gridcolumnGaps}px`
-        : `${this.gridcolumnGaps}px ${this.gridrowGaps}px`;
+        : `${this.gridcolumnGaps}px ${this.gridrowGaps}px`
     },
-    itemColumn(){
-      return this.choosenGridItem?`${this.choosenGridItem.gridColumnStart} / ${this.choosenGridItem.gridColumnEnd}`:''
+    itemColumn () {
+      return this.choosenGridItem ? `${this.choosenGridItem.gridColumnStart} / ${this.choosenGridItem.gridColumnEnd}` : ''
     },
-    itemRow(){
-      return this.choosenGridItem?`${this.choosenGridItem.gridRowStart} / ${this.choosenGridItem.gridRowEnd}`:''
-    },
+    itemRow () {
+      return this.choosenGridItem ? `${this.choosenGridItem.gridRowStart} / ${this.choosenGridItem.gridRowEnd}` : ''
+    }
   },
   watch: {
-    gridTemplateColumnsCss(val) {
-      this.updateColumnsCss();
+    gridTemplateColumnsCss (val) {
+      this.updateColumnsCss()
     },
-    gridTemplateRowsCss(val) {
-      this.updateRowsCss();
+    gridTemplateRowsCss (val) {
+      this.updateRowsCss()
     },
-    gridGapCss() {
-      this.updateGaps();
+    gridGapCss () {
+      this.updateGaps()
     },
-    itemColumn(){
+    itemColumn () {
       this.updateItemColumn()
     },
-    itemRow(){
+    itemRow () {
       this.updateItemRow()
     }
   },
   methods: {
-    choosenGridItemChange(){
-      if(this.choosenGridItem.gridColumnStart >= this.choosenGridItem.gridColumnEnd){
+    choosenGridItemChange () {
+      if (this.choosenGridItem.gridColumnStart >= this.choosenGridItem.gridColumnEnd) {
         this.choosenGridItem.gridColumnStart = this.choosenGridItem.gridColumnEnd - 1
       }
     },
-    addGridItem(){
-      let color = this.gridItem.length>=this.colors.length?this.colors[(this.gridItem.length%this.colors.length)]:this.colors[this.gridItem.length]
+    addGridItem () {
+      const color = this.gridItem.length >= this.colors.length ? this.colors[(this.gridItem.length % this.colors.length)] : this.colors[this.gridItem.length]
       this.gridItem.push({
-        index:this.gridItem.length+1,
-        gridColumnStart:1,
-        gridColumnEnd:2,
-        gridRowStart:1,
-        gridRowEnd:2,
-        backgroundColor:color,
+        index: this.gridItem.length + 1,
+        gridColumnStart: 1,
+        gridColumnEnd: 2,
+        gridRowStart: 1,
+        gridRowEnd: 2,
+        backgroundColor: color
       })
     },
-    gridItemClick(index){
+    gridItemClick (index) {
       this.choosenGridItem = this.gridItem[index]
     },
-    addColum() {
-      this.gridTemplateColumns.push(this.gridTemplateColumns[this.gridTemplateColumns.length-1]);
+    addColum () {
+      this.gridTemplateColumns.push(this.gridTemplateColumns[this.gridTemplateColumns.length - 1])
     },
-    addRow() {
-      this.gridTemplateRows.push(this.gridTemplateRows[this.gridTemplateRows.length-1]);
+    addRow () {
+      this.gridTemplateRows.push(this.gridTemplateRows[this.gridTemplateRows.length - 1])
     },
-    delColum(index) {
-      this.gridTemplateColumns.splice(index, 1);
+    delColum (index) {
+      this.gridTemplateColumns.splice(index, 1)
     },
-    delRow(index) {
-      this.gridTemplateRows.splice(index, 1);
+    delRow (index) {
+      this.gridTemplateRows.splice(index, 1)
     },
-    setRepeat(arr) {
-      let newArr = [];
+    setRepeat (arr) {
+      const newArr = []
       arr.forEach((v, i) => {
         if (i === 0) {
-          newArr.push([v]);
+          newArr.push([v])
         } else {
           if (newArr[newArr.length - 1][0] === v) {
-            newArr[newArr.length - 1].push(v);
+            newArr[newArr.length - 1].push(v)
           } else {
-            newArr.push([v]);
+            newArr.push([v])
           }
         }
-      });
+      })
       return newArr
         .map(v => (v.length === 1 ? v[0] : `repeat(${v.length}, ${v[0]})`))
-        .join(" ");
+        .join(' ')
     },
-    updateColumnsCss() {
-      this.$refs["gridTemplateColumns"].innerHTML = Prism.highlight(
+    updateColumnsCss () {
+      this.$refs['gridTemplateColumns'].innerHTML = Prism.highlight(
         `grid-template-columns: ${this.setRepeat(
-          this.gridTemplateColumnsCss.split(" ")
+          this.gridTemplateColumnsCss.split(' ')
         )};`,
         Prism.languages.css
-      );
+      )
     },
-    updateRowsCss() {
-      this.$refs["gridTemplateRows"].innerHTML = Prism.highlight(
+    updateRowsCss () {
+      this.$refs['gridTemplateRows'].innerHTML = Prism.highlight(
         `grid-template-rows: ${this.setRepeat(
-          this.gridTemplateRowsCss.split(" ")
+          this.gridTemplateRowsCss.split(' ')
         )};`,
         Prism.languages.css
-      );
+      )
     },
-    updateGaps() {
-      this.$refs["gridcolumnGaps"].innerHTML = Prism.highlight(
+    updateGaps () {
+      this.$refs['gridcolumnGaps'].innerHTML = Prism.highlight(
         `grid-gap: ${this.gridGapCss};`,
         Prism.languages.css
-      );
+      )
     },
-    updateItemColumn(){
-      setTimeout(()=>{
-        this.$refs["itemColumn"].innerHTML = Prism.highlight(
+    updateItemColumn () {
+      setTimeout(() => {
+        this.$refs['itemColumn'].innerHTML = Prism.highlight(
           `grid-column: ${this.itemColumn};`,
           Prism.languages.css
-        );
+        )
       })
     },
-    updateItemRow(){
-      setTimeout(()=>{
-        this.$refs["itemRow"].innerHTML = Prism.highlight(
+    updateItemRow () {
+      setTimeout(() => {
+        this.$refs['itemRow'].innerHTML = Prism.highlight(
           `grid-row: ${this.itemRow};`,
           Prism.languages.css
-        );
+        )
       })
     },
-    updateCss() {
-      this.updateColumnsCss();
-      this.updateRowsCss();
-      this.updateGaps();
+    updateCss () {
+      this.updateColumnsCss()
+      this.updateRowsCss()
+      this.updateGaps()
     }
   },
-  mounted() {
-    this.updateCss();
+  mounted () {
+    this.updateCss()
   }
-};
+}
 </script>
-
 

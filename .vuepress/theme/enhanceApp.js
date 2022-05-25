@@ -1,6 +1,6 @@
 import postMixin from './mixins/posts'
 import localMixin from './mixins/locales'
-import themeMixin from "./mixins/theme"
+import themeMixin from './mixins/theme'
 import { interceptRouterError, fixRouterError404 } from './helpers/other'
 
 import Vue from 'vue'

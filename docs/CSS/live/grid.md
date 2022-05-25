@@ -9,12 +9,12 @@ date: 2019-10-22
 
 ## ***column, row, gap***
 
-<CSS-grid-index1></CSS-grid-index1>
+<CSS-grid-GridOne></CSS-grid-GridOne>
 
 ## ***justify & align***
 
-<CSS-grid-index2></CSS-grid-index2>
+<CSS-grid-GridTwo></CSS-grid-GridTwo>
 
 ## ***justify-self & align-self***
 
-<CSS-grid-index3></CSS-grid-index3>
+<CSS-grid-GridThree></CSS-grid-GridThree>

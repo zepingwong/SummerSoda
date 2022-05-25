@@ -16,19 +16,19 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       open: false
     }
   },
   methods: {
-    toggleSidebar() {
+    toggleSidebar () {
       this.open = !this.open
       this.$emit('toggle-sidebar')
     }
   },
   watch: {
-    show(val) {
+    show (val) {
       this.open = val
     }
   }

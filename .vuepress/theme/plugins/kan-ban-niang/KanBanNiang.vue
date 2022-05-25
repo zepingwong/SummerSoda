@@ -82,7 +82,11 @@ export default {
         height: 220
       },
       // model的样式
-      modelStyle: MODEL_STYLE,
+      modelStyle: {
+        right: '90px',
+        bottom: '-20px',
+        opacity: '0.9'
+      },
       // messageBox 样式
       messageStyle: {
         right: '68px',
@@ -96,15 +100,15 @@ export default {
     }
   },
   computed: {
-    themeName() {
+    themeName () {
       const allTheme = ['blackCat', 'whiteCat', 'haru1', 'haru2', 'haruto', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16']
       const theme = this.$themeConfig?.KanBanNiang?.theme || []
-      return theme.length > 0 ? theme.filter((item) =>{
+      return theme.length > 0 ? theme.filter((item) => {
         return allTheme.indexOf(item) > 0
       }) : allTheme
     }
   },
-  beforeMount() {
+  beforeMount () {
     this.messages = {
       ...this.messages,
       ...this.$themeConfig?.KanBanNiang?.messages
@@ -181,7 +185,7 @@ export default {
         script.innerHTML = live2dJSString
         document.body.appendChild(script)
       }
-      let ajax = new XMLHttpRequest()
+      const ajax = new XMLHttpRequest()
       ajax.open('get', this.model[this.currentTheme])
       ajax.send()
       ajax.onreadystatechange = function () {

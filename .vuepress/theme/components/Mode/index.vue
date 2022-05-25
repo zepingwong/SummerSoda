@@ -15,22 +15,22 @@ export default {
   components: {
     RecoIcon
   },
-  data() {
+  data () {
     return {
       modeOptions: ['dark', 'auto', 'light'],
       currentMode: 'auto'
     }
   },
   methods: {
-    selectMode() {
+    selectMode () {
       let index = this.modeOptions.indexOf(this.currentMode)
-      index = index === this.modeOptions.length-1 ? 0 : index+1
+      index = index === this.modeOptions.length - 1 ? 0 : index + 1
       this.currentMode = this.modeOptions[index]
       applyMode(this.currentMode)
       localStorage.setItem('mode', this.currentMode)
     }
   },
-  mounted() {
+  mounted () {
     if (this.$modeSwitch === false) {
       // 为 'auto' 模式设置监听器
       if (this.$mode === 'auto') {

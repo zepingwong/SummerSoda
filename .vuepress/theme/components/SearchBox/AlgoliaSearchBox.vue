@@ -20,13 +20,13 @@ export default {
   name: 'AlgoliaSearchBox',
   components: { RecoIcon },
   props: ['options'],
-  data() {
+  data () {
     return {
       placeholder: undefined
     }
   },
   methods: {
-    initialize(userOptions, lang) {
+    initialize (userOptions, lang) {
       Promise.all([
         import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.js'),
         import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
@@ -50,12 +50,12 @@ export default {
         ))
       })
     },
-    update(options, lang) {
+    update (options, lang) {
       this.$el.innerHTML = '<input id="algolia-search-input" class="search-query">'
       this.initialize(options, lang)
     }
   },
-  mounted() {
+  mounted () {
     this.initialize(this.options, this.$lang)
     this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
   },

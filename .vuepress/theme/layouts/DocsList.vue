@@ -50,7 +50,7 @@ export default {
   name: 'DocsList',
   mixins: [moduleTransitonMixin],
   components: { Common, PageInfo, ModuleTransition, RecoIcon },
-  data() {
+  data () {
     return {
       currentPage: 1,
       numStyle: {
@@ -61,17 +61,17 @@ export default {
     }
   },
   computed: {
-    docsList() {
+    docsList () {
       return this.$docsLists
     },
-    currentPageData() {
+    currentPageData () {
       const start = (this.currentPage - 1) * 9
       const end = this.currentPage * 9
       return this.docsList.slice(start, end)
     }
   },
   methods: {
-    getCurrentPage(current) {
+    getCurrentPage (current) {
       this.currentPage = current
       setTimeout(() => {
         window.scrollTo(0, 0)

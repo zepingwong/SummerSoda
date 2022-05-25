@@ -1,36 +1,36 @@
 <style lang="stylus" scoped>
-.grid2-container {
-  .grid-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 200px);
-    grid-template-rows: repeat(2, 100px);
-    border: 1px solid #eeeeee;
-    height: 250px;
-    margin-top:30px;
-  }
-  .grid-item {
-    background: #00adb5;
-    color: #fff;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .key-value {
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: start;
-    align-items: flex-start;
-    .key {
-      width: 126px;
-      flex-shrink: 0;
+  .grid2-container {
+    .grid-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 200px);
+      grid-template-rows: repeat(2, 100px);
+      border: 1px solid #eeeeee;
+      height: 250px;
+      margin-top:30px;
     }
-    .el-radio {
-      margin-left: 0;
-      margin-right: 30px;
+    .grid-item {
+      background: #00adb5;
+      color: #fff;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .key-value {
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: start;
+      align-items: flex-start;
+      .key {
+        width: 126px;
+        flex-shrink: 0;
+      }
+      .el-radio {
+        margin-left: 0;
+        margin-right: 30px;
+      }
     }
   }
-}
 </style>
 <template>
   <div class="grid2-container">
@@ -81,84 +81,83 @@
 import Prism from 'prismjs'
 
 export default {
-  name: 'grid2',
-  data() {
+  name: 'GridTwo',
+  data () {
     return {
-      value: ["start", "end", "center", "stretch"],
+      value: ['start', 'end', 'center', 'stretch'],
       value2: [
-        "start",
-        "end",
-        "center",
-        "stretch",
-        "space-around",
-        "space-between",
-        "space-evenly"
+        'start',
+        'end',
+        'center',
+        'stretch',
+        'space-around',
+        'space-between',
+        'space-evenly'
       ],
-      justifyContent: "start",
-      alignContent: "start",
-      justifyItems: "stretch",
-      alignItems: "stretch",
+      justifyContent: 'start',
+      alignContent: 'start',
+      justifyItems: 'stretch',
+      alignItems: 'stretch',
       gridItem: [
         {
-          colum: "1/2",
-          row: "1/2"
+          colum: '1/2',
+          row: '1/2'
         },
         {
-          colum: "2/3",
-          row: "1/2"
+          colum: '2/3',
+          row: '1/2'
         },
         {
-          colum: "1/2",
-          row: "2/3"
+          colum: '1/2',
+          row: '2/3'
         },
         {
-          colum: "2/3",
-          row: "2/3"
+          colum: '2/3',
+          row: '2/3'
         }
       ]
-    };
+    }
   },
   watch: {
-    justifyItems() {
-      this.updateItemsCss();
+    justifyItems () {
+      this.updateItemsCss()
     },
-    alignItems() {
-      this.updateItemsCss();
+    alignItems () {
+      this.updateItemsCss()
     },
-    justifyContent() {
-      this.updateContentCss();
+    justifyContent () {
+      this.updateContentCss()
     },
-    alignContent() {
-      this.updateContentCss();
+    alignContent () {
+      this.updateContentCss()
     }
   },
   methods: {
-    updateItemsCss() {
-      this.$refs["placeItems"].innerHTML = Prism.highlight(
+    updateItemsCss () {
+      this.$refs['placeItems'].innerHTML = Prism.highlight(
         `place-items: ${
           this.alignItems === this.justifyItems
             ? `${this.alignItems}`
             : `${this.alignItems} ${this.justifyItems}`
         };`,
         Prism.languages.css
-      );
+      )
     },
-    updateContentCss() {
-      this.$refs["placeContent"].innerHTML = Prism.highlight(
+    updateContentCss () {
+      this.$refs['placeContent'].innerHTML = Prism.highlight(
         `place-content: ${
           this.alignContent === this.justifyContent
             ? `${this.alignContent}`
             : `${this.alignContent} ${this.justifyContent}`
         };`,
         Prism.languages.css
-      );
+      )
     }
   },
-  mounted() {
-    this.updateContentCss();
-    this.updateItemsCss();
+  mounted () {
+    this.updateContentCss()
+    this.updateItemsCss()
   }
-};
+}
 </script>
-
 

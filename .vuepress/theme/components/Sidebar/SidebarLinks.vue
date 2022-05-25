@@ -34,13 +34,13 @@ export default {
     'depth', // depth of current sidebar links
     'sidebarDepth' // depth of headers to be extracted
   ],
-  data() {
+  data () {
     return {
       openGroupIndex: 0
     }
   },
   methods: {
-    refreshIndex() {
+    refreshIndex () {
       const index = resolveOpenGroupIndex(
         this.$route,
         this.items
@@ -49,7 +49,7 @@ export default {
         this.openGroupIndex = index
       }
     },
-    activationAnchor() {
+    activationAnchor () {
       // eslint-disable-next-line no-undef
       const anchors = [].slice.call(document.querySelectorAll(AHL_HEADER_ANCHOR_SELECTOR))
         .filter(anchor => decodeURIComponent(this.$route.fullPath).indexOf(decodeURIComponent(anchor.hash)) !== -1)
@@ -58,7 +58,7 @@ export default {
         window.scrollTo(0, anchors[0].offsetTop + 160)
       }, 100)
     },
-    activationLink() {
+    activationLink () {
       const subtitleName = decodeURIComponent(this.$route.fullPath)
       if (!subtitleName || subtitleName === '') return
       // eslint-disable-next-line no-undef
@@ -71,7 +71,7 @@ export default {
         }
       }
     },
-    isInViewPortOfOne() {
+    isInViewPortOfOne () {
       const sidebarScroll = document.getElementsByClassName('sidebar')[0]
       let el = document.getElementsByClassName('active sidebar-link')[1]
       if (el == null || el.offsetTop === undefined) {
@@ -92,19 +92,19 @@ export default {
         sidebarScroll.scrollTop = (offsetTop - 5)
       }
     },
-    isActive(page) {
+    isActive (page) {
       return isActive(this.$route, page.regularPath)
     },
-    toggleGroup(index) {
+    toggleGroup (index) {
       this.openGroupIndex = index === this.openGroupIndex ? -1 : index
     }
   },
-  mounted() {
+  mounted () {
     this.refreshIndex()
     this.activationLink()
     this.isInViewPortOfOne()
   },
-  updated() {
+  updated () {
     this.isInViewPortOfOne()
   },
   watch: {

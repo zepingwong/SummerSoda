@@ -1,4 +1,4 @@
-import {compareDate} from './utils'
+import { compareDate } from './utils'
 
 // 过滤博客数据
 export function filterPosts (posts, isTimeline) {

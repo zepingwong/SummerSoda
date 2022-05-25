@@ -30,23 +30,23 @@
 import { isActive } from '../../helpers/utils'
 
 export default {
-  data() {
+  data () {
     return {
       isShow: true
     }
   },
   computed: {
-    headers() {
+    headers () {
       return this.$showSubSideBar ? this.$page.headers : []
     }
   },
   methods: {
-    fold() {
+    fold () {
       this.isShow = !this.isShow
       this.$emit('foldSubSidebar', this.isShow)
       localStorage.setItem('showSubSidebar', this.isShow.toString())
     },
-    isLinkActive(header) {
+    isLinkActive (header) {
       const active = isActive(this.$route, this.$page.path + '#' + header.slug)
       if (active) {
         setTimeout(() => {
@@ -56,8 +56,8 @@ export default {
       return active
     }
   },
-  beforeMount() {
-    const show = localStorage.getItem("showSubSidebar")
+  beforeMount () {
+    const show = localStorage.getItem('showSubSidebar')
     if (show === 'false') {
       this.isShow = false
     } else if (show === 'true') {
@@ -81,7 +81,6 @@ export default {
   &::-webkit-scrollbar
     width 2px
     height 5px
-
 
 .sub-sidebar-content
   display flex

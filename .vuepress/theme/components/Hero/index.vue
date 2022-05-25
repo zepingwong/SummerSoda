@@ -38,16 +38,16 @@
 
 <script>
 import NavLink from '../Navbar/NavLink'
-import {ModuleTransition} from '../../core'
+import { ModuleTransition } from '../../core'
 
 export default {
-  name: 'Hero',
+  name: 'HeroIndex',
   components: { NavLink, ModuleTransition },
   computed: {
-    frontmatter() {
+    frontmatter () {
       return this.$frontmatter
     },
-    actionLink() {
+    actionLink () {
       return this && {
         link: this.$frontmatter.actionLink,
         text: this.$frontmatter.actionText

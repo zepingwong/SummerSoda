@@ -62,11 +62,11 @@ export default {
   name: 'SidebarGroup',
   props: ['item', 'open', 'collapsable', 'depth'],
   components: { DropdownTransition, SidebarLinks },
-  beforeMount() {
+  beforeMount () {
     this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
   },
   methods: {
-    isActive() {
+    isActive () {
       return isActive()
     }
   }

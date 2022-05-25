@@ -28,14 +28,14 @@ import { ModuleTransition } from '../core/components'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 
 export default {
-  name: 'TimeLine',
+  name: 'TimeLines',
   mixins: [moduleTransitonMixin],
   components: { Common, ModuleTransition },
   methods: {
-    go(url) {
+    go (url) {
       this.$router.push({ path: url })
     },
-    dateFormat(date, type) {
+    dateFormat (date, type) {
       function renderTime (date) {
         const dateee = new Date(date).toJSON()
         return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.\d{3}Z/, '').replace(/-/g, '/')

@@ -20,7 +20,7 @@ export default {
   name: 'CategoryList',
   components: { RecoIcon },
   methods: {
-    getColor() {
+    getColor () {
       return getOneColor()
     }
   }

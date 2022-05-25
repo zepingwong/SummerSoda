@@ -11,16 +11,16 @@ import HomeBlog from '../components/HomeBlog'
 import HomeDocs from '../components/HomeDocs'
 import HomePageOne from '../components/HomePageOne'
 import Page from '../components/Page'
-import Footer from '../components/Footer'
 import Common from '../components/Common'
 import { resolveSidebarItems } from '../helpers/utils'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 
 export default {
+  name: 'MainLayout',
   mixins: [moduleTransitonMixin],
-  components: { HomeBlog, HomeDocs, Page, Common, Footer, HomePageOne },
+  components: { HomeBlog, HomeDocs, Page, Common, HomePageOne },
   computed: {
-    sidebarItems() {
+    sidebarItems () {
       const { $page, $site, $localePath } = this
       if ($page) {
         return resolveSidebarItems(
@@ -33,10 +33,10 @@ export default {
         return []
       }
     },
-    homeCom() {
+    homeCom () {
       const { type } = this.$frontmatter || this.$themeConfig || { type: 'docs' }
-      return ['docs', 'blog', 'HomeBlog', 'HomeDocs', 'HomePageOne'].indexOf(type) > 0 ? type === 'blog' ? 'HomeBlog' :
-        type === 'docs' ? 'HomeDocs' : type : 'HomeBlog'
+      return ['docs', 'blog', 'HomeBlog', 'HomeDocs', 'HomePageOne'].indexOf(type) > 0 ? type === 'blog' ? 'HomeBlog'
+        : type === 'docs' ? 'HomeDocs' : type : 'HomeBlog'
     }
   }
 }

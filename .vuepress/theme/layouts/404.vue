@@ -10,7 +10,8 @@
 
 <script>
 export default {
-  data() {
+  name: 'NotFound',
+  data () {
     return {
       msgs: [
         `There's nothing here.`,
@@ -21,16 +22,16 @@ export default {
     }
   },
   computed: {
-    noFoundPageByTencent() {
+    noFoundPageByTencent () {
       return this.$themeConfig.noFoundPageByTencent !== false
     }
   },
   methods: {
-    getMsg() {
-      return this.msgs[Math.floor(Math.random() * msgs.length)]
+    getMsg () {
+      return this.msgs[Math.floor(Math.random() * this.msgs.length)]
     }
   },
-  mounted() {
+  mounted () {
     if (this.noFoundPageByTencent) {
       const dom = document.createElement('script')
       dom.setAttribute('homePageName', '回到首页')

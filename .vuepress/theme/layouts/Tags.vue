@@ -33,23 +33,24 @@ import moduleTransitonMixin from '../mixins/moduleTransiton'
 import { getOneColor } from '../helpers/other'
 
 export default {
+  name: 'TagsLayout',
   mixins: [moduleTransitonMixin],
   components: { Common, NoteAbstract, ModuleTransition, RecoIcon },
   computed: {
-    tags() {
+    tags () {
       return [{ name: this.$customLocales.all, path: '/tag/' }, ...this.$tagesList]
     }
   },
   methods: {
-    getColor() {
+    getColor () {
       return getOneColor()
     },
-    tagClick(tagInfo) {
+    tagClick (tagInfo) {
       if (this.$route.path !== tagInfo.path) {
         this.$router.push({ path: tagInfo.path })
       }
     },
-    paginationChange() {
+    paginationChange () {
       setTimeout(() => {
         window.scrollTo(0, 0)
       }, 100)

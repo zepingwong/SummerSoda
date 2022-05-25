@@ -12,17 +12,18 @@ import clipboard from '../theme/helpers/clipboard'
 import md5 from 'md5'
 
 export default {
-  data() {
+  name: 'ThemeMd5',
+  data () {
     return {
       password: '',
       md5Str: ''
     }
   },
   methods: {
-    generate() {
+    generate () {
       this.md5Str = md5(this.password)
     },
-    copyClick() {
+    copyClick () {
       clipboard(this.md5Str)
         .then(() => {
           this.$message({

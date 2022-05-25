@@ -15,7 +15,7 @@ module.exports = {
   },
   themeConfig: themeConfig,
   markdown: {
-    "lineNumbers": true
+    'lineNumbers': true
   },
   plugins: plugins
 }

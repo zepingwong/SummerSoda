@@ -49,7 +49,7 @@ import md5 from 'md5'
 import { ModuleTransition, RecoIcon } from '../../core/components'
 
 export default {
-  name: 'Password',
+  name: 'PasswordIndex',
   components: { ModuleTransition, RecoIcon },
   props: {
     isPage: {
@@ -57,7 +57,7 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       year: new Date().getFullYear(),
       key: '',
@@ -65,23 +65,23 @@ export default {
     }
   },
   computed: {
-    recoShowModule() {
+    recoShowModule () {
       return this.$parent.recoShowModule
     }
   },
   methods: {
-    isHasKey() {
+    isHasKey () {
       let { keys } = this.$themeConfig.keyPage
       keys = keys.map(item => item.toLowerCase())
       return keys.indexOf(sessionStorage.getItem('key')) > -1
     },
-    isHasPageKey() {
+    isHasPageKey () {
       const pageKeys = this.$frontmatter.keys.map(item => item.toLowerCase())
       const pageKey = `pageKey${window.location.pathname}`
       return pageKeys && pageKeys.indexOf(sessionStorage.getItem(pageKey)) > -1
     },
-    inter() {
-      const keyVal = md5(key.value.trim())
+    inter () {
+      const keyVal = md5(this.key.trim())
       const pageKey = `pageKey${window.location.pathname}`
       const keyName = this.isPage ? pageKey : 'key'
       sessionStorage.setItem(keyName, keyVal)
@@ -99,10 +99,10 @@ export default {
         window.location.reload()
       }, 800)
     },
-    inputFocus() {
+    inputFocus () {
       this.warningText = 'Input Your Key'
     },
-    inputBlur() {
+    inputBlur () {
       this.warningText = 'Konck! Knock!'
     }
   }

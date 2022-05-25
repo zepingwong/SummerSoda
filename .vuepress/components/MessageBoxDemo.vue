@@ -7,6 +7,7 @@
         'border-left-color': item.color
       }"
       v-for="item in types"
+      :key="item.name"
     >
       <h2 class="v-notification__title">{{item.name}}</h2>
       <div class="v-notification__content">
@@ -19,7 +20,7 @@
 <script>
 export default {
   name: 'MessageBoxDemo',
-  data() {
+  data () {
     return {
       types: [{
         name: 'normal',

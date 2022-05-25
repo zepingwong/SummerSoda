@@ -31,6 +31,11 @@
     }
   },
   "dependencies": {
+    "@vssue/api-bitbucket-v2": "^1.1.1",
+    "@vssue/api-gitee-v5": "^1.4.4",
+    "@vssue/api-github-v3": "^1.4.4",
+    "@vssue/api-github-v4": "^1.2.0",
+    "@vssue/api-gitlab-v4": "^1.1.1",
     "@vuepress/plugin-last-updated": "^1.9.7",
     "async-validator": "^4.1.1",
     "clipboard": "^2.0.4",
@@ -38,7 +43,8 @@
     "md5": "2.3.0",
     "moment": "^2.29.3",
     "prismjs": "^1.28.0",
-    "vue": "^2.6.14"
+    "vue": "^2.6.14",
+    "vue-class-component": "^7.2.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
@@ -48,11 +54,6 @@
     "@types/unist": "^2.0.3",
     "@types/vfile": "^4.0.0",
     "@types/vfile-message": "^2.0.0",
-    "@vssue/api-bitbucket-v2": "^1.1.1",
-    "@vssue/api-gitee-v5": "^1.4.4",
-    "@vssue/api-github-v3": "^1.4.4",
-    "@vssue/api-github-v4": "^1.2.0",
-    "@vssue/api-gitlab-v4": "^1.1.1",
     "@vuepress/plugin-blog": "1.9.4",
     "@vuepress/plugin-medium-zoom": "^1.9.7",
     "@vuepress/shared-utils": "^1.9.7",
@@ -62,8 +63,8 @@
     "conventional-changelog-cli": "^2.0.34",
     "cz-customizable": "^6.2.0",
     "docsearch.js": "2.6.3",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^9.0.1",
     "husky": "^4.2.5",
     "lint-staged": "^12.4.1",
     "sort-package-json": "^1.57.0",

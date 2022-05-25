@@ -25,6 +25,7 @@ import { isExternal, isMailto, isTel, ensureExt } from '../../helpers/utils'
 import { RecoIcon } from '../../core/components'
 
 export default {
+  name: 'NavLink',
   components: { RecoIcon },
   props: {
     item: {
@@ -32,10 +33,10 @@ export default {
     }
   },
   computed: {
-    link() {
+    link () {
       return ensureExt(this.item.link)
     },
-    exact() {
+    exact () {
       if (this.$site.locales) {
         return Object.keys(this.$site.locales).some(rootLink => rootLink === this.link)
       }
@@ -43,15 +44,15 @@ export default {
     }
   },
   methods: {
-    isExternal() {
+    isExternal () {
       return isExternal()
     },
-    isMailto() {
+    isMailto () {
       return isMailto()
     },
-    isTel() {
+    isTel () {
       return isTel()
-    },
+    }
   }
 }
 </script>

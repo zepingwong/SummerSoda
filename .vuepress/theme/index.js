@@ -7,22 +7,22 @@ module.exports = () => ({
     require('./plugins/comments'),
     require('./plugins/message'),
     require('./plugins/kan-ban-niang'),
-    [require('./plugins/one-click-copy') , {
-      copyText: "复制代码",
+    [require('./plugins/one-click-copy'), {
+      copyText: '复制代码',
       tip: {
-        content: "复制成功!"
+        content: '复制成功!'
       }
     }],
     '@vuepress/active-header-links',
     [
       '@vuepress/last-updated', {
-      transformer: (timestamp, lang) => {
+        transformer: (timestamp, lang) => {
         // 不要忘了安装 moment
-        const moment = require('moment')
-        moment.locale(lang)
-        return moment(timestamp).fromNow()
-      }
-    }],
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(timestamp).fromNow()
+        }
+      }],
     ['@vuepress/medium-zoom', {
       selector: '.theme-reco-content :not(a) > img'
     }],

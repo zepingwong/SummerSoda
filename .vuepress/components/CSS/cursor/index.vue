@@ -21,14 +21,14 @@
 
 <script>
 export default {
-  name: 'cursor',
-  data() {
+  name: 'CursorIndex',
+  data () {
     return {
-      cursor:'auto,text,default,none,help,pointer,progress,wait,progress,cell,crosshair,text,vertical-text,alias,copy,no-drop,not-allowed,grab,grabbing,all-scroll,all-scroll,move,col-resize,row-resize,n-resize,se-resize,n-resize,s-resize,ns-resize,e-resize,s-resize,w-resize,ne-resize,nw-resize,se-resize,sw-resize,ew-resize,ns-resize,nesw-resize,nwse-resize,zoom-in,zoom-out'
+      cursor: 'auto,text,default,none,help,pointer,progress,wait,progress,cell,crosshair,text,vertical-text,alias,copy,no-drop,not-allowed,grab,grabbing,all-scroll,all-scroll,move,col-resize,row-resize,n-resize,se-resize,n-resize,s-resize,ns-resize,e-resize,s-resize,w-resize,ne-resize,nw-resize,se-resize,sw-resize,ew-resize,ns-resize,nesw-resize,nwse-resize,zoom-in,zoom-out'
     }
   },
-  computed:{
-    cursorArr:function(){
+  computed: {
+    cursorArr: function () {
       return Array.from(new Set(this.cursor.split(',')))
     }
   }

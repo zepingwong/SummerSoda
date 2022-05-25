@@ -28,10 +28,10 @@
 import { RecoIcon } from '../../core/components'
 
 export default {
-  name: 'Footer',
+  name: 'FooterIndex',
   components: { RecoIcon },
   computed: {
-    showAccessNumber() {
+    showAccessNumber () {
       const {
         $themeConfig: { valineConfig },
         $themeLocaleConfig: { valineConfig: valineLocalConfig }

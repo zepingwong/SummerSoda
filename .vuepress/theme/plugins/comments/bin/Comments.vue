@@ -14,6 +14,7 @@
 import Valine from './Valine.vue'
 import Vssue from './Vssue.vue'
 export default {
+  name: 'CommentsPlugin',
   components: { Valine, Vssue },
   props: {
     isShowComments: {

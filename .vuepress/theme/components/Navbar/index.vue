@@ -40,6 +40,7 @@ import NavLinks from '../Navbar/NavLinks'
 import Mode from '../Mode'
 
 export default {
+  name: 'NavbarIndex',
   props: {
     showToggleButton: {
       type: Boolean,
@@ -47,16 +48,16 @@ export default {
     }
   },
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, Mode },
-  data() {
+  data () {
     return {
       linksWrapMaxWidth: null
     }
   },
   computed: {
-    algolia() {
+    algolia () {
       return this.$themeLocaleConfig.algolia || this.$themeConfig.algolia || {}
     },
-    isAlgoliaSearch() {
+    isAlgoliaSearch () {
       return this.algolia.value && this.algolia.value.apiKey && this.algolia.value.indexName
     }
   },
@@ -68,7 +69,7 @@ export default {
       return win.getComputedStyle(el, null)[property]
     }
   },
-  mounted() {
+  mounted () {
     const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
     const NAVBAR_VERTICAL_PADDING = parseInt(this.css(this.$el, 'paddingLeft')) + parseInt(this.css(this.$el, 'paddingRight'))
 

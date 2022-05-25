@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'BadgeIndex',
   functional: true,
   props: {
     type: {

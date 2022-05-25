@@ -36,14 +36,15 @@ import { sortPostsByStickyAndDate, filterPosts } from '../helpers/postData'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 import { getOneColor } from '../helpers/other'
 export default {
+  name: 'TagLayout',
   mixins: [moduleTransitonMixin],
   components: { Common, NoteAbstract, ModuleTransition },
   computed: {
-    tags() {
+    tags () {
       return [{ name: this.$customLocales.all, path: '/tag/' }, ...this.$tagesList]
     },
     // 时间降序后的博客列表
-    posts() {
+    posts () {
       let posts = this.$currentTags.pages
       posts = filterPosts(posts)
       sortPostsByStickyAndDate(posts)
@@ -51,18 +52,18 @@ export default {
     }
   },
   methods: {
-    getColor() {
+    getColor () {
       return getOneColor()
     },
-    getCurrentTag(tag) {
+    getCurrentTag (tag) {
       this.$emit('currentTag', tag)
     },
-    tagClick(tagInfo) {
+    tagClick (tagInfo) {
       if (this.$route.path !== tagInfo.path) {
         this.$router.push({ path: tagInfo.path })
       }
     },
-    paginationChange() {
+    paginationChange () {
       setTimeout(() => {
         window.scrollTo(0, 0)
       }, 100)

@@ -1,14 +1,14 @@
 export default {
   computed: {
-    $mode() {
+    $mode () {
       const modeOptions = ['dark', 'auto', 'light']
       const mode = this.$themeConfig?.modeConfig?.mode || 'auto'
       return modeOptions.indexOf(mode) !== -1 ? mode : 'auto'
     },
-    $modeSwitch() {
+    $modeSwitch () {
       return this.$themeConfig?.modeConfig?.modeSwitch !== false
     },
-    $bgImageStyle() {
+    $bgImageStyle () {
       const url = this.$frontmatter.bgImage
         ? this.$withBase(this.$frontmatter.bgImage)
         : require('../images/bg.svg')

@@ -72,24 +72,25 @@ import { resolvePage, outboundRE, endingSlashRE } from '../../helpers/utils'
 import { ModuleTransition } from '../../core/components'
 
 export default {
+  name: 'PageIndex',
   components: { PageInfo, ModuleTransition, SubSidebar },
   props: ['sidebarItems'],
-  data() {
+  data () {
     return {
       isShowSubSidebar: true
     }
   },
   computed: {
-    recoShowModule() {
+    recoShowModule () {
       return this.$parent.recoShowModule
     },
     // 是否显示评论
-    shouldShowComments() {
+    shouldShowComments () {
       const { isShowComments } = this.$frontmatter
       const { showComment } = this.$themeConfig.valineConfig || { showComment: true }
       return (showComment !== false && isShowComments !== false) || (showComment === false && isShowComments === true)
     },
-    showAccessNumber() {
+    showAccessNumber () {
       const {
         $themeConfig: { valineConfig },
         $themeLocaleConfig: { valineConfig: valineLocalConfig }
@@ -97,27 +98,19 @@ export default {
       const vc = valineLocalConfig || valineConfig
       return vc && vc.visitor !== false
     },
-    lastUpdated() {
-      const { lastUpdated } = this.$themeConfig?.pageConfig || { pageConfig : false}
+    lastUpdated () {
+      const { lastUpdated } = this.$themeConfig?.pageConfig || { pageConfig: false }
       return lastUpdated === true ? this.$page.lastUpdated : false
     },
-    prev() {
+    prev () {
       const frontmatterPrev = this.$frontmatter.prev
-      if (frontmatterPrev === false) {} else if (frontmatterPrev) {
-        return resolvePage(this.$site.pages, frontmatterPrev, this.$route.path)
-      } else {
-        return resolvePrev(this.$page, this.sidebarItems)
-      }
+      return frontmatterPrev === false ? false : frontmatterPrev ? resolvePage(this.$site.pages, frontmatterPrev, this.$route.path) : resolvePrev(this.$page, this.sidebarItems)
     },
-    next() {
+    next () {
       const frontmatterNext = this.$frontmatter.next
-      if (frontmatterNext === false) {} else if (frontmatterNext) {
-        return resolvePage(this.$site.pages, frontmatterNext, this.$route.path)
-      } else {
-        return resolveNext(this.$page, this.sidebarItems)
-      }
+      return frontmatterNext === false ? false : frontmatterNext ? resolvePage(this.$site.pages, frontmatterNext, this.$route.path) : resolveNext(this.$page, this.sidebarItems)
     },
-    editLink() {
+    editLink () {
       if (this.$frontmatter.editLink === false) {
         return false
       }
@@ -134,12 +127,12 @@ export default {
       }
       return ''
     },
-    pageStyle() {
+    pageStyle () {
       return this.$showSubSideBar && this.isShowSubSidebar ? {} : { paddingRight: '0' }
     }
   },
   methods: {
-    foldSubSidebar(val) {
+    foldSubSidebar (val) {
       this.isShowSubSidebar = val
     }
   }

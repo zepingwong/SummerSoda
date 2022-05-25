@@ -16,7 +16,7 @@ import GiteeV5 from '@vssue/api-gitee-v5'
 import 'vssue/dist/vssue.css'
 
 export default {
-  name: 'Vssue',
+  name: 'VssuePlugin',
   components: { VssueComponent },
   props: {
     options: {

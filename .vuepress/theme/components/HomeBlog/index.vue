@@ -46,7 +46,7 @@ import Hero from '../Hero'
 export default {
   name: 'HomeBlog',
   components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo, CategoryList, Hero },
-  data() {
+  data () {
     return {
       state: {
         recoShow: false,
@@ -55,14 +55,14 @@ export default {
     }
   },
   computed: {
-    frontmatter() {
+    frontmatter () {
       return this.$frontmatter
     },
-    recoShowModule() {
+    recoShowModule () {
       return this && this.$parent.recoShowModule
-    },
+    }
   },
-  mounted() {
+  mounted () {
     this.state.heroHeight = this.$refs.hero.$el.offsetHeight
     this.state.recoShow = true
   },

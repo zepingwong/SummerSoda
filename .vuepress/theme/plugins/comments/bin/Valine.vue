@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'Valine',
+  name: 'ValinePlugin',
   props: {
     options: {
       type: Object,

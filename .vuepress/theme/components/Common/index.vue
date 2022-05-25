@@ -44,6 +44,7 @@ import Password from '../Password'
 import { setTimeout } from 'timers'
 
 export default {
+  name: 'CommonIndex',
   components: { Sidebar, Navbar, Password, PersonalInfo },
   props: {
     sidebar: {
@@ -59,7 +60,7 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       isSidebarOpen: false,
       isHasKey: true,
@@ -68,13 +69,13 @@ export default {
     }
   },
   computed: {
-    shouldShowSidebar() {
+    shouldShowSidebar () {
       return this.sidebarItems.length > 0
     },
-    absoluteEncryption() {
+    absoluteEncryption () {
       return this.$themeConfig.keyPage && this.$themeConfig.keyPage.absoluteEncryption === true
     },
-    shouldShowNavbar() {
+    shouldShowNavbar () {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
       if (
@@ -90,7 +91,7 @@ export default {
         this.$themeLocaleConfig?.navConfig
       )
     },
-    pageClasses() {
+    pageClasses () {
       const classValue = {
         'no-navbar': !this.shouldShowNavbar,
         'sidebar-open': this.isSidebarOpen,
@@ -100,7 +101,7 @@ export default {
       if (userPageClass) classValue[userPageClass] = true
       return classValue
     },
-    recoShowModule() {
+    recoShowModule () {
       if (this.firstLoad) {
         return true
       } else {
@@ -109,7 +110,7 @@ export default {
     }
   },
   methods: {
-    hasKey() {
+    hasKey () {
       const { keyPage } = this.$themeConfig
       if (!keyPage || !keyPage.keys || keyPage.keys.length === 0) {
         this.isHasKey = true
@@ -119,12 +120,12 @@ export default {
       keys = keys.map(item => item.toLowerCase())
       this.isHasKey = keys && keys.indexOf(sessionStorage.getItem('key')) > -1
     },
-    initRouterHandler() {
+    initRouterHandler () {
       this.$router.afterEach(() => {
         this.isSidebarOpen = false
       })
     },
-    hasPageKey() {
+    hasPageKey () {
       let pageKeys = this.$frontmatter.keys
       if (!pageKeys || pageKeys.length === 0) {
         this.isHasPageKey = true
@@ -133,20 +134,20 @@ export default {
       pageKeys = pageKeys.map(item => item.toLowerCase())
       this.isHasPageKey = pageKeys.indexOf(sessionStorage.getItem(`pageKey${window.location.pathname}`)) > -1
     },
-    toggleSidebar(to) {
+    toggleSidebar (to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
     },
-    handleLoading() {
+    handleLoading () {
       const time = this.$frontmatter.home && sessionStorage.getItem('firstLoad') === undefined ? 1000 : 0
       setTimeout(() => {
         this.firstLoad = false
         if (sessionStorage.getItem('firstLoad') === undefined) sessionStorage.setItem('firstLoad', false)
       }, time)
-    },
+    }
     // 首次渲染时，recoShowModule 直接为 true，否则锚点失效
 
   },
-  mounted() {
+  mounted () {
     this.initRouterHandler()
     this.hasKey()
     this.hasPageKey()

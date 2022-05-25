@@ -45,7 +45,7 @@ import { RecoIcon } from '../../core/components'
 export default {
   name: 'SearchBox',
   components: { RecoIcon },
-  data() {
+  data () {
     return {
       state: {
         query: '',
@@ -56,7 +56,7 @@ export default {
     }
   },
   computed: {
-    suggestions() {
+    suggestions () {
       const query = this.state.query.trim().toLowerCase()
       if (!query) {
         return
@@ -92,17 +92,17 @@ export default {
       }
       return res
     },
-    showSuggestions() {
+    showSuggestions () {
       return this.state.focused && this.suggestions && this.suggestions.length
     },
-    alignRight() {
+    alignRight () {
       const navCount = (this.$site.themeConfig.navConfig || {}).length - 1
       const repo = this.$site.repo ? 1 : 0
       return navCount + repo <= 2
     }
   },
   methods: {
-    getPageLocalePath(page) {
+    getPageLocalePath (page) {
       for (const localePath in this.$site.locales || {}) {
         if (localePath !== '/' && page.path.indexOf(localePath) === 0) {
           return localePath
@@ -110,7 +110,7 @@ export default {
       }
       return '/'
     },
-    onUp() {
+    onUp () {
       if (this.showSuggestions) {
         if (this.state.focusIndex > 0) {
           this.state.focusIndex--
@@ -119,7 +119,7 @@ export default {
         }
       }
     },
-    onDown() {
+    onDown () {
       if (this.showSuggestions) {
         if (this.state.focusIndex < this.suggestions.length - 1) {
           this.state.focusIndex++
@@ -128,7 +128,7 @@ export default {
         }
       }
     },
-    go(i) {
+    go (i) {
       if (!this.showSuggestions) {
         return
       }
@@ -136,10 +136,10 @@ export default {
       this.state.query = ''
       this.state.focusIndex = 0
     },
-    focus(i) {
+    focus (i) {
       this.state.focusIndex = i
     },
-    unfocus() {
+    unfocus () {
       this.state.focusIndex = -1
     }
   },

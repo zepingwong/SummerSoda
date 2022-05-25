@@ -20,21 +20,20 @@
 </template>
 
 <script>
-import NavLink from '../Navbar/NavLink'
 import Hero from '../Hero'
 import { ModuleTransition } from '../../core/components'
 
 export default {
   name: 'HomeDocs',
-  components: { NavLink, Hero, ModuleTransition },
+  components: { Hero, ModuleTransition },
   computed: {
-    recoShowModule() {
+    recoShowModule () {
       return this && this.$parent.recoShowModule
     },
-    frontmatter() {
+    frontmatter () {
       return this.$frontmatter
     },
-    actionLink() {
+    actionLink () {
       return this && {
         link: this.$frontmatter.actionLink,
         text: this.$frontmatter.actionText

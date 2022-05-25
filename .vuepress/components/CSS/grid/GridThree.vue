@@ -1,26 +1,26 @@
 <style lang="stylus" scoped>
-.grid3-container {
-  margin-top: 30px;
-  .grid-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 100px);
-    border: 1px solid #eeeeee;
+  .grid3-container {
+    margin-top: 30px;
+    .grid-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 100px);
+      border: 1px solid #eeeeee;
+    }
+    .grid-item {
+      grid-row: 1/2;
+      grid-column: 1/2;
+      background: #00adb5;
+      color: #fff;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .key-value {
+      margin-bottom: 15px;
+    }
   }
-  .grid-item {
-    grid-row: 1/2;
-    grid-column: 1/2;
-    background: #00adb5;
-    color: #fff;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .key-value {
-    margin-bottom: 15px;
-  }
-}
 </style>
 <template>
   <div class="grid3-container">
@@ -52,38 +52,37 @@
 import Prism from 'prismjs'
 
 export default {
-  name: 'grid3',
-  data() {
+  name: 'GridThree',
+  data () {
     return {
-      value: ["start", "end", "center", "stretch"],
-      justify: "stretch",
-      align: "stretch"
-    };
+      value: ['start', 'end', 'center', 'stretch'],
+      justify: 'stretch',
+      align: 'stretch'
+    }
   },
   watch: {
-    justify() {
+    justify () {
       this.updateCss()
     },
-    align() {
+    align () {
       this.updateCss()
     }
   },
   methods: {
-    updateCss() {
-      this.$refs["placeSelf"].innerHTML = Prism.highlight(
+    updateCss () {
+      this.$refs['placeSelf'].innerHTML = Prism.highlight(
         `place-self: ${
           this.align === this.justify
             ? `${this.align}`
             : `${this.align} ${this.justify}`
         };`,
         Prism.languages.css
-      );
+      )
     }
   },
-  mounted() {
-    this.updateCss();
+  mounted () {
+    this.updateCss()
   }
-};
+}
 </script>
-
 

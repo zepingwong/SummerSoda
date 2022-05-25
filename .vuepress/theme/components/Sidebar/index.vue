@@ -12,7 +12,7 @@ import SidebarLinks from './SidebarLinks'
 import NavLinks from '../Navbar/NavLinks'
 
 export default {
-  name: 'Sidebar',
+  name: 'SidebarIndex',
   components: { SidebarLinks, NavLinks },
   props: ['items']
 }

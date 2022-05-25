@@ -11,18 +11,24 @@
 <script>
 import clipboard from '../../helpers/clipboard'
 export default {
+  name: 'CopyPlugin',
   props: {
     copyText: String,
-    code: String
+    code: String,
+    visibleTip: {
+      type: Boolean,
+      default: true
+    }
   },
   methods: {
-    copyClick() {
-      const call = e => {
-        if (typeof change === "function") {
+    copyClick () {
+      const call = (e) => {
+        if (typeof change === 'function') {
+          // eslint-disable-next-line no-undef
           change.call(this, e, this.$el)
         }
       }
-      if (visibleTip) {
+      if (this.visibleTip) {
         this.$message({
           time: 3000,
           content: 'Copy Successfully',
@@ -44,7 +50,6 @@ div[class][class*="language-"]::before {
   right: 70px
 }
 </style>
-
 
 <style scoped lang="stylus">
 .v-copy-code-btn

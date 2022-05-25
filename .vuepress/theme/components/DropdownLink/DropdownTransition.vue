@@ -13,10 +13,10 @@
 export default {
   name: 'DropdownTransition',
   methods: {
-    setHeight(items) {
+    setHeight (items) {
       items.style.height = items.scrollHeight + 'px'
     },
-    unsetHeight(items) {
+    unsetHeight (items) {
       items.style.height = ''
     }
   }
