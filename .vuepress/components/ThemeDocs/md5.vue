@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import clipboard from '../theme/helpers/clipboard'
+import clipboard from '../../theme/helpers/clipboard'
 import md5 from 'md5'
 
 export default {
-  name: 'ThemeMd5',
+  name: 'Md5',
   data () {
     return {
       password: '',

@@ -18,7 +18,7 @@ module.exports = {
         'css-legal-colors',
         'css-selectors',
         'css-units',
-        'css-websafe-fonts',
+        'css-websafe-fonts'
       ]
     }, {
       title: '属性',
@@ -261,7 +261,7 @@ module.exports = {
       title: '其他',
       path: '/docs/CSS/other/'
     }],
-    '/docs/CSS/live/' : [{
+    '/docs/CSS/live/': [{
       title: '首页',
       path: '/docs/CSS/'
     }, {
@@ -275,6 +275,7 @@ module.exports = {
       collapsable: false,
       children: [
         'grid',
+        'cursor'
       ]
     }, {
       title: '其他',
@@ -293,18 +294,18 @@ module.exports = {
       title: 'Live Demo',
       path: '/docs/CSS/live/'
     }, {
-        title: '其他',
-        collapsable: false,
-        children: [
-          'scrollbar-style',
-          'centered-horizontally',
-          'centered-vertically'
-        ]
-      }
-    ],
+      title: '其他',
+      collapsable: false,
+      children: [
+        'scrollbar-style',
+        'centered-horizontally',
+        'centered-vertically'
+      ]
+    }
+    ]
   },
   'en': {
-    "/docs/CSS/other/":[{
+    '/docs/CSS/other/': [{
       title: '首页',
       path: '/docs/CSS/'
     }, {
@@ -315,6 +316,6 @@ module.exports = {
         'centered-horizontally',
         'centered-vertically'
       ]
-    }],
+    }]
   }
 }

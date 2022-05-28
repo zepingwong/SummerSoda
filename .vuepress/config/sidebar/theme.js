@@ -42,7 +42,7 @@ module.exports = {
       path: '/docs/Theme/'
     }, {
       title: '基础',
-      path: '/docs/Theme/base/',
+      path: '/docs/Theme/base/'
     }, {
       title: '配置',
       // path: '/docs/Theme/config/',
@@ -52,7 +52,7 @@ module.exports = {
         'Theme',
         'HomeBlog',
         'HomeDocs',
-        'Locales',
+        'Locales'
       ]
     }, {
       title: '插件',
@@ -64,18 +64,18 @@ module.exports = {
       title: '部署',
       path: '/docs/Theme/deployment/'
     }, {
-        title: '日志',
-        path: '/docs/Theme/log/'
+      title: '日志',
+      path: '/docs/Theme/log/'
     }],
     '/docs/Theme/plugins/': [{
       title: '首页',
       path: '/docs/Theme/'
     }, {
       title: '基础',
-      path: '/docs/Theme/base/',
+      path: '/docs/Theme/base/'
     }, {
       title: '配置',
-      path: '/docs/Theme/config/',
+      path: '/docs/Theme/config/'
     }, {
       title: '插件',
       // path: '/docs/Theme/plugins/',
@@ -97,18 +97,18 @@ module.exports = {
       title: '部署',
       path: '/docs/Theme/deployment/'
     }, {
-        title: '日志',
-        path: '/docs/Theme/log/'
+      title: '日志',
+      path: '/docs/Theme/log/'
     }],
     '/docs/Theme/development/': [{
       title: '首页',
       path: '/docs/Theme/'
     }, {
       title: '基础',
-      path: '/docs/Theme/base/',
+      path: '/docs/Theme/base/'
     }, {
       title: '配置',
-      path: '/docs/Theme/config/',
+      path: '/docs/Theme/config/'
     }, {
       title: '插件',
       path: '/docs/Theme/plugins/'
@@ -127,10 +127,10 @@ module.exports = {
       path: '/docs/Theme/'
     }, {
       title: '基础',
-      path: '/docs/Theme/base/',
+      path: '/docs/Theme/base/'
     }, {
       title: '配置',
-      path: '/docs/Theme/config/',
+      path: '/docs/Theme/config/'
     }, {
       title: '插件',
       path: '/docs/Theme/plugins/'
@@ -153,10 +153,10 @@ module.exports = {
       path: '/docs/Theme/'
     }, {
       title: '基础',
-      path: '/docs/Theme/base/',
+      path: '/docs/Theme/base/'
     }, {
       title: '配置',
-      path: '/docs/Theme/config/',
+      path: '/docs/Theme/config/'
     }, {
       title: '插件',
       path: '/docs/Theme/plugins/'

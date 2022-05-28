@@ -13,7 +13,7 @@ date: 2020-05-29
 
 您可以使用主题的内置图标，所有内置的图标如下所示：
 
-<IconList></IconList>
+<ThemeDocs-IconList></ThemeDocs-IconList>
 
 ### ***本项目图标库***
 

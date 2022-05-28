@@ -49,7 +49,7 @@ import { RecoIcon } from '../../core/components'
 export default {
   name: 'FriendLink',
   components: { RecoIcon },
-  data() {
+  data () {
     return {
       isPC: true,
       popupWindowStyle: {
@@ -59,7 +59,7 @@ export default {
     }
   },
   computed: {
-    dataAddColor() {
+    dataAddColor () {
       const { friendLink = [] } = this && this.$themeConfig.authorConfig
       return friendLink.map(item => {
         item.color = getOneColor()
@@ -68,13 +68,13 @@ export default {
     }
   },
   methods: {
-    getImgUrl(info) {
+    getImgUrl (info) {
       const { logo = '', email = '' } = info
       if (logo && /^http/.test(logo)) return logo
       if (logo && !/^http/.test(logo)) return this.$withBase(logo)
       return `//1.gravatar.com/avatar/${md5(email || '')}?s=50&amp;d=mm&amp;r=x`
     },
-    adjustPosition(dom) {
+    adjustPosition (dom) {
       const { offsetWidth } = document.body
       const { x, width } = dom.getBoundingClientRect()
       const distanceToRight = offsetWidth - (x + width)
@@ -83,11 +83,11 @@ export default {
         this.popupWindowStyle.left = offsetLeft + distanceToRight + 'px'
       }
     },
-    hideDetail(e) {
+    hideDetail (e) {
       const currentDom = e.target.querySelector('.popup-window-wrapper')
       currentDom.style.display = 'none'
     },
-    showDetail(e) {
+    showDetail (e) {
       const currentDom = e.target
       const popupWindowWrapper = currentDom.querySelector('.popup-window-wrapper')
       popupWindowWrapper.style.display = 'block'
@@ -124,7 +124,7 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     this.isPC = !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
   }
 }

@@ -1,4 +1,4 @@
-const navConfig = require("../nav")
+const navConfig = require('../nav')
 const sidebarConfig = require('../sidebar/')
 module.exports = {
   '/': {
@@ -6,13 +6,13 @@ module.exports = {
       homeBlog: {}
     },
     navConfig: navConfig,
-    sidebarConfig: sidebarConfig,
+    sidebarConfig: sidebarConfig
   },
   '/en/': {
     customLocales: {
       homeBlog: {}
     },
     navConfig: navConfig,
-    sidebarConfig: sidebarConfig,
+    sidebarConfig: sidebarConfig
   }
 }

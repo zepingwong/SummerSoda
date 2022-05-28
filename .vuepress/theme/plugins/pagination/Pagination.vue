@@ -80,7 +80,7 @@ export default {
     indexs: function () {
       let left = 1
       let right = this.pages
-      let ar = []
+      const ar = []
       if (this.pages >= 5) {
         if (this.currentPage > 2 && this.currentPage < this.pages - 1) {
           left = Number(this.currentPage) - 1

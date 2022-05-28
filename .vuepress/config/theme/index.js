@@ -8,7 +8,7 @@ const KanBanNiang = require('../KanBanNiang')
 const searchConfig = require('../search')
 module.exports = {
   type: 'blog',
-  logo: "/logo.svg",
+  logo: '/logo.svg',
   locales: locales,
   // searchConfig
   searchConfig: searchConfig,

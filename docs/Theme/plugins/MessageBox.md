@@ -7,7 +7,7 @@ date: 2020-05-29
 
 主题内置了侧边消息提示框，有 `normal`、`success`、`warning`、`error` 四种类型，样式如下：
 
-<MessageBoxDemo></MessageBoxDemo>
+<ThemeDocs-MessageBox></ThemeDocs-MessageBox>
 
 ## ***参数说明***
 

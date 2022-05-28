@@ -1,5 +1,5 @@
 ---
-title: 'grid'
+title: 'grid demo'
 tags:
 - CSS
 categories:
@@ -9,12 +9,12 @@ date: 2019-10-22
 
 ## ***column, row, gap***
 
-<CSS-grid-GridOne></CSS-grid-GridOne>
+<CSSDocs-grid-GridOne></CSSDocs-grid-GridOne>
 
 ## ***justify & align***
 
-<CSS-grid-GridTwo></CSS-grid-GridTwo>
+<CSSDocs-grid-GridTwo></CSSDocs-grid-GridTwo>
 
 ## ***justify-self & align-self***
 
-<CSS-grid-GridThree></CSS-grid-GridThree>
+<CSSDocs-grid-GridThree></CSSDocs-grid-GridThree>

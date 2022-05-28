@@ -2,7 +2,7 @@ const { path } = require('@vuepress/shared-utils')
 
 module.exports = (options = {}) => ({
   name: 'plugin-message',
-  define() {
+  define () {
     const {
       time = 3000,
       content = '消息内容',
@@ -16,5 +16,5 @@ module.exports = (options = {}) => ({
       type
     }
   },
-  enhanceAppFiles: [path.resolve(__dirname, 'enhanceAppFile.js')],
+  enhanceAppFiles: [path.resolve(__dirname, 'enhanceAppFile.js')]
 })

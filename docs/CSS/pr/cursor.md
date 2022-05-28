@@ -9,7 +9,7 @@ date: 2019-10-22
 
 ## ***样式***
 
-<CSS-cursor-index></CSS-cursor-index>
+<CSSDocs-cursor-index></CSSDocs-cursor-index>
 
 ## ***浏览器支持***
 
