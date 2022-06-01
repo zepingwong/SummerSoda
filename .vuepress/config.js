@@ -15,7 +15,10 @@ module.exports = {
   },
   themeConfig: themeConfig,
   markdown: {
-    'lineNumbers': true
+    'lineNumbers': false,
+    extendMarkdown: (md) => {
+      md.use(require('markdown-it-katex'))
+    }
   },
   plugins: plugins
 }
