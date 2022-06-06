@@ -6,7 +6,8 @@ module.exports = {
     title: '基础',
     collapsable: false,
     children: [
-      'About'
+      'About',
+      'Icon'
     ]
   }, {
     title: 'API',
