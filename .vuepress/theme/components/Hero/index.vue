@@ -71,6 +71,7 @@ export default {
       max-width 40rem!important
       width 30rem
       margin: 0
+      box-shadow none
     h1
       font-size 2.5rem
       margin 0

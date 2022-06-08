@@ -1,9 +1,8 @@
-const flask = require('./flask')
-const theme = require('./theme')
-const welove = require('./welove')
-const css = require('./css')
-const Vue3Admin = require('./VUE3Admin')
-const ExperimentalInstruction = require('./ExperimentalInstruction')
+const flask = require('./modules/flask')
+const theme = require('./modules/theme')
+const welove = require('./modules/welove')
+const css = require('./modules/css')
+
 module.exports = Object.assign({},
-  theme.zh, welove, flask, css.zh, Vue3Admin, ExperimentalInstruction
+  theme.zh, welove, flask, css.zh
 )
