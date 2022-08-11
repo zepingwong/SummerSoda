@@ -51,12 +51,11 @@
 
 <script>
 import { ModuleTransition } from '../../core/components'
-import NavLink from '../Navbar/NavLink'
 import Hero from '../Hero'
 
 export default {
   name: 'HomePageOne',
-  components: { ModuleTransition, NavLink, Hero },
+  components: { ModuleTransition, Hero },
   data () {
     return {
       downloads: 0

@@ -3,13 +3,22 @@
     <hr>
     <h4><reco-icon icon="icon-category" /> {{$customLocales.category}}</h4>
     <ul class="category-wrapper">
-      <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
+      <li class="category-item" v-for="(item, index) in $categories.list.slice((currentPage-1)*pageSize, currentPage*pageSize)" :key="index">
         <router-link :to="item.path">
           <span class="category-name">{{ item.name }}</span>
           <span class="post-num" :style="{ 'backgroundColor': getColor() }">{{ item.pages.length }}</span>
         </router-link>
       </li>
+      <el-pagination
+        small
+        :current-page.sync="currentPage"
+        layout = "prev, next"
+        :page-size="pageSize"
+        :total="$categories.list.length"
+        style="text-align: center"
+      ></el-pagination>
     </ul>
+
   </div>
 </template>
 
@@ -19,6 +28,12 @@ import { getOneColor } from '../../helpers/other'
 export default {
   name: 'CategoryList',
   components: { RecoIcon },
+  data () {
+    return {
+      currentPage: 1,
+      pageSize: 8
+    }
+  },
   methods: {
     getColor () {
       return getOneColor()
@@ -28,7 +43,16 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+
 .category-wrapper {
+  >>> .btn-prev {
+    background var(--background-color)
+    color var(--text-color)
+  }
+  >>> .btn-next {
+    background var(--background-color)
+    color var(--text-color)
+  }
   list-style none
   padding-left 0
   .category-item {

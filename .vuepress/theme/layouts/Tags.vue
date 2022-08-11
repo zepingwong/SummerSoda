@@ -28,14 +28,14 @@
 <script>
 import Common from '../components/Common'
 import NoteAbstract from '../components/NoteAbstract'
-import { ModuleTransition, RecoIcon } from '../core/components'
+import { ModuleTransition } from '../core/components'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 import { getOneColor } from '../helpers/other'
 
 export default {
   name: 'TagsLayout',
   mixins: [moduleTransitonMixin],
-  components: { Common, NoteAbstract, ModuleTransition, RecoIcon },
+  components: { Common, NoteAbstract, ModuleTransition },
   computed: {
     tags () {
       return [{ name: this.$customLocales.all, path: '/tag/' }, ...this.$tagesList]

@@ -3,11 +3,11 @@
     <ModuleTransition>
       <section v-show="recoShowModule">
         <div class="page-title">
-          <h1 class="title">{{$page.title}}</h1>
+          <h1 class="title">{{ $page.title }}</h1>
           <PageInfo :pageInfo="$page" :showAccessNumber="showAccessNumber"></PageInfo>
         </div>
         <!-- 这里使用 v-show，否则影响 SSR -->
-        <Content class="theme-reco-content" />
+        <Content class="theme-reco-content"/>
       </section>
     </ModuleTransition>
 
@@ -208,17 +208,21 @@ function flatten (items, res) {
   padding-bottom 2rem
   padding-right 12rem
   display block
+
   .page-title
     max-width $contentWidth
     margin 0 auto
     padding 1rem 2.5rem
     color var(--text-color)
+
     .title
       font-weight bold
       font-family "Microsoft YaHei UI"
+
   .theme-reco-content h2
     position relative
     padding-left 0.8rem
+
     &::before
       position absolute
       left 0
@@ -226,25 +230,32 @@ function flatten (items, res) {
       height 1.8rem
       content ''
       border-left 5px solid $accentColor
+
   .page-edit
     @extend $wrapper
     padding-top 1rem
     padding-bottom 1rem
     overflow auto
+
     .edit-link
       display inline-block
+
       a
         color $accentColor
         margin-right 0.25rem
+
     .last-updated
       float right
       font-size 0.9em
+
       .prefix
         font-weight 500
         color $accentColor
+
       .time
         font-weight 400
         color #aaa
+
   .comments-wrapper
     @extend $wrapper
 
@@ -252,23 +263,30 @@ function flatten (items, res) {
   @extend $wrapper
   padding-top 1rem
   padding-bottom 0
+
   .inner
     min-height 2rem
     margin-top 0
     border-top 1px solid var(--border-color)
     padding-top 1rem
-    overflow auto // clear float
+    overflow auto
+
+  // clear float
+
   .next
     float right
 
 @media (max-width: $MQMobile)
   .page
     padding-right 0
+
     .page-title
       padding 0 1rem
+
     .page-edit
       .edit-link
         margin-bottom .5rem
+
       .last-updated
         font-size .8em
         float none

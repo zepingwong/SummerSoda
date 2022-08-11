@@ -44,12 +44,10 @@
 import Common from '../components/Common'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 import { ModuleTransition } from '../core/components'
-import PageInfo from '../components/Page/PageInfo'
-import { RecoIcon } from '../core/components'
 export default {
   name: 'DocsList',
   mixins: [moduleTransitonMixin],
-  components: { Common, PageInfo, ModuleTransition, RecoIcon },
+  components: { Common, ModuleTransition },
   data () {
     return {
       currentPage: 1,

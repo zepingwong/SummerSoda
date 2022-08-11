@@ -66,8 +66,8 @@ export default {
 .content
   padding 0
   .list-wrapper
-    display: flex;
-    flex-wrap: wrap;
+    display flex
+    flex-wrap wrap
     .list-item
       margin 0 auto 1.5rem
       width 30%
@@ -76,6 +76,8 @@ export default {
       .card-wrapper
         position relative
         height 100%
+        .back
+          text-align center
         .front, .back
           border-radius: 6px;
           background-position: center;
@@ -88,6 +90,13 @@ export default {
           transition: ease-in-out 600ms;
           overflow hidden
           box-shadow: var(--box-shadow)
+          .thumbnail
+            height auto
+            width 100%
+            position absolute
+            left 0
+            top 50%
+            transform translateY(-50%)
           &.back
             transform: rotateY(-180deg);
           .info
