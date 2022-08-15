@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/summersoda/*"
+  to = "https://summersoda.xyz/summersoda/:splat"
+  status = 200
+  force = true

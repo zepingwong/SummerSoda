@@ -4,7 +4,6 @@ const plugins = require('./config/plugins')
 module.exports = {
   head: head,
   title: '汽水味的夏天',
-  base: '/SummerSoda/',
   locales: {
     '/': {
       lang: 'zh-CN'
