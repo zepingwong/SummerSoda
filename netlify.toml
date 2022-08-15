@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/summersoda/*"
-  to = "https://summersoda.xyz/summersoda/:splat"
+  from = "/SummerSoda/*"
+  to = "https://summersoda.xyz/SummerSoda/:splat"
   status = 200
   force = true

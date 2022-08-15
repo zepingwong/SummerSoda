@@ -2,7 +2,7 @@
   <Common :sidebarItems="sidebarItems" :showModule="recoShowModule">
     <component v-if="frontmatter.home" :is="homeCom"/>
     <Page v-else :sidebar-items="sidebarItems"/>
-    <Footer v-if="frontmatter.home" class="footer" />
+    <PageFooter v-if="frontmatter.home" class="footer"/>
   </Common>
 </template>
 
@@ -12,13 +12,14 @@ import HomeDocs from '../components/HomeDocs'
 import HomePageOne from '../components/HomePageOne'
 import Page from '../components/Page'
 import Common from '../components/Common'
+import PageFooter from '../components/Footer'
 import { resolveSidebarItems } from '../helpers/utils'
 import moduleTransitonMixin from '../mixins/moduleTransiton'
 
 export default {
   name: 'Layout',
   mixins: [moduleTransitonMixin],
-  components: { HomeBlog, HomeDocs, Page, Common, HomePageOne },
+  components: { HomeBlog, HomeDocs, Page, Common, HomePageOne, PageFooter },
   computed: {
     sidebarItems () {
       const { $page, $site, $localePath } = this
