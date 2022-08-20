@@ -13,9 +13,9 @@
         class='sub-sidebar-wrapper'
       >
         <li
-          v-for="(header) in headers"
+          v-for="(header, index) in headers"
           :class="{ active: isLinkActive(header),[`level-${header.level}`]: true }"
-          :key= "header.title"
+          :key= "header.title + index"
         >
           <router-link
             :class= "{ 'sidebar-link': true, [`reco-side-${header.slug}`]: true }"

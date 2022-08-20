@@ -62,7 +62,7 @@ export default {
       return this && this.$parent.recoShowModule
     }
   },
-  mounted () {
+  updated () {
     this.state.heroHeight = this.$refs.hero.$el.clientHeight
     this.state.recoShow = true
   },

@@ -123,6 +123,7 @@ export default {
             top 50%
             left 50%
             transform translate(-50%, -50%)
+            box-shadow none
           .title
             position relative
             font-size 1.28rem
