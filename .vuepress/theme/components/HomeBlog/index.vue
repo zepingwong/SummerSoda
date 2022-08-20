@@ -63,10 +63,11 @@ export default {
     }
   },
   mounted () {
-    this.state.heroHeight = this.$refs.hero.$el.offsetHeight
+    this.state.heroHeight = this.$refs.hero.$el.clientHeight
     this.state.recoShow = true
   },
   methods: {
+    // 换页后，滚动到文章列表开头
     paginationChange () {
       setTimeout(() => {
         window.scrollTo(0, this.state.heroHeight)

@@ -28,10 +28,10 @@ desc: 'File Search & App Launcher',
 link: 'https://www.listary.com/',
 thumbnail: 'https://s2.loli.net/2022/08/11/vy6o7mOiSeWtaxz.png'
 }, {
-name: 'ElementUI',
-desc: '网站快速成型工具',
-link: 'https://element.eleme.cn/#/zh-CN',
-thumbnail: 'https://s2.loli.net/2022/08/11/vy6o7mOiSeWtaxz.png'
+  name: 'Effie',
+desc: 'Effie',
+link: 'https://blog.effie.co/',
+thumbnail: 'https://s2.loli.net/2022/08/16/8feaYkir6Lj3U5B.png'
 }]"></ToolsList>
 
 ## ***程序开发***
@@ -56,6 +56,11 @@ name: 'Open Color',
 desc: 'Open color is an open-source color scheme optimized for UI like font, background, border, etc.',
 link: 'https://yeun.github.io/open-color/',
 thumbnail: 'https://s2.loli.net/2022/08/11/6TFkCZuN5bYKQ7v.png'
+}, {
+name: 'XFtp、XShell',
+desc: 'free-for-home-school 功能强大，免费享用',
+link: 'https://www.xshell.com/zh/free-for-home-school/',
+thumbnail: 'https://s2.loli.net/2022/08/16/4nXvpT9m67tlKcZ.png'
 }]"></ToolsList>
 
 ## ***烧钱搞机***

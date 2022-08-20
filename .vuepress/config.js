@@ -3,6 +3,7 @@ const head = require('./config/head')
 const plugins = require('./config/plugins')
 module.exports = {
   head: head,
+  port: 8088,
   base: '/SummerSoda/',
   title: '汽水味的夏天',
   locales: {

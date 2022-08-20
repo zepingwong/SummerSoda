@@ -45,11 +45,11 @@ export default {
 <style scoped lang="stylus">
 
 .category-wrapper {
-  >>> .btn-prev {
+  :deep(.btn-prev) {
     background var(--background-color)
     color var(--text-color)
   }
-  >>> .btn-next {
+  :deep(.btn-next) {
     background var(--background-color)
     color var(--text-color)
   }
