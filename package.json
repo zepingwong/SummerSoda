@@ -7,7 +7,8 @@
     "build": "vuepress build .",
     "commit": "git add . && git-cz",
     "dev": "vuepress dev . --open --host \"localhost\"",
-    "push": "npm run commit && git push origin"
+    "push:codeup": "npm run commit && git push codeup",
+    "push:github": "npm run commit && git push origin"
   },
   "husky": {
     "hooks": {

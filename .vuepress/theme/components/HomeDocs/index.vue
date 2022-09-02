@@ -13,9 +13,6 @@
         </div>
       </div>
     </ModuleTransition>
-    <ModuleTransition delay="0.20">
-      <Content class="md-content-wrapper" v-show="recoShowModule" custom/>
-    </ModuleTransition>
   </div>
 </template>
 

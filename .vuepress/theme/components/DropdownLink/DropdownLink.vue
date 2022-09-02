@@ -16,7 +16,6 @@
           v-for="(subItem, index) in item.items"
         >
           <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
-
           <ul
             class="dropdown-subitem-wrapper"
             v-if="subItem.type === 'links'"
@@ -25,11 +24,20 @@
               class="dropdown-subitem"
               :key="childSubItem.link"
               v-for="childSubItem in subItem.items"
-            ><NavLink :item="childSubItem"/></li>
+            >
+              <NavLink :item="childSubItem"/>
+            </li>
           </ul>
-
           <NavLink v-else :item="subItem" />
         </li>
+<!--        <el-pagination-->
+<!--          small-->
+<!--          :current-page.sync="currentPage"-->
+<!--          layout = "prev, next"-->
+<!--          :page-size="pageSize"-->
+<!--          :total="item.items.length"-->
+<!--          style="text-align: center"-->
+<!--        ></el-pagination>-->
       </ul>
     </DropdownTransition>
   </div>
@@ -50,6 +58,8 @@ export default {
   },
   data () {
     return {
+      currentPage: 1,
+      pageSize: 8,
       open: false
     }
   },
