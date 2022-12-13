@@ -1,37 +1,28 @@
+/**
+* feature：新功能
+* update：更新某功能
+* fixbug：修补某功能的bug
+* refactor：重构某个功能
+* optimize: 优化构建工具或运行时性能
+* style：仅样式改动
+* docs：仅文档新增/改动
+* chore：构建过程或辅助工具的变动
+*/
 module.exports = {
-  extends: ['@commitlint/config-conventional'],
+  extends: [
+    '@commitlint/config-conventional'
+  ],
   rules: {
-    'body-leading-blank': [1, 'always'],
-    'footer-leading-blank': [1, 'always'],
-    'header-max-length': [2, 'always', 72],
-    'scope-case': [2, 'always', 'lower-case'],
-    'subject-case': [
-      2,
-      'never',
-      ['sentence-case', 'start-case', 'pascal-case', 'upper-case']
-    ],
-    'subject-empty': [2, 'never'],
-    'subject-full-stop': [2, 'never', '.'],
+    'type-enum': [2, 'always', [
+      'feature', 'update', 'fixbug', 'refactor', 'optimize', 'style', 'docs', 'chore'
+    ]],
     'type-case': [0],
-    'type-empty': [2, 'never'],
-    'type-enum': [
-      2,
-      'always',
-      [
-        'WIP',
-        'build',
-        'chore',
-        'ci',
-        'docs',
-        'feat',
-        'fix',
-        'improvement',
-        'perf',
-        'refactor',
-        'revert',
-        'style',
-        'test'
-      ]
-    ]
+    'type-empty': [0],
+    'scope-empty': [0],
+    'scope-case': [0],
+    'subject-full-stop': [0, 'never'],
+    'subject-case': [0, 'never'],
+    'header-max-length': [0, 'always', 72]
   }
 }
+// 这些配置是什么意思？请自行查阅commitlint文档
