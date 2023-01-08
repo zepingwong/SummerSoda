@@ -1,8 +1,17 @@
 module.exports = {
   types: [
-    { value: 'feat', name: 'feat:     A new feature' },
-    { value: 'fix', name: 'fix:      A bug fix' },
-    { value: 'docs', name: 'docs:     Documentation only changes' },
+    {
+      value: 'feat',
+      name: 'feat:     A new feature'
+    },
+    {
+      value: 'fix',
+      name: 'fix:      A bug fix'
+    },
+    {
+      value: 'docs',
+      name: 'docs:     Documentation only changes'
+    },
     {
       value: 'style',
       name:
@@ -16,17 +25,26 @@ module.exports = {
       value: 'perf',
       name: 'perf:     A code change that improves performance',
     },
-    { value: 'test', name: 'test:     Adding missing tests' },
+    {
+      value: 'test',
+      name: 'test:     Adding missing tests'
+    },
     {
       value: 'chore',
       name:
         'chore:    Changes to the build process or auxiliary tools\n            and libraries such as documentation generation',
     },
-    { value: 'revert', name: 'revert:   Revert to a commit' },
-    { value: 'WIP', name: 'WIP:      Work in progress' },
+    {
+      value: 'revert',
+      name: 'revert:   Revert to a commit'
+    },
+    {
+      value: 'WIP',
+      name: 'WIP:      Work in progress'
+    },
   ],
 
-  scopes: [{ name: 'accounts' }, { name: 'admin' }, { name: 'exampleScope' }, { name: 'changeMe' }],
+  scopes: [{name: '.vuepress'}, {name: 'blogs'}, {name: 'docs'}, {name: 'package.json'}],
 
   allowTicketNumber: false,
   isTicketNumberRequired: false,
