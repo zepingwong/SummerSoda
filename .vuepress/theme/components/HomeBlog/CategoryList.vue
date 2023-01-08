@@ -45,14 +45,6 @@ export default {
 <style scoped lang="stylus">
 
 .category-wrapper {
-  :deep(.btn-prev) {
-    background var(--background-color)
-    color var(--text-color)
-  }
-  :deep(.btn-next) {
-    background var(--background-color)
-    color var(--text-color)
-  }
   list-style none
   padding-left 0
   .category-item {
