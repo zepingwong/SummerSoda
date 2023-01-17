@@ -23,8 +23,7 @@
       "git add"
     ],
     "package.json": [
-      "sort-package-json",
-      "git add"
+      "sort-package-json"
     ]
   },
   "config": {
