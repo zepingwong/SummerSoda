@@ -63,6 +63,7 @@
     "commitizen": "^4.1.2",
     "concurrently": "^5.3.0",
     "conventional-changelog-cli": "^2.0.34",
+    "cross-env": "^7.0.3",
     "cz-customizable": "^6.2.0",
     "docsearch.js": "2.6.3",
     "eslint": "^7.32.0",
