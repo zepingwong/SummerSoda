@@ -6,6 +6,7 @@
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--max_old_space_size=10240 && vuepress build .",
     "commit": "git add . && git-cz",
+    "deploy": "npm run build && git add ./.vuepress/dist && git commit -m \"docs: deploy\" && git push github main",
     "dev": "vuepress dev . --open --host \"localhost\"",
     "push:codeup": "npm run commit && git push codeup",
     "push:github": "npm run commit && git push origin"
