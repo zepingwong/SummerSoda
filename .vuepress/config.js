@@ -14,6 +14,7 @@ module.exports = {
       lang: 'en-US'
     }
   },
+  // dest: '/usr/local/var/www/SummerSoda',
   themeConfig: themeConfig,
   markdown: {
     'lineNumbers': false,
