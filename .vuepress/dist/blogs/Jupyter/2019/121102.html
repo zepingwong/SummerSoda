@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Jupyter Notebook配置文件解析 | 汽水味的夏天</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/SummerSoda/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/SummerSoda/assets/css/0.styles.f2099c82.css" as="style"><link rel="preload" href="/SummerSoda/assets/js/app.9d0b1a23.js" as="script"><link rel="preload" href="/SummerSoda/assets/js/5.44de80cb.js" as="script"><link rel="preload" href="/SummerSoda/assets/js/1.ba670e9f.js" as="script"><link rel="preload" href="/SummerSoda/assets/js/72.64459c61.js" as="script"><link rel="prefetch" href="/SummerSoda/assets/js/10.0ad8b8e5.js"><link rel="prefetch" href="/SummerSoda/assets/js/100.a862c6fd.js"><link rel="prefetch" href="/SummerSoda/assets/js/101.f4872685.js"><link rel="prefetch" href="/SummerSoda/assets/js/102.82af8123.js"><link rel="prefetch" href="/SummerSoda/assets/js/103.a325e597.js"><link rel="prefetch" href="/SummerSoda/assets/js/104.77db261c.js"><link rel="prefetch" href="/SummerSoda/assets/js/105.0ae4f860.js"><link rel="prefetch" href="/SummerSoda/assets/js/106.ca9d14cd.js"><link rel="prefetch" href="/SummerSoda/assets/js/107.994e02aa.js"><link rel="prefetch" href="/SummerSoda/assets/js/108.754cbdea.js"><link rel="prefetch" href="/SummerSoda/assets/js/109.c51eb522.js"><link rel="prefetch" href="/SummerSoda/assets/js/11.d70a8e94.js"><link rel="prefetch" href="/SummerSoda/assets/js/110.b4f5e3a9.js"><link rel="prefetch" href="/SummerSoda/assets/js/111.e444d2d5.js"><link rel="prefetch" href="/SummerSoda/assets/js/112.2c6b4531.js"><link rel="prefetch" href="/SummerSoda/assets/js/113.c95b576a.js"><link rel="prefetch" href="/SummerSoda/assets/js/114.5f59782b.js"><link rel="prefetch" href="/SummerSoda/assets/js/115.43f16a89.js"><link rel="prefetch" href="/SummerSoda/assets/js/116.a59a4303.js"><link rel="prefetch" href="/SummerSoda/assets/js/117.e2f61515.js"><link rel="prefetch" href="/SummerSoda/assets/js/118.109487e0.js"><link rel="prefetch" href="/SummerSoda/assets/js/119.9e006fd0.js"><link rel="prefetch" href="/SummerSoda/assets/js/12.8e32fef8.js"><link rel="prefetch" href="/SummerSoda/assets/js/120.3adec106.js"><link rel="prefetch" href="/SummerSoda/assets/js/121.82553c79.js"><link rel="prefetch" href="/SummerSoda/assets/js/122.f2399495.js"><link rel="prefetch" href="/SummerSoda/assets/js/123.b856d6cb.js"><link rel="prefetch" href="/SummerSoda/assets/js/124.0b42fa08.js"><link rel="prefetch" href="/SummerSoda/assets/js/125.a6b1f613.js"><link rel="prefetch" href="/SummerSoda/assets/js/126.68a1d8f8.js"><link rel="prefetch" href="/SummerSoda/assets/js/127.3d2d09ae.js"><link rel="prefetch" href="/SummerSoda/assets/js/128.f0ef47eb.js"><link rel="prefetch" href="/SummerSoda/assets/js/129.9f9af835.js"><link rel="prefetch" href="/SummerSoda/assets/js/13.920bf963.js"><link rel="prefetch" href="/SummerSoda/assets/js/130.8708610c.js"><link rel="prefetch" href="/SummerSoda/assets/js/131.c519b664.js"><link rel="prefetch" href="/SummerSoda/assets/js/132.cede89d3.js"><link rel="prefetch" href="/SummerSoda/assets/js/133.ded4cb85.js"><link rel="prefetch" href="/SummerSoda/assets/js/134.561dbc1f.js"><link rel="prefetch" href="/SummerSoda/assets/js/135.ddc4df16.js"><link rel="prefetch" href="/SummerSoda/assets/js/136.7e0b0f9e.js"><link rel="prefetch" href="/SummerSoda/assets/js/137.5af0484b.js"><link rel="prefetch" href="/SummerSoda/assets/js/138.fd41c560.js"><link rel="prefetch" href="/SummerSoda/assets/js/139.2e39c727.js"><link rel="prefetch" href="/SummerSoda/assets/js/14.792acc0d.js"><link rel="prefetch" href="/SummerSoda/assets/js/140.d2fc189b.js"><link rel="prefetch" href="/SummerSoda/assets/js/141.521c4f43.js"><link rel="prefetch" href="/SummerSoda/assets/js/142.a362d5c6.js"><link rel="prefetch" href="/SummerSoda/assets/js/143.d9ebc03c.js"><link rel="prefetch" href="/SummerSoda/assets/js/144.8c4577de.js"><link rel="prefetch" href="/SummerSoda/assets/js/145.bb6f6033.js"><link rel="prefetch" href="/SummerSoda/assets/js/146.560a3003.js"><link rel="prefetch" href="/SummerSoda/assets/js/147.1d82587f.js"><link rel="prefetch" href="/SummerSoda/assets/js/148.e8842d02.js"><link rel="prefetch" href="/SummerSoda/assets/js/149.cc34064f.js"><link rel="prefetch" href="/SummerSoda/assets/js/15.5d910634.js"><link rel="prefetch" href="/SummerSoda/assets/js/150.285ceb8e.js"><link rel="prefetch" href="/SummerSoda/assets/js/151.ce3e29bc.js"><link rel="prefetch" href="/SummerSoda/assets/js/152.c33aa38f.js"><link rel="prefetch" href="/SummerSoda/assets/js/153.f43862cb.js"><link rel="prefetch" href="/SummerSoda/assets/js/154.c101b6dc.js"><link rel="prefetch" href="/SummerSoda/assets/js/155.f0efd521.js"><link rel="prefetch" href="/SummerSoda/assets/js/156.7c06fd6f.js"><link rel="prefetch" href="/SummerSoda/assets/js/157.65998e26.js"><link rel="prefetch" href="/SummerSoda/assets/js/158.84602157.js"><link rel="prefetch" href="/SummerSoda/assets/js/159.38297d36.js"><link rel="prefetch" href="/SummerSoda/assets/js/16.51520c40.js"><link rel="prefetch" href="/SummerSoda/assets/js/160.91e4c988.js"><link rel="prefetch" href="/SummerSoda/assets/js/161.5c69bc1c.js"><link rel="prefetch" href="/SummerSoda/assets/js/162.36caae3e.js"><link rel="prefetch" href="/SummerSoda/assets/js/163.21080a51.js"><link rel="prefetch" href="/SummerSoda/assets/js/164.a440d22a.js"><link rel="prefetch" href="/SummerSoda/assets/js/165.8d755f10.js"><link rel="prefetch" href="/SummerSoda/assets/js/166.2e99ab47.js"><link rel="prefetch" href="/SummerSoda/assets/js/167.e72e7b78.js"><link rel="prefetch" href="/SummerSoda/assets/js/168.a2105b47.js"><link rel="prefetch" href="/SummerSoda/assets/js/169.0c7e7840.js"><link rel="prefetch" href="/SummerSoda/assets/js/17.a541678c.js"><link rel="prefetch" href="/SummerSoda/assets/js/170.0bcf6cd1.js"><link rel="prefetch" href="/SummerSoda/assets/js/171.93d2b8ef.js"><link rel="prefetch" href="/SummerSoda/assets/js/172.e0d6d96f.js"><link rel="prefetch" href="/SummerSoda/assets/js/173.c0610797.js"><link rel="prefetch" href="/SummerSoda/assets/js/174.230d5c13.js"><link rel="prefetch" href="/SummerSoda/assets/js/175.d1b592bd.js"><link rel="prefetch" href="/SummerSoda/assets/js/176.337afa6e.js"><link rel="prefetch" href="/SummerSoda/assets/js/177.fbf08fe1.js"><link rel="prefetch" href="/SummerSoda/assets/js/178.8f05dd31.js"><link rel="prefetch" href="/SummerSoda/assets/js/179.96158a58.js"><link rel="prefetch" href="/SummerSoda/assets/js/18.96f26b33.js"><link rel="prefetch" href="/SummerSoda/assets/js/180.9c988588.js"><link rel="prefetch" href="/SummerSoda/assets/js/181.ccd3a226.js"><link rel="prefetch" href="/SummerSoda/assets/js/182.db280190.js"><link rel="prefetch" href="/SummerSoda/assets/js/183.20c565f0.js"><link rel="prefetch" href="/SummerSoda/assets/js/184.8caaae2f.js"><link rel="prefetch" href="/SummerSoda/assets/js/185.82041092.js"><link rel="prefetch" href="/SummerSoda/assets/js/186.eeb4957a.js"><link rel="prefetch" href="/SummerSoda/assets/js/187.ad8c9b57.js"><link rel="prefetch" href="/SummerSoda/assets/js/188.49a1aec6.js"><link rel="prefetch" href="/SummerSoda/assets/js/189.02ca5ba0.js"><link rel="prefetch" href="/SummerSoda/assets/js/19.490d77c7.js"><link rel="prefetch" href="/SummerSoda/assets/js/190.e6694d48.js"><link rel="prefetch" href="/SummerSoda/assets/js/191.7015184a.js"><link rel="prefetch" href="/SummerSoda/assets/js/192.e1217e86.js"><link rel="prefetch" href="/SummerSoda/assets/js/193.68934c88.js"><link rel="prefetch" href="/SummerSoda/assets/js/194.7f463624.js"><link rel="prefetch" href="/SummerSoda/assets/js/195.b29a1c38.js"><link rel="prefetch" href="/SummerSoda/assets/js/196.fe345ee3.js"><link rel="prefetch" href="/SummerSoda/assets/js/197.02ed15a1.js"><link rel="prefetch" href="/SummerSoda/assets/js/198.c74a94c1.js"><link rel="prefetch" href="/SummerSoda/assets/js/199.6c6caf32.js"><link rel="prefetch" href="/SummerSoda/assets/js/2.5bd33dd4.js"><link rel="prefetch" href="/SummerSoda/assets/js/20.a03b8ad0.js"><link rel="prefetch" href="/SummerSoda/assets/js/200.801b4c4e.js"><link rel="prefetch" href="/SummerSoda/assets/js/201.e141cb40.js"><link rel="prefetch" href="/SummerSoda/assets/js/202.755d38e8.js"><link rel="prefetch" href="/SummerSoda/assets/js/203.08034080.js"><link rel="prefetch" href="/SummerSoda/assets/js/204.1bb0359c.js"><link rel="prefetch" href="/SummerSoda/assets/js/205.fb98faf2.js"><link rel="prefetch" href="/SummerSoda/assets/js/206.88352604.js"><link rel="prefetch" href="/SummerSoda/assets/js/207.6cf9c15b.js"><link rel="prefetch" href="/SummerSoda/assets/js/208.39298fcf.js"><link rel="prefetch" href="/SummerSoda/assets/js/209.9b42dd25.js"><link rel="prefetch" href="/SummerSoda/assets/js/21.0fa1ea6b.js"><link rel="prefetch" href="/SummerSoda/assets/js/210.dfa5fb3d.js"><link rel="prefetch" href="/SummerSoda/assets/js/211.b3934d39.js"><link rel="prefetch" href="/SummerSoda/assets/js/212.8a1031da.js"><link rel="prefetch" href="/SummerSoda/assets/js/213.859a7d32.js"><link rel="prefetch" href="/SummerSoda/assets/js/214.1fa798c9.js"><link rel="prefetch" href="/SummerSoda/assets/js/215.c3e98cb0.js"><link rel="prefetch" href="/SummerSoda/assets/js/216.b49f6ffc.js"><link rel="prefetch" href="/SummerSoda/assets/js/217.8cdb0eac.js"><link rel="prefetch" href="/SummerSoda/assets/js/218.95be8417.js"><link rel="prefetch" href="/SummerSoda/assets/js/219.fbe2b7ef.js"><link rel="prefetch" href="/SummerSoda/assets/js/22.0d7e2d83.js"><link rel="prefetch" href="/SummerSoda/assets/js/220.1dfe74a9.js"><link rel="prefetch" href="/SummerSoda/assets/js/221.71ebcfed.js"><link rel="prefetch" href="/SummerSoda/assets/js/222.d537239f.js"><link rel="prefetch" href="/SummerSoda/assets/js/223.f306da0c.js"><link rel="prefetch" href="/SummerSoda/assets/js/224.fcbd2928.js"><link rel="prefetch" href="/SummerSoda/assets/js/225.4d41cdf8.js"><link rel="prefetch" href="/SummerSoda/assets/js/226.8f77ac88.js"><link rel="prefetch" href="/SummerSoda/assets/js/227.22fc0226.js"><link rel="prefetch" href="/SummerSoda/assets/js/228.831ebe79.js"><link rel="prefetch" href="/SummerSoda/assets/js/229.3a7e9dc1.js"><link rel="prefetch" href="/SummerSoda/assets/js/23.bbf79f1e.js"><link rel="prefetch" href="/SummerSoda/assets/js/230.427c85b5.js"><link rel="prefetch" href="/SummerSoda/assets/js/231.49db086d.js"><link rel="prefetch" href="/SummerSoda/assets/js/232.bc857060.js"><link rel="prefetch" href="/SummerSoda/assets/js/233.e8d13a17.js"><link rel="prefetch" href="/SummerSoda/assets/js/234.69ad2c81.js"><link rel="prefetch" href="/SummerSoda/assets/js/235.6f528605.js"><link rel="prefetch" href="/SummerSoda/assets/js/236.7bc49e65.js"><link rel="prefetch" href="/SummerSoda/assets/js/237.2ec641fd.js"><link rel="prefetch" href="/SummerSoda/assets/js/238.38757d47.js"><link rel="prefetch" href="/SummerSoda/assets/js/239.1ba645f8.js"><link rel="prefetch" href="/SummerSoda/assets/js/24.74911a84.js"><link rel="prefetch" href="/SummerSoda/assets/js/240.c026d72f.js"><link rel="prefetch" href="/SummerSoda/assets/js/241.c0407ae6.js"><link rel="prefetch" href="/SummerSoda/assets/js/242.c4b3f309.js"><link rel="prefetch" href="/SummerSoda/assets/js/243.03d67902.js"><link rel="prefetch" href="/SummerSoda/assets/js/244.b69aca51.js"><link rel="prefetch" href="/SummerSoda/assets/js/245.f5626244.js"><link rel="prefetch" href="/SummerSoda/assets/js/246.fcdf957d.js"><link rel="prefetch" href="/SummerSoda/assets/js/247.a5cd9321.js"><link rel="prefetch" href="/SummerSoda/assets/js/248.1cadc79d.js"><link rel="prefetch" href="/SummerSoda/assets/js/249.5f296cc7.js"><link rel="prefetch" href="/SummerSoda/assets/js/25.fe59ddcc.js"><link rel="prefetch" href="/SummerSoda/assets/js/250.1dd139b9.js"><link rel="prefetch" href="/SummerSoda/assets/js/251.28f567b3.js"><link rel="prefetch" href="/SummerSoda/assets/js/252.15d810b2.js"><link rel="prefetch" href="/SummerSoda/assets/js/253.277599bc.js"><link rel="prefetch" href="/SummerSoda/assets/js/254.ec8bd251.js"><link rel="prefetch" href="/SummerSoda/assets/js/255.4d831ca2.js"><link rel="prefetch" href="/SummerSoda/assets/js/256.b176dbe3.js"><link rel="prefetch" href="/SummerSoda/assets/js/257.234e94ce.js"><link rel="prefetch" href="/SummerSoda/assets/js/258.9cd69fa5.js"><link rel="prefetch" href="/SummerSoda/assets/js/259.f1b135b5.js"><link rel="prefetch" href="/SummerSoda/assets/js/26.d251f0be.js"><link rel="prefetch" href="/SummerSoda/assets/js/260.7f256076.js"><link rel="prefetch" href="/SummerSoda/assets/js/261.d225e2f3.js"><link rel="prefetch" href="/SummerSoda/assets/js/262.2c7ec236.js"><link rel="prefetch" href="/SummerSoda/assets/js/263.7e8a6e1f.js"><link rel="prefetch" href="/SummerSoda/assets/js/264.4b34dc8f.js"><link rel="prefetch" href="/SummerSoda/assets/js/265.5ba9ca8d.js"><link rel="prefetch" href="/SummerSoda/assets/js/266.205056dc.js"><link rel="prefetch" href="/SummerSoda/assets/js/267.c4816c0b.js"><link rel="prefetch" href="/SummerSoda/assets/js/268.d254006d.js"><link rel="prefetch" href="/SummerSoda/assets/js/269.ebf94ed8.js"><link rel="prefetch" href="/SummerSoda/assets/js/27.fa8c34a3.js"><link rel="prefetch" href="/SummerSoda/assets/js/270.46d0d979.js"><link rel="prefetch" href="/SummerSoda/assets/js/271.a3b33c71.js"><link rel="prefetch" href="/SummerSoda/assets/js/272.102a1edb.js"><link rel="prefetch" href="/SummerSoda/assets/js/273.1dce09b9.js"><link rel="prefetch" href="/SummerSoda/assets/js/274.cd9009c4.js"><link rel="prefetch" href="/SummerSoda/assets/js/275.e95087a9.js"><link rel="prefetch" href="/SummerSoda/assets/js/276.9d9195f7.js"><link rel="prefetch" href="/SummerSoda/assets/js/277.37c57609.js"><link rel="prefetch" href="/SummerSoda/assets/js/278.2e20f3a6.js"><link rel="prefetch" href="/SummerSoda/assets/js/279.f921c38a.js"><link rel="prefetch" href="/SummerSoda/assets/js/28.732c7f71.js"><link rel="prefetch" href="/SummerSoda/assets/js/280.e7fb4941.js"><link rel="prefetch" href="/SummerSoda/assets/js/281.5e999d01.js"><link rel="prefetch" href="/SummerSoda/assets/js/282.2b6fef56.js"><link rel="prefetch" href="/SummerSoda/assets/js/283.52a713db.js"><link rel="prefetch" href="/SummerSoda/assets/js/284.6a68ac3d.js"><link rel="prefetch" href="/SummerSoda/assets/js/285.21b96e26.js"><link rel="prefetch" href="/SummerSoda/assets/js/286.0450433f.js"><link rel="prefetch" href="/SummerSoda/assets/js/287.b155ae0e.js"><link rel="prefetch" href="/SummerSoda/assets/js/288.e9f35b0c.js"><link rel="prefetch" href="/SummerSoda/assets/js/289.226ae67e.js"><link rel="prefetch" href="/SummerSoda/assets/js/29.3d7504d1.js"><link rel="prefetch" href="/SummerSoda/assets/js/290.77d33784.js"><link rel="prefetch" href="/SummerSoda/assets/js/291.8292efef.js"><link rel="prefetch" href="/SummerSoda/assets/js/292.ea56d712.js"><link rel="prefetch" href="/SummerSoda/assets/js/293.fd6488aa.js"><link rel="prefetch" href="/SummerSoda/assets/js/294.8d592c24.js"><link rel="prefetch" href="/SummerSoda/assets/js/295.1fca5c45.js"><link rel="prefetch" href="/SummerSoda/assets/js/296.f668354b.js"><link rel="prefetch" href="/SummerSoda/assets/js/297.39a09982.js"><link rel="prefetch" href="/SummerSoda/assets/js/298.e70ad643.js"><link rel="prefetch" href="/SummerSoda/assets/js/299.8f0ecca7.js"><link rel="prefetch" href="/SummerSoda/assets/js/30.3d5c2062.js"><link rel="prefetch" href="/SummerSoda/assets/js/300.42303bb9.js"><link rel="prefetch" href="/SummerSoda/assets/js/301.28727720.js"><link rel="prefetch" href="/SummerSoda/assets/js/302.e104bf2f.js"><link rel="prefetch" href="/SummerSoda/assets/js/303.8911046b.js"><link rel="prefetch" href="/SummerSoda/assets/js/304.afb6e55a.js"><link rel="prefetch" href="/SummerSoda/assets/js/305.fae431fe.js"><link rel="prefetch" href="/SummerSoda/assets/js/306.d71d624c.js"><link rel="prefetch" href="/SummerSoda/assets/js/307.a5054a32.js"><link rel="prefetch" href="/SummerSoda/assets/js/308.6d7e4c0b.js"><link rel="prefetch" href="/SummerSoda/assets/js/309.a49170a9.js"><link rel="prefetch" href="/SummerSoda/assets/js/31.54b5f287.js"><link rel="prefetch" href="/SummerSoda/assets/js/310.c4e85128.js"><link rel="prefetch" href="/SummerSoda/assets/js/311.3112a811.js"><link rel="prefetch" href="/SummerSoda/assets/js/312.c2fb614d.js"><link rel="prefetch" href="/SummerSoda/assets/js/313.254d4bf9.js"><link rel="prefetch" href="/SummerSoda/assets/js/314.05852e1f.js"><link rel="prefetch" href="/SummerSoda/assets/js/315.f88bd6c2.js"><link rel="prefetch" href="/SummerSoda/assets/js/316.010e0429.js"><link rel="prefetch" href="/SummerSoda/assets/js/317.8849689c.js"><link rel="prefetch" href="/SummerSoda/assets/js/318.73d8b1ba.js"><link rel="prefetch" href="/SummerSoda/assets/js/319.0aa43df2.js"><link rel="prefetch" href="/SummerSoda/assets/js/32.3ebf9d8b.js"><link rel="prefetch" href="/SummerSoda/assets/js/320.d55f28c7.js"><link rel="prefetch" href="/SummerSoda/assets/js/321.cf57a73c.js"><link rel="prefetch" href="/SummerSoda/assets/js/322.4482d8e7.js"><link rel="prefetch" href="/SummerSoda/assets/js/323.cd99fd1f.js"><link rel="prefetch" href="/SummerSoda/assets/js/324.c5921cb2.js"><link rel="prefetch" href="/SummerSoda/assets/js/325.3aa45e6d.js"><link rel="prefetch" href="/SummerSoda/assets/js/326.3392b146.js"><link rel="prefetch" href="/SummerSoda/assets/js/327.810eb343.js"><link rel="prefetch" href="/SummerSoda/assets/js/328.f4bd64ec.js"><link rel="prefetch" href="/SummerSoda/assets/js/329.443f7654.js"><link rel="prefetch" href="/SummerSoda/assets/js/33.d34feaab.js"><link rel="prefetch" href="/SummerSoda/assets/js/330.0415f17f.js"><link rel="prefetch" href="/SummerSoda/assets/js/331.3993adb7.js"><link rel="prefetch" href="/SummerSoda/assets/js/332.bdfe54bb.js"><link rel="prefetch" href="/SummerSoda/assets/js/333.4a0bbae4.js"><link rel="prefetch" href="/SummerSoda/assets/js/334.15fa96ba.js"><link rel="prefetch" href="/SummerSoda/assets/js/335.0ca27c4b.js"><link rel="prefetch" href="/SummerSoda/assets/js/336.c18da53f.js"><link rel="prefetch" href="/SummerSoda/assets/js/337.86ee5ad9.js"><link rel="prefetch" href="/SummerSoda/assets/js/338.519db982.js"><link rel="prefetch" href="/SummerSoda/assets/js/339.602625c1.js"><link rel="prefetch" href="/SummerSoda/assets/js/34.41597c64.js"><link rel="prefetch" href="/SummerSoda/assets/js/340.95930fbc.js"><link rel="prefetch" href="/SummerSoda/assets/js/341.b6582583.js"><link rel="prefetch" href="/SummerSoda/assets/js/342.edd7dad0.js"><link rel="prefetch" href="/SummerSoda/assets/js/343.1cad9e86.js"><link rel="prefetch" href="/SummerSoda/assets/js/344.58ae17cb.js"><link rel="prefetch" href="/SummerSoda/assets/js/345.bf9204fb.js"><link rel="prefetch" href="/SummerSoda/assets/js/346.a9438ada.js"><link rel="prefetch" href="/SummerSoda/assets/js/347.b0b85c73.js"><link rel="prefetch" href="/SummerSoda/assets/js/348.8fb42a81.js"><link rel="prefetch" href="/SummerSoda/assets/js/349.f019d88a.js"><link rel="prefetch" href="/SummerSoda/assets/js/35.9bafa2cb.js"><link rel="prefetch" href="/SummerSoda/assets/js/350.c98b82e7.js"><link rel="prefetch" href="/SummerSoda/assets/js/351.d011b786.js"><link rel="prefetch" href="/SummerSoda/assets/js/352.835dc662.js"><link rel="prefetch" href="/SummerSoda/assets/js/353.b21319f6.js"><link rel="prefetch" href="/SummerSoda/assets/js/354.98c7f567.js"><link rel="prefetch" href="/SummerSoda/assets/js/355.58278347.js"><link rel="prefetch" href="/SummerSoda/assets/js/356.315bf51e.js"><link rel="prefetch" href="/SummerSoda/assets/js/357.5cf0c02d.js"><link rel="prefetch" href="/SummerSoda/assets/js/358.2402ad63.js"><link rel="prefetch" href="/SummerSoda/assets/js/359.49bc11bb.js"><link rel="prefetch" href="/SummerSoda/assets/js/36.9300ed33.js"><link rel="prefetch" href="/SummerSoda/assets/js/360.c3a39234.js"><link rel="prefetch" href="/SummerSoda/assets/js/361.bb4a00f1.js"><link rel="prefetch" href="/SummerSoda/assets/js/362.dae0be44.js"><link rel="prefetch" href="/SummerSoda/assets/js/363.f88ab058.js"><link rel="prefetch" href="/SummerSoda/assets/js/364.5d814988.js"><link rel="prefetch" href="/SummerSoda/assets/js/365.ad9fca02.js"><link rel="prefetch" href="/SummerSoda/assets/js/366.ad7dc261.js"><link rel="prefetch" href="/SummerSoda/assets/js/367.ce93570e.js"><link rel="prefetch" href="/SummerSoda/assets/js/368.9a8b9576.js"><link rel="prefetch" href="/SummerSoda/assets/js/369.77696d03.js"><link rel="prefetch" href="/SummerSoda/assets/js/37.e2afb961.js"><link rel="prefetch" href="/SummerSoda/assets/js/370.e6acb49f.js"><link rel="prefetch" href="/SummerSoda/assets/js/371.f90508df.js"><link rel="prefetch" href="/SummerSoda/assets/js/372.906daf59.js"><link rel="prefetch" href="/SummerSoda/assets/js/373.3f48db7e.js"><link rel="prefetch" href="/SummerSoda/assets/js/374.fc0fc11f.js"><link rel="prefetch" href="/SummerSoda/assets/js/375.91e4b49c.js"><link rel="prefetch" href="/SummerSoda/assets/js/376.4c5036fa.js"><link rel="prefetch" href="/SummerSoda/assets/js/377.39b464ab.js"><link rel="prefetch" href="/SummerSoda/assets/js/378.4ca0d2bd.js"><link rel="prefetch" href="/SummerSoda/assets/js/379.8136b56e.js"><link rel="prefetch" href="/SummerSoda/assets/js/38.91fe411b.js"><link rel="prefetch" href="/SummerSoda/assets/js/380.dbf33fcd.js"><link rel="prefetch" href="/SummerSoda/assets/js/381.f4eaf9da.js"><link rel="prefetch" href="/SummerSoda/assets/js/382.871061e9.js"><link rel="prefetch" href="/SummerSoda/assets/js/383.540e5ae4.js"><link rel="prefetch" href="/SummerSoda/assets/js/384.c62021a2.js"><link rel="prefetch" href="/SummerSoda/assets/js/385.fad96bef.js"><link rel="prefetch" href="/SummerSoda/assets/js/386.db9d87a7.js"><link rel="prefetch" href="/SummerSoda/assets/js/387.afc65e48.js"><link rel="prefetch" href="/SummerSoda/assets/js/388.332cd115.js"><link rel="prefetch" href="/SummerSoda/assets/js/389.9788609e.js"><link rel="prefetch" href="/SummerSoda/assets/js/39.1fc30788.js"><link rel="prefetch" href="/SummerSoda/assets/js/390.a15cc992.js"><link rel="prefetch" href="/SummerSoda/assets/js/391.7660c5bc.js"><link rel="prefetch" href="/SummerSoda/assets/js/392.289faa84.js"><link rel="prefetch" href="/SummerSoda/assets/js/393.17548f7e.js"><link rel="prefetch" href="/SummerSoda/assets/js/394.870d075e.js"><link rel="prefetch" href="/SummerSoda/assets/js/395.468cf61b.js"><link rel="prefetch" href="/SummerSoda/assets/js/396.cb7a93e2.js"><link rel="prefetch" href="/SummerSoda/assets/js/397.62e5cc59.js"><link rel="prefetch" href="/SummerSoda/assets/js/398.3e7558d0.js"><link rel="prefetch" href="/SummerSoda/assets/js/399.b41918ed.js"><link rel="prefetch" href="/SummerSoda/assets/js/40.aafa1387.js"><link rel="prefetch" href="/SummerSoda/assets/js/400.f0e9aed3.js"><link rel="prefetch" href="/SummerSoda/assets/js/401.e9d93644.js"><link rel="prefetch" href="/SummerSoda/assets/js/402.ef3b7359.js"><link rel="prefetch" href="/SummerSoda/assets/js/403.5d93bc8d.js"><link rel="prefetch" href="/SummerSoda/assets/js/404.d74f7744.js"><link rel="prefetch" href="/SummerSoda/assets/js/405.8ac737ae.js"><link rel="prefetch" href="/SummerSoda/assets/js/406.cc6cf5c0.js"><link rel="prefetch" href="/SummerSoda/assets/js/407.c977b881.js"><link rel="prefetch" href="/SummerSoda/assets/js/408.580077e8.js"><link rel="prefetch" href="/SummerSoda/assets/js/409.b64e00c7.js"><link rel="prefetch" href="/SummerSoda/assets/js/41.98a7c062.js"><link rel="prefetch" href="/SummerSoda/assets/js/410.56fa3951.js"><link rel="prefetch" href="/SummerSoda/assets/js/411.40a2cefa.js"><link rel="prefetch" href="/SummerSoda/assets/js/412.50c7031f.js"><link rel="prefetch" href="/SummerSoda/assets/js/413.342f2155.js"><link rel="prefetch" href="/SummerSoda/assets/js/414.06a2ad18.js"><link rel="prefetch" href="/SummerSoda/assets/js/415.66fd96b9.js"><link rel="prefetch" href="/SummerSoda/assets/js/416.6b719304.js"><link rel="prefetch" href="/SummerSoda/assets/js/417.71636366.js"><link rel="prefetch" href="/SummerSoda/assets/js/418.c231b208.js"><link rel="prefetch" href="/SummerSoda/assets/js/419.e8eb2bf4.js"><link rel="prefetch" href="/SummerSoda/assets/js/42.1a5910ba.js"><link rel="prefetch" href="/SummerSoda/assets/js/420.20daa215.js"><link rel="prefetch" href="/SummerSoda/assets/js/421.84d182db.js"><link rel="prefetch" href="/SummerSoda/assets/js/422.1f62406e.js"><link rel="prefetch" href="/SummerSoda/assets/js/423.90c35f31.js"><link rel="prefetch" href="/SummerSoda/assets/js/424.e9faf8b0.js"><link rel="prefetch" href="/SummerSoda/assets/js/425.245390d2.js"><link rel="prefetch" href="/SummerSoda/assets/js/426.1ab6a188.js"><link rel="prefetch" href="/SummerSoda/assets/js/427.13fb3efa.js"><link rel="prefetch" href="/SummerSoda/assets/js/428.d0208beb.js"><link rel="prefetch" href="/SummerSoda/assets/js/429.90f9f5aa.js"><link rel="prefetch" href="/SummerSoda/assets/js/43.94475b9e.js"><link rel="prefetch" href="/SummerSoda/assets/js/430.8f235045.js"><link rel="prefetch" href="/SummerSoda/assets/js/431.67e031e1.js"><link rel="prefetch" href="/SummerSoda/assets/js/432.d950f823.js"><link rel="prefetch" href="/SummerSoda/assets/js/433.d8b1485a.js"><link rel="prefetch" href="/SummerSoda/assets/js/434.35ba2b61.js"><link rel="prefetch" href="/SummerSoda/assets/js/435.91f48d65.js"><link rel="prefetch" href="/SummerSoda/assets/js/436.991da3f0.js"><link rel="prefetch" href="/SummerSoda/assets/js/437.c5e49509.js"><link rel="prefetch" href="/SummerSoda/assets/js/438.829d9674.js"><link rel="prefetch" href="/SummerSoda/assets/js/439.d746c3c5.js"><link rel="prefetch" href="/SummerSoda/assets/js/44.b79d26b2.js"><link rel="prefetch" href="/SummerSoda/assets/js/440.7cd3c13d.js"><link rel="prefetch" href="/SummerSoda/assets/js/441.8ca4bc4a.js"><link rel="prefetch" href="/SummerSoda/assets/js/442.eaa7b2bd.js"><link rel="prefetch" href="/SummerSoda/assets/js/443.93ae7c36.js"><link rel="prefetch" href="/SummerSoda/assets/js/444.63ab747a.js"><link rel="prefetch" href="/SummerSoda/assets/js/445.51c092ff.js"><link rel="prefetch" href="/SummerSoda/assets/js/446.0699eccc.js"><link rel="prefetch" href="/SummerSoda/assets/js/447.46372295.js"><link rel="prefetch" href="/SummerSoda/assets/js/448.99d0462c.js"><link rel="prefetch" href="/SummerSoda/assets/js/449.539692d9.js"><link rel="prefetch" href="/SummerSoda/assets/js/45.ee7acaaf.js"><link rel="prefetch" href="/SummerSoda/assets/js/450.bfae901d.js"><link rel="prefetch" href="/SummerSoda/assets/js/451.7ddc0c88.js"><link rel="prefetch" href="/SummerSoda/assets/js/452.792e0bfc.js"><link rel="prefetch" href="/SummerSoda/assets/js/453.24596d00.js"><link rel="prefetch" href="/SummerSoda/assets/js/454.9e3a66e5.js"><link rel="prefetch" href="/SummerSoda/assets/js/455.f1c4f86b.js"><link rel="prefetch" href="/SummerSoda/assets/js/456.f1935309.js"><link rel="prefetch" href="/SummerSoda/assets/js/457.0ae3ddad.js"><link rel="prefetch" href="/SummerSoda/assets/js/458.3162df17.js"><link rel="prefetch" href="/SummerSoda/assets/js/459.92cb5359.js"><link rel="prefetch" href="/SummerSoda/assets/js/46.11086c20.js"><link rel="prefetch" href="/SummerSoda/assets/js/460.f4f758c4.js"><link rel="prefetch" href="/SummerSoda/assets/js/461.dabb8caf.js"><link rel="prefetch" href="/SummerSoda/assets/js/462.0dcc33bc.js"><link rel="prefetch" href="/SummerSoda/assets/js/463.3caf1955.js"><link rel="prefetch" href="/SummerSoda/assets/js/464.1375e7fc.js"><link rel="prefetch" href="/SummerSoda/assets/js/465.1348a141.js"><link rel="prefetch" href="/SummerSoda/assets/js/466.bb508e22.js"><link rel="prefetch" href="/SummerSoda/assets/js/467.c93587ad.js"><link rel="prefetch" href="/SummerSoda/assets/js/468.9f68f84d.js"><link rel="prefetch" href="/SummerSoda/assets/js/47.dd43b0bb.js"><link rel="prefetch" href="/SummerSoda/assets/js/48.55be55a6.js"><link rel="prefetch" href="/SummerSoda/assets/js/49.810885fc.js"><link rel="prefetch" href="/SummerSoda/assets/js/50.78bd4af6.js"><link rel="prefetch" href="/SummerSoda/assets/js/51.b620650b.js"><link rel="prefetch" href="/SummerSoda/assets/js/52.72395e5f.js"><link rel="prefetch" href="/SummerSoda/assets/js/53.49b78ee8.js"><link rel="prefetch" href="/SummerSoda/assets/js/54.7da40c95.js"><link rel="prefetch" href="/SummerSoda/assets/js/55.0337c9bf.js"><link rel="prefetch" href="/SummerSoda/assets/js/56.44be7ac7.js"><link rel="prefetch" href="/SummerSoda/assets/js/57.753da14d.js"><link rel="prefetch" href="/SummerSoda/assets/js/58.b058fd66.js"><link rel="prefetch" href="/SummerSoda/assets/js/59.4c5b80a9.js"><link rel="prefetch" href="/SummerSoda/assets/js/6.73088bb7.js"><link rel="prefetch" href="/SummerSoda/assets/js/60.5a28461a.js"><link rel="prefetch" href="/SummerSoda/assets/js/61.9dad5b3f.js"><link rel="prefetch" href="/SummerSoda/assets/js/62.bce6d876.js"><link rel="prefetch" href="/SummerSoda/assets/js/63.8413083e.js"><link rel="prefetch" href="/SummerSoda/assets/js/64.3e7c4b89.js"><link rel="prefetch" href="/SummerSoda/assets/js/65.a0b9e5f6.js"><link rel="prefetch" href="/SummerSoda/assets/js/66.22418c65.js"><link rel="prefetch" href="/SummerSoda/assets/js/67.ede60aec.js"><link rel="prefetch" href="/SummerSoda/assets/js/68.a1b43ced.js"><link rel="prefetch" href="/SummerSoda/assets/js/69.77c1a17d.js"><link rel="prefetch" href="/SummerSoda/assets/js/7.7fb26947.js"><link rel="prefetch" href="/SummerSoda/assets/js/70.d813996b.js"><link rel="prefetch" href="/SummerSoda/assets/js/71.8b730413.js"><link rel="prefetch" href="/SummerSoda/assets/js/73.efda2c65.js"><link rel="prefetch" href="/SummerSoda/assets/js/74.96e17c3e.js"><link rel="prefetch" href="/SummerSoda/assets/js/75.ac36656b.js"><link rel="prefetch" href="/SummerSoda/assets/js/76.d9747954.js"><link rel="prefetch" href="/SummerSoda/assets/js/77.5a326ab4.js"><link rel="prefetch" href="/SummerSoda/assets/js/78.10fbee80.js"><link rel="prefetch" href="/SummerSoda/assets/js/79.64930756.js"><link rel="prefetch" href="/SummerSoda/assets/js/8.04253ca6.js"><link rel="prefetch" href="/SummerSoda/assets/js/80.3e8535cf.js"><link rel="prefetch" href="/SummerSoda/assets/js/81.996b9d2e.js"><link rel="prefetch" href="/SummerSoda/assets/js/82.8acaab23.js"><link rel="prefetch" href="/SummerSoda/assets/js/83.71a4c7ad.js"><link rel="prefetch" href="/SummerSoda/assets/js/84.7e159764.js"><link rel="prefetch" href="/SummerSoda/assets/js/85.e55835a2.js"><link rel="prefetch" href="/SummerSoda/assets/js/86.f9586db3.js"><link rel="prefetch" href="/SummerSoda/assets/js/87.a4103714.js"><link rel="prefetch" href="/SummerSoda/assets/js/88.1db54645.js"><link rel="prefetch" href="/SummerSoda/assets/js/89.a2372511.js"><link rel="prefetch" href="/SummerSoda/assets/js/9.7bdb5231.js"><link rel="prefetch" href="/SummerSoda/assets/js/90.99a9a9c2.js"><link rel="prefetch" href="/SummerSoda/assets/js/91.329976f0.js"><link rel="prefetch" href="/SummerSoda/assets/js/92.484cd842.js"><link rel="prefetch" href="/SummerSoda/assets/js/93.eee892a0.js"><link rel="prefetch" href="/SummerSoda/assets/js/94.16c35e8f.js"><link rel="prefetch" href="/SummerSoda/assets/js/95.386fc064.js"><link rel="prefetch" href="/SummerSoda/assets/js/96.69aa90aa.js"><link rel="prefetch" href="/SummerSoda/assets/js/97.6888aa40.js"><link rel="prefetch" href="/SummerSoda/assets/js/98.3f6b887e.js"><link rel="prefetch" href="/SummerSoda/assets/js/99.040c591e.js"><link rel="prefetch" href="/SummerSoda/assets/js/vendors~docsearch.5c18157e.js">
+    <link rel="stylesheet" href="/SummerSoda/assets/css/0.styles.f2099c82.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-3bcffe9f><div data-v-3bcffe9f><div class="password-shadow password-wrapper-out" style="display:none;" data-v-4bdb4646 data-v-3bcffe9f data-v-3bcffe9f><h3 class="title" data-v-4bdb4646 data-v-4bdb4646>汽水味的夏天</h3> <p class="description" data-v-4bdb4646 data-v-4bdb4646></p> <form data-v-4bdb4646 data-v-4bdb4646><label id="box" class="inputBox" data-v-4bdb4646><input autocomplete="" type="password" value="" data-v-4bdb4646> <span data-v-4bdb4646>Konck! Knock!</span> <button data-v-4bdb4646>OK</button></label></form> <div class="footer" data-v-4bdb4646 data-v-4bdb4646><span data-v-4bdb4646><i class="reco reco-theme" data-v-4bdb4646></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4bdb4646>vuePress-theme-reco</a></span> <span data-v-4bdb4646><i class="reco reco-copyright" data-v-4bdb4646></i> <a data-v-4bdb4646><!---->
+            
+          <!---->
+          2023
+        </a></span></div></div> <div class="hide" data-v-3bcffe9f><header class="navbar" data-v-3bcffe9f><div class="sidebar-button" data-v-dd9f04ae><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon" style="transform:;" data-v-dd9f04ae><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" data-v-dd9f04ae></path></svg></div> <a href="/SummerSoda/" class="home-link router-link-active"><img src="/SummerSoda/logo.svg" alt="汽水味的夏天" class="logo"> <span class="site-name">汽水味的夏天</span></a> <div class="links"><div class="color-switch"><a class="color-button"><i class="iconfont icon-auto"></i></a></div> <div class="search-box"><i class="iconfont icon-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/SummerSoda/" class="nav-link"><i class="iconfont icon-home"></i>
+  主页
+</a></div><div class="nav-item"><a href="/SummerSoda/docslist/" class="nav-link"><i class="iconfont icon-docs"></i>
+  文档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-category"></i>
+        分类
+      </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Python/" class="nav-link"><i class="undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Windows/" class="nav-link"><i class="undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Django/" class="nav-link"><i class="undefined"></i>
+  Django
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/DRF/" class="nav-link"><i class="undefined"></i>
+  DRF
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Internet of Things/" class="nav-link"><i class="undefined"></i>
+  Internet of Things
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/软件/" class="nav-link"><i class="undefined"></i>
+  软件
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Java/" class="nav-link"><i class="undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Database/" class="nav-link"><i class="undefined"></i>
+  Database
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Mac/" class="nav-link"><i class="undefined"></i>
+  Mac
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Server/" class="nav-link"><i class="undefined"></i>
+  Server
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Mini Program/" class="nav-link"><i class="undefined"></i>
+  Mini Program
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><a href="/SummerSoda/tag/" class="nav-link"><i class="iconfont icon-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/SummerSoda/timeline/" class="nav-link"><i class="iconfont icon-timeLine"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/SummerSoda/blogs/other/tools.html" class="nav-link"><i class="iconfont icon-tools"></i>
+  工具集
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-language"></i>
+        选择语言
+      </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/SummerSoda/blogs/Jupyter/2019/121102.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  zh-CN
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/en/" class="nav-link"><i class="undefined"></i>
+  en-US
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-3bcffe9f></div> <aside class="sidebar" data-v-3bcffe9f><div class="personal-info-wrapper" data-v-64a5977a data-v-3bcffe9f><img src="https://img-blog.csdnimg.cn/5cd7f49aab644567a19a7d9336786b82.png#pic_center" alt="author-avatar" class="personal-img" data-v-64a5977a> <h3 class="name" data-v-64a5977a>
+    WANG Zeping
+  </h3> <div class="num" data-v-64a5977a><div data-v-64a5977a><h3 data-v-64a5977a>432</h3> <h6 data-v-64a5977a>文章</h6></div> <div data-v-64a5977a><h3 data-v-64a5977a>44</h3> <h6 data-v-64a5977a>标签</h6></div> <div data-v-64a5977a><h3 data-v-64a5977a>18</h3> <h6 data-v-64a5977a>分类</h6></div></div> <ul class="social-links" data-v-64a5977a><li class="social-item" data-v-64a5977a><i class="iconfont icon-github" style="color:#f8b26a;" data-v-64a5977a></i></li><li class="social-item" data-v-64a5977a><i class="iconfont icon-csdn" style="color:#abbd81;" data-v-64a5977a></i></li></ul></div> <nav class="nav-links"><div class="nav-item"><a href="/SummerSoda/" class="nav-link"><i class="iconfont icon-home"></i>
+  主页
+</a></div><div class="nav-item"><a href="/SummerSoda/docslist/" class="nav-link"><i class="iconfont icon-docs"></i>
+  文档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-category"></i>
+        分类
+      </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Python/" class="nav-link"><i class="undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Windows/" class="nav-link"><i class="undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Django/" class="nav-link"><i class="undefined"></i>
+  Django
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/DRF/" class="nav-link"><i class="undefined"></i>
+  DRF
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Internet of Things/" class="nav-link"><i class="undefined"></i>
+  Internet of Things
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/软件/" class="nav-link"><i class="undefined"></i>
+  软件
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Java/" class="nav-link"><i class="undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Database/" class="nav-link"><i class="undefined"></i>
+  Database
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Mac/" class="nav-link"><i class="undefined"></i>
+  Mac
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Server/" class="nav-link"><i class="undefined"></i>
+  Server
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Mini Program/" class="nav-link"><i class="undefined"></i>
+  Mini Program
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/categories/MySQL/" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><a href="/SummerSoda/tag/" class="nav-link"><i class="iconfont icon-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/SummerSoda/timeline/" class="nav-link"><i class="iconfont icon-timeLine"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/SummerSoda/blogs/other/tools.html" class="nav-link"><i class="iconfont icon-tools"></i>
+  工具集
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-language"></i>
+        选择语言
+      </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/SummerSoda/blogs/Jupyter/2019/121102.html" aria-current="page" class="nav-link router-link-exact-active router-link-active"><i class="undefined"></i>
+  zh-CN
+</a></li><li class="dropdown-item"><!----> <a href="/SummerSoda/en/" class="nav-link"><i class="undefined"></i>
+  en-US
+</a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4bdb4646 data-v-3bcffe9f><h3 class="title" data-v-4bdb4646 data-v-4bdb4646>Jupyter Notebook配置文件解析</h3> <!----> <form data-v-4bdb4646 data-v-4bdb4646><label id="box" class="inputBox" data-v-4bdb4646><input autocomplete="" type="password" value="" data-v-4bdb4646> <span data-v-4bdb4646>Konck! Knock!</span> <button data-v-4bdb4646>OK</button></label></form> <div class="footer" data-v-4bdb4646 data-v-4bdb4646><span data-v-4bdb4646><i class="reco reco-theme" data-v-4bdb4646></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4bdb4646>vuePress-theme-reco</a></span> <span data-v-4bdb4646><i class="reco reco-copyright" data-v-4bdb4646></i> <a data-v-4bdb4646><!---->
+            
+          <!---->
+          2023
+        </a></span></div></div> <div data-v-3bcffe9f><main class="page"><section><div class="page-title"><h1 class="title">Jupyter Notebook配置文件解析</h1> <div data-v-d363b38a><i class="iconfont icon-account" data-v-d363b38a><span data-v-d363b38a>WANG Zeping</span></i> <i class="iconfont icon-date" data-v-d363b38a><span data-v-d363b38a>2019/12/11</span></i> <i class="iconfont icon-eye" data-v-d363b38a><span id="/SummerSoda/blogs/Jupyter/2019/121102.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-d363b38a><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont icon-tag" data-v-d363b38a><span class="tag-item" data-v-d363b38a>Jupyter</span><span class="tag-item" data-v-d363b38a>Python</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="_1-生成配置文件"><a href="#_1-生成配置文件" class="header-anchor">#</a> <em><strong>1.生成配置文件</strong></em></h2> <p>默认情况下，配置文件 <code>~/.jupyter/jupyter_notebook_config.py</code> 并不存在，需要自行创建。使用下列命令生成配置文件：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>jupyter notebook --generate-config
+</code></pre></div><p>如果是 root 用户执行上面的命令，会发生一个问题：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>Running as root it not recommended. Use --allow-root to bypass.
+</code></pre></div><p>提示信息很明显，root 用户执行时需要加上 <code>--allow-root</code> 选项。</p> <div class="language-shell extra-class"><pre class="language-shell"><code>jupyter notebook --generate-config --allow-config
+</code></pre></div><p>执行成功后，会出现下面的信息：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>Writing default config to: /root/.jupyter/jupyter_notebook_config.py
+</code></pre></div><p>当然Windows操作系统的话应该是在</p> <div class="language-shell extra-class"><pre class="language-shell"><code>Writing default config to: C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>you<span class="token punctuation">\</span>.jupyter<span class="token punctuation">\</span>jupyter_notebook_config.py
+</code></pre></div><h2 id="_2-生成密码"><a href="#_2-生成密码" class="header-anchor">#</a> <em><strong>2. 生成密码</strong></em></h2> <h3 id="自动生成"><a href="#自动生成" class="header-anchor">#</a> <em><strong>自动生成</strong></em></h3> <p>从 jupyter notebook 5.0 版本开始，提供了一个命令来设置密码：<code>jupyter notebook password</code>，生成的密码存储在 <code>jupyter_notebook_config.json</code></p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ jupyter notebook password
+Enter password:  ****
+Verify password: ****
+<span class="token punctuation">[</span>NotebookPasswordApp<span class="token punctuation">]</span> Wrote hashed password to /Users/you/.jupyter/jupyter_notebook_config.json
+</code></pre></div><h3 id="手动生成"><a href="#手动生成" class="header-anchor">#</a> <em><strong>手动生成</strong></em></h3> <p>除了使用提供的命令，也可以通过手动安装，我是使用的手动安装，因为<code>jupyter notebook password</code> 出来一堆内容，没耐心看。打开 ipython 执行下面内容：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>In <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: from notebook.auth <span class="token function">import</span> <span class="token function">passwd</span>
+In <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>: passwd<span class="token punctuation">(</span><span class="token punctuation">)</span>
+Enter password:
+Verify password:
+Out<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>: <span class="token string">'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'</span>
+</code></pre></div><p><code>sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed</code> 这一串就是要在 <code>jupyter_notebook_config.py</code> 添加的密码</p> <div class="language-python extra-class"><pre class="language-python"><code>c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>password <span class="token operator">=</span> <span class="token string">u'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'</span>
+</code></pre></div><h2 id="_3-配置远程访问"><a href="#_3-配置远程访问" class="header-anchor">#</a> <em><strong>3.配置远程访问</strong></em></h2> <p>在 <code>jupyter_notebook_config.py</code> 中找到下面的行，取消注释并修改，或直接添加如下内容</p> <div class="language-python extra-class"><pre class="language-python"><code>c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>ip<span class="token operator">=</span><span class="token string">'*'</span>
+c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>password <span class="token operator">=</span> <span class="token string">u'sha:ce...刚才复制的那个密文'</span>
+c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>open_browser <span class="token operator">=</span> <span class="token boolean">False</span>
+c<span class="token punctuation">.</span>NotebookApp<span class="token punctuation">.</span>port <span class="token operator">=</span><span class="token number">8888</span> <span class="token comment">#可自行指定一个端口, 访问时使用该端口</span>
+</code></pre></div><p>以上设置完以后就可以在服务器上启动 jupyter notebook，<code>jupyter notebook</code>, root 用户使用 <code>jupyter notebook --allow-root</code>。打开 <code>IP:指定的端口</code>, 输入密码就可以访问了</p> <p>需要注意的是不能在隐藏目录 (以 . 开头的目录)下启动 jupyter notebook, 否则无法正常访问文件</p> <h2 id="_4-其他配置参数说明"><a href="#_4-其他配置参数说明" class="header-anchor">#</a> <em><strong>4.其他配置参数说明</strong></em></h2> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># Configuration file for jupyter-notebook.</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># Application(SingletonConfigurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## This is an application.</span>
+
+<span class="token comment">## The date format used by logging formatters for %(asctime)s</span>
+<span class="token comment">## 日志格式化程序用于％（asctime）的日期格式，可以按照时间format自己配置</span>
+<span class="token comment">#  Default: '%Y-%m-%d %H:%M:%S'</span>
+<span class="token comment"># c.Application.log_datefmt = '%Y-%m-%d %H:%M:%S'</span>
+
+<span class="token comment">## The Logging format template</span>
+<span class="token comment">## 记录格式模板</span>
+<span class="token comment">#  Default: '[%(name)s]%(highlevel)s %(message)s'</span>
+<span class="token comment"># c.Application.log_format = '[%(name)s]%(highlevel)s %(message)s'</span>
+
+<span class="token comment">## Set the log level by value or name.</span>
+<span class="token comment">#  按值或名称设置日志级别</span>
+<span class="token comment">#  Choices: any of [0, 10, 20, 30, 40, 50, 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL']</span>
+<span class="token comment">#  Default: 30</span>
+<span class="token comment"># c.Application.log_level = 30</span>
+
+<span class="token comment">## Instead of starting the Application, dump configuration to stdout</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.Application.show_config = False</span>
+
+<span class="token comment">## Instead of starting the Application, dump configuration to stdout (as JSON)</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.Application.show_config_json = False</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># JupyterApp(Application) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Base class for Jupyter applications</span>
+
+<span class="token comment">## Answer yes to any prompts.</span>
+<span class="token comment">## 对任何提示回答“是”</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.JupyterApp.answer_yes = False</span>
+
+<span class="token comment">## Full path of a config file.</span>
+<span class="token comment">## 配置文件的完整路径</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.JupyterApp.config_file = ''</span>
+
+<span class="token comment">## Specify a config file to load.</span>
+<span class="token comment">## 指定要加载的配置文件</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.JupyterApp.config_file_name = ''</span>
+
+<span class="token comment">## Generate default config file.</span>
+<span class="token comment">## 生成默认配置文件</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.JupyterApp.generate_config = False</span>
+
+<span class="token comment">## The date format used by logging formatters for %(asctime)s</span>
+<span class="token comment">#  See also: Application.log_datefmt</span>
+<span class="token comment"># c.JupyterApp.log_datefmt = '%Y-%m-%d %H:%M:%S'</span>
+
+<span class="token comment">## The Logging format template</span>
+<span class="token comment">#  See also: Application.log_format</span>
+<span class="token comment"># c.JupyterApp.log_format = '[%(name)s]%(highlevel)s %(message)s'</span>
+
+<span class="token comment">## Set the log level by value or name.</span>
+<span class="token comment">#  See also: Application.log_level</span>
+<span class="token comment"># c.JupyterApp.log_level = 30</span>
+
+<span class="token comment">## Instead of starting the Application, dump configuration to stdout</span>
+<span class="token comment">#  See also: Application.show_config</span>
+<span class="token comment"># c.JupyterApp.show_config = False</span>
+
+<span class="token comment">## Instead of starting the Application, dump configuration to stdout (as JSON)</span>
+<span class="token comment">#  See also: Application.show_config_json</span>
+<span class="token comment"># c.JupyterApp.show_config_json = False</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># NotebookApp(JupyterApp) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Set the Access-Control-Allow-Credentials: true header</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.allow_credentials = False</span>
+
+<span class="token comment">## Set the Access-Control-Allow-Origin header</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Use '*' to allow any origin to access your server.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Takes precedence over allow_origin_pat.</span>
+<span class="token comment">#  设置Access-Control-Allow-Origin标头</span>
+<span class="token comment">#  使用'*'允许任何来源访问您的服务器。</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.allow_origin = ''</span>
+
+<span class="token comment">## Use a regular expression for the Access-Control-Allow-Origin header</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Requests from an origin matching the expression will get replies with:</span>
+<span class="token comment">#  </span>
+<span class="token comment">#      Access-Control-Allow-Origin: origin</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  where `origin` is the origin of the request.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Ignored if allow_origin is set.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.allow_origin_pat = ''</span>
+
+<span class="token comment">## Allow password to be changed at login for the notebook server.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  While loggin in with a token, the notebook server UI will give the opportunity</span>
+<span class="token comment">#  to the user to enter a new password at the same time that will replace the</span>
+<span class="token comment">#  token login mechanism.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This can be set to false to prevent changing password from the UI/API.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.NotebookApp.allow_password_change = True</span>
+
+<span class="token comment">## Allow requests where the Host header doesn't point to a local server</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  By default, requests get a 403 forbidden response if the 'Host' header shows</span>
+<span class="token comment">#  that the browser thinks it's on a non-local domain. Setting this option to</span>
+<span class="token comment">#  True disables this check.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This protects against 'DNS rebinding' attacks, where a remote web server</span>
+<span class="token comment">#  serves you a page and then changes its DNS to send later requests to a local</span>
+<span class="token comment">#  IP, bypassing same-origin checks.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Local IP addresses (such as 127.0.0.1 and ::1) are allowed as local, along</span>
+<span class="token comment">#  with hostnames configured in local_hostnames.</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.allow_remote_access = False</span>
+
+<span class="token comment">## Whether to allow the user to run the notebook as root.</span>
+<span class="token comment">## 是否允许用户以root身份运行notebook。</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.allow_root = False</span>
+
+<span class="token comment">## Answer yes to any prompts.</span>
+<span class="token comment">#  See also: JupyterApp.answer_yes</span>
+<span class="token comment"># c.NotebookApp.answer_yes = False</span>
+
+<span class="token comment">## &quot; Require authentication to access prometheus metrics.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.NotebookApp.authenticate_prometheus = True</span>
+
+<span class="token comment">## Reload the webapp when changes are made to any Python src files.</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.autoreload = False</span>
+
+<span class="token comment">## DEPRECATED use base_url</span>
+<span class="token comment">#  Default: '/'</span>
+<span class="token comment"># c.NotebookApp.base_project_url = '/'</span>
+
+<span class="token comment">## The base URL for the notebook server.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Leading and trailing slashes can be omitted, and will automatically be added.</span>
+<span class="token comment">#  Default: '/'</span>
+<span class="token comment"># c.NotebookApp.base_url = '/'</span>
+
+<span class="token comment">## Specify what command to use to invoke a web browser when opening the notebook.</span>
+<span class="token comment">#  If not specified, the default browser will be determined by the `webbrowser`</span>
+<span class="token comment">#  standard library module, which allows setting of the BROWSER environment</span>
+<span class="token comment">#  variable to override it.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.browser = ''</span>
+
+<span class="token comment">## The full path to an SSL/TLS certificate file.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.certfile = ''</span>
+
+<span class="token comment">## The full path to a certificate authority certificate for SSL/TLS client</span>
+<span class="token comment">#  authentication.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.client_ca = ''</span>
+
+<span class="token comment">## Full path of a config file.</span>
+<span class="token comment">#  See also: JupyterApp.config_file</span>
+<span class="token comment"># c.NotebookApp.config_file = ''</span>
+
+<span class="token comment">## Specify a config file to load.</span>
+<span class="token comment">#  See also: JupyterApp.config_file_name</span>
+<span class="token comment"># c.NotebookApp.config_file_name = ''</span>
+
+<span class="token comment">## The config manager class to use</span>
+<span class="token comment">#  Default: 'notebook.services.config.manager.ConfigManager'</span>
+<span class="token comment"># c.NotebookApp.config_manager_class = 'notebook.services.config.manager.ConfigManager'</span>
+
+<span class="token comment">## The notebook manager class to use.</span>
+<span class="token comment">#  Default: 'notebook.services.contents.largefilemanager.LargeFileManager'</span>
+<span class="token comment"># c.NotebookApp.contents_manager_class = 'notebook.services.contents.largefilemanager.LargeFileManager'</span>
+
+<span class="token comment">## Extra keyword arguments to pass to `set_secure_cookie`. See tornado's</span>
+<span class="token comment">#  set_secure_cookie docs for details.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.cookie_options = {}</span>
+
+<span class="token comment">## The random bytes used to secure cookies. By default this is a new random</span>
+<span class="token comment">#  number every time you start the Notebook. Set it to a value in a config file</span>
+<span class="token comment">#  to enable logins to persist across server sessions.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Note: Cookie secrets should be kept private, do not share config files with</span>
+<span class="token comment">#  cookie_secret stored in plaintext (you can read the value from a file).</span>
+<span class="token comment">#  Default: b''</span>
+<span class="token comment"># c.NotebookApp.cookie_secret = b''</span>
+
+<span class="token comment">## The file where the cookie secret is stored.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.cookie_secret_file = ''</span>
+
+<span class="token comment">## Override URL shown to users.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Replace actual URL, including protocol, address, port and base URL, with the</span>
+<span class="token comment">#  given value when displaying URL to the users. Do not change the actual</span>
+<span class="token comment">#  connection URL. If authentication token is enabled, the token is added to the</span>
+<span class="token comment">#  custom URL automatically.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This option is intended to be used when the URL to display to the user cannot</span>
+<span class="token comment">#  be determined reliably by the Jupyter notebook server (proxified or</span>
+<span class="token comment">#  containerized setups for example).</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.custom_display_url = ''</span>
+
+<span class="token comment">## The default URL to redirect to from `/`</span>
+<span class="token comment">#  Default: '/tree'</span>
+<span class="token comment"># c.NotebookApp.default_url = '/tree'</span>
+
+<span class="token comment">## Disable cross-site-request-forgery protection</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Jupyter notebook 4.3.1 introduces protection from cross-site request</span>
+<span class="token comment">#  forgeries, requiring API requests to either:</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  - originate from pages served by this server (validated with XSRF cookie and</span>
+<span class="token comment">#  token), or - authenticate with a token</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Some anonymous compute resources still desire the ability to run code,</span>
+<span class="token comment">#  completely without authentication. These services can disable all</span>
+<span class="token comment">#  authentication and security checks, with the full knowledge of what that</span>
+<span class="token comment">#  implies.</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.disable_check_xsrf = False</span>
+
+<span class="token comment">## Whether to enable MathJax for typesetting math/TeX</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  MathJax is the javascript library Jupyter uses to render math/LaTeX. It is</span>
+<span class="token comment">#  very large, so you may want to disable it if you have a slow internet</span>
+<span class="token comment">#  connection, or for offline use of the notebook.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  When disabled, equations etc. will appear as their untransformed TeX source.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.NotebookApp.enable_mathjax = True</span>
+
+<span class="token comment">## extra paths to look for Javascript notebook extensions</span>
+<span class="token comment">#  Default: []</span>
+<span class="token comment"># c.NotebookApp.extra_nbextensions_path = []</span>
+
+<span class="token comment">## handlers that should be loaded at higher priority than the default services</span>
+<span class="token comment">#  Default: []</span>
+<span class="token comment"># c.NotebookApp.extra_services = []</span>
+
+<span class="token comment">## Extra paths to search for serving static files.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This allows adding javascript/css to be available from the notebook server</span>
+<span class="token comment">#  machine, or overriding individual files in the IPython</span>
+<span class="token comment">#  Default: []</span>
+<span class="token comment"># c.NotebookApp.extra_static_paths = []</span>
+
+<span class="token comment">## Extra paths to search for serving jinja templates.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Can be used to override templates from notebook.templates.</span>
+<span class="token comment">#  Default: []</span>
+<span class="token comment"># c.NotebookApp.extra_template_paths = []</span>
+
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.file_to_run = ''</span>
+
+<span class="token comment">## Generate default config file.</span>
+<span class="token comment">#  See also: JupyterApp.generate_config</span>
+<span class="token comment"># c.NotebookApp.generate_config = False</span>
+
+<span class="token comment">## Extra keyword arguments to pass to `get_secure_cookie`. See tornado's</span>
+<span class="token comment">#  get_secure_cookie docs for details.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.get_secure_cookie_kwargs = {}</span>
+
+<span class="token comment">## Deprecated: Use minified JS file or not, mainly use during dev to avoid JS</span>
+<span class="token comment">#  recompilation</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.ignore_minified_js = False</span>
+
+<span class="token comment">## (bytes/sec) Maximum rate at which stream output can be sent on iopub before</span>
+<span class="token comment">#  they are limited.</span>
+<span class="token comment">#  Default: 1000000</span>
+<span class="token comment"># c.NotebookApp.iopub_data_rate_limit = 1000000</span>
+
+<span class="token comment">## (msgs/sec) Maximum rate at which messages can be sent on iopub before they are</span>
+<span class="token comment">#  limited.</span>
+<span class="token comment">#  Default: 1000</span>
+<span class="token comment"># c.NotebookApp.iopub_msg_rate_limit = 1000</span>
+
+<span class="token comment">## The IP address the notebook server will listen on.</span>
+<span class="token comment">#  Default: 'localhost'</span>
+<span class="token comment"># c.NotebookApp.ip = 'localhost'</span>
+
+<span class="token comment">## Supply extra arguments that will be passed to Jinja environment.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.jinja_environment_options = {}</span>
+
+<span class="token comment">## Extra variables to supply to jinja templates when rendering.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.jinja_template_vars = {}</span>
+
+<span class="token comment">## The kernel manager class to use.</span>
+<span class="token comment">#  Default: 'notebook.services.kernels.kernelmanager.MappingKernelManager'</span>
+<span class="token comment"># c.NotebookApp.kernel_manager_class = 'notebook.services.kernels.kernelmanager.MappingKernelManager'</span>
+
+<span class="token comment">## The kernel spec manager class to use. Should be a subclass of</span>
+<span class="token comment">#  `jupyter_client.kernelspec.KernelSpecManager`.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  The Api of KernelSpecManager is provisional and might change without warning</span>
+<span class="token comment">#  between this version of Jupyter and the next stable one.</span>
+<span class="token comment">#  Default: 'jupyter_client.kernelspec.KernelSpecManager'</span>
+<span class="token comment"># c.NotebookApp.kernel_spec_manager_class = 'jupyter_client.kernelspec.KernelSpecManager'</span>
+
+<span class="token comment">## The full path to a private key file for usage with SSL/TLS.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.keyfile = ''</span>
+
+<span class="token comment">## Hostnames to allow as local when allow_remote_access is False.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Local IP addresses (such as 127.0.0.1 and ::1) are automatically accepted as</span>
+<span class="token comment">#  local as well.</span>
+<span class="token comment">#  Default: ['localhost']</span>
+<span class="token comment"># c.NotebookApp.local_hostnames = ['localhost']</span>
+
+<span class="token comment">## The date format used by logging formatters for %(asctime)s</span>
+<span class="token comment">#  See also: Application.log_datefmt</span>
+<span class="token comment"># c.NotebookApp.log_datefmt = '%Y-%m-%d %H:%M:%S'</span>
+
+<span class="token comment">## The Logging format template</span>
+<span class="token comment">#  See also: Application.log_format</span>
+<span class="token comment"># c.NotebookApp.log_format = '[%(name)s]%(highlevel)s %(message)s'</span>
+
+<span class="token comment">## Set to True to enable JSON formatted logs. Run &quot;pip install notebook[json-</span>
+<span class="token comment">#  logging]&quot; to install the required dependent packages. Can also be set using</span>
+<span class="token comment">#  the environment variable JUPYTER_ENABLE_JSON_LOGGING=true.</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.log_json = False</span>
+
+<span class="token comment">## Set the log level by value or name.</span>
+<span class="token comment">#  See also: Application.log_level</span>
+<span class="token comment"># c.NotebookApp.log_level = 30</span>
+
+<span class="token comment">## The login handler class to use.</span>
+<span class="token comment">#  Default: 'notebook.auth.login.LoginHandler'</span>
+<span class="token comment"># c.NotebookApp.login_handler_class = 'notebook.auth.login.LoginHandler'</span>
+
+<span class="token comment">## The logout handler class to use.</span>
+<span class="token comment">#  Default: 'notebook.auth.logout.LogoutHandler'</span>
+<span class="token comment"># c.NotebookApp.logout_handler_class = 'notebook.auth.logout.LogoutHandler'</span>
+
+<span class="token comment">## The MathJax.js configuration file that is to be used.</span>
+<span class="token comment">#  Default: 'TeX-AMS-MML_HTMLorMML-full,Safe'</span>
+<span class="token comment"># c.NotebookApp.mathjax_config = 'TeX-AMS-MML_HTMLorMML-full,Safe'</span>
+
+<span class="token comment">## A custom url for MathJax.js. Should be in the form of a case-sensitive url to</span>
+<span class="token comment">#  MathJax, for example:  /static/components/MathJax/MathJax.js</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.mathjax_url = ''</span>
+
+<span class="token comment">## Sets the maximum allowed size of the client request body, specified in the</span>
+<span class="token comment">#  Content-Length request header field. If the size in a request exceeds the</span>
+<span class="token comment">#  configured value, a malformed HTTP message is returned to the client.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Note: max_body_size is applied even in streaming mode.</span>
+<span class="token comment">#  Default: 536870912</span>
+<span class="token comment"># c.NotebookApp.max_body_size = 536870912</span>
+
+<span class="token comment">## Gets or sets the maximum amount of memory, in bytes, that is allocated for use</span>
+<span class="token comment">#  by the buffer manager.</span>
+<span class="token comment">#  Default: 536870912</span>
+<span class="token comment"># c.NotebookApp.max_buffer_size = 536870912</span>
+
+<span class="token comment">## Gets or sets a lower bound on the open file handles process resource limit.</span>
+<span class="token comment">#  This may need to be increased if you run into an OSError: [Errno 24] Too many</span>
+<span class="token comment">#  open files. This is not applicable when running on Windows.</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.NotebookApp.min_open_files_limit = 0</span>
+
+<span class="token comment">## Dict of Python modules to load as notebook server extensions.Entry values can</span>
+<span class="token comment">#  be used to enable and disable the loading ofthe extensions. The extensions</span>
+<span class="token comment">#  will be loaded in alphabetical order.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.nbserver_extensions = {}</span>
+
+<span class="token comment">## The directory to use for notebooks and kernels.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.notebook_dir = ''</span>
+
+<span class="token comment">## Whether to open in a browser after starting. The specific browser used is</span>
+<span class="token comment">#  platform dependent and determined by the python standard library `webbrowser`</span>
+<span class="token comment">#  module, unless it is overridden using the --browser (NotebookApp.browser)</span>
+<span class="token comment">#  configuration option.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.NotebookApp.open_browser = True</span>
+
+<span class="token comment">## Hashed password to use for web authentication.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  To generate, type in a python/IPython shell:</span>
+<span class="token comment">#  </span>
+<span class="token comment">#    from notebook.auth import passwd; passwd()</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  The string should be of the form type:salt:hashed-password.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.password = ''</span>
+
+<span class="token comment">## Forces users to use a password for the Notebook server. This is useful in a</span>
+<span class="token comment">#  multi user environment, for instance when everybody in the LAN can access each</span>
+<span class="token comment">#  other's machine through ssh.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  In such a case, serving the notebook server on localhost is not secure since</span>
+<span class="token comment">#  any user can connect to the notebook server via ssh.</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.password_required = False</span>
+
+<span class="token comment">## The port the notebook server will listen on (env: JUPYTER_PORT).</span>
+<span class="token comment">#  Default: 8888</span>
+<span class="token comment"># c.NotebookApp.port = 8888</span>
+
+<span class="token comment">## The number of additional ports to try if the specified port is not available</span>
+<span class="token comment">#  (env: JUPYTER_PORT_RETRIES).</span>
+<span class="token comment">#  Default: 50</span>
+<span class="token comment"># c.NotebookApp.port_retries = 50</span>
+
+<span class="token comment">## DISABLED: use %pylab or %matplotlib in the notebook to enable matplotlib.</span>
+<span class="token comment">#  Default: 'disabled'</span>
+<span class="token comment"># c.NotebookApp.pylab = 'disabled'</span>
+
+<span class="token comment">## If True, display a button in the dashboard to quit (shutdown the notebook</span>
+<span class="token comment">#  server).</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.NotebookApp.quit_button = True</span>
+
+<span class="token comment">## (sec) Time window used to check the message and data rate limits.</span>
+<span class="token comment">#  Default: 3</span>
+<span class="token comment"># c.NotebookApp.rate_limit_window = 3</span>
+
+<span class="token comment">## Reraise exceptions encountered loading server extensions?</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.reraise_server_extension_failures = False</span>
+
+<span class="token comment">## DEPRECATED use the nbserver_extensions dict instead</span>
+<span class="token comment">#  Default: []</span>
+<span class="token comment"># c.NotebookApp.server_extensions = []</span>
+
+<span class="token comment">## The session manager class to use.</span>
+<span class="token comment">#  Default: 'notebook.services.sessions.sessionmanager.SessionManager'</span>
+<span class="token comment"># c.NotebookApp.session_manager_class = 'notebook.services.sessions.sessionmanager.SessionManager'</span>
+
+<span class="token comment">## Instead of starting the Application, dump configuration to stdout</span>
+<span class="token comment">#  See also: Application.show_config</span>
+<span class="token comment"># c.NotebookApp.show_config = False</span>
+
+<span class="token comment">## Instead of starting the Application, dump configuration to stdout (as JSON)</span>
+<span class="token comment">#  See also: Application.show_config_json</span>
+<span class="token comment"># c.NotebookApp.show_config_json = False</span>
+
+<span class="token comment">## Shut down the server after N seconds with no kernels or terminals running and</span>
+<span class="token comment">#  no activity. This can be used together with culling idle kernels</span>
+<span class="token comment">#  (MappingKernelManager.cull_idle_timeout) to shutdown the notebook server when</span>
+<span class="token comment">#  it's not in use. This is not precisely timed: it may shut down up to a minute</span>
+<span class="token comment">#  later. 0 (the default) disables this automatic shutdown.</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.NotebookApp.shutdown_no_activity_timeout = 0</span>
+
+<span class="token comment">## The UNIX socket the notebook server will listen on.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.sock = ''</span>
+
+<span class="token comment">## The permissions mode for UNIX socket creation (default: 0600).</span>
+<span class="token comment">#  Default: '0600'</span>
+<span class="token comment"># c.NotebookApp.sock_mode = '0600'</span>
+
+<span class="token comment">## Supply SSL options for the tornado HTTPServer. See the tornado docs for</span>
+<span class="token comment">#  details.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.ssl_options = {}</span>
+
+<span class="token comment">## Supply overrides for terminado. Currently only supports &quot;shell_command&quot;. On</span>
+<span class="token comment">#  Unix, if &quot;shell_command&quot; is not provided, a non-login shell is launched by</span>
+<span class="token comment">#  default when the notebook server is connected to a terminal, a login shell</span>
+<span class="token comment">#  otherwise.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.terminado_settings = {}</span>
+
+<span class="token comment">## Set to False to disable terminals.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This does *not* make the notebook server more secure by itself. Anything the</span>
+<span class="token comment">#  user can in a terminal, they can also do in a notebook.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Terminals may also be automatically disabled if the terminado package is not</span>
+<span class="token comment">#  available.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.NotebookApp.terminals_enabled = True</span>
+
+<span class="token comment">## Token used for authenticating first-time connections to the server.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  The token can be read from the file referenced by JUPYTER_TOKEN_FILE or set</span>
+<span class="token comment">#  directly with the JUPYTER_TOKEN environment variable.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  When no password is enabled, the default is to generate a new, random token.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Setting to an empty string disables authentication altogether, which is NOT</span>
+<span class="token comment">#  RECOMMENDED.</span>
+<span class="token comment">#  Default: '&lt;generated&gt;'</span>
+<span class="token comment"># c.NotebookApp.token = '&lt;generated&gt;'</span>
+
+<span class="token comment">## Supply overrides for the tornado.web.Application that the Jupyter notebook</span>
+<span class="token comment">#  uses.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.tornado_settings = {}</span>
+
+<span class="token comment">## Whether to trust or not X-Scheme/X-Forwarded-Proto and X-Real-Ip/X-Forwarded-</span>
+<span class="token comment">#  For headerssent by the upstream reverse proxy. Necessary if the proxy handles</span>
+<span class="token comment">#  SSL</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.NotebookApp.trust_xheaders = False</span>
+
+<span class="token comment">## Disable launching browser by redirect file</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  For versions of notebook &gt; 5.7.2, a security feature measure was added that</span>
+<span class="token comment">#  prevented the authentication token used to launch the browser from being</span>
+<span class="token comment">#  visible. This feature makes it difficult for other users on a multi-user</span>
+<span class="token comment">#  system from running code in your Jupyter session as you.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  However, some environments (like Windows Subsystem for Linux (WSL) and</span>
+<span class="token comment">#  Chromebooks), launching a browser using a redirect file can lead the browser</span>
+<span class="token comment">#  failing to load. This is because of the difference in file structures/paths</span>
+<span class="token comment">#  between the runtime and the browser.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Disabling this setting to False will disable this behavior, allowing the</span>
+<span class="token comment">#  browser to launch by using a URL and visible token (as before).</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.NotebookApp.use_redirect_file = True</span>
+
+<span class="token comment">## DEPRECATED, use tornado_settings</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.NotebookApp.webapp_settings = {}</span>
+
+<span class="token comment">## Specify Where to open the notebook on startup. This is the `new` argument</span>
+<span class="token comment">#  passed to the standard library method `webbrowser.open`. The behaviour is not</span>
+<span class="token comment">#  guaranteed, but depends on browser support. Valid values are:</span>
+<span class="token comment">#  </span>
+<span class="token comment">#   - 2 opens a new tab,</span>
+<span class="token comment">#   - 1 opens a new window,</span>
+<span class="token comment">#   - 0 opens in an existing window.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  See the `webbrowser.open` documentation for details.</span>
+<span class="token comment">#  Default: 2</span>
+<span class="token comment"># c.NotebookApp.webbrowser_open_new = 2</span>
+
+<span class="token comment">## Set the tornado compression options for websocket connections.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This value will be returned from</span>
+<span class="token comment">#  :meth:`WebSocketHandler.get_compression_options`. None (default) will disable</span>
+<span class="token comment">#  compression. A dict (even an empty one) will enable compression.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  See the tornado docs for WebSocketHandler.get_compression_options for details.</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.NotebookApp.websocket_compression_options = None</span>
+
+<span class="token comment">## The base URL for websockets, if it differs from the HTTP server (hint: it</span>
+<span class="token comment">#  almost certainly doesn't).</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Should be in the form of an HTTP origin: ws[s]://hostname[:port]</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookApp.websocket_url = ''</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># ConnectionFileMixin(LoggingConfigurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Mixin for configurable classes that work with connection files</span>
+
+<span class="token comment">## JSON file in which to store connection info [default: kernel-&lt;pid&gt;.json]</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This file will contain the IP, ports, and authentication key needed to connect</span>
+<span class="token comment">#  clients to this kernel. By default, this file will be created in the security</span>
+<span class="token comment">#  dir of the current profile, but can be specified by absolute path.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.ConnectionFileMixin.connection_file = ''</span>
+
+<span class="token comment">## set the control (ROUTER) port [default: random]</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.ConnectionFileMixin.control_port = 0</span>
+
+<span class="token comment">## set the heartbeat port [default: random]</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.ConnectionFileMixin.hb_port = 0</span>
+
+<span class="token comment">## set the iopub (PUB) port [default: random]</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.ConnectionFileMixin.iopub_port = 0</span>
+
+<span class="token comment">## Set the kernel's IP address [default localhost]. If the IP address is</span>
+<span class="token comment">#  something other than localhost, then Consoles on other machines will be able</span>
+<span class="token comment">#  to connect to the Kernel, so be careful!</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.ConnectionFileMixin.ip = ''</span>
+
+<span class="token comment">## set the shell (ROUTER) port [default: random]</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.ConnectionFileMixin.shell_port = 0</span>
+
+<span class="token comment">## set the stdin (ROUTER) port [default: random]</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.ConnectionFileMixin.stdin_port = 0</span>
+
+<span class="token comment">#  Choices: any of ['tcp', 'ipc'] (case-insensitive)</span>
+<span class="token comment">#  Default: 'tcp'</span>
+<span class="token comment"># c.ConnectionFileMixin.transport = 'tcp'</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># KernelManager(ConnectionFileMixin) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Manages a single kernel in a subprocess on this host.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This version starts kernels with Popen.</span>
+
+<span class="token comment">## Should we autorestart the kernel if it dies.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.KernelManager.autorestart = True</span>
+
+<span class="token comment">## JSON file in which to store connection info [default: kernel-&lt;pid&gt;.json]</span>
+<span class="token comment">#  See also: ConnectionFileMixin.connection_file</span>
+<span class="token comment"># c.KernelManager.connection_file = ''</span>
+
+<span class="token comment">## set the control (ROUTER) port [default: random]</span>
+<span class="token comment">#  See also: ConnectionFileMixin.control_port</span>
+<span class="token comment"># c.KernelManager.control_port = 0</span>
+
+<span class="token comment">## set the heartbeat port [default: random]</span>
+<span class="token comment">#  See also: ConnectionFileMixin.hb_port</span>
+<span class="token comment"># c.KernelManager.hb_port = 0</span>
+
+<span class="token comment">## set the iopub (PUB) port [default: random]</span>
+<span class="token comment">#  See also: ConnectionFileMixin.iopub_port</span>
+<span class="token comment"># c.KernelManager.iopub_port = 0</span>
+
+<span class="token comment">## Set the kernel's IP address [default localhost].</span>
+<span class="token comment">#  See also: ConnectionFileMixin.ip</span>
+<span class="token comment"># c.KernelManager.ip = ''</span>
+
+<span class="token comment">## DEPRECATED: Use kernel_name instead.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  The Popen Command to launch the kernel. Override this if you have a custom</span>
+<span class="token comment">#  kernel. If kernel_cmd is specified in a configuration file, Jupyter does not</span>
+<span class="token comment">#  pass any arguments to the kernel, because it cannot make any assumptions about</span>
+<span class="token comment">#  the arguments that the kernel understands. In particular, this means that the</span>
+<span class="token comment">#  kernel does not receive the option --debug if it given on the Jupyter command</span>
+<span class="token comment">#  line.</span>
+<span class="token comment">#  Default: []</span>
+<span class="token comment"># c.KernelManager.kernel_cmd = []</span>
+
+<span class="token comment">## set the shell (ROUTER) port [default: random]</span>
+<span class="token comment">#  See also: ConnectionFileMixin.shell_port</span>
+<span class="token comment"># c.KernelManager.shell_port = 0</span>
+
+<span class="token comment">## Time to wait for a kernel to terminate before killing it, in seconds. When a</span>
+<span class="token comment">#  shutdown request is initiated, the kernel will be immediately send and</span>
+<span class="token comment">#  interrupt (SIGINT), followedby a shutdown_request message, after 1/2 of</span>
+<span class="token comment">#  `shutdown_wait_time`it will be sent a terminate (SIGTERM) request, and finally</span>
+<span class="token comment">#  at the end of `shutdown_wait_time` will be killed (SIGKILL). terminate and</span>
+<span class="token comment">#  kill may be equivalent on windows.</span>
+<span class="token comment">#  Default: 5.0</span>
+<span class="token comment"># c.KernelManager.shutdown_wait_time = 5.0</span>
+
+<span class="token comment">## set the stdin (ROUTER) port [default: random]</span>
+<span class="token comment">#  See also: ConnectionFileMixin.stdin_port</span>
+<span class="token comment"># c.KernelManager.stdin_port = 0</span>
+
+<span class="token comment">#  See also: ConnectionFileMixin.transport</span>
+<span class="token comment"># c.KernelManager.transport = 'tcp'</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># Session(Configurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Object for handling serialization and sending of messages.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  The Session object handles building messages and sending them with ZMQ sockets</span>
+<span class="token comment">#  or ZMQStream objects.  Objects can communicate with each other over the</span>
+<span class="token comment">#  network via Session objects, and only need to work with the dict-based IPython</span>
+<span class="token comment">#  message spec. The Session will handle serialization/deserialization, security,</span>
+<span class="token comment">#  and metadata.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Sessions support configurable serialization via packer/unpacker traits, and</span>
+<span class="token comment">#  signing with HMAC digests via the key/keyfile traits.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Parameters ----------</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  debug : bool</span>
+<span class="token comment">#      whether to trigger extra debugging statements</span>
+<span class="token comment">#  packer/unpacker : str : 'json', 'pickle' or import_string</span>
+<span class="token comment">#      importstrings for methods to serialize message parts.  If just</span>
+<span class="token comment">#      'json' or 'pickle', predefined JSON and pickle packers will be used.</span>
+<span class="token comment">#      Otherwise, the entire importstring must be used.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#      The functions must accept at least valid JSON input, and output *bytes*.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#      For example, to use msgpack:</span>
+<span class="token comment">#      packer = 'msgpack.packb', unpacker='msgpack.unpackb'</span>
+<span class="token comment">#  pack/unpack : callables</span>
+<span class="token comment">#      You can also set the pack/unpack callables for serialization directly.</span>
+<span class="token comment">#  session : bytes</span>
+<span class="token comment">#      the ID of this Session object.  The default is to generate a new UUID.</span>
+<span class="token comment">#  username : unicode</span>
+<span class="token comment">#      username added to message headers.  The default is to ask the OS.</span>
+<span class="token comment">#  key : bytes</span>
+<span class="token comment">#      The key used to initialize an HMAC signature.  If unset, messages</span>
+<span class="token comment">#      will not be signed or checked.</span>
+<span class="token comment">#  keyfile : filepath</span>
+<span class="token comment">#      The file containing a key.  If this is set, `key` will be initialized</span>
+<span class="token comment">#      to the contents of the file.</span>
+
+<span class="token comment">## Threshold (in bytes) beyond which an object's buffer should be extracted to</span>
+<span class="token comment">#  avoid pickling.</span>
+<span class="token comment">#  Default: 1024</span>
+<span class="token comment"># c.Session.buffer_threshold = 1024</span>
+
+<span class="token comment">## Whether to check PID to protect against calls after fork.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This check can be disabled if fork-safety is handled elsewhere.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.Session.check_pid = True</span>
+
+<span class="token comment">## Threshold (in bytes) beyond which a buffer should be sent without copying.</span>
+<span class="token comment">#  Default: 65536</span>
+<span class="token comment"># c.Session.copy_threshold = 65536</span>
+
+<span class="token comment">## Debug output in the Session</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.Session.debug = False</span>
+
+<span class="token comment">## The maximum number of digests to remember.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  The digest history will be culled when it exceeds this value.</span>
+<span class="token comment">#  Default: 65536</span>
+<span class="token comment"># c.Session.digest_history_size = 65536</span>
+
+<span class="token comment">## The maximum number of items for a container to be introspected for custom</span>
+<span class="token comment">#  serialization. Containers larger than this are pickled outright.</span>
+<span class="token comment">#  Default: 64</span>
+<span class="token comment"># c.Session.item_threshold = 64</span>
+
+<span class="token comment">## execution key, for signing messages.</span>
+<span class="token comment">#  Default: b''</span>
+<span class="token comment"># c.Session.key = b''</span>
+
+<span class="token comment">## path to file containing execution key.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.Session.keyfile = ''</span>
+
+<span class="token comment">## Metadata dictionary, which serves as the default top-level metadata dict for</span>
+<span class="token comment">#  each message.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.Session.metadata = {}</span>
+
+<span class="token comment">## The name of the packer for serializing messages. Should be one of 'json',</span>
+<span class="token comment">#  'pickle', or an import name for a custom callable serializer.</span>
+<span class="token comment">#  Default: 'json'</span>
+<span class="token comment"># c.Session.packer = 'json'</span>
+
+<span class="token comment">## The UUID identifying this session.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.Session.session = ''</span>
+
+<span class="token comment">## The digest scheme used to construct the message signatures. Must have the form</span>
+<span class="token comment">#  'hmac-HASH'.</span>
+<span class="token comment">#  Default: 'hmac-sha256'</span>
+<span class="token comment"># c.Session.signature_scheme = 'hmac-sha256'</span>
+
+<span class="token comment">## The name of the unpacker for unserializing messages. Only used with custom</span>
+<span class="token comment">#  functions for `packer`.</span>
+<span class="token comment">#  Default: 'json'</span>
+<span class="token comment"># c.Session.unpacker = 'json'</span>
+
+<span class="token comment">## Username for the Session. Default is your system username.</span>
+<span class="token comment">#  Default: 'username'</span>
+<span class="token comment"># c.Session.username = 'username'</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># MultiKernelManager(LoggingConfigurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## A class for managing multiple kernels.</span>
+
+<span class="token comment">## The name of the default kernel to start</span>
+<span class="token comment">#  Default: 'python3'</span>
+<span class="token comment"># c.MultiKernelManager.default_kernel_name = 'python3'</span>
+
+<span class="token comment">## The kernel manager class.  This is configurable to allow subclassing of the</span>
+<span class="token comment">#  KernelManager for customized behavior.</span>
+<span class="token comment">#  Default: 'jupyter_client.ioloop.IOLoopKernelManager'</span>
+<span class="token comment"># c.MultiKernelManager.kernel_manager_class = 'jupyter_client.ioloop.IOLoopKernelManager'</span>
+
+<span class="token comment">## Share a single zmq.Context to talk to all my kernels</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.MultiKernelManager.shared_context = True</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># MappingKernelManager(MultiKernelManager) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## A KernelManager that handles notebook mapping and HTTP error handling</span>
+
+<span class="token comment">## White list of allowed kernel message types. When the list is empty, all</span>
+<span class="token comment">#  message types are allowed.</span>
+<span class="token comment">#  Default: []</span>
+<span class="token comment"># c.MappingKernelManager.allowed_message_types = []</span>
+
+<span class="token comment">## Whether messages from kernels whose frontends have disconnected should be</span>
+<span class="token comment">#  buffered in-memory. When True (default), messages are buffered and replayed on</span>
+<span class="token comment">#  reconnect, avoiding lost messages due to interrupted connectivity. Disable if</span>
+<span class="token comment">#  long-running kernels will produce too much output while no frontends are</span>
+<span class="token comment">#  connected.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.MappingKernelManager.buffer_offline_messages = True</span>
+
+<span class="token comment">## Whether to consider culling kernels which are busy. Only effective if</span>
+<span class="token comment">#  cull_idle_timeout &gt; 0.</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.MappingKernelManager.cull_busy = False</span>
+
+<span class="token comment">## Whether to consider culling kernels which have one or more connections. Only</span>
+<span class="token comment">#  effective if cull_idle_timeout &gt; 0.</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.MappingKernelManager.cull_connected = False</span>
+
+<span class="token comment">## Timeout (in seconds) after which a kernel is considered idle and ready to be</span>
+<span class="token comment">#  culled. Values of 0 or lower disable culling. Very short timeouts may result</span>
+<span class="token comment">#  in kernels being culled for users with poor network connections.</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.MappingKernelManager.cull_idle_timeout = 0</span>
+
+<span class="token comment">## The interval (in seconds) on which to check for idle kernels exceeding the</span>
+<span class="token comment">#  cull timeout value.</span>
+<span class="token comment">#  Default: 300</span>
+<span class="token comment"># c.MappingKernelManager.cull_interval = 300</span>
+
+<span class="token comment">## The name of the default kernel to start</span>
+<span class="token comment">#  See also: MultiKernelManager.default_kernel_name</span>
+<span class="token comment"># c.MappingKernelManager.default_kernel_name = 'python3'</span>
+
+<span class="token comment">## Timeout for giving up on a kernel (in seconds). On starting and restarting</span>
+<span class="token comment">#  kernels, we check whether the kernel is running and responsive by sending</span>
+<span class="token comment">#  kernel_info_requests. This sets the timeout in seconds for how long the kernel</span>
+<span class="token comment">#  can take before being presumed dead. This affects the MappingKernelManager</span>
+<span class="token comment">#  (which handles kernel restarts) and the ZMQChannelsHandler (which handles the</span>
+<span class="token comment">#  startup).</span>
+<span class="token comment">#  Default: 60</span>
+<span class="token comment"># c.MappingKernelManager.kernel_info_timeout = 60</span>
+
+<span class="token comment">## The kernel manager class.  This is configurable to allow</span>
+<span class="token comment">#  See also: MultiKernelManager.kernel_manager_class</span>
+<span class="token comment"># c.MappingKernelManager.kernel_manager_class = 'jupyter_client.ioloop.IOLoopKernelManager'</span>
+
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.MappingKernelManager.root_dir = ''</span>
+
+<span class="token comment">## Share a single zmq.Context to talk to all my kernels</span>
+<span class="token comment">#  See also: MultiKernelManager.shared_context</span>
+<span class="token comment"># c.MappingKernelManager.shared_context = True</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># KernelSpecManager(LoggingConfigurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## If there is no Python kernelspec registered and the IPython kernel is</span>
+<span class="token comment">#  available, ensure it is added to the spec list.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.KernelSpecManager.ensure_native_kernel = True</span>
+
+<span class="token comment">## The kernel spec class.  This is configurable to allow subclassing of the</span>
+<span class="token comment">#  KernelSpecManager for customized behavior.</span>
+<span class="token comment">#  Default: 'jupyter_client.kernelspec.KernelSpec'</span>
+<span class="token comment"># c.KernelSpecManager.kernel_spec_class = 'jupyter_client.kernelspec.KernelSpec'</span>
+
+<span class="token comment">## Whitelist of allowed kernel names.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  By default, all installed kernels are allowed.</span>
+<span class="token comment">#  Default: set()</span>
+<span class="token comment"># c.KernelSpecManager.whitelist = set()</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># ContentsManager(LoggingConfigurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Base class for serving files and directories.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This serves any text or binary file, as well as directories, with special</span>
+<span class="token comment">#  handling for JSON notebook documents.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Most APIs take a path argument, which is always an API-style unicode path, and</span>
+<span class="token comment">#  always refers to a directory.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  - unicode, not url-escaped</span>
+<span class="token comment">#  - '/'-separated</span>
+<span class="token comment">#  - leading and trailing '/' will be stripped</span>
+<span class="token comment">#  - if unspecified, path defaults to '',</span>
+<span class="token comment">#    indicating the root path.</span>
+
+<span class="token comment">## Allow access to hidden files</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.ContentsManager.allow_hidden = False</span>
+
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.ContentsManager.checkpoints = None</span>
+
+<span class="token comment">#  Default: 'notebook.services.contents.checkpoints.Checkpoints'</span>
+<span class="token comment"># c.ContentsManager.checkpoints_class = 'notebook.services.contents.checkpoints.Checkpoints'</span>
+
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.ContentsManager.checkpoints_kwargs = {}</span>
+
+<span class="token comment">## handler class to use when serving raw file requests.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Default is a fallback that talks to the ContentsManager API, which may be</span>
+<span class="token comment">#  inefficient, especially for large files.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Local files-based ContentsManagers can use a StaticFileHandler subclass, which</span>
+<span class="token comment">#  will be much more efficient.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Access to these files should be Authenticated.</span>
+<span class="token comment">#  Default: 'notebook.files.handlers.FilesHandler'</span>
+<span class="token comment"># c.ContentsManager.files_handler_class = 'notebook.files.handlers.FilesHandler'</span>
+
+<span class="token comment">## Extra parameters to pass to files_handler_class.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  For example, StaticFileHandlers generally expect a `path` argument specifying</span>
+<span class="token comment">#  the root directory from which to serve files.</span>
+<span class="token comment">#  Default: {}</span>
+<span class="token comment"># c.ContentsManager.files_handler_params = {}</span>
+
+<span class="token comment">## Glob patterns to hide in file and directory listings.</span>
+<span class="token comment">#  Default: ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']</span>
+<span class="token comment"># c.ContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']</span>
+
+<span class="token comment">## Python callable or importstring thereof</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  To be called on a contents model prior to save.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This can be used to process the structure, such as removing notebook outputs</span>
+<span class="token comment">#  or other side effects that should not be saved.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  It will be called as (all arguments passed by keyword)::</span>
+<span class="token comment">#  </span>
+<span class="token comment">#      hook(path=path, model=model, contents_manager=self)</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  - model: the model to be saved. Includes file contents.</span>
+<span class="token comment">#    Modifying this dict will affect the file that is stored.</span>
+<span class="token comment">#  - path: the API path of the save destination</span>
+<span class="token comment">#  - contents_manager: this ContentsManager instance</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.ContentsManager.pre_save_hook = None</span>
+
+<span class="token comment">#  Default: '/'</span>
+<span class="token comment"># c.ContentsManager.root_dir = '/'</span>
+
+<span class="token comment">## The base name used when creating untitled directories.</span>
+<span class="token comment">#  Default: 'Untitled Folder'</span>
+<span class="token comment"># c.ContentsManager.untitled_directory = 'Untitled Folder'</span>
+
+<span class="token comment">## The base name used when creating untitled files.</span>
+<span class="token comment">#  Default: 'untitled'</span>
+<span class="token comment"># c.ContentsManager.untitled_file = 'untitled'</span>
+
+<span class="token comment">## The base name used when creating untitled notebooks.</span>
+<span class="token comment">#  Default: 'Untitled'</span>
+<span class="token comment"># c.ContentsManager.untitled_notebook = 'Untitled'</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># FileManagerMixin(Configurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Mixin for ContentsAPI classes that interact with the filesystem.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Provides facilities for reading, writing, and copying both notebooks and</span>
+<span class="token comment">#  generic files.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Shared by FileContentsManager and FileCheckpoints.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  Note ---- Classes using this mixin must provide the following attributes:</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  root_dir : unicode</span>
+<span class="token comment">#      A directory against which API-style paths are to be resolved.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  log : logging.Logger</span>
+
+<span class="token comment">## By default notebooks are saved on disk on a temporary file and then if</span>
+<span class="token comment">#  successfully written, it replaces the old ones. This procedure, namely</span>
+<span class="token comment">#  'atomic_writing', causes some bugs on file system without operation order</span>
+<span class="token comment">#  enforcement (like some networked fs). If set to False, the new notebook is</span>
+<span class="token comment">#  written directly on the old one which could fail (eg: full filesystem or quota</span>
+<span class="token comment">#  )</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.FileManagerMixin.use_atomic_writing = True</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># FileContentsManager(FileManagerMixin, ContentsManager) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Allow access to hidden files</span>
+<span class="token comment">#  See also: ContentsManager.allow_hidden</span>
+<span class="token comment"># c.FileContentsManager.allow_hidden = False</span>
+
+<span class="token comment">#  See also: ContentsManager.checkpoints</span>
+<span class="token comment"># c.FileContentsManager.checkpoints = None</span>
+
+<span class="token comment">#  See also: ContentsManager.checkpoints_class</span>
+<span class="token comment"># c.FileContentsManager.checkpoints_class = 'notebook.services.contents.checkpoints.Checkpoints'</span>
+
+<span class="token comment">#  See also: ContentsManager.checkpoints_kwargs</span>
+<span class="token comment"># c.FileContentsManager.checkpoints_kwargs = {}</span>
+
+<span class="token comment">## If True (default), deleting files will send them to the platform's</span>
+<span class="token comment">#  trash/recycle bin, where they can be recovered. If False, deleting files</span>
+<span class="token comment">#  really deletes them.</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.FileContentsManager.delete_to_trash = True</span>
+
+<span class="token comment">## handler class to use when serving raw file requests.</span>
+<span class="token comment">#  See also: ContentsManager.files_handler_class</span>
+<span class="token comment"># c.FileContentsManager.files_handler_class = 'notebook.files.handlers.FilesHandler'</span>
+
+<span class="token comment">## Extra parameters to pass to files_handler_class.</span>
+<span class="token comment">#  See also: ContentsManager.files_handler_params</span>
+<span class="token comment"># c.FileContentsManager.files_handler_params = {}</span>
+
+<span class="token comment">## </span>
+<span class="token comment">#  See also: ContentsManager.hide_globs</span>
+<span class="token comment"># c.FileContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']</span>
+
+<span class="token comment">## Python callable or importstring thereof</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  to be called on the path of a file just saved.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  This can be used to process the file on disk, such as converting the notebook</span>
+<span class="token comment">#  to a script or HTML via nbconvert.</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  It will be called as (all arguments passed by keyword)::</span>
+<span class="token comment">#  </span>
+<span class="token comment">#      hook(os_path=os_path, model=model, contents_manager=instance)</span>
+<span class="token comment">#  </span>
+<span class="token comment">#  - path: the filesystem path to the file just written - model: the model</span>
+<span class="token comment">#  representing the file - contents_manager: this ContentsManager instance</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.FileContentsManager.post_save_hook = None</span>
+
+<span class="token comment">## Python callable or importstring thereof</span>
+<span class="token comment">#  See also: ContentsManager.pre_save_hook</span>
+<span class="token comment"># c.FileContentsManager.pre_save_hook = None</span>
+
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.FileContentsManager.root_dir = ''</span>
+
+<span class="token comment">## DEPRECATED, use post_save_hook. Will be removed in Notebook 5.0</span>
+<span class="token comment">#  Default: False</span>
+<span class="token comment"># c.FileContentsManager.save_script = False</span>
+
+<span class="token comment">## The base name used when creating untitled directories.</span>
+<span class="token comment">#  See also: ContentsManager.untitled_directory</span>
+<span class="token comment"># c.FileContentsManager.untitled_directory = 'Untitled Folder'</span>
+
+<span class="token comment">## The base name used when creating untitled files.</span>
+<span class="token comment">#  See also: ContentsManager.untitled_file</span>
+<span class="token comment"># c.FileContentsManager.untitled_file = 'untitled'</span>
+
+<span class="token comment">## The base name used when creating untitled notebooks.</span>
+<span class="token comment">#  See also: ContentsManager.untitled_notebook</span>
+<span class="token comment"># c.FileContentsManager.untitled_notebook = 'Untitled'</span>
+
+<span class="token comment">## By default notebooks are saved on disk on a temporary file and then if</span>
+<span class="token comment">#  successfully written, it replaces the old ones.</span>
+<span class="token comment">#  See also: FileManagerMixin.use_atomic_writing</span>
+<span class="token comment"># c.FileContentsManager.use_atomic_writing = True</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># NotebookNotary(LoggingConfigurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## A class for computing and verifying notebook signatures.</span>
+
+<span class="token comment">## The hashing algorithm used to sign notebooks.</span>
+<span class="token comment">#  Choices: any of ['sha384', 'sha3_512', 'sha512', 'sha3_384', 'sha256', 'blake2s', 'sha1', 'sha224', 'blake2b', 'md5', 'sha3_256', 'sha3_224']</span>
+<span class="token comment">#  Default: 'sha256'</span>
+<span class="token comment"># c.NotebookNotary.algorithm = 'sha256'</span>
+
+<span class="token comment">## The storage directory for notary secret and database.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookNotary.data_dir = ''</span>
+
+<span class="token comment">## The sqlite file in which to store notebook signatures. By default, this will</span>
+<span class="token comment">#  be in your Jupyter data directory. You can set it to ':memory:' to disable</span>
+<span class="token comment">#  sqlite writing to the filesystem.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookNotary.db_file = ''</span>
+
+<span class="token comment">## The secret key with which notebooks are signed.</span>
+<span class="token comment">#  Default: b''</span>
+<span class="token comment"># c.NotebookNotary.secret = b''</span>
+
+<span class="token comment">## The file where the secret key is stored.</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.NotebookNotary.secret_file = ''</span>
+
+<span class="token comment">## A callable returning the storage backend for notebook signatures. The default</span>
+<span class="token comment">#  uses an SQLite database.</span>
+<span class="token comment">#  Default: traitlets.Undefined</span>
+<span class="token comment"># c.NotebookNotary.store_factory = traitlets.Undefined</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># AsyncMultiKernelManager(MultiKernelManager) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## The name of the default kernel to start</span>
+<span class="token comment">#  See also: MultiKernelManager.default_kernel_name</span>
+<span class="token comment"># c.AsyncMultiKernelManager.default_kernel_name = 'python3'</span>
+
+<span class="token comment">## The kernel manager class.  This is configurable to allow subclassing of the</span>
+<span class="token comment">#  AsyncKernelManager for customized behavior.</span>
+<span class="token comment">#  Default: 'jupyter_client.ioloop.AsyncIOLoopKernelManager'</span>
+<span class="token comment"># c.AsyncMultiKernelManager.kernel_manager_class = 'jupyter_client.ioloop.AsyncIOLoopKernelManager'</span>
+
+<span class="token comment">## Share a single zmq.Context to talk to all my kernels</span>
+<span class="token comment">#  See also: MultiKernelManager.shared_context</span>
+<span class="token comment"># c.AsyncMultiKernelManager.shared_context = True</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># AsyncMappingKernelManager(MappingKernelManager, AsyncMultiKernelManager) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## White list of allowed kernel message types.</span>
+<span class="token comment">#  See also: MappingKernelManager.allowed_message_types</span>
+<span class="token comment"># c.AsyncMappingKernelManager.allowed_message_types = []</span>
+
+<span class="token comment">## Whether messages from kernels whose frontends have disconnected should be</span>
+<span class="token comment">#  buffered in-memory.</span>
+<span class="token comment">#  See also: MappingKernelManager.buffer_offline_messages</span>
+<span class="token comment"># c.AsyncMappingKernelManager.buffer_offline_messages = True</span>
+
+<span class="token comment">## Whether to consider culling kernels which are busy.</span>
+<span class="token comment">#  See also: MappingKernelManager.cull_busy</span>
+<span class="token comment"># c.AsyncMappingKernelManager.cull_busy = False</span>
+
+<span class="token comment">## Whether to consider culling kernels which have one or more connections.</span>
+<span class="token comment">#  See also: MappingKernelManager.cull_connected</span>
+<span class="token comment"># c.AsyncMappingKernelManager.cull_connected = False</span>
+
+<span class="token comment">## Timeout (in seconds) after which a kernel is considered idle and ready to be</span>
+<span class="token comment">#  culled.</span>
+<span class="token comment">#  See also: MappingKernelManager.cull_idle_timeout</span>
+<span class="token comment"># c.AsyncMappingKernelManager.cull_idle_timeout = 0</span>
+
+<span class="token comment">## The interval (in seconds) on which to check for idle kernels exceeding the</span>
+<span class="token comment">#  cull timeout value.</span>
+<span class="token comment">#  See also: MappingKernelManager.cull_interval</span>
+<span class="token comment"># c.AsyncMappingKernelManager.cull_interval = 300</span>
+
+<span class="token comment">## The name of the default kernel to start</span>
+<span class="token comment">#  See also: MultiKernelManager.default_kernel_name</span>
+<span class="token comment"># c.AsyncMappingKernelManager.default_kernel_name = 'python3'</span>
+
+<span class="token comment">## Timeout for giving up on a kernel (in seconds).</span>
+<span class="token comment">#  See also: MappingKernelManager.kernel_info_timeout</span>
+<span class="token comment"># c.AsyncMappingKernelManager.kernel_info_timeout = 60</span>
+
+<span class="token comment">## The kernel manager class.  This is configurable to allow</span>
+<span class="token comment">#  See also: AsyncMultiKernelManager.kernel_manager_class</span>
+<span class="token comment"># c.AsyncMappingKernelManager.kernel_manager_class = 'jupyter_client.ioloop.AsyncIOLoopKernelManager'</span>
+
+<span class="token comment">#  See also: MappingKernelManager.root_dir</span>
+<span class="token comment"># c.AsyncMappingKernelManager.root_dir = ''</span>
+
+<span class="token comment">## Share a single zmq.Context to talk to all my kernels</span>
+<span class="token comment">#  See also: MultiKernelManager.shared_context</span>
+<span class="token comment"># c.AsyncMappingKernelManager.shared_context = True</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># GatewayKernelManager(AsyncMappingKernelManager) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## Kernel manager that supports remote kernels hosted by Jupyter Kernel or</span>
+<span class="token comment">#  Enterprise Gateway.</span>
+
+<span class="token comment">## White list of allowed kernel message types.</span>
+<span class="token comment">#  See also: MappingKernelManager.allowed_message_types</span>
+<span class="token comment"># c.GatewayKernelManager.allowed_message_types = []</span>
+
+<span class="token comment">## Whether messages from kernels whose frontends have disconnected should be</span>
+<span class="token comment">#  buffered in-memory.</span>
+<span class="token comment">#  See also: MappingKernelManager.buffer_offline_messages</span>
+<span class="token comment"># c.GatewayKernelManager.buffer_offline_messages = True</span>
+
+<span class="token comment">## Whether to consider culling kernels which are busy.</span>
+<span class="token comment">#  See also: MappingKernelManager.cull_busy</span>
+<span class="token comment"># c.GatewayKernelManager.cull_busy = False</span>
+
+<span class="token comment">## Whether to consider culling kernels which have one or more connections.</span>
+<span class="token comment">#  See also: MappingKernelManager.cull_connected</span>
+<span class="token comment"># c.GatewayKernelManager.cull_connected = False</span>
+
+<span class="token comment">## Timeout (in seconds) after which a kernel is considered idle and ready to be</span>
+<span class="token comment">#  culled.</span>
+<span class="token comment">#  See also: MappingKernelManager.cull_idle_timeout</span>
+<span class="token comment"># c.GatewayKernelManager.cull_idle_timeout = 0</span>
+
+<span class="token comment">## The interval (in seconds) on which to check for idle kernels exceeding the</span>
+<span class="token comment">#  cull timeout value.</span>
+<span class="token comment">#  See also: MappingKernelManager.cull_interval</span>
+<span class="token comment"># c.GatewayKernelManager.cull_interval = 300</span>
+
+<span class="token comment">## The name of the default kernel to start</span>
+<span class="token comment">#  See also: MultiKernelManager.default_kernel_name</span>
+<span class="token comment"># c.GatewayKernelManager.default_kernel_name = 'python3'</span>
+
+<span class="token comment">## Timeout for giving up on a kernel (in seconds).</span>
+<span class="token comment">#  See also: MappingKernelManager.kernel_info_timeout</span>
+<span class="token comment"># c.GatewayKernelManager.kernel_info_timeout = 60</span>
+
+<span class="token comment">## The kernel manager class.  This is configurable to allow</span>
+<span class="token comment">#  See also: AsyncMultiKernelManager.kernel_manager_class</span>
+<span class="token comment"># c.GatewayKernelManager.kernel_manager_class = 'jupyter_client.ioloop.AsyncIOLoopKernelManager'</span>
+
+<span class="token comment">#  See also: MappingKernelManager.root_dir</span>
+<span class="token comment"># c.GatewayKernelManager.root_dir = ''</span>
+
+<span class="token comment">## Share a single zmq.Context to talk to all my kernels</span>
+<span class="token comment">#  See also: MultiKernelManager.shared_context</span>
+<span class="token comment"># c.GatewayKernelManager.shared_context = True</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># GatewayKernelSpecManager(KernelSpecManager) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## If there is no Python kernelspec registered and the IPython</span>
+<span class="token comment">#  See also: KernelSpecManager.ensure_native_kernel</span>
+<span class="token comment"># c.GatewayKernelSpecManager.ensure_native_kernel = True</span>
+
+<span class="token comment">## The kernel spec class.  This is configurable to allow</span>
+<span class="token comment">#  See also: KernelSpecManager.kernel_spec_class</span>
+<span class="token comment"># c.GatewayKernelSpecManager.kernel_spec_class = 'jupyter_client.kernelspec.KernelSpec'</span>
+
+<span class="token comment">## Whitelist of allowed kernel names.</span>
+<span class="token comment">#  See also: KernelSpecManager.whitelist</span>
+<span class="token comment"># c.GatewayKernelSpecManager.whitelist = set()</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># GatewayClient(SingletonConfigurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## This class manages the configuration.  It's its own singleton class so that we</span>
+<span class="token comment">#  can share these values across all objects.  It also contains some helper</span>
+<span class="token comment">#  methods to build request arguments out of the various config options.</span>
+
+<span class="token comment">## The authorization token used in the HTTP headers.  (JUPYTER_GATEWAY_AUTH_TOKEN</span>
+<span class="token comment">#  env var)</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.GatewayClient.auth_token = None</span>
+
+<span class="token comment">## The filename of CA certificates or None to use defaults.</span>
+<span class="token comment">#  (JUPYTER_GATEWAY_CA_CERTS env var)</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.GatewayClient.ca_certs = None</span>
+
+<span class="token comment">## The filename for client SSL certificate, if any.  (JUPYTER_GATEWAY_CLIENT_CERT</span>
+<span class="token comment">#  env var)</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.GatewayClient.client_cert = None</span>
+
+<span class="token comment">## The filename for client SSL key, if any.  (JUPYTER_GATEWAY_CLIENT_KEY env var)</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.GatewayClient.client_key = None</span>
+
+<span class="token comment">## The time allowed for HTTP connection establishment with the Gateway server.</span>
+<span class="token comment">#  (JUPYTER_GATEWAY_CONNECT_TIMEOUT env var)</span>
+<span class="token comment">#  Default: 40.0</span>
+<span class="token comment"># c.GatewayClient.connect_timeout = 40.0</span>
+
+<span class="token comment">## A comma-separated list of environment variable names that will be included,</span>
+<span class="token comment">#  along with their values, in the kernel startup request.  The corresponding</span>
+<span class="token comment">#  `env_whitelist` configuration value must also be set on the Gateway server -</span>
+<span class="token comment">#  since that configuration value indicates which environmental values to make</span>
+<span class="token comment">#  available to the kernel. (JUPYTER_GATEWAY_ENV_WHITELIST env var)</span>
+<span class="token comment">#  Default: ''</span>
+<span class="token comment"># c.GatewayClient.env_whitelist = ''</span>
+
+<span class="token comment">## The time allowed for HTTP reconnection with the Gateway server for the first</span>
+<span class="token comment">#  time. Next will be JUPYTER_GATEWAY_RETRY_INTERVAL multiplied by two in factor</span>
+<span class="token comment">#  of numbers of retries but less than JUPYTER_GATEWAY_RETRY_INTERVAL_MAX.</span>
+<span class="token comment">#  (JUPYTER_GATEWAY_RETRY_INTERVAL env var)</span>
+<span class="token comment">#  Default: 1.0</span>
+<span class="token comment"># c.GatewayClient.gateway_retry_interval = 1.0</span>
+
+<span class="token comment">## The maximum time allowed for HTTP reconnection retry with the Gateway server.</span>
+<span class="token comment">#  (JUPYTER_GATEWAY_RETRY_INTERVAL_MAX env var)</span>
+<span class="token comment">#  Default: 30.0</span>
+<span class="token comment"># c.GatewayClient.gateway_retry_interval_max = 30.0</span>
+
+<span class="token comment">## The maximum retries allowed for HTTP reconnection with the Gateway server.</span>
+<span class="token comment">#  (JUPYTER_GATEWAY_RETRY_MAX env var)</span>
+<span class="token comment">#  Default: 5</span>
+<span class="token comment"># c.GatewayClient.gateway_retry_max = 5</span>
+
+<span class="token comment">## Additional HTTP headers to pass on the request.  This value will be converted</span>
+<span class="token comment">#  to a dict. (JUPYTER_GATEWAY_HEADERS env var)</span>
+<span class="token comment">#  Default: '{}'</span>
+<span class="token comment"># c.GatewayClient.headers = '{}'</span>
+
+<span class="token comment">## The password for HTTP authentication.  (JUPYTER_GATEWAY_HTTP_PWD env var)</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.GatewayClient.http_pwd = None</span>
+
+<span class="token comment">## The username for HTTP authentication. (JUPYTER_GATEWAY_HTTP_USER env var)</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.GatewayClient.http_user = None</span>
+
+<span class="token comment">## The gateway API endpoint for accessing kernel resources</span>
+<span class="token comment">#  (JUPYTER_GATEWAY_KERNELS_ENDPOINT env var)</span>
+<span class="token comment">#  Default: '/api/kernels'</span>
+<span class="token comment"># c.GatewayClient.kernels_endpoint = '/api/kernels'</span>
+
+<span class="token comment">## The gateway API endpoint for accessing kernelspecs</span>
+<span class="token comment">#  (JUPYTER_GATEWAY_KERNELSPECS_ENDPOINT env var)</span>
+<span class="token comment">#  Default: '/api/kernelspecs'</span>
+<span class="token comment"># c.GatewayClient.kernelspecs_endpoint = '/api/kernelspecs'</span>
+
+<span class="token comment">## The gateway endpoint for accessing kernelspecs resources</span>
+<span class="token comment">#  (JUPYTER_GATEWAY_KERNELSPECS_RESOURCE_ENDPOINT env var)</span>
+<span class="token comment">#  Default: '/kernelspecs'</span>
+<span class="token comment"># c.GatewayClient.kernelspecs_resource_endpoint = '/kernelspecs'</span>
+
+<span class="token comment">## The time allowed for HTTP request completion. (JUPYTER_GATEWAY_REQUEST_TIMEOUT</span>
+<span class="token comment">#  env var)</span>
+<span class="token comment">#  Default: 40.0</span>
+<span class="token comment"># c.GatewayClient.request_timeout = 40.0</span>
+
+<span class="token comment">## The url of the Kernel or Enterprise Gateway server where kernel specifications</span>
+<span class="token comment">#  are defined and kernel management takes place. If defined, this Notebook</span>
+<span class="token comment">#  server acts as a proxy for all kernel management and kernel specification</span>
+<span class="token comment">#  retrieval.  (JUPYTER_GATEWAY_URL env var)</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.GatewayClient.url = None</span>
+
+<span class="token comment">## For HTTPS requests, determines if server's certificate should be validated or</span>
+<span class="token comment">#  not. (JUPYTER_GATEWAY_VALIDATE_CERT env var)</span>
+<span class="token comment">#  Default: True</span>
+<span class="token comment"># c.GatewayClient.validate_cert = True</span>
+
+<span class="token comment">## The websocket url of the Kernel or Enterprise Gateway server.  If not</span>
+<span class="token comment">#  provided, this value will correspond to the value of the Gateway url with 'ws'</span>
+<span class="token comment">#  in place of 'http'.  (JUPYTER_GATEWAY_WS_URL env var)</span>
+<span class="token comment">#  Default: None</span>
+<span class="token comment"># c.GatewayClient.ws_url = None</span>
+
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment"># TerminalManager(LoggingConfigurable) configuration</span>
+<span class="token comment">#------------------------------------------------------------------------------</span>
+<span class="token comment">## </span>
+
+<span class="token comment">## Timeout (in seconds) in which a terminal has been inactive and ready to be</span>
+<span class="token comment">#  culled. Values of 0 or lower disable culling.</span>
+<span class="token comment">#  Default: 0</span>
+<span class="token comment"># c.TerminalManager.cull_inactive_timeout = 0</span>
+
+<span class="token comment">## The interval (in seconds) on which to check for terminals exceeding the</span>
+<span class="token comment">#  inactive timeout value.</span>
+<span class="token comment">#  Default: 300</span>
+<span class="token comment"># c.TerminalManager.cull_interval = 300</span>
+
+</code></pre></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最近更新: </span> <span class="time">4 小时前</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <div class="sub-side-bar" style="bottom:11rem;" data-v-3cdd893a><div class="sub-sidebar-content" style="height:;" data-v-3cdd893a><span style="display:;" data-v-3cdd893a>隐藏
+    </span> <ul class="sub-sidebar-wrapper" style="display:;" data-v-3cdd893a><li class="level-2" data-v-3cdd893a><a href="/SummerSoda/blogs/Jupyter/2019/121102.html#_1-生成配置文件" class="sidebar-link reco-side-_1-生成配置文件" data-v-3cdd893a><p data-v-3cdd893a>1.生成配置文件</p></a></li><li class="level-2" data-v-3cdd893a><a href="/SummerSoda/blogs/Jupyter/2019/121102.html#_2-生成密码" class="sidebar-link reco-side-_2-生成密码" data-v-3cdd893a><p data-v-3cdd893a>2. 生成密码</p></a></li><li class="level-3" data-v-3cdd893a><a href="/SummerSoda/blogs/Jupyter/2019/121102.html#自动生成" class="sidebar-link reco-side-自动生成" data-v-3cdd893a><p data-v-3cdd893a>自动生成</p></a></li><li class="level-3" data-v-3cdd893a><a href="/SummerSoda/blogs/Jupyter/2019/121102.html#手动生成" class="sidebar-link reco-side-手动生成" data-v-3cdd893a><p data-v-3cdd893a>手动生成</p></a></li><li class="level-2" data-v-3cdd893a><a href="/SummerSoda/blogs/Jupyter/2019/121102.html#_3-配置远程访问" class="sidebar-link reco-side-_3-配置远程访问" data-v-3cdd893a><p data-v-3cdd893a>3.配置远程访问</p></a></li><li class="level-2" data-v-3cdd893a><a href="/SummerSoda/blogs/Jupyter/2019/121102.html#_4-其他配置参数说明" class="sidebar-link reco-side-_4-其他配置参数说明" data-v-3cdd893a><p data-v-3cdd893a>4.其他配置参数说明</p></a></li></ul></div></div></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-f0c4a562 data-v-f0c4a562><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="icon" data-v-f0c4a562><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" data-v-f0c4a562></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" data-v-f0c4a562></path></svg></div><div class="kanbanniang" data-v-b36fbb5c><div class="banniang-container" style="display:;" data-v-b36fbb5c><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-b36fbb5c>
+      欢迎来到 汽水味的夏天
+    </div> <div class="operation" style="right:90px;bottom:40px;display:;" data-v-b36fbb5c><i class="kbnfont kbn-ban-home ban-home" data-v-b36fbb5c></i> <i class="kbnfont kbn-ban-message message" data-v-b36fbb5c></i> <i class="kbnfont kbn-ban-close close" data-v-b36fbb5c></i> <a target="_blank" href="https://docs.wppdjw.xyz/SummerSoda/docs/Theme/plugins/KanBanNiang.html" data-v-b36fbb5c><i class="kbnfont kbn-ban-info info" data-v-b36fbb5c></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:;" data-v-b36fbb5c></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="right:90px;bottom:-20px;opacity:0.9;" data-v-b36fbb5c></canvas></div> <div class="showBanNiang" style="display:none;" data-v-b36fbb5c>
+    看板娘
+  </div></div></div></div>
+    <script src="/SummerSoda/assets/js/app.9d0b1a23.js" defer></script><script src="/SummerSoda/assets/js/5.44de80cb.js" defer></script><script src="/SummerSoda/assets/js/1.ba670e9f.js" defer></script><script src="/SummerSoda/assets/js/72.64459c61.js" defer></script>
+  </body>
+</html>
